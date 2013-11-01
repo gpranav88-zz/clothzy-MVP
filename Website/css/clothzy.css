@@ -121,7 +121,7 @@ max-height:60px;
 	padding-bottom:2px;
 	padding-top:5px;
 	font-size:16px;
-	color:#666666;
+
 	
 }
 
@@ -130,7 +130,6 @@ max-height:60px;
 	padding-top:0px;
 	padding-bottom:2px;
 	font-size:90%;
-	color:#F07241;
 }
 
 .sidebar-nav-fixed .nav .nav .nav > li > a {
@@ -138,7 +137,7 @@ max-height:60px;
 	padding-top:0px;
 	padding-bottom:2px;
 	font-size:90%;
-	color:#F07241;
+
 }
 
 .sidebar-nav-fixed .nav .nav .nav .nav > li > a {
@@ -146,7 +145,7 @@ max-height:60px;
 	padding-top:0px;
 	padding-bottom:2px;
 	font-size:90%;
-	color:#F07241;
+
 }
 
 
@@ -168,6 +167,12 @@ max-height:60px;
 .affix{
 
 top:-750px;
+	
+}
+
+.sidebar-link{
+	
+	color:#666;
 	
 }
 
@@ -277,7 +282,7 @@ top:-750px;
 
 .small-icon{
 	font-size:20px;
-	color:#428bca;
+	color:#F07241;
 	
 }
 
@@ -288,7 +293,8 @@ top:-750px;
 }
 
 .gold{
-	color: #428bca ;	
+	color: #E5C100;
+	text-shadow:1px 0px 0px #999;	
 }
 
 .subtext{
@@ -323,11 +329,14 @@ margin-left:15px;
 
 .btn-facebook{
 	background-color:#5f78ae;	
-	display: inline-block;
-
-	
-
+	display: inline-block;	
 }
+.btn-facebook:hover{
+	background-color:#4F6694;	
+	display: inline-block;	
+}
+
+
 .facebook-login-icon{
 	   line-height: 50px;
 	 vertical-align: middle;
@@ -338,4 +347,51 @@ margin-left:15px;
 	 vertical-align: middle;
 	width:90%;
 		display:inline-block;
+}
+
+
+.fb-icon{
+	color:#5f78ae;	
+	text-decoration:none;
+}
+.fb-icon:hover {
+	color:#495D86;
+	
+}
+
+.tw-icon{
+	color:#4099FF;	
+}
+.tw-icon:hover{
+	color:#2B6AAF;	
+}
+
+.pi-icon{
+	color:#c92228;	
+}
+
+.pi-icon:hover{
+	color:#91171C;	
+}
+
+.subhead{
+
+	border-bottom:thin solid #F07241;
+	
+}
+
+.carousel-arrow{
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: inline-block;
+	
+}
+
+.reviewer-cover{
+	
+	background-image: url('../img/reviewer-cover.jpg');
+	height:250px;
+	box-shadow: 0px 0px 12px #aaaaaa;
 }

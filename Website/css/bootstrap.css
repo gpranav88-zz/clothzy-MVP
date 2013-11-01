@@ -376,7 +376,7 @@ hr {
   margin-top: 8px;
   margin-bottom: 8px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #ccc;
 }
 
 .sr-only {
@@ -2082,7 +2082,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
   color: #ffffff;
   background-color: #C04848;
-  border-color: #C04848;
+
 }
 
 .btn-primary:hover,
@@ -2092,7 +2092,7 @@ fieldset[disabled] .btn-default.active {
 .open .dropdown-toggle.btn-primary {
   color: #ffffff;
   background-color: #F07241;
-  border-color: #F07241;
+
 }
 
 .btn-primary:active,
@@ -2163,8 +2163,8 @@ fieldset[disabled] .btn-warning.active {
 
 .btn-danger {
   color: #ffffff;
-  background-color: #C04848;
-  border-color: #C04848;
+  background-color: #F07241;
+  border-color: #F07241;
 }
 
 .btn-danger:hover,
@@ -2173,8 +2173,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger.active,
 .open .dropdown-toggle.btn-danger {
   color: #ffffff;
-  background-color: #F07241;
-  border-color: #F07241;
+  background-color: #C04848;
+  border-color: #C04848;
 }
 
 .btn-danger:active,
@@ -4559,7 +4559,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #ffffff;
-  background-color: #601848;
+  background-color: #C04848;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
