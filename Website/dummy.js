@@ -30,6 +30,70 @@ var featured = [
 
 ];
 
+var top = [
+	{	id:1,
+		name:'Arun Kumar',
+		location:'New Delhi',
+		upvotes:'50',
+		downvotes:'20',
+		latestReview:'XYZ Store, Lajpat Nagar',
+		latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		latestReviewID:234
+	},
+
+	{	id:2,
+		name:'Satish Sharma',
+		location:'New Delhi',
+		upvotes:'50',
+		downvotes:'20',
+		latestReview:'XYZ Store, Lajpat Nagar',
+		latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		latestReviewID:235
+	},
+
+	{	id:3,
+		name:'Priya Das',
+		location:'New Delhi',
+		upvotes:'50',
+		downvotes:'20',
+		latestReview:'XYZ Store, Lajpat Nagar',
+		latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		latestReviewID:2366
+	},
+
+
+
+];
+
+
+var latest = [
+	{	id:1,
+		name:'XYZ Store',
+		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		address:'23, Abc Road, New Delhi - 110033',
+		phone:'011-25930253',
+		timing:'10AM - 10PM'
+	},
+
+	{	id:2,
+		name:'ABC Store',
+		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		address:'23, Abc Road, New Delhi - 110033',
+		phone:'011-25930253',
+		timing:'10AM - 10PM'
+	},
+
+	{	id:3,
+		name:'DEF Store',
+		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		address:'23, Abc Road, New Delhi - 110033',
+		phone:'011-25930253',
+		timing:'10AM - 10PM'
+	},
+
+
+];
+
 
 
 
