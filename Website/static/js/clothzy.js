@@ -1,11 +1,24 @@
 angular
     .module('main',[])
-    .config(function($routeProvider){
+    .config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
         $routeProvider
             .when ('/',{
-                templateUrl:'index.html'
+                templateUrl:'home.html'
+            })
+            .when ('/store/',{
+                templateUrl:'store.html'
             });
-    })
+//
+        //$locationProvider
+        //    .html5Mode(true)
+        //    .hashPrefix('!');
+    }])
     .controller('index',function($scope){
         //dummy json
     });
+
+
+function openStore(){
+$location.path('/newValue');
+
+}
