@@ -68,28 +68,15 @@ var top = [
 
 var latest = [
 	{	id:1,
-		name:'XYZ Store',
+		name:'Product 1',
 		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-		address:'23, Abc Road, New Delhi - 110033',
-		phone:'011-25930253',
-		timing:'10AM - 10PM'
 	},
 
 	{	id:2,
-		name:'ABC Store',
+		name:'Product 2',
 		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-		address:'23, Abc Road, New Delhi - 110033',
-		phone:'011-25930253',
-		timing:'10AM - 10PM'
-	},
+	}
 
-	{	id:3,
-		name:'DEF Store',
-		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-		address:'23, Abc Road, New Delhi - 110033',
-		phone:'011-25930253',
-		timing:'10AM - 10PM'
-	},
 
 
 ];
@@ -103,8 +90,12 @@ server.configure(function(){
 	server.get('/api/stores/featured/', function(req, res) {
 		res.json(featured);
 	});
-
-
+	server.get('/api/users/top/', function(req, res) {
+		res.json(top);
+	});
+	server.get('/api/products/latest/', function(req, res) {
+		res.json(latest);
+	});
 
 
 

@@ -5,9 +5,12 @@ angular
             .when ('/',{
                 templateUrl:'home.html'
             })
-            .when ('/store/',{
+            .when ('/store/:id',{
                 templateUrl:'store.html'
-            });
+            })
+            .when ('/products/:id',{
+                templateUrl:'product.html'
+            });            
 //
         //$locationProvider
         //    .html5Mode(true)

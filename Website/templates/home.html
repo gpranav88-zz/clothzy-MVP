@@ -2,9 +2,6 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron bg-header container-fluid">
 
-
-
-
       <div class="container">
         <h2>Hello.</h2>
        <div class="col-md-3 search-text">
@@ -33,9 +30,7 @@
              
        </div>
 		
-
       </div>
-
 
 
     <div class="container" id="main">
@@ -43,26 +38,19 @@
 	<div class="body-head">Latest Designs</div>
 	
       <div class="row">
-	     
-      
-      <div class="col-lg-4">
-		<h4>Product 2</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="col-lg-2">
-			<img src="../static/img/featured-product-1.jpg" class="img-responsive img-thumbnail 	">
-      </div>
-      <div class="col-lg-4">
-		<h4>Product 2</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-      </div>
-      <div class="col-lg-2">
-			<img src="../static/img/featured-product-2.jpg" class="img-responsive img-thumbnail">
-      </div>
 
-     
+	<div ng-repeat="product in latestDesigns">
+
+      <div class="col-lg-4" >
+		<h4>{{product.name}}</h4>
+          <p>{{product.description}}</p>
+          <p><a class="btn btn-default" href="#/products/{{product.id}}">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-2">
+			<img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+      </div>
+      </div>
+         
   	</div>
 
       <hr>
@@ -92,55 +80,22 @@
 
 	<h3 class="body-head">Top Reviewers</h3>
       <div class="row">
-		<div class="col-lg-4">
+
+		<div class="col-lg-4" ng-repeat="user in topReviewers">
         <ul class="media-list">
 		  <li class="media">
 		    <a class="pull-left" href="#">
-		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-1.jpg" alt="...">
+		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-{{user.id}}.jpg" alt="...">
 		    </a>
 		    <div class="media-body">
-		      <h4 class="media-heading">Arun Kumar</h4>
-		      <p>New Delhi<br>
-				<span class="green">50</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">20 </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
+		      <h4 class="media-heading">{{user.name}}</h4>
+		      <p>{{user.location}}<br>
+				<span class="green">{{user.upvotes}}</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">{{user.downvotes}} </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
 		    </div>
 		  </li>
-		<li><h5>Latest Review: XYZ Store, Lajpat Nagar</b></h5>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p></li>
-		<a href="#">Read More &raquo;</a>
-		</ul>
-		</div>
-		<div class="col-lg-4">
-        <ul class="media-list">
-		  <li class="media">
-		    <a class="pull-left" href="#">
-		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-2.jpg" alt="...">
-		    </a>
-		    <div class="media-body">
-		      <h4 class="media-heading">Satish Sharma</h4>
-		      <p>New Delhi<br>
-				<span class="green">50</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">20 </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
-		    </div>
-		  </li>
-		<li><h5>Latest Review: XYZ Store, Lajpat Nagar</b></h5>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p></li>
-		<a href="#">Read More &raquo;</a>
-		</ul>
-		</div>
-		<div class="col-lg-4">
-        <ul class="media-list">
-		  <li class="media">
-		    <a class="pull-left" href="#">
-		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-3.jpg" alt="...">
-		    </a>
-		    <div class="media-body">
-		      <h4 class="media-heading">Priya Das</h4>
-		      <p>New Delhi<br>
-				<span class="green">50</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">20 </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
-		    </div>
-		  </li>
-		<li><h5>Latest Review: XYZ Store, Lajpat Nagar</b></h5>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p></li>
-		<a href="#">Read More &raquo;</a>
+		<li><h5>{{user.latestReview}}</h5>
+		<p>{{user.latestReviewDescription}}</p></li>
+		<a href="#/reviews/{{user.latestReviewID}}">Read More &raquo;</a>
 		</ul>
 		</div>
 	
