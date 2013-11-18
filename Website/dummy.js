@@ -87,13 +87,13 @@ var latest = [
 server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
-	server.get('/api/stores/featured/', function(req, res) {
+	server.get('/api/store/featured/', function(req, res) {
 		res.json(featured);
 	});
-	server.get('/api/users/top/', function(req, res) {
+	server.get('/api/user/top/', function(req, res) {
 		res.json(top);
 	});
-	server.get('/api/products/latest/', function(req, res) {
+	server.get('/api/product/latest/', function(req, res) {
 		res.json(latest);
 	});
 

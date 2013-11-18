@@ -8,7 +8,7 @@ angular
             .when ('/store/:id',{
                 templateUrl:'store.html'
             })
-            .when ('/products/:id',{
+            .when ('/product/:id',{
                 templateUrl:'product.html'
             });            
 //
@@ -17,17 +17,17 @@ angular
         //    .hashPrefix('!');
     }])
     .controller('home',['$scope','$http',function($scope,$http){
-        $http({method: 'GET', url: '/api/stores/featured/'})
+        $http({method: 'GET', url: '/api/store/featured/'})
             .success(function(data, status, headers, config) {
                 $scope.featuredStores=data;
 
             });
-        $http({method: 'GET', url: '/api/products/latest/'})
+        $http({method: 'GET', url: '/api/product/latest/'})
             .success(function(data, status, headers, config) {
                 $scope.latestDesigns=data;
 
             });
-        $http({method: 'GET', url: '/api/users/top/'})
+        $http({method: 'GET', url: '/api/user/top/'})
             .success(function(data, status, headers, config) {
                 $scope.topReviewers=data;
 
