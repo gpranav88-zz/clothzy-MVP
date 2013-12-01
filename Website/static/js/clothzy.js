@@ -54,72 +54,47 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
    //    .hashPrefix('!');
 }]);
 
-app.controller('homePageController',['$scope','$http','homePageFactory',function($scope,$http,homePageFactory){
+app.controller('homePageController',['$scope','$http','$q','commonFactory',function($scope,$http,$q,commonFactory){
 
 
-		
-			//$scope.featuredStores=homePageFactory.getDummy();
+			window.MY_SCOPE = $scope;
+			//$scope.featuredStores=commonFactory.getDummy();
 
-			$scope.featuredStores=homePageFactory.getFeaturedStores($http);
+			//$scope.featuredStores=commonFactory.getFeaturedStores($http);
 
-			$scope.latestDesigns=homePageFactory.getLatestDesigns($http);
+			//$scope.latestDesigns=commonFactory.getLatestDesigns($http);
 
-			$scope.topReviewers=homePageFactory.getTopReviewers($http);
+			//$scope.topReviewers=commonFactory.getTopReviewers($http);
+
+			$scope.homePageData=commonFactory.getFromAPI('/api/home/');
+			
 
 		   }            
    ]);
 
-app.factory('homePageFactory',function(){
+app.factory('commonFactory',function($http,$q){
 
 	return {
 
-		getFeaturedStores:function($http){
+		getFromAPI:function(apiURL){ 
 
 			//console.log('wolololo');
 
-			$http({
-				method: 'GET', url: '/api/store/featured/'
-			})
-			.success(function(data, status, headers, config) {
-			console.log(data);
-			   return data;
+			//$http({
+			//	method: 'GET', url: apiURL
+			//})
+			//.success(function(data, status, headers, config) {
+			//console.log(data);
+			//   return data;
+
+			return $q.all([$http.get(apiURL)])
+				.then(function (results) {
+                	return results;
+            	});
 
 
-		   });
-
-		},
-
-
-
-		getLatestDesigns:function($http){
-
-			$http({
-				method: 'GET', url: '/api/product/latest/'
-			})
-			.success(function(data, status, headers, config) {
-			   return data;
-
-		   });
-
-		},
-
-
-		getTopReviewers:function($http){
-
-			$http({
-				method: 'GET', url: '/api/user/top/'
-			})
-			.success(function(data, status, headers, config) {
-			   return data;
-
-		   });
 
 		}
-
-
-
-
-
 
 	};
 
