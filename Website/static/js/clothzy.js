@@ -66,33 +66,22 @@ app.controller('homePageController',['$scope','$http','$q','commonFactory',funct
 
 			//$scope.topReviewers=commonFactory.getTopReviewers($http);
 
-			$scope.homePageData=commonFactory.getFromAPI('/api/home/');
+			//$scope.homePageData=commonFactory.getFromAPI('/api/home/');
+
+			$scope.homePageData=commonFactory.homeCRUD.query();
+
 			
 
 		   }            
    ]);
 
-app.factory('commonFactory',function($http,$q){
+app.factory('commonFactory',function(
 
 	return {
 
-		getFromAPI:function(apiURL){ 
+		homeCRUD:function($resource){
 
-			//console.log('wolololo');
-
-			//$http({
-			//	method: 'GET', url: apiURL
-			//})
-			//.success(function(data, status, headers, config) {
-			//console.log(data);
-			//   return data;
-
-			return $q.all([$http.get(apiURL)])
-				.then(function (results) {
-                	return results;
-            	});
-
-
+			return $resource('/api/home/'); 
 
 		}
 
@@ -101,4 +90,4 @@ app.factory('commonFactory',function($http,$q){
 
 
 
-});
+));
