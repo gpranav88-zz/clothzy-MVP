@@ -35,7 +35,7 @@
 //    }]);
 
 
-var app = angular.module('main',['ngRoute','ngResource']);
+var app = angular.module('main',['ngResource','ngRoute']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
@@ -54,12 +54,13 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
        //.hashPrefix('!');
 }]);
 
-app.controller('homePageController',['$scope','$http','$q','commonFactory',function($scope,$http,$q,commonFactory){
+app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 
 
 			window.MY_SCOPE = $scope;
 
-			$scope.homePageData=commonFactory.homeCRUD().query();
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.homePageData=$resource('/api/home/').get();
 
 			
 

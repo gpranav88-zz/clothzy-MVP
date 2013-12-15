@@ -89,7 +89,7 @@ server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
 
-	server.get('/api/home/', function(req, res) {
+	server.get('/api/home', function(req, res) {
 		res.json(homePage);
 	});
 
