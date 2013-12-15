@@ -40,13 +40,17 @@ var app = angular.module('main',['ngResource','ngRoute']);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
 		.when ('/',{
-			templateUrl:'home.html'
+			templateUrl:'home.html',
+			controller:'homePageController'
 		})
 		.when ('/store/:id',{
-			templateUrl:'store.html'
+			templateUrl:'store.html',
+			controller:'storeController'
+
 		})
 		.when ('/product/:id',{
-			templateUrl:'product.html'
+			templateUrl:'product.html',
+			controller:'productController'
 		});            
 
    //$locationProvider
@@ -56,12 +60,57 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 
 app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 
+			window.MY_SCOPE = $scope;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.homePageData=$resource('/api/home/').get();
+			
+
+		   }            
+   ]);
+
+
+app.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+
+			window.MY_SCOPE = $scope;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.productData=$resource('/api/product/'+$routeParams.id).get();
+			
+
+		   }            
+   ]);
+
+
+app.controller('userController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
 			$scope.homePageData=$resource('/api/home/').get();
+			
 
+		   }            
+   ]);
+
+
+app.controller('storeController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
+
+			window.MY_SCOPE = $scope;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.homePageData=$resource('/api/home/').get();
+			
+
+		   }            
+   ]);
+
+app.controller('reviewController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
+
+			window.MY_SCOPE = $scope;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.homePageData=$resource('/api/home/').get();
 			
 
 		   }            

@@ -82,7 +82,50 @@ var homePage = {
 
 	]
 
-}
+};
+
+var product={
+
+	description:{
+		title:'Supernet Cotton Saree',
+		price:'1500',
+		rating:'4',
+		overview:'Effortlessly fetch the limelight at any social do by walking in wearing this beautiful green saree from Bunkar. The exquisite self pattern and charming design highlight a graceful visage, while the cotton blend fabric makes for a comfortable wear.',
+		color:'Purple',
+		size:'Free Size',
+		material:'Silk',
+		status:'In Stock!'
+
+	},
+
+	location:{
+
+		title:'XYZ Store',
+		phone:'011-25930253',
+		address:'23, Abc Road, New Delhi - 110033',
+		timings:'23, Abc Road, New Delhi - 110033',
+		about:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+
+	},
+
+	reviews:[{
+		id:1,
+		name:'Satish Sharma',
+		upvotes:'50',
+		downvotes:'20',
+		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		rating:'4'
+
+	}],
+
+	similar:[{
+		title:'Supernet Cotton Saree',
+		location:'Store XYZ, Hauz Khas Village',
+		price:'1,500'
+
+	}]
+
+};
 
 
 server.configure(function(){
@@ -91,6 +134,10 @@ server.configure(function(){
 
 	server.get('/api/home', function(req, res) {
 		res.json(homePage);
+	});
+
+	server.get('/api/product/1', function(req, res) {
+		res.json(product);
 	});
 
 });
