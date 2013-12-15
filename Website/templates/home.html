@@ -62,7 +62,7 @@
       <div class="row" >
 
 
-      	<div class="col-lg-4" ng-repeat="store in featuredStores">
+      	<div class="col-lg-4" ng-repeat="store in homePageData.featured">
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
@@ -81,7 +81,7 @@
 	<h3 class="body-head">Top Reviewers</h3>
       <div class="row">
 
-		<div class="col-lg-4" ng-repeat="user in topReviewers">
+		<div class="col-lg-4" ng-repeat="user in homePageData.top">
         <ul class="media-list">
 		  <li class="media">
 		    <a class="pull-left" href="#">
