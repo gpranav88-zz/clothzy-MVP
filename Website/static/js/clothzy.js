@@ -35,7 +35,7 @@
 //    }]);
 
 
-var app = angular.module('main',[]);
+var app = angular.module('main',['ngRoute','ngResource']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
@@ -50,32 +50,23 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		});            
 
    //$locationProvider
-   //    .html5Mode(true)
-   //    .hashPrefix('!');
+     //  .html5Mode(true)
+       //.hashPrefix('!');
 }]);
 
 app.controller('homePageController',['$scope','$http','$q','commonFactory',function($scope,$http,$q,commonFactory){
 
 
 			window.MY_SCOPE = $scope;
-			//$scope.featuredStores=commonFactory.getDummy();
 
-			//$scope.featuredStores=commonFactory.getFeaturedStores($http);
-
-			//$scope.latestDesigns=commonFactory.getLatestDesigns($http);
-
-			//$scope.topReviewers=commonFactory.getTopReviewers($http);
-
-			//$scope.homePageData=commonFactory.getFromAPI('/api/home/');
-
-			$scope.homePageData=commonFactory.homeCRUD.query();
+			$scope.homePageData=commonFactory.homeCRUD().query();
 
 			
 
 		   }            
    ]);
 
-app.factory('commonFactory',function(
+app.factory('commonFactory',['$resource',function($resource){
 
 	return {
 
@@ -87,7 +78,5 @@ app.factory('commonFactory',function(
 
 	};
 
-
-
-
-));
+}]
+);
