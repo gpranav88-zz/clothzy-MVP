@@ -6,6 +6,7 @@ var homePage = {
 
 	featured:[
 		{	id:1,
+			slug:'XYZ-Store-1',
 			name:'XYZ Store',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 			address:'23, Abc Road, New Delhi - 110033',
@@ -103,7 +104,7 @@ var product={
 		title:'XYZ Store',
 		phone:'011-25930253',
 		address:'23, Abc Road, New Delhi - 110033',
-		timings:'23, Abc Road, New Delhi - 110033',
+		timings:'10AM - 10PM',
 		about:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
 
 	},
@@ -128,6 +129,47 @@ var product={
 };
 
 
+var store = {
+
+	description:{
+
+		id:1,
+		title:'XYZ Store',
+		phone:'011-25930253',
+		address:'23, Abc Road, New Delhi - 110033',
+		timings:'23, Abc Road, New Delhi - 110033',
+		about:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+
+	},
+
+	collection:[{
+		title:'Supernet Cotton Saree',
+		location:'Store XYZ, Hauz Khas Village',
+		price:'1,500'
+
+	}],
+
+	reviews:[{
+		id:1,
+		name:'Satish Sharma',
+		upvotes:'50',
+		downvotes:'20',
+		description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+		rating:'4'
+
+	}],
+
+	photos:{
+
+	},
+
+	map:{
+
+	}
+
+};
+
+
 server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
@@ -138,6 +180,10 @@ server.configure(function(){
 
 	server.get('/api/product/1', function(req, res) {
 		res.json(product);
+	});
+
+	server.get('/api/store/1', function(req, res) {
+		res.json(store);
 	});
 
 });
