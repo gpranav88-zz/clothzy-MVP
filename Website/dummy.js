@@ -99,7 +99,7 @@ var product={
 	},
 
 	location:{
-		id=1,
+		id:1,
 		title:'XYZ Store',
 		phone:'011-25930253',
 		address:'23, Abc Road, New Delhi - 110033',
