@@ -34,34 +34,34 @@ var homePage = {
 	],
 
 	top:[
-		{	id:1,
+		{	user_id:1,
 			name:'Arun Kumar',
 			location:'New Delhi',
 			upvotes:'50',
 			downvotes:'20',
-			latestReview:'XYZ Store, Lajpat Nagar',
-			latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-			latestReviewID:234
+			title:'XYZ Store, Lajpat Nagar',
+			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+			review_id:234
 		},
 
-		{	id:2,
+		{	user_id:2,
 			name:'Satish Sharma',
 			location:'New Delhi',
 			upvotes:'50',
 			downvotes:'20',
-			latestReview:'XYZ Store, Lajpat Nagar',
-			latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-			latestReviewID:235
+			title:'XYZ Store, Lajpat Nagar',
+			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+			review_id:235
 		},
 
-		{	id:3,
+		{	user_id:3,
 			name:'Priya Das',
 			location:'New Delhi',
 			upvotes:'50',
 			downvotes:'20',
-			latestReview:'XYZ Store, Lajpat Nagar',
-			latestReviewDescription:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
-			latestReviewID:2366
+			title:'XYZ Store, Lajpat Nagar',
+			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
+			review_id:2366
 		},
 
 
