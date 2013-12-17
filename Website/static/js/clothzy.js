@@ -53,9 +53,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller:'productController'
 		});            
 
-   //$locationProvider
-     //  .html5Mode(true)
-       //.hashPrefix('!');
+   $locationProvider
+      .html5Mode(true)
+      .hashPrefix('!');
 }]);
 
 app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){

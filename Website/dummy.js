@@ -1,5 +1,4 @@
-var express = require('express');
-var server = express(); 
+
 
 
 var homePage = {
@@ -170,9 +169,17 @@ var store = {
 };
 
 
+var express = require('express');
+var server = express(); 
+
+
 server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
+
+	server.get('/store/XYZ-Store-1', function(req, res) {
+		res.sendfile(__dirname + '/templates/index.html');
+	});
 
 	server.get('/api/home', function(req, res) {
 		res.json(homePage);
