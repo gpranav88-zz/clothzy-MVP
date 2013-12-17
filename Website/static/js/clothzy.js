@@ -99,7 +99,7 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.storeData=$resource('/api/store/'+$routeParams.slug.slice(-1)).get();
+			$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
 			
 
 		   }            

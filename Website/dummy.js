@@ -5,7 +5,7 @@ var homePage = {
 
 	featured:[
 		{	id:1,
-			slug:'XYZ-Store-1',
+			slug:'xyz-store-1',
 			name:'XYZ Store',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 			address:'23, Abc Road, New Delhi - 110033',
@@ -15,6 +15,7 @@ var homePage = {
 
 		{	id:2,
 			name:'ABC Store',
+			slug:'abc-store-2',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 			address:'23, Abc Road, New Delhi - 110033',
 			phone:'011-25930253',
@@ -23,6 +24,7 @@ var homePage = {
 
 		{	id:3,
 			name:'DEF Store',
+			slug:'def-store-3',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 			address:'23, Abc Road, New Delhi - 110033',
 			phone:'011-25930253',
@@ -177,7 +179,7 @@ server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
 
-	server.get('/store/XYZ-Store-1', function(req, res) {
+	server.get('/store|product|review|user\/.*', function(req, res) {
 		res.sendfile(__dirname + '/templates/index.html');
 	});
 
