@@ -39,7 +39,7 @@
 	
       <div class="row">
 
-	<div ng-repeat="product in latestDesigns">
+	<div ng-repeat="product in homePageData.latest">
 
       <div class="col-lg-4" >
 		<h4>{{product.name}}</h4>
@@ -62,13 +62,13 @@
       <div class="row" >
 
 
-      	<div class="col-lg-4" ng-repeat="store in featuredStores">
+      	<div class="col-lg-4" ng-repeat="store in homePageData.featured">
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
 		        <h4>{{store.name}}</h4>
 		        <p>{{store.description}}</p>
-		        <p><a href="#/store/{{store.id}}" class="btn btn-primary">Visit Store &raquo;</a></p>
+		        <p><a href="store/{{store.slug}}" class="btn btn-primary">Visit Store &raquo;</a></p>
 		      </div>
 		    </div>
         </div>
@@ -81,11 +81,11 @@
 	<h3 class="body-head">Top Reviewers</h3>
       <div class="row">
 
-		<div class="col-lg-4" ng-repeat="user in topReviewers">
+		<div class="col-lg-4" ng-repeat="user in homePageData.top">
         <ul class="media-list">
 		  <li class="media">
 		    <a class="pull-left" href="#">
-		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-{{user.id}}.jpg" alt="...">
+		      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-{{user.user_id}}.jpg" alt="...">
 		    </a>
 		    <div class="media-body">
 		      <h4 class="media-heading">{{user.name}}</h4>
@@ -93,9 +93,9 @@
 				<span class="green">{{user.upvotes}}</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">{{user.downvotes}} </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
 		    </div>
 		  </li>
-		<li><h5>{{user.latestReview}}</h5>
-		<p>{{user.latestReviewDescription}}</p></li>
-		<a href="#/review/{{user.latestReviewID}}">Read More &raquo;</a>
+		<li><h5>{{user.title}}</h5>
+		<p>{{user.description}}</p></li>
+		<a href="#/review/{{user.review_id}}">Read More &raquo;</a>
 		</ul>
 		</div>
 	
