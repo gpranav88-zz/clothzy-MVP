@@ -72,10 +72,12 @@ var homePage = {
 	latest:[
 		{	id:1,
 			name:'Product 1',
+			slug:'product-1',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 		},
 
 		{	id:2,
+			slug:'product-2',
 			name:'Product 2',
 			description:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',
 		}
@@ -179,9 +181,6 @@ server.configure(function(){
 	server.use('/static', express.static(__dirname + '/static'));
 	server.use(express.static(__dirname + '/templates'));
 
-	server.get('/store|product|review|user\/.*', function(req, res) {
-		res.sendfile(__dirname + '/templates/index.html');
-	});
 
 	server.get('/api/home', function(req, res) {
 		res.json(homePage);
@@ -194,6 +193,11 @@ server.configure(function(){
 	server.get('/api/store/1', function(req, res) {
 		res.json(store);
 	});
+
+	server.get('/store|product|review|user\/.*', function(req, res) {
+		res.sendfile(__dirname + '/templates/index.html');
+	});
+
 
 });
 

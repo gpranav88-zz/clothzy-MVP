@@ -75,7 +75,7 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.productData=$resource('/api/product/'+$routeParams.slug).get();
+			$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
 			
 
 		   }            
