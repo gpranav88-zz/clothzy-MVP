@@ -51,7 +51,20 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		.when ('/product/:slug',{
 			templateUrl:'product.html',
 			controller:'productController'
-		});            
+		})
+		.when ('/user/:slug',{
+			templateUrl:'user.html',
+			controller:'userController'
+		})
+		.when ('/review/:slug',{
+			templateUrl:'review.html',
+			controller:'reviewController'
+		})
+		.when ('/search/:slug',{
+			templateUrl:'search.html',
+			controller:'searchController'
+		});
+
 
    $locationProvider
       .html5Mode(true)
@@ -87,7 +100,7 @@ app.controller('userController',['$scope','$http','$resource','$routeParams','co
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.userData=$resource('/api/product/'+$routeParams.slug).get();
+			$scope.userData=$resource('/api/user/'+$routeParams.slug).get();
 			
 
 		   }            
@@ -105,12 +118,25 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 		   }            
    ]);
 
-app.controller('reviewController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
+app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.homePageData=$resource('/api/home/').get();
+			$scope.reviewData=$resource('/api/review/'+$routeParams.slug.split('-').pop()).get();
+			
+
+		   }            
+   ]);
+
+app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+
+			window.MY_SCOPE = $scope;
+
+			var searchQuery;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+			$scope.searchData=$resource('/api/search/'+searchQuery).get();
 			
 
 		   }            
