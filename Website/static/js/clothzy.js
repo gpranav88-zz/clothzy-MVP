@@ -149,7 +149,7 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 		   }            
    ]);
 
-app.factory('commonFactory',function($resource){
+app.factory('commonFactory',function(){
 
 	return {
 
@@ -204,5 +204,4 @@ app.factory('commonFactory',function($resource){
 
 	};
 
-}
-);
+});
