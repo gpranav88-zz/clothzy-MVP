@@ -75,8 +75,8 @@ app.controller('homePageController',['$scope','$http','$resource','commonFactory
 
 			window.MY_SCOPE = $scope;
 
-			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.homePageData=$resource('/api/home/').get();
+			$scope.homePageData=commonFactory.homeCRUD($resource).get();
+			//$scope.homePageData=$resource('/api/home/').get();
 			
 
 		   }            
@@ -88,7 +88,8 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
+			//$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
+			$scope.productData=commonFactory.productCRUD($resource,$routeParams).get()
 			
 
 		   }            
@@ -100,7 +101,8 @@ app.controller('userController',['$scope','$http','$resource','$routeParams','co
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.userData=$resource('/api/user/'+$routeParams.slug).get();
+			//$scope.userData=$resource('/api/user/'+$routeParams.slug).get();
+			$scope.userData=commonFactory.userCRUD($resource,$routeParams).get()
 			
 
 		   }            
@@ -112,7 +114,8 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
+			//$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
+			$scope.storeData=commonFactory.storeCRUD($resource,$routeParams).get()
 			
 
 		   }            
@@ -123,8 +126,8 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.reviewData=$resource('/api/review/'+$routeParams.slug.split('-').pop()).get();
-			
+			//$scope.reviewData=$resource('/api/review/'+$routeParams.slug.split('-').pop()).get();
+			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get()
 
 		   }            
    ]);
@@ -136,13 +139,26 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 			var searchQuery;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.searchData=$resource('/api/search/'+searchQuery).get();
+			var searchData=$resource('/api/search/:param1/:param2/:param3',
+
+				{
+
+					param1:'@param1',
+					param2:'@param2',
+					param3:'@param3'
+
+				});
+
+			$scope.searchData=searchData;
+
+
+
 			
 
 		   }            
    ]);
 
-app.factory('commonFactory',['$resource',function($resource){
+app.factory('commonFactory',function($resource){
 
 	return {
 
@@ -150,9 +166,42 @@ app.factory('commonFactory',['$resource',function($resource){
 
 			return $resource('/api/home/'); 
 
+		},
+
+		storeCRUD:function($resource,$routeParams){
+
+			return $resource('/api/store/'+$routeParams.slug.split('-').pop());
+
+		},
+
+		productCRUD:function($resource,$routeParams){
+
+			return $resource('/api/product/'+$routeParams.slug.split('-').pop()); 
+
+		},
+
+		userCRUD:function($resource,$routeParams){
+
+			return $resource('/api/user/'+$routeParams.slug.split('-').pop());
+
+		},
+
+		reviewCRUD:function($resource,$routeParams){
+
+			return $resource('/api/review/'+$routeParams.slug.split('-').pop());
+
+		},
+
+		searchR:function($resource,$routeParams){
+
+			return $resource('/api/home');
+
 		}
+
+
+
 
 	};
 
-}]
+}
 );
