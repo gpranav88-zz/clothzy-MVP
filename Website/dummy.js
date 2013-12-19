@@ -195,9 +195,12 @@ server.configure(function(){
 	});
 
 	server.get('/store|product|review|user\/.*', function(req, res) {
-		res.sendfile(__dirname + '/templates/index.html');
+		res.sendfile(__dirname + '/templates/base.html');
 	});
 
+	server.get('/', function(req, res) {
+		res.sendfile(__dirname + '/templates/base.html');
+	});
 
 });
 
