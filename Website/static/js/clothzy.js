@@ -136,20 +136,11 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 
 			window.MY_SCOPE = $scope;
 
-			var searchQuery;
+			var searchQueryObject;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			var searchData=$resource('/api/search/:param1/:param2/:param3',
 
-				{
-
-					param1:'@param1',
-					param2:'@param2',
-					param3:'@param3'
-
-				});
-
-			$scope.searchData=searchData;
+			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
 
 
 
@@ -192,9 +183,19 @@ app.factory('commonFactory',function($resource){
 
 		},
 
-		searchR:function($resource,$routeParams){
+		searchR:function($resource){
 
-			return $resource('/api/home');
+			return $resource('/api/search/location/:param1/price/:param2/size/:param3',
+
+				{
+					param1:'@param1',
+					param2:'@param2',
+					param3:'@param3'
+
+				}
+
+
+			);
 
 		}
 
