@@ -51,7 +51,20 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		.when ('/product/:slug',{
 			templateUrl:'product.html',
 			controller:'productController'
-		});            
+		})
+		.when ('/user/:slug',{
+			templateUrl:'user.html',
+			controller:'userController'
+		})
+		.when ('/review/:slug',{
+			templateUrl:'review.html',
+			controller:'reviewController'
+		})
+		.when ('/search/:slug',{
+			templateUrl:'search.html',
+			controller:'searchController'
+		});
+
 
    $locationProvider
       .html5Mode(true)
@@ -62,8 +75,8 @@ app.controller('homePageController',['$scope','$http','$resource','commonFactory
 
 			window.MY_SCOPE = $scope;
 
-			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.homePageData=$resource('/api/home/').get();
+			$scope.homePageData=commonFactory.homeCRUD($resource).get();
+			//$scope.homePageData=$resource('/api/home/').get();
 			
 
 		   }            
@@ -75,7 +88,11 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
+			//$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
+			//var id = $routeParams.slug.split('-').pop();
+			$scope.productData=commonFactory.productCRUD($resource).get({
+				'id':commonFactory.fetchID($routeParams)
+			});
 			
 
 		   }            
@@ -87,7 +104,8 @@ app.controller('userController',['$scope','$http','$resource','$routeParams','co
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.userData=$resource('/api/product/'+$routeParams.slug).get();
+			//$scope.userData=$resource('/api/user/'+$routeParams.slug).get();
+			$scope.userData=commonFactory.userCRUD($resource,$routeParams).get();
 			
 
 		   }            
@@ -99,34 +117,105 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
+			//$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
+			//var id = $routeParams.slug.split('-').pop();
+			$scope.storeData=commonFactory.storeCRUD($resource).get({
+				'id':commonFactory.fetchID($routeParams)
+			});
 			
 
 		   }            
    ]);
 
-app.controller('reviewController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
+app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 
 			window.MY_SCOPE = $scope;
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
-			$scope.homePageData=$resource('/api/home/').get();
+			//$scope.reviewData=$resource('/api/review/'+$routeParams.slug.split('-').pop()).get();
+			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
+
+		   }            
+   ]);
+
+app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+
+			window.MY_SCOPE = $scope;
+
+			var searchQueryObject;
+
+			//$scope.homePageData=commonFactory.homeCRUD().query();
+
+			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
+
+
+
 			
 
 		   }            
    ]);
 
-app.factory('commonFactory',['$resource',function($resource){
+app.factory('commonFactory',function(){
 
 	return {
 
-		homeCRUD:function($resource){
+			homeCRUD:function($resource){
 
-			return $resource('/api/home/'); 
+				return $resource('/api/home'); 
 
-		}
+			},
+
+			storeCRUD:function($resource){
+
+				return $resource('/api/store/:id',{
+					id:'@id'
+				});
+
+			},
+
+			productCRUD:function($resource){
+
+				return $resource('/api/product/:id',{
+					id:'@id'
+				}); 
+
+			},
+
+			userCRUD:function($resource,$routeParams){
+
+				return $resource('/api/user/'+$routeParams.slug.split('-').pop());
+
+			},
+
+			reviewCRUD:function($resource,$routeParams){
+
+				return $resource('/api/review/'+$routeParams.slug.split('-').pop());
+
+			},
+
+			searchR:function($resource){
+
+				return $resource('/api/search/location/:param1/price/:param2/size/:param3',
+
+					{
+						param1:'@param1',
+						param2:'@param2',
+						param3:'@param3'
+
+					}
+
+
+				);
+
+			},
+
+			fetchID:function($routeParams){
+				return $routeParams.slug.split('-').pop();
+			}
+
+
+
 
 	};
 
-}]
-);
+});
