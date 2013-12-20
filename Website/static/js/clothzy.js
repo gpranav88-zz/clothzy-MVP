@@ -89,7 +89,10 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
 			//$scope.productData=$resource('/api/product/'+$routeParams.slug.split('-').pop()).get();
-			$scope.productData=commonFactory.productCRUD($resource,$routeParams).get()
+			//var id = $routeParams.slug.split('-').pop();
+			$scope.productData=commonFactory.productCRUD($resource).get({
+				'id':commonFactory.fetchID($routeParams)
+			});
 			
 
 		   }            
@@ -102,7 +105,7 @@ app.controller('userController',['$scope','$http','$resource','$routeParams','co
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
 			//$scope.userData=$resource('/api/user/'+$routeParams.slug).get();
-			$scope.userData=commonFactory.userCRUD($resource,$routeParams).get()
+			$scope.userData=commonFactory.userCRUD($resource,$routeParams).get();
 			
 
 		   }            
@@ -115,7 +118,10 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
 			//$scope.storeData=$resource('/api/store/'+$routeParams.slug.split('-').pop()).get();
-			$scope.storeData=commonFactory.storeCRUD($resource,$routeParams).get()
+			//var id = $routeParams.slug.split('-').pop();
+			$scope.storeData=commonFactory.storeCRUD($resource).get({
+				'id':commonFactory.fetchID($routeParams)
+			});
 			
 
 		   }            
@@ -127,7 +133,7 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 
 			//$scope.homePageData=commonFactory.homeCRUD().query();
 			//$scope.reviewData=$resource('/api/review/'+$routeParams.slug.split('-').pop()).get();
-			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get()
+			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
 
 		   }            
    ]);
@@ -153,51 +159,59 @@ app.factory('commonFactory',function(){
 
 	return {
 
-		homeCRUD:function($resource){
+			homeCRUD:function($resource){
 
-			return $resource('/api/home/'); 
+				return $resource('/api/home'); 
 
-		},
+			},
 
-		storeCRUD:function($resource,$routeParams){
+			storeCRUD:function($resource){
 
-			return $resource('/api/store/'+$routeParams.slug.split('-').pop());
+				return $resource('/api/store/:id',{
+					id:'@id'
+				});
 
-		},
+			},
 
-		productCRUD:function($resource,$routeParams){
+			productCRUD:function($resource){
 
-			return $resource('/api/product/'+$routeParams.slug.split('-').pop()); 
+				return $resource('/api/product/:id',{
+					id:'@id'
+				}); 
 
-		},
+			},
 
-		userCRUD:function($resource,$routeParams){
+			userCRUD:function($resource,$routeParams){
 
-			return $resource('/api/user/'+$routeParams.slug.split('-').pop());
+				return $resource('/api/user/'+$routeParams.slug.split('-').pop());
 
-		},
+			},
 
-		reviewCRUD:function($resource,$routeParams){
+			reviewCRUD:function($resource,$routeParams){
 
-			return $resource('/api/review/'+$routeParams.slug.split('-').pop());
+				return $resource('/api/review/'+$routeParams.slug.split('-').pop());
 
-		},
+			},
 
-		searchR:function($resource){
+			searchR:function($resource){
 
-			return $resource('/api/search/location/:param1/price/:param2/size/:param3',
+				return $resource('/api/search/location/:param1/price/:param2/size/:param3',
 
-				{
-					param1:'@param1',
-					param2:'@param2',
-					param3:'@param3'
+					{
+						param1:'@param1',
+						param2:'@param2',
+						param3:'@param3'
 
-				}
+					}
 
 
-			);
+				);
 
-		}
+			},
+
+			fetchID:function($routeParams){
+				return $routeParams.slug.split('-').pop();
+			}
 
 
 
