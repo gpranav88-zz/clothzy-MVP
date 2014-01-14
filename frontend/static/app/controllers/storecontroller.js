@@ -1,4 +1,6 @@
-app.controller('storeController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+angular.module('main.controllers.storeController', [])
+	.controller('storeController',['$scope','$http','$resource','$routeParams','commonFactory',
+		function($scope,$http,$resource,$routeParams,commonFactory) {
 
 			window.MY_SCOPE = $scope;
 
@@ -10,5 +12,5 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 			});
 			
 
-		   }            
+		}            
    ]);

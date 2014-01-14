@@ -4,7 +4,7 @@
 var app = angular.module('main',
   [ 'main.config'
   , 'main.controllers.homePageController'
-  //, 'main.controllers.productcontroller'
-  //, 'main.controllers.storecontroller'
+  , 'main.controllers.storeController'
+  , 'main.controllers.productController'
   , 'ngRoute', 'ngResource']
   )

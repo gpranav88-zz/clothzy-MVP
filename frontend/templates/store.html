@@ -3,6 +3,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
+					
 					<div class="col-lg-6">
 						<ol class="breadcrumb">
 				  			<li><a href="#">Delhi/NCR</a></li>
@@ -133,19 +134,17 @@
 				<div class="row">
 					<div class="col-lg-12">
 					<h3 class="body-head">About the store</h2>
-					<p>
-						{{storeData.description.about}}
-						</p>
-
-						</div>
-
+					<p> {{storeData.description.about}} </p>
+					</div>
 				</div>
+				
 				<hr>
+				
 				<div class="row">
-						<div class="col-lg-12">
-						<h3 class="body-head">Latest Reviews</h3>
+					<div class="col-lg-12">
+					<h3 class="body-head">Latest Reviews</h3>
 			
-							<div class="col-lg-12" ng-repeat="review in storeData.reviews">
+						<div class="col-lg-12" ng-repeat="review in storeData.reviews">
 					        <ul class="media-list">
 							  <li class="media">
 							    <a class="pull-left" href="#">

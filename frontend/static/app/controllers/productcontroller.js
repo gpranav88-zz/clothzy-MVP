@@ -1,4 +1,6 @@
-app.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+angular.module('main.controllers.productController', [])
+	.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',
+		function($scope,$http,$resource,$routeParams,commonFactory){
 
 			window.MY_SCOPE = $scope;
 
