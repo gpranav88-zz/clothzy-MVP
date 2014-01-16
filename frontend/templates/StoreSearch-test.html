@@ -5,364 +5,349 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-	<meta name="author" content="Kartik Dhar">
-    
+	<meta name="author" content="Kartik Dhar">    
+
 	<link rel="shortcut icon" href="ico/favicon.png">
 	
-	<!--Angular.JS link-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+	<title>Store Search Results: Sarees in South Delhi</title>
 
-    <script src="js/jquery.nouislider.js"></script>
-	
-	
+    <!-- CSS FILES -->
 
-	<title>Search Results: Stores in Hauz Khas Village</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom CSS for site -->
     <link href="css/clothzy.css" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font">
-    <link rel="stylesheet" href="css/iThing.css" type="text/css" />
+	<link rel="stylesheet" href="css/iThing.css" type="text/css" />
 	<link rel="stylesheet" href="css/jquery.nouislider.css" type="text/css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">    
+
+    <!-- END OF CSS FILES-->
+    
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
 
-
-	<script>
-			// on document ready
-			$(function(){
-				// run noUiSlider
-				$('.noUiSlider').noUiSlider({
-					 range: [10,40]
-					,start: [20,30]
-				});
-			});		
-		</script>
-
   </head>
 
 <body>
 
+	<!--CUSTOMER LOGIN MODAL-->
 
-		<!--CUSTOMER LOGIN MODAL-->
-
-		<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog modal-form">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	 	          <h4 class="modal-title product-header">Login to Clothzy</h4>
-		        </div>
-		        <div class="modal-body">
-		          	<form class="form-horizontal" role="form">
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-					    <div class="col-lg-10">
-					      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox"> Remember me
-					        </label>
-					      </div>
-					    </div>
-					  </div>
-
-
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-danger">Sign in</button>
-					    </div>
-					  </div><hr>
-
-					  <div class="form-group">
-						<h4 class="text-center">OR</h4>
-					    <div class="col-lg-offset-1 col-lg-5">
-							<a class="btn btn-primary btn-facebook btn-block" href="#">
-							  <i class="fa fa-facebook fa-lg"></i> Sign in with Facebook</a>
-					    </div>
-					    <div class="col-lg-5">
-							<a class="btn btn-danger btn-google btn-block" href="#">
-							  <i class="fa fa-google-plus fa-lg"></i> Sign in with Google</a>					
-					    </div>
-					  </div>
-
-					</form>
-		        </div>
-
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-		<!--CUSTOMER SIGNUP MODAL-->
-
-		<div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog modal-form">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	 	          <h4 class="modal-title product-header">Register on Clothzy</h4>
-		        </div>
-		        <div class="modal-body">
-		          	<form class="form-horizontal" role="form">
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
-					    <div class="col-lg-8">
-					      <input type="email" class="form-control" id="inputfirstname" placeholder="First Name">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-4 control-label">Last Name</label>
-					    <div class="col-lg-8">
-					      <input type="email" class="form-control" id="inputlastname" placeholder="Last Name">
-					    </div>
-					  </div>				
-
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-4 control-label">Email</label>
-					    <div class="col-lg-8">
-					      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword1" class="col-lg-4 control-label">Password</label>
-					    <div class="col-lg-8">
-					      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox"> Remember me
-					        </label>
-					      </div>
-					    </div>
-					  </div>
-
-
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-danger">Sign in</button>
-					    </div>
-					  </div><hr>
-
-					  <div class="form-group">
-						<h4 class="text-center">OR</h4>
-					    <div class="col-lg-offset-1 col-lg-5">
-							<a class="btn btn-primary btn-facebook" href="#">
-							  <i class="fa fa-facebook fa-lg"></i> Sign in with Facebook</a>
-					    </div>
-					    <div class="col-lg-5">
-							<a class="btn btn-danger btn-google" href="#">
-							  <i class="fa fa-google-plus fa-lg"></i> Sign in with Google</a>					
-					    </div>
-					  </div>
-
-					</form>
-		        </div>
-
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-		<!--STORE SIGNUP MODAL-->
-
-		<div class="modal fade" id="StoreSignupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog modal-form">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	 	          <h4 class="modal-title product-header">Register your store on Clothzy</h4>
-		        </div>
-		        <div class="modal-body">
-		          	<form class="form-horizontal" role="form">
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-4 control-label">Store Name</label>
-					    <div class="col-lg-8">
-					      <input type="email" class="form-control" id="inputfirstname" placeholder="Name of your store">
-					    </div>
-					  </div>
-					  <div class="form-group">
-						    <label for="inputEmail1" class="col-lg-4 control-label">City</label>
-						    <div class="col-lg-8">
-								<select class="form-control">
-								  <option>Delhi/NCR</option>
-								  <option>Mumbai</option>
-								  <option>Bangalore</option>
-								  <option>Hyderabad</option>
-								  <option>Kolkata</option>
-								  <option>Chennai</option>
-								</select>
-						    </div>
-
-
-					  </div>				
-
-					  <div class="form-group">
-						    <label for="inputEmail1" class="col-lg-4 control-label">Locality</label>
-						    <div class="col-lg-8">
-								<select class="form-control">
-								  <option>South Delhi</option>
-								  <option>Central Delhi</option>
-								  <option>North Delhi</option>
-								  <option>West Delhi</option>
-								  <option>East Delhi</option>
-								  <option>Gurgaon</option>
-								  <option>Noida</option>
-								</select>
-						    </div>
-
-
-					  </div>
-
-
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-4 control-label">Email</label>
-					    <div class="col-lg-8">
-					      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword1" class="col-lg-4 control-label">Password</label>
-					    <div class="col-lg-8">
-					      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox"> Remember me
-					        </label>
-					      </div>
-					    </div>
-					  </div>
-
-
-
-					</form>
-		        </div>
-
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-
-	<!--STORE LOGIN MODAL-->
-
-		<div class="modal fade" id="StoreLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog modal-form">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal" ari	a-hidden="true">&times;</button>
-	 	          <h4 class="modal-title product-header">Store Login</h4>
-		        </div>
-		        <div class="modal-body">
-		          	<form class="form-horizontal" role="form">
-					  <div class="form-group">
-					    <label for="inputEmail1" class="col-lg-2 control-label">Username</label>
-					    <div class="col-lg-10">
-					      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-					    <div class="col-lg-10">
-					      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox"> Remember me
-					        </label>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-lg-offset-2 col-lg-10">
-					      <button type="submit" class="btn btn-danger">Sign in</button>
-					    </div>
-					  </div>
-					</form>
-		        </div>
-
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-
-
-
-
-		<div class="navbar navbar-inverse navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="logo" href="index-test.html"><img src="img/Logo.png" /></a>
+	<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-form">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ 	          <h4 class="modal-title product-header">Login to Clothzy</h4>
 	        </div>
-	        <div class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">New Delhi <b class="caret"></b></a>
-	              <ul class="dropdown-menu">
-	                <li class="dropdown-header">NCR</li>
-	                <li><a href="#">New Delhi</a></li>
-	                <li><a href="#">Gurgaon</a></li>
-					<li><a href="#">Noida</a></li>
-	                <li class="divider"></li>
-	                <li><a href="#">Mumbai</a></li>
-	                <li><a href="#">Bangalore</a></li>
+	        <div class="modal-body">
+	          	<form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+				    <div class="col-lg-10">
+				      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+				    <div class="col-lg-10">
+				      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> Remember me
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+		
+				
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <button type="submit" class="btn btn-danger">Sign in</button>
+				    </div>
+				  </div><hr>
+				
+				  <div class="form-group">
+					<h4 class="text-center">OR</h4>
+				    <div class="col-lg-offset-1 col-lg-5">
+						<a class="btn btn-primary btn-facebook btn-block" href="#">
+						  <i class="fa fa-facebook fa-lg"></i> Sign in with Facebook</a>
+				    </div>
+				    <div class="col-lg-5">
+						<a class="btn btn-danger btn-google btn-block" href="#">
+						  <i class="fa fa-google-plus fa-lg"></i> Sign in with Google</a>					
+				    </div>
+				  </div>
+				
+				</form>
+	        </div>
 
-	              </ul>
-	            </li>	
-	            <li><a href="#">Women</a></li>
-	            <li><a href="#about">Men</a></li>
-	            <li><a href="#contact">Kids</a></li>
-				<li>
-				<form class="navbar-form">
-				<div class="form-group">
-	              <input type="text" placeholder="Sarees in South Delhi" class="form-control input-sm" style="width:400px">
-			    </div>
-			        <button class="btn btn-danger btn-sm" type="button"><span class="glyphicon glyphicon-search"></span></button>
+	      </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	  </div><!-- /.modal -->
+
+
+	<!--CUSTOMER SIGNUP MODAL-->
+
+	<div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-form">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ 	          <h4 class="modal-title product-header">Register on Clothzy</h4>
+	        </div>
+	        <div class="modal-body">
+	          	<form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-4 control-label">First Name</label>
+				    <div class="col-lg-8">
+				      <input type="email" class="form-control" id="inputfirstname" placeholder="First Name">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-4 control-label">Last Name</label>
+				    <div class="col-lg-8">
+				      <input type="email" class="form-control" id="inputlastname" placeholder="Last Name">
+				    </div>
+				  </div>				
+
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-4 control-label">Email</label>
+				    <div class="col-lg-8">
+				      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword1" class="col-lg-4 control-label">Password</label>
+				    <div class="col-lg-8">
+				      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> Remember me
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+
+
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <button type="submit" class="btn btn-danger">Sign in</button>
+				    </div>
+				  </div><hr>
+
+				  <div class="form-group">
+					<h4 class="text-center">OR</h4>
+				    <div class="col-lg-offset-1 col-lg-5">
+						<a class="btn btn-primary btn-facebook" href="#">
+						  <i class="fa fa-facebook fa-lg"></i> Sign in with Facebook</a>
+				    </div>
+				    <div class="col-lg-5">
+						<a class="btn btn-danger btn-google" href="#">
+						  <i class="fa fa-google-plus fa-lg"></i> Sign in with Google</a>					
+				    </div>
+				  </div>
+
+				</form>
+	        </div>
+
+	      </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	  </div><!-- /.modal -->
+
+
+	<!--STORE SIGNUP MODAL-->
+
+	<div class="modal fade" id="StoreSignupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-form">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ 	          <h4 class="modal-title product-header">Register your store on Clothzy</h4>
+	        </div>
+	        <div class="modal-body">
+	          	<form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-4 control-label">Store Name</label>
+				    <div class="col-lg-8">
+				      <input type="email" class="form-control" id="inputfirstname" placeholder="Name of your store">
+				    </div>
+				  </div>
+				  <div class="form-group">
+					    <label for="inputEmail1" class="col-lg-4 control-label">City</label>
+					    <div class="col-lg-8">
+							<select class="form-control">
+							  <option>Delhi/NCR</option>
+							  <option>Mumbai</option>
+							  <option>Bangalore</option>
+							  <option>Hyderabad</option>
+							  <option>Kolkata</option>
+							  <option>Chennai</option>
+							</select>
+					    </div>
+									
+
+				  </div>				
+
+				  <div class="form-group">
+					    <label for="inputEmail1" class="col-lg-4 control-label">Locality</label>
+					    <div class="col-lg-8">
+							<select class="form-control">
+							  <option>South Delhi</option>
+							  <option>Central Delhi</option>
+							  <option>North Delhi</option>
+							  <option>West Delhi</option>
+							  <option>East Delhi</option>
+							  <option>Gurgaon</option>
+							  <option>Noida</option>
+							</select>
+					    </div>
+								
+
+				  </div>
+
+
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-4 control-label">Email</label>
+				    <div class="col-lg-8">
+				      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword1" class="col-lg-4 control-label">Password</label>
+				    <div class="col-lg-8">
+				      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> Remember me
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+
 
 
 				</form>
-				</li>
-				</ul>
-				<ul class=" nav navbar-right navbar-nav">
-				<li><a data-toggle="modal" href="#LoginModal">Login</a></li>
-	            <li><a data-toggle="modal" href="#SignupModal">Sign Up</a></li>
+	        </div>
 
-	          </ul>
+	      </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	  </div><!-- /.modal -->
 
-	        </div><!--/.navbar-collapse -->
-	      </div>
-	    </div>
+
+
+<!--STORE LOGIN MODAL-->
+
+	<div class="modal fade" id="StoreLoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-form">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" ari	a-hidden="true">&times;</button>
+ 	          <h4 class="modal-title product-header">Store Login</h4>
+	        </div>
+	        <div class="modal-body">
+	          	<form class="form-horizontal" role="form">
+				  <div class="form-group">
+				    <label for="inputEmail1" class="col-lg-2 control-label">Username</label>
+				    <div class="col-lg-10">
+				      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+				    <div class="col-lg-10">
+				      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox"> Remember me
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-lg-offset-2 col-lg-10">
+				      <button type="submit" class="btn btn-danger">Sign in</button>
+				    </div>
+				  </div>
+				</form>
+	        </div>
+
+	      </div><!-- /.modal-content -->
+	    </div><!-- /.modal-dialog -->
+	  </div><!-- /.modal -->
+
+
+
+	
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" href="index-test.html"><img src="img/Logo.png" /></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">New Delhi <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">NCR</li>
+                <li><a href="#">New Delhi</a></li>
+                <li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Gurgaon</a></li>
+				<li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Noida</a></li>
+                <li class="divider"></li>
+                <li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Mumbai</a></li>
+                <li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Bangalore</a></li>
+
+              </ul>
+            </li>	
+            <li><a href="Women-test.html">Women</a></li>
+            <li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Men</a></li>
+            <li><a href="#" data-toggle="tooltip" title="Coming Soon!" class="disabled">Kids</a></li>
+			<li>
+			<form class="navbar-form">
+			<div class="form-group">
+              <input type="text" placeholder="Sarees in South Delhi" class="form-control input-sm" style="width:400px">
+		    </div>
+		        <button class="btn btn-danger btn-sm" type="button" onClick="window.location.href='ProductSearch-test.html'"><span class="glyphicon glyphicon-search"></span></button>
+		 
+        
+			</form>
+			</li>
+			</ul>
+			<ul class=" nav navbar-right navbar-nav">
+			<li><a data-toggle="modal" href="#LoginModal">Login</a></li>
+            <li><a data-toggle="modal" href="#SignupModal">Sign Up</a></li>
+			
+          </ul>
+
+        </div>
+      </div>
+    </div>
+	<!--END OF NAVBAR AND MODALS-->
+
+	<!--MAIN CONTAINER-->
+
 
 	
 	<div class="container pad-50">
@@ -374,10 +359,18 @@
 					<li class="active"><a>Category</a>
 						
 						<ul class="nav">
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> All categories (2)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> Ethnic (23)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> Western (12)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> Other (1)</a></label></div></li>
+							<li><div class="checkbox">
+
+    							    <input id="check1" type="checkbox" name="check" value="check1">  
+  									<label for="check1" class="checklabel">All Categories</label>  
+							</div></li>
+							<li><div class="checkbox"><input id="check2" type="checkbox" name="check" value="check2">  
+  									<label for="check2" class="checklabel">Ethnic</label>  </div></li>
+							<li><div class="checkbox"><input id="check3" type="checkbox" name="check" value="check3">  
+  									<label for="check3" class="checklabel">Western</label>  </div></li>
+							<li><div class="checkbox"><input id="check4" type="checkbox" name="check" value="check4">  
+  									<label for="check4" class="checklabel">Other</label>  </div></li>
+
 						</ul>
 						
 						
@@ -386,11 +379,18 @@
 				<hr class="sidebar-divider">
 			  		<li class="active"><a>Location</a>
 						<ul class="nav">
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> South Delhi</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> West Delhi</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> East Delhi</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> Central Delhi</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> North Delhi</a></label></div></li>
+							<li><div class="checkbox"><input id="check7" type="checkbox" name="check" value="check7">  
+  								<label for="check7" class="checklabel">South Delhi</label></div></li>
+
+							<li><div class="checkbox"><input id="check8" type="checkbox" name="check" value="check8">  
+  								<label for="check8" class="checklabel">West Delhi</label></div></li>
+
+							<li><div class="checkbox"><input id="check9" type="checkbox" name="check" value="check9">  
+  								<label for="check9" class="checklabel">East Delhi</label></div></li>	
+
+							<li><div class="checkbox"><input id="check10" type="checkbox" name="check" value="check10">  
+  								<label for="check10" class="checklabel">Central Delhi</label></div></li>
+						
 						</ul>
 					</li>
 			
@@ -398,10 +398,14 @@
 					<li class="active"><a>Discount</a>
 						
 						<ul class="nav">
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> No Discount (23)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> &lt;25% (12)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> 25-50% (2)</a></label></div></li>
-							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> &gt;50% (1)</a></label></div></li>
+							<li><div class="checkbox"><input id="check12" type="checkbox" name="check" value="check12">  
+  									<label for="check12" class="checklabel">No Discount</label>  </div></li>
+							<li><div class="checkbox"><input id="check13" type="checkbox" name="check" value="check13">  
+  									<label for="check13" class="checklabel">&lt;25%</label>  </div></li>
+							<li><div class="checkbox"><input id="check14" type="checkbox" name="check" value="check14">  
+  									<label for="check14" class="checklabel">25-50%</label>  </div></li>
+							<li><div class="checkbox"><input id="check15" type="checkbox" name="check" value="check15">  
+  									<label for="check15" class="checklabel">&gt;50%</label>  </div></li>  									  									  									
 						</ul>
 												
 					</li>
@@ -460,9 +464,9 @@
 			<div class="row">	
 		        <div class="col-lg-4">
 					<div class="thumbnail">
-				      <img src="img/featured-store-1.jpg" alt="...">
+				      <a href="StoreHome-test.html"><img src="img/featured-store-1.jpg" alt="..."></a>
 				      <div class="caption">
-				        <h4>XYZ Store, Hauz Khas Village</h4>
+				        <a href="StoreHome-test.html"><h4>XYZ Store, Hauz Khas Village</h4></a>
 				        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 				        <p><a href="StoreHome-test.html" class="btn btn-primary">Visit Store &raquo;</a></p>
 				      </div>
@@ -470,9 +474,9 @@
 	        	</div>
 		        <div class="col-lg-4">
 					<div class="thumbnail">
-				      <img src="img/featured-store-2.jpg" alt="...">
+				      <a href="StoreHome-test.html"><img src="img/featured-store-2.jpg" alt="..."></a>
 				      <div class="caption">
-				        <h4>XYZ Store, Hauz Khas Village</h4>
+				        <a href="StoreHome-test.html"><h4>XYZ Store, Hauz Khas Village</h4></a>
 				        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 				        <p><a href="#" class="btn btn-primary">Visit Store &raquo;</a></p>
 				      </div>
@@ -481,12 +485,12 @@
 			
 			    <div class="col-lg-4">
 						<div class="thumbnail">
-					      <img src="img/featured-store-3.jpg" alt="...">
+					      <a href="StoreHome-test.html"><img src="img/featured-store-3.jpg" alt="..."></a>
 					      <div class="caption">
-					        <h4>XYZ Store, Hauz Khas Village</h4>
+					       <a href="StoreHome-test.html"> <h4>XYZ Store, Hauz Khas Village</h4></a>
 					        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 					        <p><a href="#" class="btn btn-primary">Visit Store &raquo;</a></p>
-					      </div>
+					      </div>vb
 					    </div>
 		        </div>
 		
@@ -495,9 +499,9 @@
 				<div class="row">	
 			        <div class="col-lg-4">
 						<div class="thumbnail">
-					      <img src="img/featured-store-2.jpg" alt="...">
+					    <a href="StoreHome-test.html">  <img src="img/featured-store-2.jpg" alt="..."></a>
 					      <div class="caption">
-					        <h4>XYZ Store, Hauz Khas Village</h4>
+					       <a href="StoreHome-test.html"> <h4>XYZ Store, Hauz Khas Village</h4></a>
 					        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 					        <p><a href="#" class="btn btn-primary">Visit Store &raquo;</a></p>
 					      </div>
@@ -505,9 +509,9 @@
 		        	</div>
 			        <div class="col-lg-4">
 						<div class="thumbnail">
-					      <img src="img/featured-store-1.jpg" alt="...">
+					     <a href="StoreHome-test.html"> <img src="img/featured-store-1.jpg" alt="..."></a>
 					      <div class="caption">
-					        <h4>XYZ Store, Hauz Khas Village</h4>
+					       <a href="StoreHome-test.html"> <h4>XYZ Store, Hauz Khas Village</h4></a>
 					        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 					        <p><a href="#" class="btn btn-primary">Visit Store &raquo;</a></p>
 					      </div>
@@ -516,9 +520,9 @@
 
 				    <div class="col-lg-4">
 							<div class="thumbnail">
-						      <img src="img/featured-store-3.jpg" alt="...">
+						     <a href="StoreHome-test.html"> <img src="img/featured-store-3.jpg" alt="..."></a>
 						      <div class="caption">
-						        <h4>XYZ Store, Hauz Khas Village</h4>
+						       <a href="StoreHome-test.html"> <h4>XYZ Store, Hauz Khas Village</h4></a>
 						        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor </p>
 						        <p><a href="#" class="btn btn-primary">Visit Store &raquo;</a></p>
 						      </div>
@@ -541,19 +545,24 @@
 	  </div> <!-- /row -->
 	</div> <!-- /container -->
 
+
 <footer class="footer">
 	
 	<p>&copy; Clothzy 2013 · 
-	<a href="#">About · </a>
-	<a href="#">Privacy Policy · </a>
-	<a href="#">Register your store · </a>
-	<a href="#">Contact Us  </a></p>
-	
+	<a href="#">About</a> · 
+	<a href="#">Privacy Policy</a> · 
+	<a  data-toggle="modal" href="#StoreLoginModal">Store Login</a> · 
+	<a data-toggle="modal" href="#StoreSignupModal">Register your store</a> · 
+	<a href="#">Contact Us</a></p>
+
 </footer>
 
-
-
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
+    <script src="js/jquery.nouislider.js"></script>
+	<script src="js/affix.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
+	<script src="js/Clothzy.js"></script>	
 </body>
 </html>
+

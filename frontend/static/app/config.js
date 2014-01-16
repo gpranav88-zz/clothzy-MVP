@@ -25,11 +25,16 @@ app.config(['$routeProvider','$locationProvider',
 			.when ('/review/:slug',{
 				templateUrl:'review.html',
 				controller:'reviewController'
-			})
-			.when ('/search/:slug',{
-				templateUrl:'search.html',
-				controller:'searchController'
 			});
+			//.when ('/search/:slug',{
+			//	templateUrl:'StoreSearch.html',
+			//	controller:'searchController'
+			//});
+
+			//.when ('/search/', {
+			//	templateUrl:'StoreSearch.html'
+			//	controller: 
+			//})
 
 
    $locationProvider

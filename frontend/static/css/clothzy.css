@@ -22,7 +22,25 @@
 	src: url('../fonts/HelveticaNeue-Thin.otf');
 
 }
+@font-face{
+font-family: 'FuturaLT-light';
+src: url('../fonts/FuturaLT-light.ttf');
+}
 
+@font-face{
+font-family: 'FuturaLT';
+src: url('../fonts/FuturaLT.ttf');
+}
+
+@font-face{
+font-family: 'FuturaLT-LightOblique';
+src: url('../fonts/FuturaLT-LightOblique.ttf');
+}
+
+@font-face{
+font-family: 'FuturaLT-Heavy';
+src: url('../fonts/FuturaLT-Heavy.ttf');
+}
 
 body {
   padding-top: 50px;
@@ -45,13 +63,13 @@ a.logo{
 .bg-header{
 	
 	background-image: url('../img/cover.jpg');
-	background-size:100%;
+	background-size:cover;
 	height:450px;
 	background-repeat:no-repeat;
 	box-shadow: 0px 4px 12px #aaaaaa;
 }
 .search-text{
-	font-family:'HelveticaNeue UltraLight';
+	font-family:'FuturaLT-light';
 	margin-top:0px;
 	
 }
@@ -63,9 +81,10 @@ a.logo{
 
 .body-head{
 	
-	font-family:'HelveticaNeue Light', Helvetica, Arial, sans-serif;
-	font-size:24px;
-	color:#F07241;
+	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
+	font-size:18px;
+	color:#333;
+	text-transform:uppercase;
 }
 
 #main {
@@ -80,7 +99,7 @@ a.logo{
 
 .footer {
   position: relative;
- /* negative value of footer height */
+  margin-top: -50px; /* negative value of footer height */
   height: 50px;
   clear:both;
   padding-top:15px;
@@ -209,27 +228,41 @@ top:-750px;
 /*BADGES*/
 
 .blue-colour{
-	background-color:#75AFFF;	
+	color:#75AFFF;	
+
+	-webkit-text-stroke-color: #ccc;
 }
 .red-colour{
-	background-color:#cc0000;	
+	color:#cc0000;	
+
+	-webkit-text-stroke-color: #ccc;	
 }
 .green-colour{
-	background-color:#88E876;	
+	color:#88E876;	
+
+	-webkit-text-stroke-color: #ccc;	
 }
 .yellow-colour{
-	background-color:#E7E939;	
+	color:#ffff00;	
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #ccc;	
 }
 .black-colour{
-	background-color:#111211;	
+	color:#111211;	
+
+	-webkit-text-stroke-color: #ccc;	
 }
 
 .purple-colour{
-	background-color:#593E99;	
+	color:#593E99;	
+
+	-webkit-text-stroke-color: #ccc;	
 }
 
 .multi-colour{
-	background-color:#636862;	
+	color:#636862;	
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #ccc;	
 }
 
 /*SLIDERS*/
@@ -253,7 +286,7 @@ top:-750px;
 }
 .store-header{
 	
-	font-family:'HelveticaNeue Light', Helvetica, Arial, sans-serif;
+	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
@@ -263,7 +296,7 @@ top:-750px;
 
 .reviewer-header{
 	
-	font-family:'HelveticaNeue Light', Helvetica, Arial, sans-serif;
+	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
@@ -282,7 +315,7 @@ top:-750px;
 
 .small-icon{
 	font-size:20px;
-	color:#F07241;
+	color:#c8006d;
 	
 }
 
@@ -294,7 +327,6 @@ top:-750px;
 
 .gold{
 	color: #E5C100;
-	text-shadow:1px 0px 0px #999;	
 }
 
 .subtext{
@@ -306,7 +338,7 @@ margin-left:15px;
 /*PRODUCT PAGE*/
 .product-header{
 	
-	font-family:'HelveticaNeue Light', Helvetica, Arial, sans-serif;
+	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
 
 	font-size:24px;
 	color:#666;	
@@ -376,7 +408,7 @@ margin-left:15px;
 
 .subhead{
 
-	border-bottom:thin solid #F07241;
+	border-bottom:thin solid #999;
 	
 }
 
@@ -394,4 +426,97 @@ margin-left:15px;
 	background-image: url('../img/reviewer-cover.jpg');
 	height:250px;
 	box-shadow: 0px 0px 12px #aaaaaa;
+}
+
+/*CHECKBOXES */
+
+input[type=checkbox] {  
+    display: none;  
+}  
+
+.checkbox .checklabel:before {  
+    border-radius: 0px;  
+}  
+
+input[type=checkbox]:checked + .checklabel:before {  
+    content: "\2713";  
+    font-size: 12px;  
+    color: #666;  
+    text-align: center;  
+    line-height: 15px;  
+}  	
+
+.checklabel {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 11px;  
+}  
+
+ .checklabel:before  {  
+    content: "";  
+    display: inline-block;  
+  
+    width: 16px;  
+    height: 16px;  
+  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #fff;
+    border: 1px solid #ccc;  
+
+}  
+
+.disabled{
+
+	color:#999 !important;
+}
+
+.price{
+font-family:'FuturaLT-Heavy';
+color:#666;
+}
+
+em{
+font-family:'FuturaLT-lightoblique';
+
+}
+
+.dropdownheader{
+	margin-left:10px;
+}
+
+.navbarform{
+border:1px solid #fff;
+
+}
+
+.examplesearch{
+
+	margin-left:500px;
+	font-size:14px;
+}
+
+.sidecontent{
+
+	margin-bottom:5px;
+}
+
+.icon{
+
+	color:#c8006d;
+}
+.quickView{
+
+position: absolute;
+bottom: 150px;
+right: 63px;
+display: none;
+z-index: 9;
+
+
 }
