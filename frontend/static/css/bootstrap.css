@@ -301,10 +301,11 @@ html {
 }
 
 body {
-  font-family: 'FuturaLT-light', Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight:300;
+  font-size: 13px;
   line-height: 1.428571429;
-  color: #888888;
+  color: #666;
   background-color: #ffffff;
 }
 
@@ -463,8 +464,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "FuturaLT-light", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   line-height: 1.1;
 }
 
@@ -480,7 +481,7 @@ h6 small,
 .h4 small,
 .h5 small,
 .h6 small {
-  font-weight: normal;
+
   line-height: 1;
   color: #999999;
 }
@@ -1760,7 +1761,7 @@ textarea.form-control {
 .checkbox label {
   display: inline;
   margin-bottom: 0;
-  font-weight: normal;
+
   cursor: pointer;
 }
 
@@ -1782,7 +1783,7 @@ textarea.form-control {
   display: inline-block;
   padding-left: 20px;
   margin-bottom: 0;
-  font-weight: normal;
+
   vertical-align: middle;
   cursor: pointer;
 }
@@ -1992,7 +1993,7 @@ textarea.input-lg {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: normal;
+
   line-height: 1.428571429;
   text-align: center;
   white-space: nowrap;
@@ -2287,7 +2288,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .btn-link {
-  font-weight: normal;
+
   color: #428bca;
   cursor: pointer;
   border-radius: 0;
@@ -3261,7 +3262,6 @@ input[type="button"].btn-block {
   display: block;
   padding: 3px 20px;
   clear: both;
-  font-weight: normal;
   line-height: 1.428571429;
   color: #333333;
   white-space: nowrap;
@@ -3707,7 +3707,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-addon {
   padding: 6px 12px;
   font-size: 14px;
-  font-weight: normal;
+
   line-height: 1;
   text-align: center;
   background-color: #eeeeee;
@@ -5921,7 +5921,6 @@ body.modal-open,
   padding: 8px 14px;
   margin: 0;
   font-size: 14px;
-  font-weight: normal;
   line-height: 18px;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
