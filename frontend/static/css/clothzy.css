@@ -1,46 +1,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 
-@font-face{
-	font-family: 'HelveticaNeue';
-	src: url('../fonts/HelveticaNeue-Roman.otf');
-}
 
-@font-face{
-	font-family: 'HelveticaNeue';
-	src: url('../fonts/HelveticaNeue-Bold.otf');
-	font-weight:bold;
-}
 
-@font-face{
-	font-family: 'HelveticaNeue UltraLight';
-	src: url('../fonts/HelveticaNeue-UltraLight.otf');
-
-}
-
-@font-face{
-	font-family: 'HelveticaNeue Light';
-	src: url('../fonts/HelveticaNeue-Thin.otf');
-
-}
-@font-face{
-font-family: 'FuturaLT-light';
-src: url('../fonts/FuturaLT-light.ttf');
-}
-
-@font-face{
-font-family: 'FuturaLT';
-src: url('../fonts/FuturaLT.ttf');
-}
-
-@font-face{
-font-family: 'FuturaLT-LightOblique';
-src: url('../fonts/FuturaLT-LightOblique.ttf');
-}
-
-@font-face{
-font-family: 'FuturaLT-Heavy';
-src: url('../fonts/FuturaLT-Heavy.ttf');
-}
 
 body {
   padding-top: 50px;
@@ -69,8 +30,9 @@ a.logo{
 	box-shadow: 0px 4px 12px #aaaaaa;
 }
 .search-text{
-	font-family:'FuturaLT-light';
+	font-family:'Open Sans';
 	margin-top:0px;
+	font-weight:300;
 	
 }
 
@@ -81,10 +43,11 @@ a.logo{
 
 .body-head{
 	
-	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;
 	font-size:18px;
 	color:#333;
 	text-transform:uppercase;
+	font-weight:300;
 }
 
 #main {
@@ -286,21 +249,23 @@ top:-750px;
 }
 .store-header{
 	
-	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
 	color:#ffffff;	
+		font-weight:300;
 	
 }
 
 .reviewer-header{
 	
-	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
 	color:#ffffff;	
+		font-weight:300;
 	
 }
 .reviewer-main-pic{
@@ -330,7 +295,7 @@ top:-750px;
 }
 
 .subtext{
-font-size:12px;
+font-size:13px;
 margin-left:15px;
 	
 }
@@ -338,11 +303,11 @@ margin-left:15px;
 /*PRODUCT PAGE*/
 .product-header{
 	
-	font-family:'FuturaLT-light', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;
 
 	font-size:24px;
 	color:#666;	
-	
+		font-weight:300;
 }
 
 
@@ -482,7 +447,8 @@ color:#666;
 }
 
 em{
-font-family:'FuturaLT-lightoblique';
+font-family:'Open Sans';
+	font-weight:300;
 
 }
 
