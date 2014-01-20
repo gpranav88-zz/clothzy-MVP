@@ -12,7 +12,7 @@
 						</ol>
 					</div>
 					<div class="col-lg-6">
-						<ul class="nav navbar-nav navbar-right">				
+						<ul class="nav navbar-pills navbar-right">				
 							<li class="active"><a href="#">Product View</a></li>
 							<li><a href="#">Store View</a></li>
 					</div>
@@ -24,11 +24,35 @@
 						</div>
 						<div class="row pad-20">	
 							<ul class="nav nav-tabs">
-						  		<li><a href="#">Info</a></li>
-						  		<li class="active"><a href="#">Collection</a></li>
-						  		<li><a href="#">Reviews</a></li>
-						  		<li><a href="#">Photos</a></li>
-						  		<li><a href="#">Map</a></li>
+						  		<li>
+						  			<a href="#Info" data-toggle="tab">
+						  				Info
+						  			</a>
+						  		</li>
+						  		
+						  		<li class="active">
+						  			<a href="#Collection" data-toggle="tab">
+						  				Collection
+						  			</a>
+						  		</li>
+						  		
+						  		<li>
+						  			<a href="#Reviews" data-toggle="tab">
+						  				Reviews
+						  			</a>
+						  		</li>
+						  		
+						  		<li>
+						  			<a href="#Photos" data-toggle="tab">
+						  				Photos
+						  			</a>
+						  		</li>
+						  		
+						  		<li>
+						  			<a href="#Map" data-toggle="tab">
+						  				Map
+						  			</a>
+						  		</li>
 							</ul>
 						</div>
 						
@@ -44,6 +68,7 @@
 								      </div>
 								    </div>
 						        </div>
+						   	<h3 class="body-head subhead">Kurtas/Kurtis</h3>
 						        <div class="col-lg-3">
 									<div class="thumbnail">
 								      <img src="../static/img/featured-product-2.jpg" alt="...">
@@ -85,7 +110,7 @@
 						<div class="col-lg-6 right-border">
 							<div class="row">
 								<div class="col-lg-2">
-									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>
+									<i class="fa fa-phone small-icon"></i>
 								</div>
 								<div class="col-lg-10">
 									<p>{{storeData.description.phone}}</p>
