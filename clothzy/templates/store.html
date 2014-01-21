@@ -1,0 +1,174 @@
+
+	<div class="container pad-50" id="main" ng-model="storeData">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-6">
+						<ol class="breadcrumb">
+				  			<li><a href="#">Delhi/NCR</a></li>
+				  			<li><a href="#">South Delhi</a></li>
+				  			<li><a href="#">Lajpat Nagar</a></li>
+				  			<li><a href="#">Store ABC</a></li>
+						</ol>
+					</div>
+					<div class="col-lg-6">
+						<ul class="nav navbar-nav navbar-right">				
+							<li class="active"><a href="#">Product View</a></li>
+							<li><a href="#">Store View</a></li>
+					</div>
+				</div>
+				<div class="row">	
+	        		<div class="col-lg-8">
+						<div class="row storebg-header">
+							<div class="store-header">{{storeData.description.title}}</div>
+						</div>
+						<div class="row pad-20">	
+							<ul class="nav nav-tabs">
+						  		<li><a href="#">Info</a></li>
+						  		<li class="active"><a href="#">Collection</a></li>
+						  		<li><a href="#">Reviews</a></li>
+						  		<li><a href="#">Photos</a></li>
+						  		<li><a href="#">Map</a></li>
+							</ul>
+						</div>
+						
+						<div class="row pad-20 tab-content">	
+						        <div class="col-lg-3">
+									<div class="thumbnail">
+								      <img src="../static/img/featured-product-1.jpg" alt="...">
+								      <div class="caption">
+								        <p class="product-name">Supernet Cotton Saree</p>
+										<p class="store-name">Store XYZ, Hauz Khas Village</p>
+								        <p class="price"><span class="WebRupee">Rs.</span> 1,500</p>
+								        <p><a href="#" class="btn btn-primary">See More &raquo;</a></p>
+								      </div>
+								    </div>
+						        </div>
+						        <div class="col-lg-3">
+									<div class="thumbnail">
+								      <img src="../static/img/featured-product-2.jpg" alt="...">
+								      <div class="caption">
+								        <p class="product-name">Supernet Cotton Saree</p>
+										<p class="store-name">Store XYZ, Hauz Khas Village</p>
+								        <p class="price"><span class="WebRupee">Rs.</span> 1,500</p>
+								        <p><a href="#" class="btn btn-primary">See More &raquo;</a></p>
+								      </div>
+								    </div>
+						        </div>
+						        <div class="col-lg-3">
+									<div class="thumbnail">
+								      <img src="../static/img/featured-product-1.jpg" alt="...">
+								      <div class="caption">
+								        <p class="product-name">Supernet Cotton Saree</p>
+										<p class="store-name">Store XYZ, Hauz Khas Village</p>
+								        <p class="price"><span class="WebRupee">Rs.</span> 1,500</p>
+								        <p><a href="#" class="btn btn-primary">See More &raquo;</a></p>
+								      </div>
+								    </div>
+						        </div>
+						        <div class="col-lg-3">
+									<div class="thumbnail">
+								      <img src="../static/img/featured-product-2.jpg" alt="...">
+								      <div class="caption">
+								        <p class="product-name">Supernet Cotton Saree</p>
+										<p class="store-name">Store XYZ, Hauz Khas Village</p>
+								        <p class="price"><span class="WebRupee">Rs.</span> 1,500</p>
+								        <p><a href="#" class="btn btn-primary">See More &raquo;</a></p>
+								      </div>
+								    </div>
+						        </div>
+						
+		    		</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="row">
+						<div class="col-lg-6 right-border">
+							<div class="row">
+								<div class="col-lg-2">
+									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>
+								</div>
+								<div class="col-lg-10">
+									<p>{{storeData.description.phone}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-2">
+									<p class="small-icon"><span class="glyphicon glyphicon-home"></span></p>
+								</div>
+								<div class="col-lg-10">
+									<p>{{storeData.description.addresss}}</p>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-2">
+									<p class="small-icon"><span class="glyphicon glyphicon-time"></span></p>
+								</div>
+								<div class="col-lg-10">
+									<p>{{storeData.description.timings}}</p>
+								</div>
+							</div>
+
+						</div>
+						
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-2">
+									<p class="small-icon"><span class="glyphicon glyphicon-heart"></span></p>
+								</div>
+								<div class="col-lg-10">
+									<p>Add to Favourites</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-2">
+									<p class="small-icon"><span class="glyphicon glyphicon-pencil"></span></p>
+								</div>
+								<div class="col-lg-10">
+									<p>Write a Review</p>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+					<h3 class="body-head">About the store</h2>
+					<p>
+						{{storeData.description.about}}
+						</p>
+
+						</div>
+
+				</div>
+				<hr>
+				<div class="row">
+						<div class="col-lg-12">
+						<h3 class="body-head">Latest Reviews</h3>
+			
+							<div class="col-lg-12" ng-repeat="review in storeData.reviews">
+					        <ul class="media-list">
+							  <li class="media">
+							    <a class="pull-left" href="#">
+							      <img class="media-object reviewer-pic" src="../static/img/top-reviewer-2.jpg" alt="...">
+							    </a>
+							    <div class="media-body">
+							      <h4 class="media-heading">{{review.name}}</h4>
+							      <p>New Delhi<br>
+									<span class="green">{{review.upvotes}}</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span class="red">{{review.downvotes}} </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
+							    </div>
+
+							  </li>
+							<li>
+							<p>{{review.description}}</p></li>
+							<a href="#">Read More &raquo;</a>
+							</ul>
+			
+						</div>
+
+						</div>
+
+
+					</div>
+					</div>
+	        	</div>				
+			</div>	
