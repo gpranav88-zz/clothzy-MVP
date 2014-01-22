@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="main">
   <head>
 	
 	<meta charset="utf-8">
@@ -13,12 +13,16 @@
 
     <!-- CSS FILES -->
 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/clothzy.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/iThing.css" type="text/css" />
-	<link rel="stylesheet" href="css/jquery.nouislider.css" type="text/css">
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/clothzy.css" rel="stylesheet">
+	<link href="../static/css/angular.rangeSlider.css" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">    
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+
+
+
+	<link href="../static/css/angular.rangeSlider.css" rel="stylesheet">
+
     <!-- END OF CSS FILES-->
     
     
@@ -374,7 +378,7 @@
 
 	<!--MAIN CONTAINER-->
 
-	<div class="container pad-50">
+	<div class="container pad-50" ng-controller="DemoController">
 		
 		<div class="col-lg-3">
 			<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
@@ -406,20 +410,11 @@
 					</li>
 			
 				<hr class="sidebar-divider">
-			  		<li class="active"><a>Price</a>
-				<div class="text-center">
-					<span class="slider-label">
-						<i class="fa fa-rupee"></i><em><small>0</small></em>
-						
-					</span>
-					<div class="inline1">
-					<div class="noUiSlider"></div>
-					</div>
-				 	<span class="slider-label">
-						<i class="fa fa-rupee"></i><em><small>20,000</small></em>
-					</span>
-				</div>
-				</li>
+			  		<li class="active sideheader"><a>Price</a>
+						<ul class="nav"><div style="padding: 0 15px">
+											<div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div>
+						</ul>
+					</li>
 				<hr class="sidebar-divider">
 			  		<li class="active sideheader"><a>Location</a>
 						<ul class="nav">
@@ -1074,11 +1069,33 @@
 
 </footer>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	
-    <script src="js/jquery.nouislider.js"></script>
-	<script src="js/affix.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/Clothzy.js"></script>	
+    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>	
+	<script src="../static/js/angular.rangeSlider.js"></script>
+	<script src="../static/js/affix.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/Clothzy.js"></script>	
+		<script>
+		// basic angular app setup
+		var app = angular.module('main', ['ui-rangeSlider']);
+
+		app.controller('DemoController',
+        	function DemoController($scope) {
+
+        		$scope.demo2 = {
+					range: {
+						min: 0,
+						max: 20000
+					},
+					minPrice: 0,
+					maxPrice: 20000
+				};
+
+        	}
+        );
+
+	</script>
 </body>
 </html>
