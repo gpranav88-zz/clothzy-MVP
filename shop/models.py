@@ -56,8 +56,20 @@ class Reviewer(models.Model):
     downvotes = models.IntegerField()
 
 class Review(models.Model):
-	reviewer = models.ForeignKey(Reviewer)
+	reviewerID = models.ForeignKey(Reviewer)
 	store = models.ForeignKey(Store)
 	product = models.ForeignKey(Product)
 	description = models.CharField(max_length=200)
 	created_on = models.DateTimeField(auto_now_add=True)
+
+class ProductImage(models.Model):
+    productID = models.ForeignKey(Product)
+    url = models.CharField(max_length=200)
+    alt = models.CharField(max_length=20)
+    flag_home = models.BooleanField()
+
+class StoreImage(models.Model):
+    storeID = models.ForeignKey(Store)
+    url = models.CharField(max_length=200)
+    alt = models.CharField(max_length=20)
+    flag_home = models.BooleanField()
