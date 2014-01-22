@@ -1,0 +1,82 @@
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron bg-header container-fluid">
+
+      <div class="container">
+        <h2>Hello.</h2>
+       <div class="col-md-3 search-text">
+ 			What are you looking for?
+		</div>
+		
+       <div class="col-md-7">
+		<div class="input-group">
+ 			<div class="input-group-btn">
+	        <button type="button" class=" search-form btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown">All <span class="caret"></span></button>
+	        <ul class="dropdown-menu">
+	          <li><a href="#">All</a></li>
+	          <li class="divider"></li>
+	          <li><a href="#">Women</a></li>
+	          <li><a href="#">Men</a></li>
+	          <li><a href="#">Kids</a></li>
+	        </ul>
+	      </div><!-- /btn-group -->
+
+			<input type="text" placeholder="Search for a product, store or locality" class="form-control search-form input-lg">
+			<span class="input-group-btn search-form">
+		        <button class="btn btn-primary btn-lg" type="button"><span class="glyphicon glyphicon-search"></span></button>
+		      </span>
+			</div>
+		</div>		
+             
+       </div>
+		
+      </div>
+
+
+    <div class="container" id="main">
+      <!-- Example row of columns -->
+	<div class="body-head">Latest Designs</div>
+	
+      <div class="row">
+
+	<div ng-repeat="product in homePageData.latest">
+
+      <div class="col-lg-4" >
+		<h4>{{product.name}}</h4>
+          <p>{{product.description}}</p>
+          <p><a class="btn btn-default" href="/product/{{product.slug}}">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-2">
+			<img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+      </div>
+      </div>
+         
+  	</div>
+
+      <hr>
+
+
+
+	<h3 class="body-head">Featured Stores</h3>
+
+      <div class="row" >
+
+
+      	<div class="col-lg-4" ng-repeat="store in homePageData.featured">
+			<div class="thumbnail">
+		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
+		      <div class="caption">
+		        <h4>{{store.name}}</h4>
+		        <p>{{store.description}}</p>
+		        <p><a href="store/{{store.slug}}" class="btn btn-primary">Visit Store &raquo;</a></p>
+		      </div>
+		    </div>
+        </div>
+
+
+      </div>
+
+
+	
+    </div> <!-- /container -->
+
