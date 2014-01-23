@@ -1,3 +1,6 @@
+<!-- {% extends "base.html" %} -->
+<!-- {% load i18n %}
+{% block content %} -->
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron bg-header container-fluid">
@@ -42,8 +45,8 @@
 	<div ng-repeat="product in homePageData.latest">
 
       <div class="col-lg-4" >
-		<h4>{{product.name}}</h4>
-          <p>{{product.description}}</p>
+		<h4>{[{product.name}]}</h4>
+          <p>{[{product.description}]}</p>
           <p><a class="btn btn-default" href="/product/{{product.slug}}">View details &raquo;</a></p>
       </div>
       <div class="col-lg-2">
@@ -66,8 +69,8 @@
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
-		        <h4>{{store.name}}</h4>
-		        <p>{{store.description}}</p>
+		        <h4>{[{store.name}]}</h4>
+		        <p>{[{store.description}]}</p>
 		        <p><a href="store/{{store.slug}}" class="btn btn-primary">Visit Store &raquo;</a></p>
 		      </div>
 		    </div>
@@ -80,3 +83,4 @@
 	
     </div> <!-- /container -->
 
+<!-- {% endblock %} -->
