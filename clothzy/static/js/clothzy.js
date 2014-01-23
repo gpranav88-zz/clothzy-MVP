@@ -35,7 +35,10 @@
 //    }]);
 
 
-var app = angular.module('main',['ngResource','ngRoute']);
+var app = angular.module('main',['ngResource','ngRoute'], function ($interpolateProvider) {
+	$interpolateProvider.startSymbol("{[{");
+       $interpolateProvider.endSymbol("}]}");
+});
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
