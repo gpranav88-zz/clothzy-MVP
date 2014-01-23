@@ -37,7 +37,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer  # Create your views here.
 
     filter_backends = (filters.OrderingFilter,filters.DjangoFilterBackend,)
-    filter_fields = ['name']
+    filter_fields = ['name','category']
     # ordering = ('popularity',)
 
     @link()

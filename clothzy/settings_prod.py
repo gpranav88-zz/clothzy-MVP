@@ -1,7 +1,4 @@
 # Django settings for clothzy project.
-import os.path
-import dj_database_url
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -11,8 +8,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-
 SITE_ID = 1
 SITE_NAME = 'Clothzy'
 
@@ -21,23 +16,36 @@ TIME_ZONE = 'Asia/Calcutta'
 LANGUAGE_CODE = 'en-us'
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static_root") 
-TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
-MEDIA_URL = '/media/' 
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
-# Additional locations of static files
+TEMPLATE_ROOT = os.path.join(BASE_DIR, "templates")
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, "static"),
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'static'),
 )
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
