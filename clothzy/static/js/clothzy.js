@@ -35,15 +35,12 @@
 //    }]);
 
 
-var app = angular.module('main',['ngResource','ngRoute', 'ngCookies'], function ($interpolateProvider) {
-	$interpolateProvider.startSymbol("{[{");
-       $interpolateProvider.endSymbol("}]}");
-});
+var app = angular.module('main',['ngResource','ngRoute']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
 		.when ('/',{
-			templateUrl:'home.html',
+			templateUrl:'static/home.html',
 			controller:'homePageController'
 		})
 		.when ('/store/:slug',{
@@ -74,11 +71,11 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
       .hashPrefix('!');
 }]);
 
-app.run(function($rootScope, $log, $http, $cookies) {
+// app.run(function($rootScope, $log, $http, $cookies) {
 
-    $http.defaults.headers.common['X-CSRFToken'] = $cookies['csrftoken'];
+//     $http.defaults.headers.common['X-CSRFToken'] = $cookies['csrftoken'];
 
-});
+// });
 
 app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 
