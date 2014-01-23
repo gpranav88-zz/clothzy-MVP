@@ -22,8 +22,9 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS for site -->
-    <link href="../static/css/clothzy.css" rel="stylesheet">
-
+    <link href="../static/css/jquery.feedback_me.css" rel="stylesheet">
+    <link href="../static/css/jquery.feedback_me.rtl.css" rel="stylesheet">
+    <link href="../static/css/clothzy.css" rel="stylesheet">    
     <!--Other 3rd party styles-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/iThing.css" type="text/css" />
@@ -441,7 +442,7 @@
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<button type="submit" class="btn btn-default btn-sm">New User?</button>
 			</form>
-        </div><!--/.navbar-collapse ->
+        </div><!-/.navbar-collapse ->
       </div>
     </div> -->
 
@@ -471,6 +472,79 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.feedback_me.js"></script>
+<script>
 
+$(document).ready(function () {
+    //set up some minimal options for the feedback_me plugin
+    fm_options = {
+        show_email: true,
+        email_required: false,
+ 
+        show_radio_button_list: true,
+        radio_button_list_required: true,
+        radio1_button_list_title: "Website Design/Attractiveness",
+        radio2_button_list_title: "Ease of use",
+        radio3_button_list_title: "Quality of products and stores/designers",
+        radio4_button_list_title: "Range and variety of products",     
+        radio5_button_list_title: "Would you use Clothzy again?",                        
+        name_placeholder: "Your Name",
+        email_placeholder: "Your Email",
+        message_placeholder: "Go ahead, type your feedback here...",
+    radio_button_list_labels : ["1", "2", "3", "4", "5"],
+    radio5_button_list_labels : ["Yes", "No"],    
+        phone_label: "Phone",
+        phone_placeholder: "Your Phone Number",
+ 
+        name_required: false,
+        message_required: false,
+     title_label : "We would love to get your feedback!",
+    trigger_label : "Feedback",
+    message_label : "Any other feedback?",    
+        show_asterisk_for_required: true,
+ 
+        feedback_url: "send_feedback_clean",
+ 
+        custom_params: {
+            csrf: "my_secret_token",
+            user_id: "john_doe",
+            feedback_type: "clean_complex"
+        }
+    };
+ 
+    //init feedback_me plugin
+    fm.init(fm_options);
+ 
+});
+
+var default_options = {
+    feedback_url : "",
+    position : "left-top",
+    jQueryUI : false,
+    bootstrap : false,
+    show_email : true,
+    show_radio_button_list : false,
+    close_on_click_outisde: true,
+    name_label : "Name",
+    email_label : "Email",
+    message_label : "Message",
+    radio_button_list_labels : ["1", "2", "3", "4", "5"],
+    radio_button_list_title : "How would you rate my site?",
+    name_placeholder : "",
+    email_placeholder : "",
+    message_placeholder : "",
+    name_required : false,
+    email_required : false,
+    message_required : false,
+    radio_button_list_required : false,
+    show_asterisk_for_required : false,
+    submit_label : "Send",
+    title_label : "Feedback",
+    trigger_label : "Feedback",
+    custom_params : {},
+    iframe_url : undefined
+};
+
+</script>
   </body>
 </html>
