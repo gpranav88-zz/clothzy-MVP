@@ -41,3 +41,5 @@ nosetests.xml
 
 # Mac Stuff
 .DS_Store
+
+*.db
