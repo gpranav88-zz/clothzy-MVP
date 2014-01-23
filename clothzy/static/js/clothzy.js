@@ -35,7 +35,7 @@
 //    }]);
 
 
-var app = angular.module('main',['ngResource','ngRoute'], function ($interpolateProvider) {
+var app = angular.module('main',['ngResource','ngRoute', 'ngCookies'], function ($interpolateProvider) {
 	$interpolateProvider.startSymbol("{[{");
        $interpolateProvider.endSymbol("}]}");
 });
@@ -74,6 +74,12 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
       .hashPrefix('!');
 }]);
 
+app.run(function($rootScope, $log, $http, $cookies) {
+
+    $http.defaults.headers.common['X-CSRFToken'] = $cookies['csrftoken'];
+
+});
+
 app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 
 			window.MY_SCOPE = $scope;
@@ -84,6 +90,7 @@ app.controller('homePageController',['$scope','$http','$resource','commonFactory
 
 		   }            
    ]);
+
 
 
 app.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
@@ -164,7 +171,7 @@ app.factory('commonFactory',function(){
 
 			homeCRUD:function($resource){
 
-				return $resource('/api/home'); 
+				return $resource('http://localhost:8000/api/home'); 
 
 			},
 
@@ -178,7 +185,7 @@ app.factory('commonFactory',function(){
 
 			productCRUD:function($resource){
 
-				return $resource('/api/product/:id',{
+				return $resource('http://localhost:8000/api/products/:id',{
 					id:'@id'
 				}); 
 
