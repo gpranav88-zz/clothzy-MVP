@@ -6,7 +6,7 @@ from django.conf import settings
 admin.autodiscover()
 
 
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'api/stores', views.StoreViewSet)
 router.register(r'api/products', views.ProductViewSet)
 # router.register(r'admin', include(admin.site.urls))
@@ -27,5 +27,5 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': settings.MEDIA_ROOT}),
     #index
-    
+
 )
