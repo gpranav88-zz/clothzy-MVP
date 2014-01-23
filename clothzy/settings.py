@@ -78,7 +78,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -102,7 +102,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django_filters',
     'rest_framework',
-    'corsheaders',
+    # 'corsheaders',
     # 'haystack',
     'shop'
 )
@@ -112,7 +112,7 @@ INSTALLED_APPS = (
 #     'localhost/',
 # )
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
