@@ -498,9 +498,10 @@ font-size:12px;
 
 .home-subhead{
 margin-top:5px;
-font-weight:200;
+font-weight:400;
+font-size:16px;
 font-family: 'Raleway', sans-serif;
-color:#aaa;
+color:#333;
 }
 
 .jumbo-hr{
@@ -512,6 +513,7 @@ border-top: 1px solid #aaa;
   font-size:14px;
   font-weight:300;
   min-height:45px;
+  width:120px;
 
 }
 
@@ -528,7 +530,7 @@ text-align:left;
 }
 
 .help > a {
-color:#ccc;
+
 
 }
 
@@ -543,4 +545,11 @@ color:#ccc;
 .help-img{
 display:none;
 
+}
+
+.home-in{
+	width: 2%;
+}
+.helpbtn{
+	font-size:16px;
 }
