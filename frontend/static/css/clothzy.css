@@ -25,7 +25,7 @@ a.logo{
 	
 	background-image: url('../img/cover.jpg');
 	background-size:cover;
-	height:450px;
+	height:350px;
 	background-repeat:no-repeat;
 	box-shadow: 0px 4px 12px #aaaaaa;
 }
@@ -133,6 +133,7 @@ max-height:60px;
 
 .sidebar-text{
 	padding-left:10px;
+	padding-right:10px;
 	
 }
 
@@ -483,6 +484,63 @@ bottom: 150px;
 right: 63px;
 display: none;
 z-index: 9;
+}
+.homecontainer{
+margin-left:auto;
+margin-right:auto;
 
+}
+.searchexample{
+
+font-size:12px;
+
+}
+
+.home-subhead{
+margin-top:5px;
+font-weight:200;
+font-family: 'Raleway', sans-serif;
+color:#aaa;
+}
+
+.jumbo-hr{
+border-top: 1px solid #aaa;
+
+}
+
+.searchtoggle{
+  font-size:14px;
+  font-weight:300;
+  min-height:45px;
+
+}
+
+.searchdropdown{
+font-size:14px;
+text-align:left;
+
+}
+
+.help{
+
+	text-align:right;
+
+}
+
+.help > a {
+color:#ccc;
+
+}
+
+.help > a:hover,  
+.help > a:focus 
+{
+  color: #c8006d;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.help-img{
+display:none;
 
 }

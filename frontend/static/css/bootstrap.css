@@ -1645,7 +1645,7 @@ legend {
 label {
   display: inline-block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 input[type="search"] {
@@ -1829,7 +1829,9 @@ textarea.input-sm {
 .input-lg {
   height: 45px;
   padding: 10px 16px;
-  font-size: 18px;
+  font-size: 14px;
+  font-weight:300;
+  font-color:#666;
   line-height: 1.33;
   border-radius: 6px;
 }
@@ -2053,6 +2055,7 @@ fieldset[disabled] .btn {
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
+
 }
 
 .btn-default:active,
@@ -4934,7 +4937,7 @@ a.list-group-item.active > .badge,
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 21px;
+  font-size: 16px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: #dddddd;
