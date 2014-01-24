@@ -15,7 +15,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-resource.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.js"></script>
 	<script src="../static/js/clothzy.js"></script>
-
+<link href='http://fonts.googleapis.com/css?family=Raleway:100,200' rel='stylesheet' type='text/css'>
     <title>Clothzy: Home</title>
 
     <!-- Bootstrap core CSS -->
@@ -514,8 +514,15 @@ $(document).ready(function () {
  
     //init feedback_me plugin
     fm.init(fm_options);
- 
+
+      $("p").click(function(){
+    $(this).hide();
+  });
+
+$(".helpimg").hide();
+
 });
+
 
 var default_options = {
     feedback_url : "",
@@ -544,7 +551,16 @@ var default_options = {
     custom_params : {},
     iframe_url : undefined
 };
-
 </script>
+
+<script>
+function toggleDiv(divId) {
+   $("."+divId).fadeIn(350);
+}
+function removeDiv(divId) {
+   $("."+divId).fadeOut(350);
+}
+</script>
+
   </body>
 </html>
