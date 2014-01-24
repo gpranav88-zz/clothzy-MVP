@@ -3,7 +3,7 @@ var app = angular.module('main',['ngResource','ngRoute']);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
 		.when ('/',{
-			templateUrl:'static/home.html',
+			templateUrl:'../../templates/home.html',
 			controller:'homePageController'
 		})
 		.when ('/store/:slug',{
