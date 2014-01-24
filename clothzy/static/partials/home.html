@@ -90,8 +90,7 @@
 	
       <div class="row">
 
-	<div ng-repeat="product in homePageData.latest">
-      <h1> ARE WE IN THE PRODUCT LOOP </h1>
+	<div ng-repeat="product in homePageData.Products">
       <div class="col-lg-4" >
 		<h4>{{product.name}}</h4>
           <p>{{product.description}}</p>
@@ -112,7 +111,7 @@
 
       <div class="row" >
 
-      	<div class="col-lg-4" ng-repeat="store in homePageData.featured">
+      	<div class="col-lg-4" ng-repeat="store in homePageData.Stores">
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
