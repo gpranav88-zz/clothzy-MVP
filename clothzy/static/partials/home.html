@@ -87,10 +87,9 @@
 		<hr>
       <!-- Example row of columns -->
 	<div class="body-head">Latest Designs</div>
-	
-      <div class="row">
+	 <div class="row">
 
-	<div ng-repeat="product in homePageData.latest">
+	<div ng-repeat="product in homePageData">
 
       <div class="col-lg-4" >
 		<h4>{{product.name}}</h4>
@@ -98,7 +97,7 @@
           <p><a class="btn btn-default" href="/product/{{product.slug}}">View details &raquo;</a></p>
       </div>
       <div class="col-lg-2">
-			<img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+			<img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail">
       </div>
       </div>
          
@@ -113,7 +112,7 @@
       <div class="row" >
 
 
-      	<div class="col-lg-4" ng-repeat="store in homePageData.featured">
+      	<div class="col-lg-4" ng-repeat="store in homePageData">
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
