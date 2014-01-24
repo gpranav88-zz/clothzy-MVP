@@ -1,6 +1,4 @@
 # Django settings for clothzy project.
-import os.path
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -10,17 +8,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'clothzy.db',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
-}
 SITE_ID = 1
 SITE_NAME = 'Clothzy'
 
@@ -29,23 +16,36 @@ TIME_ZONE = 'Asia/Calcutta'
 LANGUAGE_CODE = 'en-us'
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static_root")
-TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
-MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
-# Additional locations of static files
+TEMPLATE_ROOT = os.path.join(BASE_DIR, "templates")
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, "static"),
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'static'),
 )
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -61,12 +61,12 @@ SECRET_KEY = 'g=p%yeif&+_ld7@4c12=d30bvv3mpvf^s)_ul%l@+43qrgfi)0'
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.Loader',    
 #     'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_DIRS = (
-    TEMPLATE_ROOT,
+    TEMPLATE_ROOT,    
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -78,7 +78,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -102,18 +101,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django_filters',
     'rest_framework',
-    # 'corsheaders',
     # 'haystack',
     'shop'
 )
-
-# CORS_ORIGIN_WHITELIST = (
-#     'localhost:8000',
-#     'localhost/',
-# )
-
-# CORS_ORIGIN_ALLOW_ALL = True
-
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
