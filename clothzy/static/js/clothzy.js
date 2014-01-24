@@ -85,7 +85,7 @@ app.factory('commonFactory',function(){
 
 			homeCRUD:function($resource){
 
-				return $resource('http://localhost:8000/api/home'); 
+				return $resource('/api/home'); 
 
 			},
 
@@ -99,7 +99,7 @@ app.factory('commonFactory',function(){
 
 			productCRUD:function($resource){
 
-				return $resource('http://localhost:8000/api/products/:id',{
+				return $resource('/api/products/:id',{
 					id:'@id'
 				}); 
 
