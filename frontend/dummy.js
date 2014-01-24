@@ -140,7 +140,7 @@ var store = {
 		title:'XYZ Store',
 		phone:'011-25930253',
 		address:'23, Abc Road, New Delhi - 110033',
-		timings:'23, Abc Road, New Delhi - 110033',
+		timings:'10AM - 10PM',
 		about:'Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
 
 	},

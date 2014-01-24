@@ -29,10 +29,10 @@
 	        		<div class="col-lg-4">
 						
 													
-						<div class="row pad-20">	
+						<div class="row pad-20 text-center">	
 				
 				
-								      <img src="../static/img/featured-product-1.jpg" class="img-responsive text-center" style="width:100%" alt="...">
+								      <img src="../static/img/featured-product-1.jpg" class="img-responsive text-center" style="height:400px; display: inline-block;" alt="...">
 						
 						</div>
 						<div class="row">
@@ -89,7 +89,7 @@
 						
 						</div>
 						<div class="col-lg-6">
-						<p>Share: <a href="#"><i class="fa fa-facebook-square fa-2x fb-icon"></i> </a><a href="#"><i class="fa fa-twitter-square fa-2x tw-icon"></i></a><a href="#"> <i class="fa fa-pinterest-square fa-2x pi-icon"></i></a></p>
+						<span style="margin-top:0; margin-bottom:0">Share: </span><a href="#"><i class="fa fa-facebook-square fa-2x fb-icon"></i> </a><a href="#"><i class="fa fa-twitter-square fa-2x tw-icon"></i></a><a href="#"> <i class="fa fa-pinterest-square fa-2x pi-icon"></i></a>
 						</div>
 					</div>
 					<hr>
@@ -110,8 +110,8 @@
 															<p>Price: </p>
 
 															</div>
-														<div class="col-lg-8">
-												<p>		<span class="WebRupee">Rs.</span> {{productData.description.price}}(0% Discount)</p>
+														<div class="col-lg-8 sidecontent">
+												<p>		<span class="WebRupee">Rs.</span> {{productData.description.price}} (0% Discount)</p>
 
 															</div>
 														</div>
@@ -122,8 +122,10 @@
 															Colour: 
 
 															</div>
-														<div class="col-lg-8">
-												<p>		<span class="badge purple-colour">&nbsp;</span> {{productData.description.color}} </p>
+														<div class="col-lg-8 sidecontent">
+												<p>		<i class="fa fa-square purple-colour"></i> {{productData.description.color}}</p>
+
+												
 
 															</div>
 														</div>
@@ -133,7 +135,7 @@
 															Size: 
 
 																</div>
-															<div class="col-lg-8">
+															<div class="col-lg-8 sidecontent">
 												<p>			{{productData.description.size}}</p>
 
 																</div>
@@ -144,7 +146,7 @@
 															Material
 
 																	</div>
-																<div class="col-lg-8">
+																<div class="col-lg-8 sidecontent">
 															<p> {{productData.description.material}}</p>
 
 																	</div>
@@ -176,7 +178,7 @@
 									<i class="fa fa-phone fa-lg small-icon"></i>
 
 								</div>
-								<div class="col-lg-10">
+								<div class="col-lg-10 sidecontent">
 									<p>{{productData.location.phone}}</p>
 								</div>
 							</div>
@@ -185,7 +187,7 @@
 
 									<i class="fa fa-location-arrow fa-lg small-icon"></i>									
 								</div>
-								<div class="col-lg-10">
+								<div class="col-lg-10 sidecontent">
 									<p>{{productData.location.address}}</p>
 								</div>
 							</div>
@@ -195,12 +197,12 @@
 
 									<i class="fa fa-clock-o fa-lg small-icon"></i>											
 								</div>
-								<div class="col-lg-10">
+								<div class="col-lg-10 sidecontent">
 									<p>{{productData.location.timings}}</p>
 								</div>
 							</div>
 							<div class="text-center">
-							<button class="btn btn-primary">Hold Item</button>
+							
 							<button class="btn btn-default" onClick="window.location.href='StoreHome-test.html'">Visit Store</button><br><br>
 							</div>
 					
@@ -223,68 +225,7 @@
 	        	</div>			
 		
 			</div>	
-						
-					<hr>
-					<div class="row">
-						<div class="col-lg-8 right-border">
-						<h3 class="body-head">Customer Reviews</h3>
-
-							<div class="col-lg-12" ng-repeat="review in productData.reviews">
-					        	<ul class="media-list">
-							  		<li class="media">
-							    		<a class="pull-left" href="#">
-							      			<img class="media-object reviewer-pic" src="../static/img/top-reviewer-2.jpg" alt="...">
-							    		</a>
-									<div class="pull-right">
-									Rating: <span class="glyphicon glyphicon-star gold"></span><span class="glyphicon glyphicon-star gold"></span><span class="glyphicon glyphicon-star gold"></span><span class="glyphicon glyphicon-star gold"></span><span class="glyphicon glyphicon-star-empty gold"></span>
-							
-									</div>
-							    		<div class="media-body">
-							      			<h4 class="media-heading">{{review.name}}</h4>
-							      			<p>New Delhi<br>
-												<span class="green">{{review.upvotes}}</span> <span class="glyphicon glyphicon-thumbs-up"></span> | <span 	class="red">{{review.downvotes}} </span><span class="glyphicon glyphicon-thumbs-down"></span></p>
-							    			</div>
-
-							  			</li>
-									<li>
-										<p>{{review.description}}</p>									
-										</li>
-									</ul>
-			
-								</div>
-							<hr>
-
-						</div>
-
-
-			
-					
-					<div class="col-lg-4">
-						<h3 class="body-head">Complete the look</h3>
-						
-						<div class="row" ng-repeat="similar in productData.similar">
-								<div class="col-lg-4">
-
-							      		<a data-toggle="modal" href="#myModal"><img src="../static/img/featured-product-1.jpg" class="img-responsive" alt="..."></a>
-							
-									</div>
-								<div class="col-lg-8">
-							        		<p class="product-name">{{similar.title}}</p>
-											<p class="store-name">{{similar.location}}</p>
-							        		<p class="price"><i class="fa fa-rupee"></i>{{similar.price}}</p>
-							        		<p><a data-toggle="modal" class="btn btn-primary btn-xs" href="#myModal">See More &raquo;</a></p>												     
-							   	</div>
-							
-							</div>
-						<hr>					        
-				
-
-									      
-							</div>
-							<br>
-							
-							
-							</div>						
+											
 
 						
 						</div>
