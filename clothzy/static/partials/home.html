@@ -93,8 +93,8 @@
 	<div ng-repeat="product in homePageData.latest">
 
       <div class="col-lg-4" >
-		<h4>{{Products.name}}</h4>
-          <p>{{Products.description}}</p>
+		<h4>{{products.name}}</h4>
+          <p>{{products.description}}</p>
           <p><a class="btn btn-default" href="/product/{{product.slug}}">View details &raquo;</a></p>
       </div>
       <div class="col-lg-2">
@@ -117,8 +117,8 @@
 			<div class="thumbnail">
 		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
 		      <div class="caption">
-		        <h4>{{Stores.name}}</h4>
-		        <p>{{Stores.description}}</p>
+		        <h4>{{Store.name}}</h4>
+		        <p>{{Store.description}}</p>
 		        <p><a href="store/{{store.slug}}" class="btn btn-primary">Visit Store &raquo;</a></p>
 		      </div>
 		    </div>
