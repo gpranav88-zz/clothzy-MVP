@@ -500,7 +500,7 @@ font-size:12px;
 margin-top:5px;
 font-weight:200;
 font-family: 'Raleway', sans-serif;
-color:#aaa;
+color:#666;
 }
 
 .jumbo-hr{
@@ -537,5 +537,9 @@ text-align:left;
 
 .help-img{
 display:none;
+
+}
+.help-btn{
+font-weight:400;
 
 }
