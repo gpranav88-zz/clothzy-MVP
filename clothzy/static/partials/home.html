@@ -5,7 +5,7 @@
       <div class="container homecontainer">
       	<div class="row">
           <div class="help">
-            <a class="btn btn-default help-btn" onmouseover="javascript:toggleDiv('help-img');" onmouseout="javascript:removeDiv('help-img');">
+            <a class="btn btn-default btn-lg helpbtn" onmouseover="javascript:toggleDiv('help-img');" onmouseout="javascript:removeDiv('help-img');">
               Need help?
             </a>
           </div>
@@ -116,7 +116,7 @@
       </div>
       <div class="col-lg-2">
         <a ng-href="product/{{product.id}}">
-          <img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+          <img ng-src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
         </a>
       </div>
     </div>
@@ -131,7 +131,7 @@
     <div class="col-lg-4" ng-repeat="store in homePageData.Stores">
       <div class="thumbnail">
         <a ng-href="store/{{store.id}}">
-          <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
+          <img ng-src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
         </a>
 		      <div class="caption">
 		        <a ng-href="store/{{store.id}}">
