@@ -32,7 +32,7 @@ a.logo{
 .search-text{
 	font-family:'Open Sans';
 	margin-top:0px;
-	font-weight:300;
+	font-weight:400;
 	
 }
 
@@ -449,7 +449,7 @@ color:#666;
 
 em{
 font-family:'Open Sans';
-	font-weight:300;
+	font-weight:400;
 
 }
 
@@ -493,14 +493,14 @@ margin-right:auto;
 .searchexample{
 
 font-size:12px;
-
+font-weight:400;
 }
 
 .home-subhead{
 margin-top:5px;
 font-weight:400;
 font-size:16px;
-font-family: 'Raleway', sans-serif;
+font-family: 'Open Sans', sans-serif;
 color:#333;
 }
 
@@ -511,7 +511,7 @@ border-top: 1px solid #aaa;
 
 .searchtoggle{
   font-size:14px;
-  font-weight:300;
+  font-weight:400;
   min-height:45px;
   width:120px;
 
@@ -552,4 +552,5 @@ display:none;
 }
 .helpbtn{
 	font-size:16px;
+  font-weight:400;
 }
