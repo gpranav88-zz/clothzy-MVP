@@ -91,7 +91,7 @@ app.factory('commonFactory',function(){
 
 			storeCRUD:function($resource){
 
-				return $resource('/api/store/:id',{
+				return $resource('/api/stores/:id',{
 					id:'@id'
 				});
 
