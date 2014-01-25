@@ -43,7 +43,7 @@
       <div ng-controller="searchController">
         <div class="col-lg-3 text-center">
           <p class="text-center">Product</p>
-          <input type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product">
+          <input type="text" class="form-control search-form input-lg" ng-model="searchPhrase.product" ng-init="searchPhrase.product = 'Any Product'">
           <p class="text-center"><em class="searchexample">E.g. Sarees, Dresses</em></p>
           <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>
        </div>
@@ -56,7 +56,7 @@
 
       <div class="col-lg-3 text-center" style="height:100px">
         <p class="text-center">Location/Store</p>
-        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location">
+        <input type="text" class="form-control search-form input-lg" ng-model="searchPhrase.location" ng-init="searchPhrase.location = 'Anywhere'">
         <p class="text-center">
           <em class="searchexample">E.g. South Delhi, Store XYZ, Shahpur Jat</em>
         </p>
