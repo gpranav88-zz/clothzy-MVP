@@ -108,7 +108,13 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 
 				var searchParams = $scope.searchPhrase;
 
-				commonFactory.searchR($resource).query();
+				// commonFactory.searchR($resource).query();
+				$scope.searchResult = 
+				commonFactory.searchR($resource).get({
+					'category': searchParams.category,
+					'location': searchParams.location,
+					'product': searchParams.product,
+				});
 
    };
    }]);
@@ -153,27 +159,20 @@ app.factory('commonFactory',function(){
 
 			searchR:function($resource){
 
-				// return $resource('/api/search/:category/:location/:product', {
-				// 	search: {
-				// 		method: 'GET',
-				// 		params: {
-				// 			category: '@category',
-				// 			location: '@location',
-				// 			product: '@product'
-				// 		}
-				// 	}
-				// }
-
 				return $resource('/api/search/:category/:location/:product', {
-					query: {
-						method: 'GET',
-						params: {
-							category: '@category',
-							location: '@location',
-							product: '@product'
-						},
-						isArray:true
-					}
+					
+					category: '@category',
+					location: '@location',
+					product: '@product'
+					// query: {
+					// 	method: 'GET',
+					// 	params: {
+					// 		category: '@category',
+					// 		location: '@location',
+					// 		product: '@product'
+					// 	},
+					// 	isArray:true
+					// }
 				});
 
 
