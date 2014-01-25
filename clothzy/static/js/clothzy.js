@@ -23,8 +23,12 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			templateUrl:'review.html',
 			controller:'reviewController'
 		})
-		.when ('/search/:slug',{
-			templateUrl:'search.html',
+		.when ('/search/product/:location/:product',{
+			templateUrl:'product-search.html',
+			controller:'searchController'
+		})
+		.when ('/search/store/:location/:product',{
+			templateUrl:'storesearch.html',
 			controller:'searchController'
 		});
 
@@ -55,8 +59,9 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
    ]);
 
 app.controller('dropdownController', ['$scope', function($scope) {
-	$scope.myOptions = [{ name: "Products", id: 1 }, { name: "Stores", id: 2 }];
+	$scope.myOptions = [{ display: "Products", id: 1 , name:'product'}, { display: "Stores", id: 2, name:'store' }];
 	$scope.selectedOption = $scope.myOptions[0];
+	$scope.$root.selectedOption = $scope.selectedOption
 		}
 	]);
 
@@ -79,12 +84,32 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 		}            
    ]);
 
-app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-			var searchQueryObject;
+// app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+// 			var searchQueryObject;
 
-			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
-		   }            
-   ]);
+// 			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
+// 		   }            
+//    ]);
+
+app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory', function($scope,$http,$resource,$routeParams,commonFactory){
+			$scope.searchPhrase = {product: null, location: null};
+			$scope.results = [];
+
+			$scope.search = function() {
+				if (!$scope.searchPhrase.product) {
+					// console.log("No product");
+					$scope.searchPhrase.product = null;
+				}
+				if (!$scope.searchPhrase.location) {
+					// console.log("No location");
+					$scope.searchPhrase.location = null;
+				}
+				$scope.searchPhrase.category = $scope.selectedOption.name;
+
+				var searchParams = $scope.searchPhrase
+				commonFactory.searchR($resource).get(searchParams);
+		    }            
+   }]);
 
 app.factory('commonFactory',function(){
 
@@ -126,15 +151,11 @@ app.factory('commonFactory',function(){
 
 			searchR:function($resource){
 
-				return $resource('/api/search/location/:param1/price/:param2/size/:param3',
-
-					{
-						param1:'@param1',
-						param2:'@param2',
-						param3:'@param3'
-
-					}
-
+				return $resource('/api/search/:category/:location/:product', {
+					category: '@category',
+					location: '@location',
+					product: '@product'
+				}
 
 				);
 
