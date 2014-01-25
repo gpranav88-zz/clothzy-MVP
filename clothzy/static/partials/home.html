@@ -18,7 +18,7 @@
           <div class="col-lg-2 text-center" style="height:100px">
             <p class="text-center">Show results by:</p>
             <div class="text-center" ng-controller="dropdownController">
-              <select ng-model="selectedOption" ng-options="value.name for value in myOptions"></select>
+              <select ng-model="selectedOption" ng-options="value.display for value in myOptions"></select>
             </div>
           </div>
 
@@ -31,6 +31,8 @@
    <li><a tabindex="-1" href="#" class="searchdropdown">Stores</a></li>
  </ul>
 </div>
+ng-init="searchPhrase.product = 'Any Product'"
+ng-init="searchPhrase.location = 'Anywhere'"  
  -->
 
 
@@ -43,7 +45,7 @@
       <div ng-controller="searchController">
         <div class="col-lg-3 text-center">
           <p class="text-center">Product</p>
-          <input type="text" class="form-control search-form input-lg" ng-model="searchPhrase.product" ng-init="searchPhrase.product = 'Any Product'">
+          <input type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product" >
           <p class="text-center"><em class="searchexample">E.g. Sarees, Dresses</em></p>
           <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>
        </div>
@@ -56,7 +58,7 @@
 
       <div class="col-lg-3 text-center" style="height:100px">
         <p class="text-center">Location/Store</p>
-        <input type="text" class="form-control search-form input-lg" ng-model="searchPhrase.location" ng-init="searchPhrase.location = 'Anywhere'">
+        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location" >
         <p class="text-center">
           <em class="searchexample">E.g. South Delhi, Store XYZ, Shahpur Jat</em>
         </p>

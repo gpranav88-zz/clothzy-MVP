@@ -59,8 +59,9 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
    ]);
 
 app.controller('dropdownController', ['$scope', function($scope) {
-	$scope.myOptions = [{ name: "Products", id: 1 }, { name: "Stores", id: 2 }];
+	$scope.myOptions = [{ display: "Products", id: 1 , name:'product'}, { display: "Stores", id: 2, name:'store' }];
 	$scope.selectedOption = $scope.myOptions[0];
+	$scope.$root.selectedOption = $scope.selectedOption
 		}
 	]);
 
@@ -90,30 +91,25 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 // 		   }            
 //    ]);
 
-app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-			$scope.searchPhrase = {};
+app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory', function($scope,$http,$resource,$routeParams,commonFactory){
+			$scope.searchPhrase = {product: null, location: null};
 			$scope.results = [];
 
-
-			// $scope.change() = function() {
-			// 	console.run("detected change");
-			// 	$scope.searchPhrase = {}
-			// }
-
 			$scope.search = function() {
-				console.log("Runs");
-			}
+				if (!$scope.searchPhrase.product) {
+					// console.log("No product");
+					$scope.searchPhrase.product = null;
+				}
+				if (!$scope.searchPhrase.location) {
+					// console.log("No location");
+					$scope.searchPhrase.location = null;
+				}
+				$scope.searchPhrase.category = $scope.selectedOption.name;
 
-			// $scope.search = function() {
-			// 	// parameters = $scope.myOption & phrase
-			// 	$http('GET', url, post, function(response){
-			// 		$scope.results = response;
-			// 	}, function(failure){
-			// 		console.log("failed :(", failure); 
-			// });
-			// };
-		   }            
-   ]);
+				var searchParams = $scope.searchPhrase
+				commonFactory.searchR($resource).get(searchParams);
+		    }            
+   }]);
 
 app.factory('commonFactory',function(){
 
