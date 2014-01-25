@@ -35,18 +35,17 @@
 
 
 
-
         <p class="text-center"><em class="searchexample">&nbsp;</em></p>
         
         <div class="help-img">
           <img src="../static/img/showresultshelp.png" style="height:120px" class="helpimg">
         </div>
-
+      <div ng-controller="searchController">
         <div class="col-lg-3 text-center">
           <p class="text-center">Product</p>
-          <input type="text" placeholder="Any product" class="form-control search-form input-lg">
+          <input type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product">
           <p class="text-center"><em class="searchexample">E.g. Sarees, Dresses</em></p>
-          <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>   		
+          <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>
        </div>
 
        <div class="col-lg-1 text-center" style="height:100px; display: table;">
@@ -57,7 +56,7 @@
 
       <div class="col-lg-3 text-center" style="height:100px">
         <p class="text-center">Location/Store</p>
-        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg">
+        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location">
         <p class="text-center">
           <em class="searchexample">E.g. South Delhi, Store XYZ, Shahpur Jat</em>
         </p>
@@ -66,18 +65,18 @@
 
       <div class="col-lg-2 text-center" style="height:100px">
         <p class="text-center">&nbsp;</p>
-        <button type="button" style="font-size:16px" class="btn btn-lg btn-danger">
+        <button type="button" style="font-size:16px" class="btn btn-lg btn-danger" ng-click="search()">
           <i class="fa fa-search"></i> 
           Search
         </button>
         <p class="text-center"><em class="searchexample">&nbsp;</em></p>
         <div class="help-img"><img src="../static/img/searchhelp.png" style="height:120px" class="helpimg"  ></div>
       </div>
-
+    </div>
     </div>
   </div>
 </div>
-
+</div>
 
     <div class="container" id="main">
 

@@ -23,8 +23,12 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			templateUrl:'review.html',
 			controller:'reviewController'
 		})
-		.when ('/search/:slug',{
-			templateUrl:'search.html',
+		.when ('/search/product/:location/:product',{
+			templateUrl:'productsearch.html',
+			controller:'searchController'
+		})
+		.when ('/search/store/:location/:product',{
+			templateUrl:'storesearch.html',
 			controller:'searchController'
 		});
 
@@ -79,10 +83,35 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 		}            
    ]);
 
-app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-			var searchQueryObject;
+// app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+// 			var searchQueryObject;
 
-			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
+// 			$scope.searchData=commonFactory.searchR($resource).get(searchQueryObject);
+// 		   }            
+//    ]);
+
+app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+			$scope.searchPhrase = {};
+			$scope.results = [];
+
+
+			// $scope.change() = function() {
+			// 	console.run("detected change");
+			// 	$scope.searchPhrase = {}
+			// }
+
+			$scope.search = function() {
+				console.log("Runs");
+			}
+
+			// $scope.search = function() {
+			// 	// parameters = $scope.myOption & phrase
+			// 	$http('GET', url, post, function(response){
+			// 		$scope.results = response;
+			// 	}, function(failure){
+			// 		console.log("failed :(", failure); 
+			// });
+			// };
 		   }            
    ]);
 
@@ -126,15 +155,20 @@ app.factory('commonFactory',function(){
 
 			searchR:function($resource){
 
-				return $resource('/api/search/location/:param1/price/:param2/size/:param3',
+				// return $resource('/api/search/location/:param1/price/:param2/size/:param3',
 
-					{
-						param1:'@param1',
-						param2:'@param2',
-						param3:'@param3'
+				// 	{
+				// 		param1:'@param1',
+				// 		param2:'@param2',
+				// 		param3:'@param3'
 
-					}
+				// 	}
 
+				return $resource('/api/search/:category/:location/:product', {
+					category: '@category',
+					location: '@location',
+					product: '@product'
+				}
 
 				);
 
