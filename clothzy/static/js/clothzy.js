@@ -7,12 +7,12 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller:'homePageController'
 		})
 		.when ('/store/:slug',{
-			templateUrl:'store.html',
+			templateUrl:'static/partials/store.html',
 			controller:'storeController'
 
 		})
 		.when ('/product/:slug',{
-			templateUrl:'product.html',
+			templateUrl:'static/partials/product.html',
 			controller:'productController'
 		})
 		.when ('/user/:slug',{
