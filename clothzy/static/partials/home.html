@@ -12,13 +12,13 @@
         </div>
 
         <BR>
-      	
+
         <div class="row">
           
           <div class="col-lg-2 text-center" style="height:100px">
-            <p class="text-center">Show results by:</p>
+            <p class="text-center">Are you looking for:</p>
             <div class="text-center" ng-controller="dropdownController">
-              <select ng-model="selectedOption" ng-options="value.display for value in myOptions"></select>
+              <select class="form-control input-lg btn btn-default btn-lg dropdown-toggle searchtoggle" ng-model="selectedOption" ng-options="value.name for value in myOptions"></select>
             </div>
           </div>
 
