@@ -54,6 +54,13 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 		}            
    ]);
 
+app.controller('dropdownController', ['$scope', function($scope) {
+	$scope.myOptions = [{ name: "Products", id: 1 }, { name: "Stores", id: 2 }];
+	$scope.selectedOption = $scope.myOptions[0];
+		}
+	]);
+
+
 
 app.controller('userController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 		   }            
