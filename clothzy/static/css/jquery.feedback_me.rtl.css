@@ -16,12 +16,12 @@
 
 #feedback_trigger{
 	cursor: pointer;
-	-webkit-border-top-right-radius: 0px;
-	-moz-border-radius-topright: 0px;
-	border-top-right-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
-	-moz-border-radius-bottomright: 0px;
-	border-bottom-right-radius: 0px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-right-radius: 10px;
 	z-index: 2001;
 }
 

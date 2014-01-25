@@ -498,9 +498,10 @@ font-size:12px;
 
 .home-subhead{
 margin-top:5px;
-font-weight:200;
+font-weight:400;
+font-size:16px;
 font-family: 'Raleway', sans-serif;
-color:#666;
+color:#333;
 }
 
 .jumbo-hr{
@@ -512,6 +513,7 @@ border-top: 1px solid #aaa;
   font-size:14px;
   font-weight:300;
   min-height:45px;
+  width:120px;
 
 }
 
@@ -527,6 +529,11 @@ text-align:left;
 
 }
 
+.help > a {
+
+
+}
+
 .help > a:hover,  
 .help > a:focus 
 {
@@ -539,7 +546,10 @@ text-align:left;
 display:none;
 
 }
-.help-btn{
-font-weight:400;
 
+.home-in{
+	width: 2%;
+}
+.helpbtn{
+	font-size:16px;
 }
