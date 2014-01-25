@@ -87,43 +87,52 @@
 		<hr>
       <!-- Example row of columns -->
 	<div class="body-head">Latest Designs</div>
-	
-      <div class="row">
-
-	<div ng-repeat="product in homePageData.Products">
-      <div class="col-lg-4" >
-		<h4>{{product.name}}</h4>
-          <p>{{product.description}}</p>
-          <p><a class="btn btn-default" href="/product/{{product.slug}}">View details &raquo;</a></p>
+  <div class="row">
+    <div ng-repeat="product in homePageData.Products">
+      <div class="col-lg-4">
+        <a ng-href="product/{{product.id}}">
+          <h4>{{product.name}}</h4>
+        </a>
+        <p>{{product.description}}</p>
+        <p>
+          <a class="btn btn-default" href="/product/{{product.id}}">
+            View details &raquo;
+          </a>
+        </p>
       </div>
       <div class="col-lg-2">
-			<img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+        <a ng-href="product/{{product.id}}">
+          <img src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+        </a>
       </div>
-      </div>
-         
-  	</div>
+    </div>
+  </div>
 
-      <hr>
+  <hr>
 
 
 
 	<h3 class="body-head">Featured Stores</h3>
-
-      <div class="row" >
-
-      	<div class="col-lg-4" ng-repeat="store in homePageData.Stores">
-			<div class="thumbnail">
-		      <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
+  <div class="row" >
+    <div class="col-lg-4" ng-repeat="store in homePageData.Stores">
+      <div class="thumbnail">
+        <a ng-href="store/{{store.id}}">
+          <img src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
+        </a>
 		      <div class="caption">
-		        <h4>{{store.name}}</h4>
+		        <a ng-href="store/{{store.id}}">
+              <h4>{{store.name}}</h4>
+            </a>
 		        <p>{{store.description}}</p>
-		        <p><a href="store/{{store.slug}}" class="btn btn-primary">Visit Store &raquo;</a></p>
+		        <p>
+              <a ng-href="store/{{store.id}}" class="btn btn-primary">
+                Visit Store &raquo;
+              </a>
+            </p>
 		      </div>
-		    </div>
-        </div>
-
-
-      </div>
+		  </div>
+    </div>
+  </div>
 
 
 	
