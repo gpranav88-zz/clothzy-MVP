@@ -24,7 +24,7 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller:'reviewController'
 		})
 		.when ('/search/product/:location/:product',{
-			templateUrl:'productsearch.html',
+			templateUrl:'product-search.html',
 			controller:'searchController'
 		})
 		.when ('/search/store/:location/:product',{
@@ -150,15 +150,6 @@ app.factory('commonFactory',function(){
 			},
 
 			searchR:function($resource){
-
-				// return $resource('/api/search/location/:param1/price/:param2/size/:param3',
-
-				// 	{
-				// 		param1:'@param1',
-				// 		param2:'@param2',
-				// 		param3:'@param3'
-
-				// 	}
 
 				return $resource('/api/search/:category/:location/:product', {
 					category: '@category',
