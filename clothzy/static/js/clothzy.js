@@ -40,6 +40,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		.when ('/contact', {
 			templateUrl: 'contact.html'
 		})
+		.when ('/designers-brands', {
+			templateUrl: 'designers-brands.html'
+		});
 
 
    $locationProvider
@@ -90,6 +93,14 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 			});
 		}            
    ]);
+
+
+// app.controller('productStoreController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+// 			$scope.storeid = commonFactory.fetchID($routeParams);
+// 			// console.log($scope.storeid);
+// 			});
+// 		}            
+//    ]);
 
 app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
