@@ -1,4 +1,4 @@
-var app = angular.module('main',['ngResource','ngRoute']);
+var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
@@ -65,7 +65,10 @@ app.controller('dropdownController', ['$scope', function($scope) {
 		}
 	]);
 
-
+app.controller('tabController', ['$scope', function($scope) {
+  $scope.navType = 'pills';
+               }
+                      ]);
 
 app.controller('userController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 		   }            
