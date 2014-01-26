@@ -6,6 +6,7 @@ from rest_framework import generics
 from rest_framework.decorators import link
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import json
 
 class StoreViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -67,6 +68,19 @@ class HomeView(APIView):
 
         return Response(dict1)
 
+class ProductSearchView(APIView):
+
+    def get(self,request, format=None):
+        """
+        Return product search results.
+        """
+        dict1 = {}
+        dict1["Filters"]  = {"Price":[100,10000],"Location":["HauzKhas","ShahpurJat","MalviyaNagar"],"Size":["XL","M","L","S"],"Color":["Red","Orange","Green","Blue"],"Discount":[],"Occassion":["Party","Wedding","Dhinchak"]}
+        # print data
+        # dict1["Filters"] = data
+        print dict1["Filters"]
+        dict1["Products"] = {"id":16,"store":6,"name":"Black net dress","sku":"446","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Black","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-25T23:33:07.422","updated_on":"2014-01-25T23:33:07.422","num_images":"null","category":"Dress"},{"id":39,"store":8,"name":"Black net dress","sku":"446","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Black","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.596","updated_on":"2014-01-26T13:56:46.596","num_images":"null","category":"Dress"},{"id":41,"store":8,"name":"Black wool dress","sku":"60","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Black","material":"Wool","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.604","updated_on":"2014-01-26T13:56:46.604","num_images":"null","category":"Dress"},{"id":18,"store":6,"name":"Black wool dress","sku":"60","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Black","material":"Wool","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-25T23:33:07.427","updated_on":"2014-01-25T23:33:07.427","num_images":"null","category":"Dress"},{"id":10,"store":6,"name":"Blue net suit","sku":"76","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Blue","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-25T23:33:07.407","updated_on":"2014-01-25T23:33:07.407","num_images":"null","category":"Suit"},{"id":9,"store":6,"name":"Blue net suit","sku":"366","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Blue","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-25T23:33:07.404","updated_on":"2014-01-25T23:33:07.404","num_images":"null","category":"Suit"},{"id":32,"store":8,"name":"Blue net suit","sku":"366","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Blue","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.570","updated_on":"2014-01-26T13:56:46.570","num_images":"null","category":"Suit"},{"id":33,"store":8,"name":"Blue net suit","sku":"76","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Blue","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.573","updated_on":"2014-01-26T13:56:46.573","num_images":"null","category":"Suit"},{"id":21,"store":6,"name":"Green net saree","sku":"1","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Green","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-25T23:33:07.434","updated_on":"2014-01-25T23:33:07.434","num_images":"null","category":"Saree"},{"id":44,"store":8,"name":"Green net saree","sku":"1","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Green","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.613","updated_on":"2014-01-26T13:56:46.613","num_images":"null","category":"Saree"},{"id":34,"store":8,"name":"Green net suit","sku":"157","sex":"Female","price":"null","price_discounted":"null","brand":"Niharika Pandey","color":"Green","material":"Net","sizes":"","made_to_order":"false","active":"true","description":"","popularity":"","created_on":"2014-01-26T13:56:46.576","updated_on":"2014-01-26T13:56:46.576","num_images":"null","category":"Suit"}
+        return Response(dict1)
 # class ProductLatestView(generics.ListAPIView):
 #     queryset = Product.objects.all()
 #     serializer_class = ProductSerializer  # Create your views here.
