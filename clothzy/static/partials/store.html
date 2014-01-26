@@ -1,38 +1,47 @@
 
-	<div class="container pad-50" id="main" ng-model="storeData"><br>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-6">
-						<ol class="breadcrumb">
-				  			<li><a href="#">Delhi/NCR</a></li>
-				  			<li><a href="#">South Delhi</a></li>
-				  			<li><a href="#">Lajpat Nagar</a></li>
-				  			<li><a href="#">Store ABC</a></li>
-						</ol>
-					</div>
-					<div class="col-lg-6">
-						<ul class="nav nav-pills navbar-right">				
-							<li><a href="#">Product View</a></li>
-							<li class="active"><a href="#">Store View</a></li>
-            </ul>
-					</div>
-				</div>
-				<div class="row">	
-	        		<div class="col-lg-8">
-						<div class="row storebg-header">
-							<div class="store-header">{{storeData.name}}</div>
-						</div>
-   <tabset>
-    <tab heading="Info">
-  abc
-  </tab>
-  
-  <tab heading="Collection">Static content234234
-  
-  </tab>
-    </tabset>                
+<div class="container pad-50" id="main" ng-model="storeData"><br>
 
+	<div class="row">
+
+		<div class="col-lg-12">
+			<div class="row">
+				<div class="col-lg-6">
+					<ol class="breadcrumb">
+						<li><a href="#">Delhi/NCR</a></li>
+						<li><a href="#">South Delhi</a></li>
+						<li><a href="#">Lajpat Nagar</a></li>
+						<li><a href="#">Store ABC</a></li>
+					</ol>
+				</div>
+
+				<div class="col-lg-6">
+					<ul class="nav nav-pills navbar-right">				
+						<li><a href="#">Product View</a></li>
+						<li class="active"><a href="#">Store View</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row">	
+				<div class="col-lg-8">
+					<div class="row storebg-header">
+						<div class="store-header">{{storeData.name}}
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<tabset>
+							<tab heading="Info">
+								abc
+							</tab>
+
+							<tab heading="Collection">Static content234234
+
+							</tab>
+						</tabset>
+					</div>
+				</div>	                
             <!--    
 						<div class="row pad-20">	
 							<ul class="nav nav-tabs">
@@ -119,93 +128,91 @@
 			        		 
 			      		</div>
 			    	</div>
-	        	</div>	
-			    </div>
+			    </div>	
 			</div>
-				<div class="col-lg-4">
-					<div class="row">
-						<div class="col-lg-6 right-border">
-							<div class="row">
-								<div class="col-lg-2">
-									<i class="fa fa-phone small-icon"></i>
-								</div>
-								<div class="col-lg-10 sidecontent">
-									<p>{{storeData.phone1}}</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-2">
-									<i class="fa fa-location-arrow small-icon"></i>
-								</div>
-								<div class="col-lg-10 sidecontent">
-									<p>{{storeData.address}}</p>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-lg-2">
-									<i class="fa fa-clock-o small-icon"></i>
-								</div>
-								<div class="col-lg-10 sidecontent">
-									<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
-								</div>
-							</div>
-
-
-						</div>
-						
-						<div class="col-lg-6">
-							<div class="row">
-								<div class="col-lg-2">
-									<i class="fa fa-heart small-icon"></i>
-								</div>
-								<div class="col-lg-10 sidecontent">
-									<p>Add to Favourites</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-2">
-									<i class="fa fa-pencil-square-o small-icon"></i>
-								</div>
-								<div class="col-lg-10 sidecontent">
-									<p>Write a Review</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12">
-									<p>Share: 
-										<a href="#">
-											<i class="fa fa-facebook-square fa-2x fb-icon"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-twitter-square fa-2x tw-icon"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-pinterest-square fa-2x pi-icon"></i>
-										</a>
-									</p>
-								</div>
-							</div>
-						</div>
+		</div>
+	-->
+	<div class="col-lg-4">
+		<div class="row">
+			<div class="col-lg-6 right-border">
+				<div class="row">
+					<div class="col-lg-2">
+						<i class="fa fa-phone small-icon"></i>
+					</div>
+					<div class="col-lg-10 sidecontent">
+						<p>{{storeData.phone1}}</p>
+					</div>
 				</div>
-				<hr>
+				<div class="row">
+					<div class="col-lg-2">
+						<i class="fa fa-location-arrow small-icon"></i>
+					</div>
+					<div class="col-lg-10 sidecontent">
+						<p>{{storeData.address}}</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2">
+						<i class="fa fa-clock-o small-icon"></i>
+					</div>
+					<div class="col-lg-10 sidecontent">
+						<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-2">
+						<i class="fa fa-heart small-icon"></i>
+					</div>
+					<div class="col-lg-10 sidecontent">
+						<p>Add to Favourites</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<i class="fa fa-pencil-square-o small-icon"></i>
+					</div>
+					<div class="col-lg-10 sidecontent">
+						<p>Write a Review</p>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-lg-12">
-					<h3 class="body-head">About the store</h2>
-					<p>
-						{{storeData.description}}
+						<p>Share: 
+							<a href="#">
+								<i class="fa fa-facebook-square fa-2x fb-icon"></i>
+							</a>
+							<a href="#">
+								<i class="fa fa-twitter-square fa-2x tw-icon"></i>
+							</a>
+							<a href="#">
+								<i class="fa fa-pinterest-square fa-2x pi-icon"></i>
+							</a>
 						</p>
-
-						</div>
-
+					</div>
 				</div>
-				<hr>
-				<div class="row">
-			
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="body-head">About the store</h3>
+				<p>
+					{{storeData.description}}
+				</p>
 
+		</div>
+		<hr>
 
-					</div>
--->
-					</div>
-	        	</div>				
-			</div>	
+	</div>
+</div>				
+</div>	
+</div>
+</div>
+</div>
