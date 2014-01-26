@@ -31,6 +31,15 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			templateUrl:'storesearch.html',
 			controller:'searchController'
 		});
+		.when ('/about', {
+			templateUrl: 'about.html'
+		});
+		.when ('/privacy-policy', {
+			templateUrl: 'privacy-policy.html'
+		});
+		.when ('/contact', {
+			templateUrl: 'contact.html'
+		});
 
 
    $locationProvider
