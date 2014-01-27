@@ -13,7 +13,8 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		})
 		.when ('/product/:slug',{
 			templateUrl:'static/partials/product.html',
-			controller:'productController'
+			// controller:'productController'
+			controller: 'pstoreController'
 		})
 		.when ('/user/:slug',{
 			templateUrl:'user.html',
@@ -32,7 +33,7 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			controller:'searchController'
 		})
 		.when ('/about', {
-			templateUrl: 'about.html'
+			templateUrl: 'static/partials/about.html'
 		})
 		.when ('/privacy-policy', {
 			templateUrl: 'privacy-policy.html'
@@ -45,8 +46,8 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		});
 
 
-   $locationProvider
-      .html5Mode(true)
+   $locationProvider // look at docs
+      .html5Mode(true) // django handle html5 mode
       .hashPrefix('!');
 }]);
 
@@ -65,8 +66,35 @@ app.controller('homePageController',['$scope','$http','$resource','commonFactory
 
 app.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 			$scope.productData=commonFactory.productCRUD($resource).get({
-				'id':commonFactory.fetchID($routeParams)
+				'id':commonFactory.fetchID($routeParams),
 			});
+		}            
+   ]);
+
+app.controller('pstoreController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+			console.log("Entered the pstoreController");
+
+			// $scope.productData = commonFactory.productCRUD($resource).get(params, getStore);
+			// $scope.productData=commonFactory.productCRUD($resource).get({
+			// 	'id':commonFactory.fetchID($routeParams)
+			// 	}, function() {
+			var productParams = { id: commonFactory.fetchID($routeParams) };
+			$scope.productData = commonFactory.productCRUD($resource).get(productParams, getStore);
+
+			function getStore() {
+				var storeParams = { id: $scope.productData.store };
+    			$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams);
+}
+					// console.log($scope.productData['store']);
+					// $scope.storeData=commonFactory.storeCRUD($resource).get({
+					// 'id': storeid
+			
+			// var storeid = productData.store;
+			console.log();
+			console.log($scope.productData['store']);
+
+			// $scope.storeData=commonFactory.storeCRUD($resource).get({
+			// 	'id': storeid
 		}            
    ]);
 
@@ -95,12 +123,6 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
    ]);
 
 
-// app.controller('productStoreController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-// 			$scope.storeid = commonFactory.fetchID($routeParams);
-// 			// console.log($scope.storeid);
-// 			});
-// 		}            
-//    ]);
 
 app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 			$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
@@ -114,9 +136,20 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 // 		   }            
 //    ]);
 
+
+
 app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory', function($scope,$http,$resource,$routeParams,commonFactory){
-			$scope.searchPhrase = {product: null, location: null};
+			
+			$scope.myOptions = [{ display: "Products", id: 1 , name:'product'}, { display: "Stores", id: 2, name:'store' }];
+			$scope.selectedOption = $scope.myOptions[0];
+
+			$scope.searchPhrase = {product: null, location: null };
+			
+			
 			$scope.results = [];
+
+
+			// location: $scope.searchPhrase.location || null - good parts
 
 			$scope.search = function() {
 				if (!$scope.searchPhrase.product) {
@@ -127,14 +160,13 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 					// console.log("No location");
 					$scope.searchPhrase.location = null;
 				}
-				$scope.searchPhrase.category = $scope.selectedOption.name;
 
-				var searchParams = $scope.searchPhrase;
+				var searchParams = $scope.searchPhrase; //can get rid of
 
 				// commonFactory.searchR($resource).query();
 				$scope.searchResult = 
 				commonFactory.searchR($resource).get({
-					'category': searchParams.category,
+					'category': $scope.selectedOption.name,
 					'location': searchParams.location,
 					'product': searchParams.product,
 				});
@@ -142,7 +174,7 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
    };
    }]);
 
-app.factory('commonFactory',function(){
+app.factory('commonFactory',function(){ //can pass $resource over here as an argument to the factory function
 
 	return {
 
