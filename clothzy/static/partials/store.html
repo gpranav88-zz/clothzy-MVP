@@ -33,11 +33,19 @@
 					<div class="row">
 						<tabset>
 							<tab heading="Info">
-								abc
+								{{storeData.description}}
 							</tab>
 
 							<tab heading="Collection">Static content234234
 
+							</tab>
+							<tab heading="Map">
+								{{storeData.map}}
+							</tab>
+							<tab heading="Photos">
+								<div ng-repeat="photos in storeData.photos">
+									{{photos}}
+								</div>
 							</tab>
 						</tabset>
 					</div>
