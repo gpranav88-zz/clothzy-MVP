@@ -38,6 +38,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		.when ('/privacy-policy', {
 			templateUrl: 'static/partials/privacy-policy.html'
 		})
+		.when ('/product-search', {
+			templateUrl: 'static/partials/product-search.html'
+		})
 		.when ('/contact', {
 			templateUrl: 'static/partials/contact.html'
 		})
