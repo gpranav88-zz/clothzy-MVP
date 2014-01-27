@@ -36,13 +36,13 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 			templateUrl: 'static/partials/about.html'
 		})
 		.when ('/privacy-policy', {
-			templateUrl: 'privacy-policy.html'
+			templateUrl: 'static/partials/privacy-policy.html'
 		})
 		.when ('/contact', {
-			templateUrl: 'contact.html'
+			templateUrl: 'static/partials/contact.html'
 		})
 		.when ('/designers-brands', {
-			templateUrl: 'designers-brands.html'
+			templateUrl: 'static/partials/designers-brands.html'
 		});
 
 
