@@ -57,6 +57,18 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 
 // });
 
+app.filter("myFilter", function(){
+    return function(input, test){
+        var newArray = [];
+        for(var x = 1; x < input.length; x+=1){
+             newArray.push(input[x]);
+        }
+        console.log(newArray);
+        return newArray;
+    };
+});
+
+
 app.controller('homePageController',['$scope','$http','$resource','commonFactory',function($scope,$http,$resource,commonFactory){
 			$scope.homePageData=commonFactory.homeCRUD($resource).get();
 		   }            
@@ -80,6 +92,26 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 			// 	}, function() {
 			var productParams = { id: commonFactory.fetchID($routeParams) };
 			$scope.productData = commonFactory.productCRUD($resource).get(productParams, getStore);
+
+			$scope.discount = getDiscount();
+
+			if ($scope.productData.price == 'null' || $scope.productData.price === 0) {
+				$scope.productData.price = 'Price on Request';
+			}
+			if ($scope.productData.price_discounted == 'null' || $scope.productData.price === 0) {
+				$scope.productData.price_discounted = 'Price on Request';
+			}
+
+			function getDiscount() {
+				if (($scope.productData.price == 'null' || $scope.productData.price === 0) && $scope.productData.price_discounted == 'null' || $scope.productData.price === 0) {
+
+				return ((($scope.productData.price - $scope.productData.price_discounted) / $scope.productData.price)*100);
+				}
+				else {
+					return "0";
+				}
+			}
+
 
 			function getStore() {
 				var storeParams = { id: $scope.productData.store };
@@ -109,6 +141,12 @@ app.controller('tabController', ['$scope', function($scope) {
   $scope.navType = 'pills';
                }
                       ]);
+
+app.controller('priceController', ['$scope', function($scope) {
+	
+}
+
+]);
 
 app.controller('userController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 		   }            
