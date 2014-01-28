@@ -1,16 +1,49 @@
-import datetime
 from haystack import indexes
-from shop.models import Note
+from shop.models import *
+import datetime
+from django.db import models
+
+# class StoreIndex(indexes.SearchIndex, indexes.Indexable):
+#     text = indexes.CharField(document=True, use_template=True)
+#     created_on = indexes.DateTimeField(model_attr='created_on')
+
+#     def get_model(self):
+#         return Store
+
+#     def index_queryset(self, using=None):
+#         """Used when the entire index for model is updated."""
+#         return self.get_model().objects.filter(created_on__lte=datetime.datetime.now())
 
 
-class NoteIndex(indexes.SearchIndex, indexes.Indexable):
+class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    author = indexes.CharField(model_attr='user')
-    pub_date = indexes.DateTimeField(model_attr='pub_date')
+    id = indexes.IntegerField(model_attr='id')
+    storeid = indexes.IntegerField(model_attr='store__id')
+    name = indexes.CharField(model_attr='name')
+    store_name = indexes.CharField(model_attr='store__name')
+    created_on = indexes.DateTimeField(model_attr='created_on')
+    sex = indexes.CharField(model_attr='sex', faceted=True)
+    price = indexes.CharField(model_attr='price', faceted=True)
+    sizes = indexes.MultiValueField(faceted=True)
+    category = indexes.CharField(model_attr='category', faceted=True)
+    color = indexes.CharField(model_attr='color', faceted=True)
+    location = indexes.CharField(model_attr='store__locality',faceted=True)
+    
+    
+
+    def prepare_sizes(self, obj):
+        return [(size.name) for size in obj.sizes.all()]
+    
+    # def prepare(self, object):
+    #     self.prepared_data = super(ProductIndex, self).prepare(object)
+    #     # self.prepared_data['location'] = object.store.locality
+    #     self.prepared_data['store_name'] = object.store.name
+
+    #     return self.prepared_data
 
     def get_model(self):
-        return Note
+        return Product
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(pub_date__lte=datetime.datetime.now())
+        return self.get_model().objects.filter(created_on__lte=datetime.datetime.now())

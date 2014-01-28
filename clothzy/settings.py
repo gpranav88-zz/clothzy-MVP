@@ -82,6 +82,20 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+WHOOSH_INDEX = os.path.join(PROJECT_ROOT,'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+    # 'store_index': {
+    #     'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+    #     'PATH': WHOOSH_INDEX,
+    #     'EXCLUDED_INDEXES': ['shop.search_indexes.StoreIndex'],
+    # }
+}
 ROOT_URLCONF = 'clothzy.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -95,13 +109,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django_filters',
     'rest_framework',
-    # 'haystack',
+    'haystack',
+    'whoosh',
     'shop'
 )
 
