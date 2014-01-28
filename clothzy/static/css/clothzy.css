@@ -29,6 +29,15 @@ a.logo{
 	background-repeat:no-repeat;
 	box-shadow: 0px 4px 12px #aaaaaa;
 }
+.bg-headerabout{
+	
+	background-image: url('../img/aboutcover.jpg');
+	background-size:cover;
+	height:350px;
+	background-repeat:no-repeat;
+	box-shadow: 0px 4px 12px #aaaaaa;
+}
+
 .search-text{
 	font-family:'Open Sans';
 	margin-top:0px;
@@ -50,29 +59,6 @@ a.logo{
 	font-weight:300;
 }
 
-#main {
-  overflow:auto;
-  padding-bottom:80px; /* this needs to be bigger than footer height*/
-}
-
-#wrap {
-  min-height: 100%;
-}
-
-
-.footer {
-  position: relative;
-  margin-top: -50px; /* negative value of footer height */
-  height: 50px;
-  clear:both;
-  padding-top:15px;
-  padding-right:15px;
-	text-align:right;
-	background-color: #eeeeee;
-	background-image:url('../img/footer-bg.jpg');
-	box-shadow: 0px 4px 12px #aaaaaa;
-	border-top: 1px solid #dddddd;
-}
 
 .reviewer-pic{
 max-height:60px;
@@ -443,7 +429,8 @@ input[type=checkbox]:checked + .checklabel:before {
 }
 
 .price{
-font-family:'FuturaLT-Heavy';
+font-family:'Open Sans';
+font-weight:700;
 color:#666;
 }
 
@@ -553,4 +540,34 @@ display:none;
 .helpbtn{
 	font-size:16px;
   font-weight:400;
+}
+
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+
+
+
+#main {
+  overflow:auto;
+  padding-bottom:80px; /* this needs to be bigger than footer height*/
+}
+
+
+.footer {
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding-top:15px;
+  padding-right:15px;
+	text-align:right;
+	background-color: #eeeeee;
+	box-shadow: 0px 4px 12px #aaaaaa;
+	border-top: 1px solid #dddddd;
 }
