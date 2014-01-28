@@ -207,10 +207,18 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 
 app.controller('populateSearchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 			$scope.searchResults= fetchDummyResults($resource).get();
+			var totalItems = $scope.searchResults.count
+			var itemsPerPage = 28
 
 			function fetchDummyResults ($resource) {
 				return $resource('/api/search/products');
 			}
+
+			function calculatePages ($resource, totalItems) {
+				return numberOfPages = parseInt(totalItems / itemsPerPage);
+			}
+
+
 		}
    ]);
 
