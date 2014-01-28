@@ -1,3 +1,4 @@
+
 <!--MAIN CONTAINER-->
 
 	<div class="container pad-50">
@@ -5,142 +6,80 @@
 		<div class="col-lg-3">
 			<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 				<ul class="nav nav-stacked sidebar-text">
-			  		<li class="active"><a>Category</a>
-						<ul class="nav">
-							<li> <a class="sidebar-link"><i class="fa fa-chevron-down"></i>
-								Women</a>
-								
-								<ul class="nav">
-									<li>
-										<a class="sidebar-link"><i class="fa fa-chevron-down"></i> Ethnic Wear</a>
-										
-										<ul class="nav">
-											<li>
-												<a class="sidebar-link">Sarees</a>
-
-
-												</li>
-
-											</ul>
-
-										</li>
-
-									</ul>							
-								</li>
-							
-							</ul>
-					</li>
-			
-				<hr class="sidebar-divider">
-			  		<li class="active"><a>Price</a>
-				<div class="text-center">
-					<span class="slider-label">
-						<i class="fa fa-rupee"></i><em><small>0</small></em>
-						
-					</span>
-					<div class="inline1">
-					<div class="noUiSlider"></div>
-					</div>
-				 	<span class="slider-label">
-						<i class="fa fa-rupee"></i><em><small>20,000</small></em>
-					</span>
-				</div>
-				</li>
-				<hr class="sidebar-divider">
-			  		<li class="active sideheader"><a>Location</a>
-						<ul class="nav">
-							<li><div class="checkbox">
-
-    							    <input id="check1" type="checkbox" name="check" value="check1" checked="true">  
-  									<label for="check1" class="checklabel">South Delhi</label>  
-							</div></li>
-							<li><div class="checkbox"><input id="check2" type="checkbox" name="check" value="check2">  
-  									<label for="check2" class="checklabel">West Delhi</label>  </div></li>
-							<li><div class="checkbox"><input id="check3" type="checkbox" name="check" value="check3">  
-  									<label for="check3" class="checklabel">East Delhi</label>  </div></li>
-							<li><div class="checkbox"><input id="check4" type="checkbox" name="check" value="check4">  
-  									<label for="check4" class="checklabel">North Delhi</label>  </div></li>
-							<li><div class="checkbox"><input id="check5" type="checkbox" name="check" value="check5">  
-  									<label for="check5" class="checklabel">Central Delhi</label>  </div></li>
-						</ul>
-					</li>
-				<hr class="sidebar-divider">					
-			  		<li class="active"><a>Size</a>
-						<ul class="nav">
-							<li><div class="checkbox"><input id="check6" type="checkbox" name="check" value="check6">  
-  									<label for="check6" class="checklabel">Free Size</label>  </div></li>
-						</ul>
-					</li>
-				<hr class="sidebar-divider">					
-			  		<li class="active"><a>Colour</a>
-						<ul class="nav">
-							<li><div class="checkbox"><input id="check7" type="checkbox" name="check" value="check7">  
-  								<label for="check7" class="checklabel"><i class="fa fa-circle blue-colour"></i> Blue (42)</label></div></li>
-
-							<li><div class="checkbox"><input id="check8" type="checkbox" name="check" value="check8">  
-  								<label for="check8" class="checklabel"><i class="fa fa-circle red-colour"></i> Red (42)</label></div></li>
-
-							<li><div class="checkbox"><input id="check9" type="checkbox" name="check" value="check9">  
-  								<label for="check9" class="checklabel"><i class="fa fa-circle yellow-colour"></i> Yellow (42)</label></div></li>	
-
-							<li><div class="checkbox"><input id="check10" type="checkbox" name="check" value="check10">  
-  								<label for="check10" class="checklabel"><i class="fa fa-circle green-colour"></i> Green (42)</label></div></li>
-
-							<li><div class="checkbox"><input id="check11" type="checkbox" name="check" value="check11">  
-  								<label for="check11" class="checklabel"><i class="fa fa-circle black-colour"></i> Black (42)</label></div></li>
-							
-						
-						</ul>
-					</li>
-				<hr class="sidebar-divider">
-					<li class="active"><a>Saree Type</a>
+	
+					<li class="active"><a>Location</a>
 						
 						<ul class="nav">
-							<li><div class="checkbox"><input id="check12" type="checkbox" name="check" value="check12">  
-  									<label for="check12" class="checklabel">Cotton</label>  </div></li>
-							<li><div class="checkbox"><input id="check13" type="checkbox" name="check" value="check13">  
-  									<label for="check13" class="checklabel">Silk</label>  </div></li>
-							<li><div class="checkbox"><input id="check14" type="checkbox" name="check" value="check14">  
-  									<label for="check14" class="checklabel">Chiffon</label>  </div></li>
-							<li><div class="checkbox"><input id="check15" type="checkbox" name="check" value="check15">  
-  									<label for="check15" class="checklabel">Printed</label>  </div></li>  									  									  									
+							<li ng-repeat="filterout in searchResults.Filters.Location">
+								<div class="checkbox" ng-model="location">
+									<input id="{{location}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel">
+										{{filterout}}
+									</label>
+								</div>
+							</li>  
 						</ul>
 												
-					</li>					
+					</li>
+					<hr class="sidebar-divider">
+			  		<li class="active sideheader" ng-controller="DemoController"><a>Price</a>
+						<ul class="nav"><div style="padding: 0 15px">
+											<div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div>
+						</ul>
+					</li>
+					<hr class="sidebar-divider">					
+					<li class="active"><a> Color </a>
+						
+						<ul class="nav">
+							<li ng-repeat="filterout in searchResults.Filters.Color">
+								<div class="checkbox">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel">
+										{{filterout}}
+									</label>
+								</div>
+							</li>  
+						</ul>			
+				<hr class="sidebar-divider">					
+					<li class="active"><a> Size </a>
+						
+						<ul class="nav">
+							<li ng-repeat="filterout in searchResults.Filters.Size">
+								<div class="checkbox">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel">
+										{{filterout}}
+									</label>
+								</div>
+							</li>  
+						</ul>			
 				<hr class="sidebar-divider">					
 					<li class="active"><a>Discount</a>
 						
 						<ul class="nav">
-
-							<li><div class="checkbox"><input id="check16" type="checkbox" name="check" value="check16">  
-  									<label for="check16" class="checklabel">No Discount</label>  </div></li>  
-							<li><div class="checkbox"><input id="check17" type="checkbox" name="check" value="check17">  
-  									<label for="check17" class="checklabel">&lt;25%</label>  </div></li>  
-							<li><div class="checkbox"><input id="check18" type="checkbox" name="check" value="check18">  
-  									<label for="check18" class="checklabel">25-50%</label>  </div></li>  
-							<li><div class="checkbox"><input id="check19" type="checkbox" name="check" value="check19">  
-  									<label for="check19" class="checklabel">&gt;50%</label>  </div></li>  
-
+							<li ng-repeat="filterout in searchResults.Filters.Discount">
+								<div class="checkbox" ng-model="{{filterout}}">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel">
+										{{filterout}}
+									</label>
+								</div>
+							</li>  
 						</ul>
 												
 					</li>
-				<hr class="sidebar-divider">					
-					<li class="active"><a>Occasion</a>
+					<hr class="sidebar-divider">					
+					<li class="active"><a> Occasion </a>
 						
 						<ul class="nav">
-
-							<li><div class="checkbox"><input id="check20" type="checkbox" name="check" value="check20">  
-  									<label for="check20" class="checklabel">Formal</label>  </div></li>  
-
-							<li><div class="checkbox"><input id="check21" type="checkbox" name="check" value="check21">  
-  									<label for="check21" class="checklabel">Partywear</label>  </div></li>  
-
-							<li><div class="checkbox"><input id="check22" type="checkbox" name="check" value="check22">  
-  									<label for="check22" class="checklabel">Wedding</label>  </div></li>  
-
-							<li><div class="checkbox"><input id="check23" type="checkbox" name="check" value="check23">  
-  									<label for="check23" class="checklabel">Casual</label>  </div></li>  
-
+							<li ng-repeat="filterout in searchResults.Filters.Occassion">
+								<div class="checkbox">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel">
+										{{filterout}}
+									</label>
+								</div>
+							</li>  
 						</ul>
 						
 						
@@ -322,7 +261,19 @@
 		    </div><!-- /.modal-dialog -->
 		  </div><!-- /.modal -->
 		
-			<div class="row">	
+			<div class="row" >
+				<div class="col-lg-3" ng-repeat="product in searchResults.Products">
+					<div class="thumbnail thumb">
+			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
+			      			<a href="ProductHome-test.html"><img ng-src="/static/Store_{{product.store}}/Product_{{product.id}}/1-1.jpeg" alt="..."></a>
+			      		<div class="caption">
+			        		<p class="product-name"> {{product.name}} </p>
+							<p class="store-name">{{product.store}}</p>
+			        		<p class="price"><i class="fa fa-rupee"></i> {{product.price}}</p>
+
+			      		</div>
+			    	</div>
+	        	</div>
 	        	<div class="col-lg-3">
 					<div class="thumbnail thumb">
 			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
@@ -688,3 +639,4 @@
 	    </div> <!-- /span -->
 	  </div> <!-- /row -->
 	</div> <!-- /container -->
+

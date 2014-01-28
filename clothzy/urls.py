@@ -29,6 +29,6 @@ urlpatterns = patterns('',
          {'document_root': settings.MEDIA_ROOT}),
     #index
 
-    url('^store|product|review|contact|privacy-policy|designers-brands|about|user\/.*', 'clothzy.views.home', name="home")
+    url('^store|product|search|review|contact|privacy-policy|designers-brands|about|user\/.*', 'clothzy.views.home', name="home")
 
 )
