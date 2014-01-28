@@ -1,4 +1,4 @@
-from shop.models import Store, Product, Review
+from shop.models import *
 from rest_framework import viewsets
 from shop.serializers import StoreSerializer, ProductSerializer, ReviewSerializer
 from rest_framework import filters

@@ -1,4 +1,4 @@
-from shop.models import Store, Product, Review
+from shop.models import *
 from rest_framework import serializers
 
 
@@ -8,6 +8,7 @@ class StoreSerializer(serializers.ModelSerializer):
         # fields = ('name', 'location', 'phone')
 
 class ProductSerializer(serializers.ModelSerializer):
+    sizes = serializers.RelatedField(many=True)
     class Meta:
         model = Product
 
