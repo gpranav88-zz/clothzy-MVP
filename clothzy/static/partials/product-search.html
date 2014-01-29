@@ -1,46 +1,46 @@
 
 <!--MAIN CONTAINER-->
 
-	<div class="container pad-50">
-		
-		<div class="col-lg-3">
-			<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
-				<ul class="nav nav-stacked sidebar-text">
-	
-					<li class="active"><a>Location</a>
-						
-						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.Filters.Location">
-								<div class="checkbox" ng-model="location">
-									<input id="{{location}}" type="checkbox" name="check" value="{{filterout}}">
-									<label for="{{filterout}}" class="checklabel">
-										{{filterout}}
-									</label>
-								</div>
-							</li>  
-						</ul>
-												
-					</li>
-					<hr class="sidebar-divider">
-			  		<li class="active sideheader" ng-controller="DemoController"><a>Price</a>
-						<ul class="nav"><div style="padding: 0 15px">
-											<div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div>
-						</ul>
-					</li>
-					<hr class="sidebar-divider">					
-					<li class="active"><a> Color </a>
-						
-						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.Filters.Color">
-								<div class="checkbox">
-									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
-									<label for="{{filterout}}" class="checklabel">
-										{{filterout}}
-									</label>
-								</div>
-							</li>  
-						</ul>			
+<div class="container pad-50">
+
+	<div class="col-lg-3">
+		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
+			<ul class="nav nav-stacked sidebar-text">
+
+				<li class="active"><a>Location</a>
+
+					<ul class="nav">
+						<li ng-repeat="filterout in searchResults.Filters.Location">
+							<div class="checkbox" ng-model="location">
+								<input id="{{location}}" type="checkbox" name="check" value="{{filterout}}">
+								<label for="{{filterout}}" class="checklabel">
+									{{filterout}}
+								</label>
+							</div>
+						</li>  
+					</ul>
+
+				</li>
+				<hr class="sidebar-divider">
+				<li class="active sideheader" ng-controller="DemoController"><a>Price</a>
+					<ul class="nav"><div style="padding: 0 15px">
+						<div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div>
+					</ul>
+				</li>
 				<hr class="sidebar-divider">					
+				<li class="active"><a> Color </a>
+
+					<ul class="nav">
+						<li ng-repeat="filterout in searchResults.Filters.Color">
+							<div class="checkbox">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+								<label for="{{filterout}}" class="checklabel">
+									{{filterout}}
+								</label>
+							</div>
+						</li>  
+					</ul>			
+					<hr class="sidebar-divider">					
 					<li class="active"><a> Size </a>
 						
 						<ul class="nav">
@@ -53,590 +53,291 @@
 								</div>
 							</li>  
 						</ul>			
-				<hr class="sidebar-divider">					
-					<li class="active"><a>Discount</a>
-						
-						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.Filters.Discount">
-								<div class="checkbox" ng-model="{{filterout}}">
-									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
-									<label for="{{filterout}}" class="checklabel">
-										{{filterout}}
-									</label>
-								</div>
-							</li>  
-						</ul>
-												
-					</li>
-					<hr class="sidebar-divider">					
-					<li class="active"><a> Occasion </a>
-						
-						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.Filters.Occassion">
-								<div class="checkbox">
-									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
-									<label for="{{filterout}}" class="checklabel">
-										{{filterout}}
-									</label>
-								</div>
-							</li>  
-						</ul>
-						
-						
-					</li>
+						<hr class="sidebar-divider">					
+						<li class="active"><a>Discount</a>
 
-				</ul>
-	    	</div> <!-- /sidebar -->
-	
-	
-		</div>
-		<div class="col-lg-9">
-			<div class="row"><br>
-				<div class="col-lg-6">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li><a href="#">Women</a></li>
-				  <li><a href="#">Ethnic Wear</a></li>
-				  <li><a href="#">Sarees</a></li>
-				</ol>
-				</div>
-					<div class="col-lg-6">
-					<ul class="nav nav-pills navbar-right">
-		
-						<li class="active"><a href="#">Product View</a></li>
-	
-						<li><a href="StoreSearch-test.html">Store View</a></li>
+							<ul class="nav">
+								<li ng-repeat="filterout in searchResults.Filters.Discount">
+									<div class="checkbox" ng-model="{{filterout}}">
+										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+										<label for="{{filterout}}" class="checklabel">
+											{{filterout}}
+										</label>
+									</div>
+								</li>  
+							</ul>
+
+						</li>
+						<hr class="sidebar-divider">					
+						<li class="active"><a> Occasion </a>
+
+							<ul class="nav">
+								<li ng-repeat="filterout in searchResults.Filters.Occassion">
+									<div class="checkbox">
+										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+										<label for="{{filterout}}" class="checklabel">
+											{{filterout}}
+										</label>
+									</div>
+								</li>  
+							</ul>
+
+
+						</li>
+
 					</ul>
-					</div>
+				</div> <!-- /sidebar -->
+
+
 			</div>
-			<div class="row">
-				<div class="col-lg-8">
-				<p><em>Displaying 500 results for "Sarees in South Delhi"</em></p>
+			<div class="col-lg-9">
+				<div class="row"><br>
+					<div class="col-lg-6">
+						<ol class="breadcrumb">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Women</a></li>
+							<li><a href="#">Ethnic Wear</a></li>
+							<li><a href="#">Sarees</a></li>
+						</ol>
+					</div>
+					<div class="col-lg-6">
+						<ul class="nav nav-pills navbar-right">
+
+							<li class="active"><a href="#">Product View</a></li>
+
+							<li><a href="StoreSearch-test.html">Store View</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="row">
-						<div class="col-lg-4 col-lg-offset-3"> <p class="sortby">Sort by:</p> </div>
-						<div class="col-lg-5">
-							<div class="btn-group">
-					  			<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
-					    			Relevance  &nbsp;<span class="caret"></span>
-					  			</button>
-					  			<ul class="dropdown-menu" role="menu">
-					    			<li><a href="#">Relevance</a></li>
-					    			<li><a href="#">Price (High to Low)</a></li>
-					    			<li><a href="#">Price (Low to High)</a></li>
-					    			<li><a href="#">Name (A-Z)</a></li>
-					    			<li><a href="#">Name (Z-A)</a></li>
-					  			</ul>
+				<div class="row">
+					<div class="col-lg-8">
+						<p><em>Displaying 500 results for "Sarees in South Delhi"</em></p>
+					</div>
+					<div class="col-lg-4">
+						<div class="row">
+							<div class="col-lg-4 col-lg-offset-3"> <p class="sortby">Sort by:</p> </div>
+							<div class="col-lg-5">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+										Relevance  &nbsp;<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Relevance</a></li>
+										<li><a href="#">Price (High to Low)</a></li>
+										<li><a href="#">Price (Low to High)</a></li>
+										<li><a href="#">Name (A-Z)</a></li>
+										<li><a href="#">Name (Z-A)</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<br>
+				<br>
 			<!-- Button trigger modal -\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 			
-			 Modal -->
+			Modal -->
 			
 
 			
 			
-		  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		      <div class="modal-content">
-		        <div class="modal-header">	
-		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title body-head" style="display:inline">Supernet Cotton Saree </h4>
-						
-						<div class="subtext">Rating: 
-							<span class="gold">
-							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-							</span> 2 Ratings | 
-						<a href="#">1 Review</a>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">	
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title body-head" style="display:inline">Supernet Cotton Saree </h4>
+
+							<div class="subtext">Rating: 
+								<span class="gold">
+									<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
+								</span> 2 Ratings | 
+								<a href="#">1 Review</a>
+							</div>
 						</div>
-		        </div>
-		        <div class="modal-body">
-					<div class="container">
-		         	 	<div class="row">
-			
-							<!--Image-->
-							<div class="col-lg-7">
-							
-								      <img class="img-enlarged" src="img/featured-product-2.jpg" alt="...">
-								   
-							
-						        </div>
-						
-						
-							<!--RHS content of modal-->
-							<div class="col-lg-5">
-									
-									<div class="row modalcontent">
-										<div class="col-lg-4">
-											Price: 
-											
-											</div>
-										<div class="col-lg-8">
-								<p>		<i class="fa fa-rupee"></i> 5,000 (0% Discount)</p>
-											
-											</div>
-										</div>
-								
-									
-									<div class="row modalcontent">
-										<div class="col-lg-4">
-											Colour: 
-											
-											</div>
-										<div class="col-lg-8">
-								<p>	<i class="fa fa-circle purple-colour"></i>	Purple </p>
-											
-											</div>
-										</div>
-							
+						<div class="modal-body">
+							<div class="container">
+								<div class="row">
+
+									<!--Image-->
+									<div class="col-lg-7">
+
+										<img class="img-enlarged" src="img/featured-product-2.jpg" alt="...">
+
+
+									</div>
+
+
+									<!--RHS content of modal-->
+									<div class="col-lg-5">
+
 										<div class="row modalcontent">
 											<div class="col-lg-4">
-											Size: 
+												Price: 
 
-												</div>
+											</div>
 											<div class="col-lg-8">
-								<p>			Free Size</p>
+												<p>		<i class="fa fa-rupee"></i> 5,000 (0% Discount)</p>
 
-												</div>
 											</div>
-									
-											<div class="row modalcontent">
-												<div class="col-lg-4">
-											Material
+										</div>
 
-													</div>
-												<div class="col-lg-8">
-											<p> Silk</p>
 
-													</div>
-												</div>
-								
-												<div class="row modalcontent">
-													<div class="col-lg-8 col-lg-offset-2">
-														<div class="alert alert-success"><p class="text-center">In Stock!</p></div>
-														</div>
-													</div>																																	
-									<hr>
-											<div class="row modalcontent">
-												<div class="col-lg-12"><h4>XYZ Store</h4></div>
-												<div class="col-lg-2">
-													<i class="fa fa-phone fa-lg icon"></i>
-												</div>
-												<div class="col-lg-10">
-													<p>011-25930253</p>
-												</div>
+										<div class="row modalcontent">
+											<div class="col-lg-4">
+												Colour: 
+
 											</div>
-											<div class="row modalcontent">
-												<div class="col-lg-2">
+											<div class="col-lg-8">
+												<p>	<i class="fa fa-circle purple-colour"></i>	Purple </p>
+
+											</div>
+										</div>
+
+										<div class="row modalcontent">
+											<div class="col-lg-4">
+												Size: 
+
+											</div>
+											<div class="col-lg-8">
+												<p>			Free Size</p>
+
+											</div>
+										</div>
+
+										<div class="row modalcontent">
+											<div class="col-lg-4">
+												Material
+
+											</div>
+											<div class="col-lg-8">
+												<p> Silk</p>
+
+											</div>
+										</div>
+
+										<div class="row modalcontent">
+											<div class="col-lg-8 col-lg-offset-2">
+												<div class="alert alert-success"><p class="text-center">In Stock!</p></div>
+											</div>
+										</div>																																	
+										<hr>
+										<div class="row modalcontent">
+											<div class="col-lg-12"><h4>XYZ Store</h4></div>
+											<div class="col-lg-2">
+												<i class="fa fa-phone fa-lg icon"></i>
+											</div>
+											<div class="col-lg-10">
+												<p>011-25930253</p>
+											</div>
+										</div>
+										<div class="row modalcontent">
+											<div class="col-lg-2">
 												<i class="fa fa-location-arrow fa-lg icon"></i>
-												</div>
-												<div class="col-lg-10">
-													<p>23, Abc Road, New Delhi - 110033</p>
-												</div>
 											</div>
+											<div class="col-lg-10">
+												<p>23, Abc Road, New Delhi - 110033</p>
+											</div>
+										</div>
 
-											<div class="row modalcontent">
-												<div class="col-lg-2">
-													<i class="fa fa-clock-o fa-lg icon"></i>
-												</div>
-												<div class="col-lg-10">
-													<p>10AM - 10PM</p>
-												</div></div><br>
+										<div class="row modalcontent">
+											<div class="col-lg-2">
+												<i class="fa fa-clock-o fa-lg icon"></i>
+											</div>
+											<div class="col-lg-10">
+												<p>10AM - 10PM</p>
+											</div></div><br>
 											<button class="btn btn-default" onClick="window.location.href='ProductHome-test.html'">See More Details &raquo;</button>
 											<button class="btn btn-default" onClick="window.location.href='StoreHome-test.html'">Visit Store &raquo;</button>
 											<br>
 
+										</div>
+
+									</div>
 								</div>
-						
+							</div>
+
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+
+				<div class="row">
+					<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
+					<div class="col-lg-3">
+						<div class="thumbnail thumb">
+							<p> {{ searchResults.Products[0].store }} </p>
+							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[0].store}}/Product_{{searchResults.Products[0].id}}/1-1.jpeg" alt="..."></a>
+							<div class="caption">
+								<p class="product-name"> {{searchResults.Products[0].name}} </p>
+								<p class="store-name">{{searchResults.Products[0].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[0].price}}</p>
+
 							</div>
 						</div>
-		        </div>
-		      
-		      </div><!-- /.modal-content -->
-		    </div><!-- /.modal-dialog -->
-		  </div><!-- /.modal -->
-		
-			<div class="row" >
-				<div class="col-lg-3" ng-repeat="product in searchResults.Products">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img ng-src="/static/Store_{{product.store}}/Product_{{product.id}}/1-1.jpeg" alt="..."></a>
-			      		<div class="caption">
-			        		<p class="product-name"> {{product.name}} </p>
-							<p class="store-name">{{product.store}}</p>
-			        		<p class="price"><i class="fa fa-rupee"></i> {{product.price}}</p>
+					</div>
 
-			      		</div>
-			    	</div>
-	        	</div>
-	        	<div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-1.jpg" alt="..."></a>
-			      		<div class="caption">
-			        		<p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-			        		<p class="price"><i class="fa fa-rupee"></i> 5,000</p>
+					<div class="col-lg-3">
+						<div class="thumbnail thumb">
+							<p> {{ searchResults.Products[1].store }} </p>
+							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[0].store}}/Product_{{searchResults.Products[0].id}}/1-1.jpeg" alt="..."></a>
+							<div class="caption">
+								<p class="product-name"> {{searchResults.Products[1].name}} </p>
+								<p class="store-name">{{searchResults.Products[1].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[1].price}}</p>
 
-			      		</div>
-			    	</div>
-	        	</div>
-	
-	        	<div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-2.jpg" alt="..."></a>
-			      		<div class="caption">
-			        		<p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-			        		<p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-			        		 
-			      		</div>
-			    	</div>
-	        	</div>
-	
-	        	<div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-1.jpg" alt="..."></a>
-			      		<div class="caption">
-			        		<p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-			        		<p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-			        		 
-			      		</div>
-			    	</div>
-	        	</div>
+							</div>
+						</div>
+					</div>
 
-	        	<div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-2.jpg" alt="..."></a>
-			      		<div class="caption">
-			        		<p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-			        		<p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-			        		 
-			      		</div>
-			    	</div>
-	        	</div>	
+					<div class="col-lg-3">
+						<div class="thumbnail thumb">
+							<p> {{ searchResults.Products[2].store }} </p>
+							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[2].store}}/Product_{{searchResults.Products[2].id}}/1-1.jpeg" alt="..."></a>
+							<div class="caption">
+								<p class="product-name"> {{searchResults.Products[2].name}} </p>
+								<p class="store-name">{{searchResults.Products[2].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[2].price}}</p>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3">
+						<div class="thumbnail thumb">
+							<p> {{ searchResults.Products[3].store }} </p>
+							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[3].store}}/Product_{{searchResults.Products[3].id}}/1-1.jpeg" alt="..."></a>
+							<div class="caption">
+								<p class="product-name"> {{searchResults.Products[3].name}} </p>
+								<p class="store-name">{{searchResults.Products[3].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[4].price}}</p>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<br>
+				
+
 			</div>
-			<br>
-			<div class="row">	
-				
-		        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-1.jpg" alt="..."></a>
-				      <div class="caption">
-				        <p class="product-name">Supernet Cotton Saree</p>
-						<p class="store-name">Store XYZ, Hauz Khas Village</p>
-				        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-				         
-				      </div>
-				    </div>
-		        </div>
-		
-		        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-2.jpg" alt="..."></a>
-				      <div class="caption">
-				        <p class="product-name">Supernet Cotton Saree</p>
-						<p class="store-name">Store XYZ, Hauz Khas Village</p>
-				        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-				         
-				      </div>
-				    </div>
-		        </div>
-		
-		        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-1.jpg" alt="..."></a>
-				      <div class="caption">
-				        <p class="product-name">Supernet Cotton Saree</p>
-						<p class="store-name">Store XYZ, Hauz Khas Village</p>
-				        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-				         
-				      </div>
-				    </div>
-		        </div>
-		
-		        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-2.jpg" alt="..."></a>
-				      <div class="caption">
-				        <p class="product-name">Supernet Cotton Saree</p>
-						<p class="store-name">Store XYZ, Hauz Khas Village</p>
-				        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-				         
-				      </div>
-				    </div>
-		        </div>
-			</div>
-			<br>
-					<div class="row">	
-			        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-					<div class="thumbnail thumb">
-			      			<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>	
-			      			<a href="ProductHome-test.html"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-				
-					</div>	
-					<br>
-					<div class="row">	
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-				
-					</div>
-					<br>
-					<div class="row">	
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-				
-					</div>
-					<br>
-					<div class="row">	
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-				
-					</div>
-					<br>
-					<div class="row">	
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-1.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-			        <div class="col-lg-3">
-						<div class="thumbnail">
-					      <a data-toggle="modal" href="#myModal"><img src="img/featured-product-2.jpg" alt="..."></a>
-					      <div class="caption">
-					        <p class="product-name">Supernet Cotton Saree</p>
-							<p class="store-name">Store XYZ, Hauz Khas Village</p>
-					        <p class="price"><i class="fa fa-rupee"></i> 5,000</p>
-					         
-					      </div>
-					    </div>
-			        </div>
-				
-					</div>
-																									
-					
-					
-						<ul class="pagination pull-right pagination-sm">
-						  <li><a href="#">&laquo;</a></li>
-						  <li class="active"><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
-						  <li><a href="#">3</a></li>
-						  <li><a href="#">4</a></li>
-						  <li><a href="#">5</a></li>
-						  <li><a href="#">&raquo;</a></li>
-						</ul>			
+
+
+
+			<ul class="pagination pull-right pagination-sm">
+				<li><a href="#">&laquo;</a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">&raquo;</a></li>
+			</ul>			
 			
-	    </div> <!-- /span -->
-	  </div> <!-- /row -->
-	</div> <!-- /container -->
+		</div> <!-- /span -->
+	</div> <!-- /row -->
+</div> <!-- /container -->
 
