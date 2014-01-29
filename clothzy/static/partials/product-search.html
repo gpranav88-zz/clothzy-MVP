@@ -10,8 +10,8 @@
 
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.Filters.Location">
-							<div class="checkbox" ng-model="location">
-								<input id="{{location}}" type="checkbox" name="check" value="{{filterout}}">
+							<div class="checkbox">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout}}
 								</label>
