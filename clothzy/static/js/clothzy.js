@@ -221,13 +221,15 @@ app.controller('populateSearchController',['$scope','$http','$resource','$routeP
 	$scope.productRow6 = _.range(20, 24);
 	$scope.productRow7 = _.range(24, 28);
 
-
-	// $scope.range = function(min, max, step){
-	// 	step = (step === undefined) ? 1 : step;
-	// 	var input = [];
-	// 	for (var i=min; i<=max; i++step) input.push(i);
-	// 		return input;
-	// };
+	// $scope.demo2 = {
+	// 	range: {
+	// 		min: $scope.searchResults.Filters.Price.min,
+	// 		max: $scope.searchResults.Filters.Price.max
+	// 	},
+	// 	minPrice: 0,
+	// 	maxPrice: 20000
+	// }
+	
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
