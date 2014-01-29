@@ -236,7 +236,7 @@ app.controller('populateSearchController',['$scope','$http','$resource','$routeP
 	}
 
 	function calculatePages ($resource, totalItems) {
-		return numberOfPages = parseInt(totalItems / itemsPerPage);
+		return Math.floor(totalItems / itemsPerPage);
 	}
 
 
