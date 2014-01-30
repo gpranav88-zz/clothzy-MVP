@@ -213,6 +213,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
+	$scope.displayQuery = $location.search();
 
 	
 	// #TODO: Dirty code, clean. Change to a dict or another loop or something
