@@ -23,7 +23,9 @@ class StoreViewSet(viewsets.ReadOnlyModelViewSet):
     def products(self, request, pk=None):
         products =  Product.objects.filter(store = self.get_object())
         serializer = ProductSerializer(products)
-        return Response(serializer.data)
+        # dict1 = {}
+        # dict1['Products'] = serializer.data
+        return Response({"Products":serializer.data})
 
     @link()
     def reviews(self, request, pk=None):

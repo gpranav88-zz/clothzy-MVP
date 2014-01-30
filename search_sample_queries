@@ -26,3 +26,4 @@ def store_queryset_gen(search_qs):
         yield item.object  # This is the line that gets the model instance out of the Search object
 
 qs = queryset_gen(sqs)
+

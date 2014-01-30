@@ -28,8 +28,6 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     category = indexes.CharField(model_attr='category', faceted=True)
     color = indexes.CharField(model_attr='color', faceted=True)
     location = indexes.CharField(model_attr='store__locality',faceted=True)
-    
-    
 
     def prepare_sizes(self, obj):
         return [(size.name) for size in obj.sizes.all()]
