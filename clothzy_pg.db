@@ -1,0 +1,2637 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_group (
+    id integer NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE public.auth_group OWNER TO user123;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_id_seq OWNER TO user123;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_group_permissions OWNER TO user123;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_permissions_id_seq OWNER TO user123;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_permission (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.auth_permission OWNER TO user123;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_permission_id_seq OWNER TO user123;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
+
+
+--
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone NOT NULL,
+    is_superuser boolean NOT NULL,
+    username character varying(30) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(75) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.auth_user OWNER TO user123;
+
+--
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_user_groups (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_groups OWNER TO user123;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_groups_id_seq OWNER TO user123;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_id_seq OWNER TO user123;
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
+
+
+--
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE auth_user_user_permissions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_user_user_permissions OWNER TO user123;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE auth_user_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_user_user_permissions_id_seq OWNER TO user123;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permissions.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    user_id integer NOT NULL,
+    content_type_id integer,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE public.django_admin_log OWNER TO user123;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_admin_log_id_seq OWNER TO user123;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE django_content_type (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.django_content_type OWNER TO user123;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_content_type_id_seq OWNER TO user123;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_session OWNER TO user123;
+
+--
+-- Name: django_site; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE django_site (
+    id integer NOT NULL,
+    domain character varying(100) NOT NULL,
+    name character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.django_site OWNER TO user123;
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE django_site_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_site_id_seq OWNER TO user123;
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE django_site_id_seq OWNED BY django_site.id;
+
+
+--
+-- Name: shop_product; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_product (
+    id integer NOT NULL,
+    store_id integer NOT NULL,
+    name character varying(200) NOT NULL,
+    sku character varying(100) NOT NULL,
+    sex character varying(20) NOT NULL,
+    price double precision,
+    price_discounted double precision,
+    brand character varying(50) NOT NULL,
+    color character varying(50) NOT NULL,
+    material character varying(100) NOT NULL,
+    made_to_order boolean NOT NULL,
+    active boolean NOT NULL,
+    description character varying(2000) NOT NULL,
+    popularity character varying(20) NOT NULL,
+    created_on timestamp with time zone NOT NULL,
+    updated_on timestamp with time zone NOT NULL,
+    num_images integer,
+    category character varying(50) NOT NULL,
+    sub_category character varying(50) NOT NULL,
+    status character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.shop_product OWNER TO user123;
+
+--
+-- Name: shop_product_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_product_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_product_id_seq OWNER TO user123;
+
+--
+-- Name: shop_product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_product_id_seq OWNED BY shop_product.id;
+
+
+--
+-- Name: shop_product_sizes; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_product_sizes (
+    id integer NOT NULL,
+    product_id integer NOT NULL,
+    size_id integer NOT NULL
+);
+
+
+ALTER TABLE public.shop_product_sizes OWNER TO user123;
+
+--
+-- Name: shop_product_sizes_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_product_sizes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_product_sizes_id_seq OWNER TO user123;
+
+--
+-- Name: shop_product_sizes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_product_sizes_id_seq OWNED BY shop_product_sizes.id;
+
+
+--
+-- Name: shop_productimage; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_productimage (
+    id integer NOT NULL,
+    "productID_id" integer NOT NULL,
+    url character varying(200) NOT NULL,
+    alt character varying(20) NOT NULL,
+    flag_home boolean NOT NULL
+);
+
+
+ALTER TABLE public.shop_productimage OWNER TO user123;
+
+--
+-- Name: shop_productimage_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_productimage_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_productimage_id_seq OWNER TO user123;
+
+--
+-- Name: shop_productimage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_productimage_id_seq OWNED BY shop_productimage.id;
+
+
+--
+-- Name: shop_review; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_review (
+    id integer NOT NULL,
+    "reviewerID_id" integer NOT NULL,
+    store_id integer NOT NULL,
+    product_id integer NOT NULL,
+    description character varying(200) NOT NULL,
+    created_on timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.shop_review OWNER TO user123;
+
+--
+-- Name: shop_review_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_review_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_review_id_seq OWNER TO user123;
+
+--
+-- Name: shop_review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_review_id_seq OWNED BY shop_review.id;
+
+
+--
+-- Name: shop_reviewer; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_reviewer (
+    id integer NOT NULL,
+    name character varying(200) NOT NULL,
+    sex character varying(20) NOT NULL,
+    popularity character varying(20) NOT NULL,
+    date_joined date NOT NULL,
+    num_reviews integer NOT NULL,
+    upvotes integer NOT NULL,
+    downvotes integer NOT NULL
+);
+
+
+ALTER TABLE public.shop_reviewer OWNER TO user123;
+
+--
+-- Name: shop_reviewer_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_reviewer_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_reviewer_id_seq OWNER TO user123;
+
+--
+-- Name: shop_reviewer_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_reviewer_id_seq OWNED BY shop_reviewer.id;
+
+
+--
+-- Name: shop_size; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_size (
+    id integer NOT NULL,
+    name character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.shop_size OWNER TO user123;
+
+--
+-- Name: shop_size_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_size_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_size_id_seq OWNER TO user123;
+
+--
+-- Name: shop_size_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_size_id_seq OWNED BY shop_size.id;
+
+
+--
+-- Name: shop_store; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_store (
+    id integer NOT NULL,
+    name character varying(200) NOT NULL,
+    description character varying(2000) NOT NULL,
+    address character varying(2000) NOT NULL,
+    phone1 character varying(20) NOT NULL,
+    phone2 character varying(20) NOT NULL,
+    website character varying(100) NOT NULL,
+    fb_link character varying(100) NOT NULL,
+    tw_link character varying(100) NOT NULL,
+    day_closed character varying(20) NOT NULL,
+    time_open character varying(20) NOT NULL,
+    time_close character varying(20) NOT NULL,
+    designer_name character varying(50) NOT NULL,
+    designer_bio character varying(2000) NOT NULL,
+    latest_news character varying(2000) NOT NULL,
+    created_on timestamp with time zone NOT NULL,
+    updated_on timestamp with time zone NOT NULL,
+    popularity character varying(20) NOT NULL,
+    active boolean NOT NULL,
+    region character varying(50) NOT NULL,
+    locality character varying(50) NOT NULL,
+    city character varying(50) NOT NULL,
+    pincode character varying(20) NOT NULL,
+    map_url character varying(200) NOT NULL
+);
+
+
+ALTER TABLE public.shop_store OWNER TO user123;
+
+--
+-- Name: shop_store_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_store_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_store_id_seq OWNER TO user123;
+
+--
+-- Name: shop_store_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_store_id_seq OWNED BY shop_store.id;
+
+
+--
+-- Name: shop_storeimage; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE shop_storeimage (
+    id integer NOT NULL,
+    "storeID_id" integer NOT NULL,
+    url character varying(200) NOT NULL,
+    alt character varying(20) NOT NULL,
+    flag_home boolean NOT NULL
+);
+
+
+ALTER TABLE public.shop_storeimage OWNER TO user123;
+
+--
+-- Name: shop_storeimage_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE shop_storeimage_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.shop_storeimage_id_seq OWNER TO user123;
+
+--
+-- Name: shop_storeimage_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE shop_storeimage_id_seq OWNED BY shop_storeimage.id;
+
+
+--
+-- Name: south_migrationhistory; Type: TABLE; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE TABLE south_migrationhistory (
+    id integer NOT NULL,
+    app_name character varying(255) NOT NULL,
+    migration character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.south_migrationhistory OWNER TO user123;
+
+--
+-- Name: south_migrationhistory_id_seq; Type: SEQUENCE; Schema: public; Owner: user123
+--
+
+CREATE SEQUENCE south_migrationhistory_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.south_migrationhistory_id_seq OWNER TO user123;
+
+--
+-- Name: south_migrationhistory_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: user123
+--
+
+ALTER SEQUENCE south_migrationhistory_id_seq OWNED BY south_migrationhistory.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY django_site ALTER COLUMN id SET DEFAULT nextval('django_site_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_product ALTER COLUMN id SET DEFAULT nextval('shop_product_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_product_sizes ALTER COLUMN id SET DEFAULT nextval('shop_product_sizes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_productimage ALTER COLUMN id SET DEFAULT nextval('shop_productimage_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_review ALTER COLUMN id SET DEFAULT nextval('shop_review_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_reviewer ALTER COLUMN id SET DEFAULT nextval('shop_reviewer_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_size ALTER COLUMN id SET DEFAULT nextval('shop_size_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_store ALTER COLUMN id SET DEFAULT nextval('shop_store_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_storeimage ALTER COLUMN id SET DEFAULT nextval('shop_storeimage_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY south_migrationhistory ALTER COLUMN id SET DEFAULT nextval('south_migrationhistory_id_seq'::regclass);
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add permission	1	add_permission
+2	Can change permission	1	change_permission
+3	Can delete permission	1	delete_permission
+4	Can add group	2	add_group
+5	Can change group	2	change_group
+6	Can delete group	2	delete_group
+7	Can add user	3	add_user
+8	Can change user	3	change_user
+9	Can delete user	3	delete_user
+10	Can add content type	4	add_contenttype
+11	Can change content type	4	change_contenttype
+12	Can delete content type	4	delete_contenttype
+13	Can add session	5	add_session
+14	Can change session	5	change_session
+15	Can delete session	5	delete_session
+16	Can add site	6	add_site
+17	Can change site	6	change_site
+18	Can delete site	6	delete_site
+19	Can add log entry	7	add_logentry
+20	Can change log entry	7	change_logentry
+21	Can delete log entry	7	delete_logentry
+22	Can add size	8	add_size
+23	Can change size	8	change_size
+24	Can delete size	8	delete_size
+25	Can add store	9	add_store
+26	Can change store	9	change_store
+27	Can delete store	9	delete_store
+28	Can add product	10	add_product
+29	Can change product	10	change_product
+30	Can delete product	10	delete_product
+31	Can add reviewer	11	add_reviewer
+32	Can change reviewer	11	change_reviewer
+33	Can delete reviewer	11	delete_reviewer
+34	Can add review	12	add_review
+35	Can change review	12	change_review
+36	Can delete review	12	delete_review
+37	Can add product image	13	add_productimage
+38	Can change product image	13	change_productimage
+39	Can delete product image	13	delete_productimage
+40	Can add store image	14	add_storeimage
+41	Can change store image	14	change_storeimage
+42	Can delete store image	14	delete_storeimage
+43	Can add migration history	15	add_migrationhistory
+44	Can change migration history	15	change_migrationhistory
+45	Can delete migration history	15	delete_migrationhistory
+\.
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_permission_id_seq', 45, true);
+
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+1	pbkdf2_sha256$12000$NvuC5OX0FtJF$ZHLzx91vX0rjFA6QET9I+5FbOF8AcduVem4UL6qoOsU=	2014-01-30 20:45:45.575089+05:30	t	pranav			a@b.com	t	t	2014-01-30 20:40:34.955209+05:30
+\.
+
+
+--
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+
+
+--
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY django_admin_log (id, action_time, user_id, content_type_id, object_id, object_repr, action_flag, change_message) FROM stdin;
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('django_admin_log_id_seq', 1, false);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY django_content_type (id, name, app_label, model) FROM stdin;
+1	permission	auth	permission
+2	group	auth	group
+3	user	auth	user
+4	content type	contenttypes	contenttype
+5	session	sessions	session
+6	site	sites	site
+7	log entry	admin	logentry
+8	size	shop	size
+9	store	shop	store
+10	product	shop	product
+11	reviewer	shop	reviewer
+12	review	shop	review
+13	product image	shop	productimage
+14	store image	shop	storeimage
+15	migration history	south	migrationhistory
+\.
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('django_content_type_id_seq', 15, true);
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY django_session (session_key, session_data, expire_date) FROM stdin;
+0u2fo2isujlc2k2mtfd1a2zs6a8d2dnf	YmQ1NGVkYjE2NGQ2ODY3YWJkYTg2ZGNiMTQ5ODA4ZTE3NTg3M2M2YTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0=	2014-02-13 20:45:45.577153+05:30
+\.
+
+
+--
+-- Data for Name: django_site; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY django_site (id, domain, name) FROM stdin;
+1	example.com	example.com
+\.
+
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('django_site_id_seq', 1, true);
+
+
+--
+-- Data for Name: shop_product; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_product (id, store_id, name, sku, sex, price, price_discounted, brand, color, material, made_to_order, active, description, popularity, created_on, updated_on, num_images, category, sub_category, status) FROM stdin;
+1	1	Black Raw Silk Anarkali with Net Dupatta	KN-33	Female	37500	32500	1600 AD	Black	Raw Silk and Net	t	t	Net Dupatta		2014-01-30 20:45:11.236479+05:30	2014-01-30 20:45:53.026039+05:30	2	Ethnic: Suit sets		
+2	1	Black and Beige Anarkali with Net Dupatta	KN-34	Female	34500	29500	1600 AD	Black	Velvet and Georgette	t	t	Net Dupatta - The piece available in Red		2014-01-30 20:45:11.248467+05:30	2014-01-30 20:45:55.965707+05:30	2	Ethnic: Suit sets		
+3	1	Green Georgette and Chiffon Gown	KN-44	Female	35500	30000	1600 AD	Green	Georgette and Chiffon	t	t			2014-01-30 20:45:11.256195+05:30	2014-01-30 20:46:01.477477+05:30	2	Dresses		
+4	1	Orange and mustard net Gown	NA-22	Female	30000	19000	1600 AD	Orange	Net	t	t			2014-01-30 20:45:11.267146+05:30	2014-01-30 20:46:08.700586+05:30	2	Dresses		
+5	1	Green gypsy Gown	NA-01	Female	35500	28500	1600 AD	Green	Chiffon and Cotton Silk	t	t			2014-01-30 20:45:11.275343+05:30	2014-01-30 20:46:14.792265+05:30	2	Dresses		
+6	1	Black Schantlee Lace with Net	KN-50	Female	29500	24500	1600 AD	Black	Net and Lace	t	t			2014-01-30 20:45:11.283012+05:30	2014-01-30 20:46:21.041775+05:30	2	Dresses		
+7	1	Blue Evening Gown with Metallic Embroidery	KN-46	Female	37500	0	1600 AD	Blue	Embroidered Fabric with Net	t	t			2014-01-30 20:45:11.290485+05:30	2014-01-30 20:46:28.203509+05:30	2	Dresses		
+8	1	Orange Anarkali with Hand and Aari Embroidery	KN-07	Female	37500	0	1600 AD	Orange	Georgette	t	t			2014-01-30 20:45:11.293329+05:30	2014-01-30 20:46:35.859474+05:30	2	Ethnic: Suit sets		
+9	1	Sea Green and Orange Ghagri	KN-69	Female	36500	0	1600 AD	Green	Georgette and Net	t	t			2014-01-30 20:45:11.296224+05:30	2014-01-30 20:46:41.20698+05:30	2	Ethnic: Lehengas		
+10	1	Pink embroidered gown	KN-92	Female	38500	0	1600 AD	Pink	Georgette	t	t			2014-01-30 20:45:11.299042+05:30	2014-01-30 20:46:47.783127+05:30	2	Dresses		
+11	1	Orange brocade jacket suit	KN-76	Female	28500	0	1600 AD	Orange	Georgette and brocade	t	t			2014-01-30 20:45:11.301869+05:30	2014-01-30 20:46:54.072563+05:30	2	Ethnic: Suit sets		
+12	1	Blue raw silk with pink sharara	KN-96	Female	26500	0	1600 AD	Blue	Raw silk	t	t			2014-01-30 20:45:11.304834+05:30	2014-01-30 20:46:59.943731+05:30	2	Ethnic: Suit sets		
+13	1	Draped Jacket and Straight Pants	GA-03	Female	24500	0	1600 AD	Black	Silk and Georgette	t	t			2014-01-30 20:45:11.30775+05:30	2014-01-30 20:47:05.299218+05:30	2	Ethnic: Jackets		
+14	1	Jacket Lehenga	KN-08	Female	24500	0	1600 AD	Green	Georgette	t	t			2014-01-30 20:45:11.310667+05:30	2014-01-30 20:47:09.388028+05:30	2	Ethnic: Lehengas		
+15	1	Kaftan style Gown	KN-22	Female	13750	0	1600 AD	Beige	Silk Lycra	t	t			2014-01-30 20:45:11.313545+05:30	2014-01-30 20:47:15.86418+05:30	2	Dresses		
+16	1	Pink Straight Suit with Palazzos	KN-61	Female	22000	17500	1600 AD	Pink	Georgette	t	t			2014-01-30 20:45:11.316454+05:30	2014-01-30 20:47:23.312296+05:30	2	Ethnic: Suit sets		
+17	1	Draped Saree	GA-02	Female	37500	0	1600 AD	Blue	Silk Lycra	t	t			2014-01-30 20:45:11.324524+05:30	2014-01-30 20:47:27.545558+05:30	2	Ethnic: Sarees		
+18	1	Evening Gown	KN-68	Female	65000	56500	1600 AD	Yellow	Textured Net	t	t			2014-01-30 20:45:11.32759+05:30	2014-01-30 20:47:33.312796+05:30	2	Dresses		
+19	1	Chiffon Suit	KN-41	Female	39500	29000	1600 AD	Cream	Chiffon	t	t			2014-01-30 20:45:11.335984+05:30	2014-01-30 20:47:39.759478+05:30	2	Ethnic: Suit sets		
+20	1	Jacket Suit	SA-5426	Female	26500	0	1600 AD	Black	Velvet and Net	t	t			2014-01-30 20:45:11.344918+05:30	2014-01-30 20:47:44.988455+05:30	2	Ethnic: Suit sets		
+21	1	Beige and Coral Anarkali	KN-66	Female	29500	24500	1600 AD	Beige	Net and Georgette	t	t			2014-01-30 20:45:11.348584+05:30	2014-01-30 20:47:51.505517+05:30	2	Ethnic: Suit sets		
+22	1	Draped Saree	GA-04	Female	37500	0	1600 AD	Orange	Satin Lycra	t	t			2014-01-30 20:45:11.357721+05:30	2014-01-30 20:47:57.505151+05:30	2	Ethnic: Sarees		
+23	1	Anarkali Suit	KN-77	Female	36500	0	1600 AD	Pink	Chiffon	t	t			2014-01-30 20:45:11.361301+05:30	2014-01-30 20:48:03.922403+05:30	2	Ethnic: Suit sets		
+24	1	Anarkali / Gown	KN-11	Female	65000	0	1600 AD	Orange	Georgette	t	t			2014-01-30 20:45:11.364243+05:30	2014-01-30 20:48:09.287501+05:30	0	Dresses		
+25	1	Black Cocktail Gown	KN-15	Female	65000	0	1600 AD	Black	Net and Lace	t	t			2014-01-30 20:45:11.367079+05:30	2014-01-30 20:48:09.29139+05:30	0	Dresses		
+26	1	Black and Green Patiala	KN-12	Female	24500	0	1600 AD	Black	Georgette	t	t			2014-01-30 20:45:11.369904+05:30	2014-01-30 20:48:09.326984+05:30	0	Ethnic: Suit sets		
+27	1	Gold Corsette with Black Draped Pants	KN-22A	Female	22500	0	1600 AD	Black	Georgette	t	t			2014-01-30 20:45:11.372757+05:30	2014-01-30 20:48:09.334982+05:30	0	Ethnic: Jackets		
+28	1	Metallic Jacket with Draped Pants	NA-37	Female	37500	0	1600 AD	Cream	Lace	t	t			2014-01-30 20:45:11.375555+05:30	2014-01-30 20:48:09.347435+05:30	0	Ethnic: Jackets		
+29	2	Pleated Silk Lehenga with Multicolored Mirror work Choli and an Orange Silk Dupatta	PL001	Female	28000	23800	Abjeni	Pink	Silk	t	t			2014-01-30 20:50:38.470082+05:30	2014-01-30 20:50:38.479051+05:30	2	Ethnic: Lehengas		
+30	2	Gold Anarkali in Chiffon with Coral Dupatta	AN001	Female	17000	0	Abjeni	Gold	Chiffon	t	t			2014-01-30 20:50:46.527695+05:30	2014-01-30 20:50:46.533022+05:30	1	Ethnic: Suit sets		
+31	2	Pleated Dress	PD001	Female	32000	0	Abjeni	Orange		t	t			2014-01-30 20:50:50.589581+05:30	2014-01-30 20:50:50.594955+05:30	2	Dresses		
+32	2	Green and Gold Sharara	GS001	Female	32500	0	Abjeni	Green	Chanderi and Georgette	t	t	Pure Georgette		2014-01-30 20:50:57.975205+05:30	2014-01-30 20:50:57.980411+05:30	1	Ethnic: Lehengas		
+33	2	Yellow Silk Anarkali	AN002	Female	38000	30500	Abjeni	Yellow	Silk	t	t	Pure Silk, Zardosi work, Pearl and Dabka work		2014-01-30 20:51:01.81423+05:30	2014-01-30 20:51:01.819024+05:30	1	Ethnic: Suit sets		
+34	2	Emerald Green Anarkali with Brocade Pants	AN003	Female	26000	0	Abjeni	Green	Chiffon	t	t			2014-01-30 20:51:05.757533+05:30	2014-01-30 20:51:05.776049+05:30	1	Ethnic: Suit sets		
+35	2	Velvet Sherwani Jacket with Lehenga	JL001	Female	70000	0	Abjeni	Blue	Velvet	t	t	Velvet Sherwani Jacket with Red Georgette Lehenga. Heavy work on the Net Blue Dupatta		2014-01-30 20:51:09.53471+05:30	2014-01-30 20:51:09.539612+05:30	1	Ethnic: Lehengas		
+36	2	Black Choli Lehenga	CL001	Female	32000	0	Abjeni	Black	Georgette	t	t			2014-01-30 20:51:13.305657+05:30	2014-01-30 20:51:13.310943+05:30	1	Ethnic: Lehengas		
+37	2	Peach to Beige shaded Ethnic Dress	PL002	Female	13000	0	Abjeni	Peach	Silk Chiffon	t	t			2014-01-30 20:51:17.099912+05:30	2014-01-30 20:51:17.105165+05:30	1	Ethnic: Dress materials		
+38	2	Black Parrot Anarkali	AN004	Female	29000	0	Abjeni	Black	Chanderi Silk	t	t			2014-01-30 20:51:20.714363+05:30	2014-01-30 20:51:20.741756+05:30	2	Ethnic: Suit sets		
+39	2	Stitched Blue Green Saree	SS001	Female	31500	0	Abjeni	Green	Silk Chiffon	t	t			2014-01-30 20:51:27.50023+05:30	2014-01-30 20:51:27.50489+05:30	2	Ethnic: Sarees		
+40	2	Blue Raw Silk Anarkali	AN005	Female	31500	0	Abjeni	Blue	Raw Silk	t	t			2014-01-30 20:51:34.146248+05:30	2014-01-30 20:51:34.150499+05:30	2	Ethnic: Suit sets		
+41	2	Peach Gown with Zardosi work	GN001	Female	30000	0	Abjeni	Peach	Georgette	t	t			2014-01-30 20:51:41.174267+05:30	2014-01-30 20:51:41.179583+05:30	2	Ethnic: Ethnic gowns		
+42	2	Green A-line Jacket Suit	AS001	Female	15500	0	Abjeni	Green	Silk Chiffon	t	t	Green A line Jacket Suit with Blue Jacket		2014-01-30 20:51:48.181709+05:30	2014-01-30 20:51:48.18607+05:30	2	Ethnic: Jackets		
+43	2	Lime Green Anarkali with Hot Pink Dupatta	AN006	Female	23000	0	Abjeni	Green	Crepe	t	t			2014-01-30 20:51:53.827978+05:30	2014-01-30 20:51:53.832158+05:30	2	Ethnic: Suit sets		
+44	3	Black and Gold Gown	AA01	Female	24000	0	Ashfaque Ahmad	Black	Georgette	t	t			2014-01-30 20:56:21.443047+05:30	2014-01-30 20:56:21.445051+05:30	2	Dresses		
+45	3	White and Gold gown	AA02	Female	24000	0	Ashfaque Ahmad	White	Georgette	t	t			2014-01-30 20:56:28.078257+05:30	2014-01-30 20:56:28.079932+05:30	2	Dresses		
+46	3	Black and Gold Gown	AA03	Female	20000	0	Ashfaque Ahmad	Black	Georgette	t	t			2014-01-30 20:56:34.737991+05:30	2014-01-30 20:56:34.740238+05:30	2	Dresses		
+47	3	White Gown	AA04	Female	24000	0	Ashfaque Ahmad	White	Georgette	t	t			2014-01-30 20:56:41.699468+05:30	2014-01-30 20:56:41.70133+05:30	2	Dresses		
+48	3	Black and Gold Gown	AA05	Female	18000	0	Ashfaque Ahmad	Black	Georgette	t	t			2014-01-30 20:56:48.529156+05:30	2014-01-30 20:56:48.531841+05:30	2	Dresses		
+49	3	Grey and Silver Embroidered Gown	AA06	Female	24000	0	Ashfaque Ahmad	Grey	Georgette	t	t			2014-01-30 20:56:55.598966+05:30	2014-01-30 20:56:55.60172+05:30	2	Dresses		
+50	3	Gold Gown	AA07	Female	22000	0	Ashfaque Ahmad	Gold	Georgette	t	t			2014-01-30 20:57:02.549906+05:30	2014-01-30 20:57:02.557734+05:30	2	Dresses		
+51	3	Grey Gown With Silver Embroidery	AA08	Female	24000	0	Ashfaque Ahmad	Grey	Georgette	t	t			2014-01-30 20:57:09.515824+05:30	2014-01-30 20:57:09.518569+05:30	2	Dresses		
+52	3	Black Gown	AA09	Female	22000	0	Ashfaque Ahmad	Black	Georgette	t	t			2014-01-30 20:57:16.441429+05:30	2014-01-30 20:57:16.444089+05:30	2	Dresses		
+53	3	Mustard Gown	AA10	Female	22000	0	Ashfaque Ahmad	Mustard	Georgette	t	t			2014-01-30 20:57:23.304584+05:30	2014-01-30 20:57:23.30725+05:30	2	Dresses		
+54	3	Yellow Gown	AA11	Female	18000	0	Ashfaque Ahmad	Yellow	Georgette	t	t			2014-01-30 20:57:30.360145+05:30	2014-01-30 20:57:30.362879+05:30	2	Dresses		
+55	3	Orange Gown	AA12	Female	24000	0	Ashfaque Ahmad	Orange	Georgette	t	t			2014-01-30 20:57:37.252171+05:30	2014-01-30 20:57:37.255035+05:30	2	Dresses		
+56	3	Navy Blue Gown	AA13	Female	20000	0	Ashfaque Ahmad	Navy blue	Georgette	t	t			2014-01-30 20:57:44.25324+05:30	2014-01-30 20:57:44.254987+05:30	2	Dresses		
+57	3	Creamy Yellow Gown	AA14	Female	24000	0	Ashfaque Ahmad	Yellow	Georgette	t	t			2014-01-30 20:57:51.257648+05:30	2014-01-30 20:57:51.259914+05:30	2	Dresses		
+58	3	Black and Yellow Gown	AA15	Female	22000	0	Ashfaque Ahmad	Yellow	Georgette	t	t			2014-01-30 20:57:58.106088+05:30	2014-01-30 20:57:58.138168+05:30	2	Dresses		
+59	3	Lavender Gown With Silver Embroidery	AA16	Female	24000	0	Ashfaque Ahmad	Pink	Georgette	t	t			2014-01-30 20:58:05.149968+05:30	2014-01-30 20:58:05.152784+05:30	2	Dresses		
+60	3	Yellow Gown	AA17	Female	16000	0	Ashfaque Ahmad	Yellow	Georgette	t	t			2014-01-30 20:58:12.210985+05:30	2014-01-30 20:58:12.212575+05:30	2	Dresses		
+61	3	Red Gown	AA18	Female	20000	0	Ashfaque Ahmad	Red	Georgette	t	t			2014-01-30 20:58:19.145701+05:30	2014-01-30 20:58:19.14852+05:30	2	Dresses		
+62	3	Brownish Grey Gown	AA19	Female	16000	0	Ashfaque Ahmad	Grey	Georgette	t	t			2014-01-30 20:58:27.164762+05:30	2014-01-30 20:58:27.289078+05:30	2	Dresses		
+63	3	Navy Blue Gown	AA20	Female	18000	0	Ashfaque Ahmad	Navy blue	Georgette	t	t			2014-01-30 20:58:34.831564+05:30	2014-01-30 20:58:34.91351+05:30	2	Dresses		
+64	3	Antique Gold Gown	AA21	Female	26000	0	Ashfaque Ahmad	Gold	Net	t	t			2014-01-30 20:58:42.453045+05:30	2014-01-30 20:58:42.586845+05:30	2	Dresses		
+65	3	Pink Gown	AA22	Female	16000	0	Ashfaque Ahmad	Pink	Georgette	t	t			2014-01-30 20:58:50.139135+05:30	2014-01-30 20:58:50.193027+05:30	2	Dresses		
+66	3	Pink Gown	AA23	Female	20000	0	Ashfaque Ahmad	Pink	Georgette	t	t			2014-01-30 20:58:58.065527+05:30	2014-01-30 20:58:58.253534+05:30	2	Dresses		
+67	4	Husna	AUM-KS - 132 Black&White	Female	34000	0	Aum by Ashima & Asit	White		t	t			2014-01-30 21:25:30.487524+05:30	2014-01-30 21:25:30.491485+05:30	3	Ethnic: Sarees		
+68	4	Simra	AUM-KS - Beige Net Saree	Female	34000	0	Aum by Ashima & Asit	Beige		t	t			2014-01-30 21:25:30.829251+05:30	2014-01-30 21:25:30.831077+05:30	3	Ethnic: Sarees		
+69	4	Mariya	AUM-KS - Green Chiffon	Female	18000	0	Aum by Ashima & Asit	Green		t	t			2014-01-30 21:25:31.155999+05:30	2014-01-30 21:25:31.158514+05:30	3	Ethnic: Sarees		
+70	4	Mersiha	AUM-KS- Lime Net	Female	12000	0	Aum by Ashima & Asit	lime		t	t			2014-01-30 21:25:31.45897+05:30	2014-01-30 21:25:31.461261+05:30	3	Ethnic: Sarees		
+71	4	Nuriyah	AUM-KS- Pink Net	Female	12000	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:31.761451+05:30	2014-01-30 21:25:31.763853+05:30	3	Ethnic: Sarees		
+72	4	Naaz	AUM-KS - Pink Net with black dori Blouse	Female	9500	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:32.076193+05:30	2014-01-30 21:25:32.078462+05:30	3	Ethnic: Sarees		
+73	4	Adwitiya	AUM-KS - Teal Chiffon	Female	40000	0	Aum by Ashima & Asit	Blue		t	t			2014-01-30 21:25:32.379235+05:30	2014-01-30 21:25:32.381523+05:30	3	Ethnic: Sarees		
+74	4	Shumaila	AUM-KS - White Fulkari	Female	21000	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:32.704845+05:30	2014-01-30 21:25:32.707042+05:30	3	Ethnic: Sarees		
+75	4	Suheera	AUM-KS - Pink Chiffon	Female	12000	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:33.018263+05:30	2014-01-30 21:25:33.020555+05:30	3	Ethnic: Sarees		
+76	4	Sukaynah	AUM-KS - Yellow Chiffon	Female	18000	0	Aum by Ashima & Asit	yellow		t	t			2014-01-30 21:25:33.314427+05:30	2014-01-30 21:25:33.317492+05:30	3	Ethnic: Sarees		
+77	4	Aamanee	AUM-KS - 191 aqua	Female	9500	0	Aum by Ashima & Asit	Blue		t	t			2014-01-30 21:25:33.616642+05:30	2014-01-30 21:25:33.618947+05:30	3	Ethnic: Suit sets		
+78	4	Aanisah	AUM-KS - 274 white	Female	6500	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:33.924202+05:30	2014-01-30 21:25:33.926635+05:30	3	Ethnic: Suit sets		
+79	4	Aatirah	AUM-KS - 224 blue	Female	6500	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:34.229147+05:30	2014-01-30 21:25:34.231504+05:30	3	Ethnic: Suit sets		
+80	4	Adeeva	AUM-KS - 276 blue	Female	18000	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:34.558288+05:30	2014-01-30 21:25:34.560589+05:30	2	Ethnic: Suit sets		
+81	4	Alishba	AUM-KS - 225 brown	Female	7000	0	Aum by Ashima & Asit	brown		t	t			2014-01-30 21:25:34.792241+05:30	2014-01-30 21:25:34.794505+05:30	2	Ethnic: Suit sets		
+82	4	Basaaria	AUM-KS - 216 beige	Female	6500	0	Aum by Ashima & Asit	beige		t	t			2014-01-30 21:25:35.002843+05:30	2014-01-30 21:25:35.005115+05:30	2	Ethnic: Suit sets		
+83	4	Daania	AUM-KS - 273 Olive	Female	6500	0	Aum by Ashima & Asit	olive		t	t			2014-01-30 21:25:35.23699+05:30	2014-01-30 21:25:35.23935+05:30	2	Ethnic: Suit sets		
+84	4	Fadila	AUM-KS - 327 Brown	Female	6500	0	Aum by Ashima & Asit	brown		t	t			2014-01-30 21:25:35.460295+05:30	2014-01-30 21:25:35.462608+05:30	3	Ethnic: Suit sets		
+85	4	Eshal	AUM-KS - 216 Multi	Female	6500	0	Aum by Ashima & Asit	multicolor		t	t			2014-01-30 21:25:35.775008+05:30	2014-01-30 21:25:35.778653+05:30	3	Ethnic: Suit sets		
+86	4	Faria	AUM-KS - 324 White	Female	6500	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:36.101912+05:30	2014-01-30 21:25:36.10433+05:30	3	Ethnic: Suit sets		
+87	4	Gul-e-Rana	AUM-KS - 328	Female	9500	0	Aum by Ashima & Asit	yellow		t	t			2014-01-30 21:25:36.414288+05:30	2014-01-30 21:25:36.416024+05:30	3	Ethnic: Suit sets		
+88	4	Amirah	AUM-KS - 305 blue	Female	11000	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:36.720961+05:30	2014-01-30 21:25:36.723202+05:30	3	Ethnic: Suit sets		
+89	4	Aneeqa	AUM-KS - 269 lemon	Female	21000	0	Aum by Ashima & Asit	lemon		t	t			2014-01-30 21:25:37.115759+05:30	2014-01-30 21:25:37.118167+05:30	3	Ethnic: Suit sets		
+90	4	Ashadieeyah	AUM-KS - 322 white	Female	15000	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:37.448285+05:30	2014-01-30 21:25:37.450562+05:30	3	Ethnic: Suit sets		
+91	4	Alia	AUM-KS - 296 grey	Female	11000	0	Aum by Ashima & Asit	grey		t	t			2014-01-30 21:25:37.802182+05:30	2014-01-30 21:25:37.804563+05:30	3	Ethnic: Suit sets		
+92	4	Abeer	AUM-KS - 329 black	Female	21000	0	Aum by Ashima & Asit	black		t	t			2014-01-30 21:25:38.15523+05:30	2014-01-30 21:25:38.156781+05:30	3	Ethnic: Suit sets		
+93	4	Afsheen	AUM-KS - 264 pink	Female	21000	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:38.494492+05:30	2014-01-30 21:25:38.496193+05:30	3	Ethnic: Suit sets		
+94	4	Erina	AUM-KS - 309 grey	Female	16000	0	Aum by Ashima & Asit	grey		t	t			2014-01-30 21:25:38.80655+05:30	2014-01-30 21:25:38.808295+05:30	3	Ethnic: Suit sets		
+95	4	Akleema	AUM-KS - 277 lime	Female	16000	0	Aum by Ashima & Asit	lime		t	t			2014-01-30 21:25:39.106226+05:30	2014-01-30 21:25:39.10791+05:30	2	Ethnic: Suit sets		
+96	4	Erum	AUM-KS - 295 blue	Female	18000	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:39.344296+05:30	2014-01-30 21:25:39.346129+05:30	2	Ethnic: Suit sets		
+97	4	Farida	AUM-KS - 297 beige	Female	29000	0	Aum by Ashima & Asit	beige		t	t			2014-01-30 21:25:39.572157+05:30	2014-01-30 21:25:39.573912+05:30	2	Ethnic: Suit sets		
+98	4	Firdaus	AUM-KS- 308	Female	11000	0	Aum by Ashima & Asit	brown		t	t			2014-01-30 21:25:39.806891+05:30	2014-01-30 21:25:39.808573+05:30	2	Ethnic: Suit sets		
+99	4	Laiba	AUM-KS - 333 Black & White	Female	15000	0	Aum by Ashima & Asit	black		t	t			2014-01-30 21:25:40.066421+05:30	2014-01-30 21:25:40.068835+05:30	2	Ethnic: Suit sets		
+100	4	Hasna	AUM-KS - 296 White	Female	11000	0	Aum by Ashima & Asit	yellow		t	t			2014-01-30 21:25:40.301115+05:30	2014-01-30 21:25:40.303469+05:30	2	Ethnic: Suit sets		
+101	4	Aleena	AUM-KS - 331	Female	26000	0	Aum by Ashima & Asit	multicolor		t	t			2014-01-30 21:25:40.566302+05:30	2014-01-30 21:25:40.568665+05:30	2	Ethnic: Suit sets		
+102	4	Hadeeqa	AUM-KS - 266 Ivory	Female	21000	0	Aum by Ashima & Asit	ivory		t	t			2014-01-30 21:25:40.822973+05:30	2014-01-30 21:25:40.826665+05:30	2	Ethnic: Suit sets		
+103	4	Aadarika	AUM-KS -182	Female	20000	0	Aum by Ashima & Asit	yellow		t	t			2014-01-30 21:25:41.05406+05:30	2014-01-30 21:25:41.05637+05:30	2	Ethnic: Suit sets		
+104	4	Aslesha	AUM-KS - 290 yellow with jacket	Female	15500	0	Aum by Ashima & Asit	yellow		t	t			2014-01-30 21:25:41.271438+05:30	2014-01-30 21:25:41.273862+05:30	2	Ethnic: Suit sets		
+105	4	Bela	AUM-KS - 214 carrot red	Female	9500	0	Aum by Ashima & Asit	red		t	t			2014-01-30 21:25:41.489267+05:30	2014-01-30 21:25:41.491575+05:30	2	Ethnic: Suit sets		
+106	4	Budhana	AUM-KS - 238 lime	Female	9500	0	Aum by Ashima & Asit	lime		t	t			2014-01-30 21:25:41.694307+05:30	2014-01-30 21:25:41.696694+05:30	2	Ethnic: Suit sets		
+107	4	Chitrali	AUM-KS - 184 white	Female	8500	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:41.904908+05:30	2014-01-30 21:25:41.907398+05:30	2	Ethnic: Suit sets		
+108	4	Divya	AUM-KS - 315 neon pink	Female	9500	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:42.118881+05:30	2014-01-30 21:25:42.121273+05:30	2	Ethnic: Suit sets		
+109	4	Kalinda	AUM-KS - 187 blue	Female	6500	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:42.320105+05:30	2014-01-30 21:25:42.322432+05:30	3	Ethnic: Suit sets		
+110	4	Harita	AUM-KS - 184 green	Female	8500	0	Aum by Ashima & Asit	green		t	t			2014-01-30 21:25:42.64012+05:30	2014-01-30 21:25:42.642519+05:30	3	Ethnic: Suit sets		
+111	4	Himadri	AUM-KS - 238 white	Female	8500	0	Aum by Ashima & Asit	white		t	t			2014-01-30 21:25:42.959139+05:30	2014-01-30 21:25:42.961558+05:30	3	Ethnic: Suit sets		
+112	4	Sarisha	AUM-KS - 270 ivory	Female	8500	0	Aum by Ashima & Asit	ivory		t	t			2014-01-30 21:25:43.253768+05:30	2014-01-30 21:25:43.256181+05:30	3	Ethnic: Suit sets		
+113	4	Devasree	AUM-KS - 288 pink with jacket	Female	21000	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:43.550703+05:30	2014-01-30 21:25:43.553947+05:30	2	Ethnic: Suit sets		
+114	4	Eshana	AUM-KS - 290 magenta with jacket	Female	20500	0	Aum by Ashima & Asit	magenta		t	t			2014-01-30 21:25:43.755113+05:30	2014-01-30 21:25:43.75749+05:30	3	Ethnic: Suit sets		
+115	4	Kalpana	AUM-KS - 288 teal	Female	25000	0	Aum by Ashima & Asit	Blue		t	t			2014-01-30 21:25:44.058611+05:30	2014-01-30 21:25:44.060938+05:30	3	Ethnic: Suit sets		
+116	4	Hiranya	AUM-KS - 241 beige	Female	9500	0	Aum by Ashima & Asit	beige		t	t			2014-01-30 21:25:44.367329+05:30	2014-01-30 21:25:44.369631+05:30	3	Ethnic: Suit sets		
+117	4	Dipali	AUM-KS - 243 orange	Female	9500	0	Aum by Ashima & Asit	orange		t	t			2014-01-30 21:25:44.679209+05:30	2014-01-30 21:25:44.68145+05:30	3	Ethnic: Suit sets		
+118	4	Mohini	AUM-KS - 288 Beige	Female	14500	0	Aum by Ashima & Asit	beige		t	t			2014-01-30 21:25:44.991045+05:30	2014-01-30 21:25:44.993348+05:30	3	Ethnic: Suit sets		
+119	4	Lavanya	AUM-KS - 262 Black	Female	29000	0	Aum by Ashima & Asit	black		t	t			2014-01-30 21:25:45.302259+05:30	2014-01-30 21:25:45.304514+05:30	1	Ethnic: Suit sets		
+120	4	Kama	AUM-KS - 270 Purple	Female	8500	0	Aum by Ashima & Asit	purple		t	t			2014-01-30 21:25:45.424451+05:30	2014-01-30 21:25:45.426291+05:30	2	Ethnic: Suit sets		
+121	4	Omana	AUM-KS- 214 Turquoise	Female	9500	0	Aum by Ashima & Asit	turquoise		t	t			2014-01-30 21:25:45.621564+05:30	2014-01-30 21:25:45.623885+05:30	3	Ethnic: Suit sets		
+122	4	Anala	AUM-KS - 321 lime	Female	9500	0	Aum by Ashima & Asit	lime		t	t			2014-01-30 21:25:45.94462+05:30	2014-01-30 21:25:45.947044+05:30	3	Ethnic: Suit sets		
+123	4	Deeksha	AUM-KS - 301 lime	Female	12000	0	Aum by Ashima & Asit	lime		t	t			2014-01-30 21:25:46.294149+05:30	2014-01-30 21:25:46.296407+05:30	3	Ethnic: Suit sets		
+124	4	Elakshi	AUM-KS- 330 neon	Female	9500	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:46.634101+05:30	2014-01-30 21:25:46.635999+05:30	3	Ethnic: Suit sets		
+125	4	Geetanjali	AUM-KS - 301 blue	Female	12000	0	Aum by Ashima & Asit	blue		t	t			2014-01-30 21:25:46.946768+05:30	2014-01-30 21:25:46.949099+05:30	3	Ethnic: Suit sets		
+126	4	Kumuda	AUM-KS - 311 pink	Female	7500	0	Aum by Ashima & Asit	pink		t	t			2014-01-30 21:25:47.281697+05:30	2014-01-30 21:25:47.283979+05:30	3	Ethnic: Suit sets		
+127	4	Kanti	AUM-KS - 303 black	Female	7500	0	Aum by Ashima & Asit	black		t	t			2014-01-30 21:25:47.603344+05:30	2014-01-30 21:25:47.605665+05:30	3	Ethnic: Suit sets		
+128	4	Sukanya	AUM-KS - 337 orange	Female	11000	0	Aum by Ashima & Asit	orange		t	t			2014-01-30 21:25:47.946991+05:30	2014-01-30 21:25:47.948744+05:30	3	Ethnic: Suit sets		
+129	4	Heema	AUM-KS - 316 beige	Female	7500	0	Aum by Ashima & Asit	beige		t	t			2014-01-30 21:25:48.26063+05:30	2014-01-30 21:25:48.262979+05:30	3	Ethnic: Suit sets		
+130	4	Mohana	AUM-KS - 311 Black	Female	7500	0	Aum by Ashima & Asit	black		t	t			2014-01-30 21:25:48.594017+05:30	2014-01-30 21:25:48.595823+05:30	3	Ethnic: Suit sets		
+131	5	Black anarkali suit	BWWF12SD1	Female	0	0	D Closet by Shruti Dudani	Black	pure georgette	t	t			2014-01-30 22:54:36.456592+05:30	2014-01-30 22:54:36.460753+05:30	2	Ethnic: Salwars & Churidars		
+132	5	baby pink & black Gown	BWWF12SD2	Female	0	0	D Closet by Shruti Dudani	Pink	pure georgette	t	t			2014-01-30 22:54:36.541112+05:30	2014-01-30 22:54:36.543156+05:30	2	Dresses		
+133	5	Red & Black anarkali suit	BWWF12SD3	Female	0	0	D Closet by Shruti Dudani	Red	pure georgette	t	t			2014-01-30 22:54:36.626446+05:30	2014-01-30 22:54:36.629132+05:30	2	Ethnic: Salwars & Churidars		
+134	5	Black & teal Anarkali suit	BWWF12SD4	Female	0	0	D Closet by Shruti Dudani	Black	pure georgette	t	t			2014-01-30 22:54:36.711819+05:30	2014-01-30 22:54:36.713596+05:30	2	Ethnic: Salwars & Churidars		
+135	5	Black anarkali lehega suit	BWWF12SD5	Female	0	0	D Closet by Shruti Dudani	Black	pure georgette	t	t			2014-01-30 22:54:36.795451+05:30	2014-01-30 22:54:36.797183+05:30	2	Ethnic: Salwars & Churidars		
+136	5	Black & teal Cutwork gown	BWWF12SD6	Female	0	0	D Closet by Shruti Dudani	Black	pure georgette	t	t			2014-01-30 22:54:36.882826+05:30	2014-01-30 22:54:36.88439+05:30	2	Dresses		
+137	5	Fuschia & silver Anarkali suit	BWWF12SD7	Female	0	0	D Closet by Shruti Dudani	Fuschia	pure georgette	t	t			2014-01-30 22:54:36.974328+05:30	2014-01-30 22:54:36.97725+05:30	2	Ethnic: Salwars & Churidars		
+138	5	Black straight suit	BWWF12SD8	Female	0	0	D Closet by Shruti Dudani	Black	pure georgette	t	t			2014-01-30 22:54:37.063711+05:30	2014-01-30 22:54:37.065389+05:30	2	Ethnic: Salwars & Churidars		
+139	5	Brick Red & Golden anarkai suit	BWWF12SD9	Female	0	0	D Closet by Shruti Dudani	Red	pure georgette	t	t			2014-01-30 22:54:37.150521+05:30	2014-01-30 22:54:37.152119+05:30	2	Ethnic: Salwars & Churidars		
+140	5	Baby pink cutwork anarkali suit	BWWF12SD10	Female	0	0	D Closet by Shruti Dudani	Pink	pure georgette	t	t			2014-01-30 22:54:37.229021+05:30	2014-01-30 22:54:37.230987+05:30	2	Ethnic: Salwars & Churidars		
+141	5	Red& golden collar Anarkali suit	BWWF12SD11	Female	0	0	D Closet by Shruti Dudani	Red	pure georgette	t	t			2014-01-30 22:54:37.318845+05:30	2014-01-30 22:54:37.320997+05:30	2	Ethnic: Salwars & Churidars		
+142	5	Fuschia & Black gown	BWWF12SD12	Female	0	0	D Closet by Shruti Dudani	Fuschia	pure georgette	t	t			2014-01-30 22:54:37.408439+05:30	2014-01-30 22:54:37.41064+05:30	2	Dresses		
+143	5	Baby pink heavy anarkali suit	BWWF12SD13	Female	0	0	D Closet by Shruti Dudani	Pink	pure georgette	t	t			2014-01-30 22:54:37.491545+05:30	2014-01-30 22:54:37.493376+05:30	2	Ethnic: Salwars & Churidars		
+144	5	Fuschia Anarkali suit	BWWF12SD14	Female	0	0	D Closet by Shruti Dudani	Fuschia	pure georgette	t	t			2014-01-30 22:54:37.580426+05:30	2014-01-30 22:54:37.582356+05:30	2	Ethnic: Salwars & Churidars		
+145	5	Teal anarkali suit	BWWF12SD15	Female	0	0	D Closet by Shruti Dudani	Blue	pure georgette	t	t			2014-01-30 22:54:37.667545+05:30	2014-01-30 22:54:37.669229+05:30	2	Ethnic: Salwars & Churidars		
+146	6	Alicia	JKW08-Blu07	Female	4000	0	KAARYAH	Blue	Cotton Lycra	t	t	An outfit for a woman who doesn’t take flack and is as sharp as a tack		2014-01-30 23:10:37.461258+05:30	2014-01-30 23:10:37.48504+05:30	5	Jackets & Blazers		
+147	6	Andrea	JKW07-Blu20140114	Female	8387	0	KAARYAH	Blue	Wool	t	t	Warm up your winters with our "Huggable" long over coat and keep yourself cosy		2014-01-30 23:10:38.222505+05:30	2014-01-30 23:10:38.240009+05:30	6	Jackets & Blazers		
+148	6	Anne	FTK07-Turq01	Female	2000	0	KAARYAH	Turquoise	Printed poly knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy.		2014-01-30 23:10:39.226982+05:30	2014-01-30 23:10:39.245705+05:30	5	Tops		
+149	6	Anne	FTK07-Pul02	Female	2000	0	KAARYAH	Purple	Printed poly knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy .		2014-01-30 23:10:40.149759+05:30	2014-01-30 23:10:40.167256+05:30	5	Tops		
+150	6	Anne	FTK07-Whi20140114	Female	2000	0	KAARYAH	White	Printed poly knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy .		2014-01-30 23:10:40.941328+05:30	2014-01-30 23:10:40.958833+05:30	4	Tops		
+151	6	Anne	FTK07-Gre20140114	Female	2000	0	KAARYAH	Green	Printed poly knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy .		2014-01-30 23:10:41.464266+05:30	2014-01-30 23:10:41.482547+05:30	5	Tops		
+152	6	Cynthia	PUL01-Blu01	Female	2778	0	KAARYAH	Blue	Wool	t	t	Keep the floral charm on and be a vintage lover		2014-01-30 23:10:42.301673+05:30	2014-01-30 23:10:42.327217+05:30	5	Sweaters		
+153	6	Diana	SHW11-Pin12	Female	1778	0	KAARYAH	Grey	Polycrepe	t	t	Wear your class, make it stylish but keep it chic with this classic formal shirt		2014-01-30 23:10:43.124482+05:30	2014-01-30 23:10:43.141659+05:30	5	Shirts		
+154	6	Diana	SHW11-Gry12	Female	1778	0	KAARYAH	Grey	Polycrepe	t	t	Wear your class, make it stylish but keep it chic with this classic formal shirt		2014-01-30 23:10:43.78239+05:30	2014-01-30 23:10:43.799701+05:30	5	Shirts		
+155	6	Ellie	PUL02-Bei01	Female	2444	0	KAARYAH	Brown	Printed poly crepe and wool	t	t	Peek-a-boo with print in your pull-overs this winter		2014-01-30 23:10:44.362419+05:30	2014-01-30 23:10:44.379614+05:30	4	Sweaters		
+156	6	Ellie	PUL02-Bla01	Female	2444	0	KAARYAH	Black	Printed poly crepe and wool	t	t	Peek-a-boo with print in your pull-overs this winter		2014-01-30 23:10:44.949131+05:30	2014-01-30 23:10:44.96655+05:30	3	Sweaters		
+157	6	Emma	SHW12-Sil02	Female	2500	0	KAARYAH	Black	Silk	t	t	Fall for the smooth silks and walk smart the oriental way		2014-01-30 23:10:45.385629+05:30	2014-01-30 23:10:45.403+05:30	6	Shirts		
+158	6	Sheryl	TRW03-LGy02	Female	3000	0	KAARYAH	Grey	Wool	t	t	Adrress your meetings in italian comfort in this smart formal trouser		2014-01-30 23:10:46.294338+05:30	2014-01-30 23:10:46.312197+05:30	5	Trousers & Leggings		
+159	6	Sheryl	TRW03-Bro20140114	Female	3000	0	KAARYAH	Brown	Polyester Wool	t	t	Adrress your meetings in italian comfort in this smart formal trouser		2014-01-30 23:10:46.980028+05:30	2014-01-30 23:10:47.007829+05:30	5	Trousers & Leggings		
+160	6	Garry	FTK10-LGy01	Female	1960	0	KAARYAH	Black	Modal Satin & knit	t	t	Keep in trendy; Keep it easy; Carry a little bling		2014-01-30 23:10:47.656749+05:30	2014-01-30 23:10:47.673959+05:30	5	Tops		
+161	6	Jasmine	SHW01-Win01	Female	1600	0	KAARYAH	Wine	Cotton Lycra	t	t	Lines lines lines. A little ahead of time, a little ahead in line. Try on this sharp, edgy shirt for a guaranteed collar bones showing, collars up feeling!		2014-01-30 23:10:48.378716+05:30	2014-01-30 23:10:48.400336+05:30	4	Shirts		
+162	6	Jasmine	SHW01-Whi01	Female	1600	0	KAARYAH	White	Cotton Lycra	t	t	Lines lines lines. A little ahead of time, a little ahead in line. Try on this sharp, edgy shirt for a guaranteed collar bones showing, collars up feeling! You can view this product on http://kaaryah.com/women-black-sleeveless-shirt-jasmine-180.html		2014-01-30 23:10:48.995556+05:30	2014-01-30 23:10:49.012984+05:30	5	Shirts		
+163	6	Josephine	FTW10-Bro01	Female	1300	0	KAARYAH	Brown	Polysatin	t	t	The power of printed prettiness.		2014-01-30 23:10:49.600224+05:30	2014-01-30 23:10:49.619116+05:30	5	Tops		
+164	6	Josephine	FTW10-Blu06	Female	1300	0	KAARYAH	Blue	Polysatin	t	t	The power of printed prettiness.		2014-01-30 23:10:50.30559+05:30	2014-01-30 23:10:50.323089+05:30	5	Tops		
+165	6	Josephine	FTW10-Pul02	Female	1300	0	KAARYAH	Pink	Polysatin	t	t	The power of printed prettiness.		2014-01-30 23:10:51.014284+05:30	2014-01-30 23:10:51.032719+05:30	5	Tops		
+166	6	Joy	FTW11-Bla12	Female	1833	0	KAARYAH	Black	Polycrepe	t	t	When simplicity gives you joy, then keep it simple and joyfull without a doubt.		2014-01-30 23:10:51.7588+05:30	2014-01-30 23:10:51.775675+05:30	8	Tops		
+167	6	Joy	FTW11-Gry12	Female	1833	0	KAARYAH	Grey	Polycrepe	t	t	When simplicity gives you joy, then keep it simple and joyfull without a doubt.		2014-01-30 23:10:52.810542+05:30	2014-01-30 23:10:52.827372+05:30	7	Tops		
+168	6	Joy	FTW11-Pin12	Female	1833	0	KAARYAH	Pink	Polycrepe	t	t	When simplicity gives you joy, then keep it simple and joyfull without a doubt.		2014-01-30 23:10:53.815845+05:30	2014-01-30 23:10:53.83348+05:30	7	Tops		
+169	6	Judith	FTW12-Bla13	Female	2178	0	KAARYAH	Black	Chiffon	t	t	Be whimsical with lacy romance		2014-01-30 23:10:54.798857+05:30	2014-01-30 23:10:54.815964+05:30	6	Tops		
+170	6	Leslie	FTK11-Bro01	Female	1484	0	KAARYAH	Maroon	textured slub knit	t	t	As exciting as a new day, a cowl neck top to keep that scowl far away .		2014-01-30 23:10:55.730386+05:30	2014-01-30 23:10:55.747444+05:30	4	Tops		
+171	6	Kenny	DRW05-LGy02	Female	3500	0	KAARYAH	Grey	Wool	t	t	Dress it up the old-school way and be a wandering boss		2014-01-30 23:10:56.305074+05:30	2014-01-30 23:10:56.352749+05:30	6	Dresses		
+172	6	Kim	FTK16-Bla15	Female	1800	0	KAARYAH	Black	Knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy.		2014-01-30 23:10:57.299156+05:30	2014-01-30 23:10:57.316913+05:30	5	Tops		
+173	6	Kim	FTK16-Pin15	Female	1800	0	KAARYAH	Pink	Knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy.		2014-01-30 23:10:57.993746+05:30	2014-01-30 23:10:58.014677+05:30	4	Tops		
+174	6	Kim	FTK16-Blu15	Female	1800	0	KAARYAH	Green	Knit	t	t	A gorgeous twisty knit top enough to send you twisting and shouting for joy.		2014-01-30 23:10:58.512785+05:30	2014-01-30 23:10:58.533966+05:30	5	Tops		
+175	6	Lilly	FTK17-Bla11	Female	2056	0	KAARYAH	Black	textured slub knit	t	t	Make it niche with some linen around you		2014-01-30 23:10:59.311258+05:30	2014-01-30 23:10:59.328117+05:30	5	Tops		
+176	6	Lilly	FTK17-Bro01	Female	2056	0	KAARYAH	Maroon	textured slub knit	t	t	Make it niche with some linen around you		2014-01-30 23:11:00.012181+05:30	2014-01-30 23:11:00.030725+05:30	5	Tops		
+177	6	Mary	JKW04-Bla20140114	Female	4000	0	KAARYAH	Black	Double Georgette	t	t	Be bold with Black, but keep it trendy with this fashion jacket		2014-01-30 23:11:00.806099+05:30	2014-01-30 23:11:00.822974+05:30	5	Jackets & Blazers		
+178	6	Megan	DRW04-Beige01	Female	3422	0	KAARYAH	Beige	Printed linen	t	t	The perfect dress to unleash the free spirit in you		2014-01-30 23:11:01.556083+05:30	2014-01-30 23:11:01.574957+05:30	3	Dresses		
+179	6	Miranda	SHW09-Bei01	Female	1778	0	KAARYAH	Cream	Printed poly crepe	t	t	When you wan to play it safe, there are no two ways around this top "shirt" choice.		2014-01-30 23:11:02.023843+05:30	2014-01-30 23:11:02.053475+05:30	5	Shirts		
+180	6	Miranda	SHW09-Bla23	Female	1778	0	KAARYAH	Black	Printed poly crepe	t	t	When you want to play it safe, there are no two ways; this is a top "shirt" choice		2014-01-30 23:11:02.921523+05:30	2014-01-30 23:11:02.939638+05:30	6	Shirts		
+181	6	Monique	SHW10-Whi01	Female	2000	0	KAARYAH	White	Cotton Lycra	t	t	Shirt-it-up the frilly way		2014-01-30 23:11:03.893749+05:30	2014-01-30 23:11:03.913895+05:30	5	Shirts		
+182	6	Monique	SHW10-Bla01	Female	2000	0	KAARYAH	Black	Cotton Lycra	t	t	Shirt-it-up the frilly way		2014-01-30 23:11:04.527992+05:30	2014-01-30 23:11:04.546416+05:30	6	Shirts		
+183	6	Monique	SHW10-Blu01	Female	2000	0	KAARYAH	Blue	Cotton Lycra	t	t	Shirt-it-up the frilly way		2014-01-30 23:11:05.369536+05:30	2014-01-30 23:11:05.386791+05:30	5	Shirts		
+184	6	New Rose	SHW04-Blu03	Female	2000	0	KAARYAH	Aqua Blue	Cotton Lycra	t	t	You’ll make time to stop and sniff the flowers in it. This gorgeousness is meant to be beautifully floated around in. You can view this product on http://kaaryah.com/women-blue-formal-shirt-rise.html		2014-01-30 23:11:06.129068+05:30	2014-01-30 23:11:06.147005+05:30	5	Shirts		
+185	6	Rachel	STW02-Blu20140114	Female	2450	0	KAARYAH	Blue	Wool	t	t	A signature style classic tweed pencil skirt that has a sharp point to make		2014-01-30 23:11:06.818705+05:30	2014-01-30 23:11:06.83634+05:30	4	Skirts		
+186	6	Samantha	FTW02-Pin13	Female	2178	0	KAARYAH	Pink	Viscose Georgette	t	t	Razor sharp clothing. A cut above. The sexy thing to do.		2014-01-30 23:11:09.049323+05:30	2014-01-30 23:11:09.066813+05:30	5	Tops		
+187	6	Samantha	FTW02-Turq20140114	Female	2178	0	KAARYAH	Blue	Viscose Georgette	t	t	Razor sharp clothing. A cut above. The sexy thing to do.		2014-01-30 23:11:09.635094+05:30	2014-01-30 23:11:09.652384+05:30	5	Tops		
+188	6	Samantha	FTW02-Pur20140114	Female	2178	0	KAARYAH	Purple	Viscose Georgette	t	t	Razor sharp clothing. A cut above. The sexy thing to do.		2014-01-30 23:11:10.341872+05:30	2014-01-30 23:11:10.358839+05:30	5	Tops		
+189	6	Samantha	FTW02-Bla03	Female	2178	0	KAARYAH	Black	Viscose Georgette	t	t	Razor sharp clothing. A cut above. The sexy thing to do ,You can view this product on http://kaaryah.com/women-black-casual-shirt-samantha.html		2014-01-30 23:11:11.041512+05:30	2014-01-30 23:11:11.059097+05:30	5	Tops		
+190	6	Sara	FTW01-Bla02	Female	1150	0	KAARYAH	Red	Polysatin	t	t	With ruffles that make waves! You can view this product on http://kaaryah.com/women-professional-blouse-sara.html		2014-01-30 23:11:11.738429+05:30	2014-01-30 23:11:11.789554+05:30	5	Tops		
+191	6	Sophie	FTK18-Whi15	Female	2000	0	KAARYAH	White	Viscose	t	t	Have some fun with this cowl and let it loose!		2014-01-30 23:11:12.749217+05:30	2014-01-30 23:11:12.767414+05:30	5	Tops		
+192	6	Summer	SHW08-Whi01	Female	1911	0	KAARYAH	White	Cotton Lycra	t	t	A shirt that the little voice in your head loves. You know, the one that keeps telling you how it’s the small things that matter big time! You can view this product on http://kaaryah.com/women-white-professional-fitting-shirt-summer-687.html		2014-01-30 23:11:13.404859+05:30	2014-01-30 23:11:13.422976+05:30	4	Shirts		
+193	6	Suzanne	PUL03-Gre01	Female	1833	0	KAARYAH	Grey	Wool	t	t	At times, minimalism is exclusive - trust us, this is what you want this Winter		2014-01-30 23:11:13.97895+05:30	2014-01-30 23:11:14.011396+05:30	5	Sweaters		
+194	6	Suzanne	PUL03-Bei01	Female	1833	0	KAARYAH	Beige	Wool	t	t	At times, minimalism is exclusive - trust us, this is what you want this Winter		2014-01-30 23:11:14.794226+05:30	2014-01-30 23:11:14.812486+05:30	4	Sweaters		
+195	6	Catherine	STW03-LGy02	Female	2178	0	KAARYAH	Grey	Wool	t	t	Pleat in some fun through your walk-way.		2014-01-30 23:11:15.330735+05:30	2014-01-30 23:11:15.351305+05:30	6	Skirts		
+196	6	Gemini	FTW13-Pur20140114	Female	1960	0	KAARYAH	Purple	Wrinkle free crepe	t	t	Block your tops with some bright hues  and enjoy a colorful thought.		2014-01-30 23:11:16.266987+05:30	2014-01-30 23:11:16.318479+05:30	5	Tops		
+197	6	Gemini	FTW13-Turq20140114	Female	1960	0	KAARYAH	Turquoise	Wrinkle free crepe	t	t	Block your tops with some bright hues  and enjoy a colorful thought.		2014-01-30 23:11:17.112307+05:30	2014-01-30 23:11:17.132243+05:30	5	Tops		
+198	6	Gemini	FTW13-Pin13	Female	1960	0	KAARYAH	Pink	Wrinkle free crepe	t	t	Block your tops with some bright hues  and enjoy a colorful thought.		2014-01-30 23:11:17.725198+05:30	2014-01-30 23:11:17.745129+05:30	5	Tops		
+199	6	Betty	FTW14-Bei20140114	Female	1960	0	KAARYAH	Beige	Polysatin	t	t	Keeping things simple for the girl next door		2014-01-30 23:11:18.58046+05:30	2014-01-30 23:11:18.608682+05:30	4	Tops		
+200	6	Betty	FTW14-Bla14	Female	1960	0	KAARYAH	Black	Polysatin	t	t	Keeping things simple for the girl next door		2014-01-30 23:11:19.38397+05:30	2014-01-30 23:11:19.406724+05:30	4	Tops		
+201	6	Garry	FTK10-Dgy01	Female	1960	0	KAARYAH	Grey	Modal Satin & knit	t	t	Keep in trendy; Keep it easy; Carry a little bling		2014-01-30 23:11:20.109142+05:30	2014-01-30 23:11:20.146698+05:30	5	Tops		
+202	6	Jennifer	SHW02-Win03	Female	1911	0	KAARYAH	Mauve	Cotton Lycra	t	t	Happiness (pin)tucked away in a shirt!  You can view this product on http://kaaryah.com/women-mauve-business-shirt-jennifer.htm		2014-01-30 23:11:21.024724+05:30	2014-01-30 23:11:21.047451+05:30	4	Shirts		
+203	6	Josephine	FTW10-Pin03	Female	1300	0	KAARYAH	Grey	Polysatin	t	t	The power of printed prettiness.		2014-01-30 23:11:21.575997+05:30	2014-01-30 23:11:21.627223+05:30	5	Tops		
+204	6	Monique	SHW10-Red01	Female	2000	0	KAARYAH	Orange	Cotton Lycra	t	t	Shirt-it-up the frilly way		2014-01-30 23:11:22.705475+05:30	2014-01-30 23:11:22.727233+05:30	4	Shirts		
+205	6	New Rose	SHW04-Win03	Female	2000	0	KAARYAH	Mauve	Cotton Lycra	t	t	You’ll make time to stop and sniff the flowers in it. This gorgeousness is meant to be beautifully floated around in		2014-01-30 23:11:22.990562+05:30	2014-01-30 23:11:23.007689+05:30	5	Shirts		
+206	6	Summer	SHW08-Win08	Female	1911	0	KAARYAH	Mauve	Cotton Lycra	t	t	A shirt that the little voice in your head loves. You know, the one that keeps telling you how it’s the small things that matter big time! You can view this product on http://kaaryah.com/women-mauve-business-fitting-shirt-summer.html		2014-01-30 23:11:23.447998+05:30	2014-01-30 23:11:23.464459+05:30	5	Shirts		
+207	6	Suzanne	PUL03-Bla01	Female	1833	0	KAARYAH	Black	Wool	t	t	At times, minimalism is exclusive - trust us, this is what you want this Winter		2014-01-30 23:11:23.876759+05:30	2014-01-30 23:11:23.896448+05:30	4	Sweaters		
+208	6	Suzanne	PUL03-BlaBei01	Female	1833	0	KAARYAH	Black	Wool	t	t	At times, minimalism is exclusive - trust us, this is what you want this Winter		2014-01-30 23:11:24.237107+05:30	2014-01-30 23:11:24.274502+05:30	4	Sweaters		
+209	6	Josephine	FTW10-Pul01	Female	1300	0	KAARYAH	Purple	Polysatin	t	t	The power of printed prettiness. You can view this product onhttp://kaaryah.com/peach-formal-printed-top-josephine.html		2014-01-30 23:11:24.568943+05:30	2014-01-30 23:11:24.58552+05:30	4	Tops		
+210	6	Felecia	TRW04-Bla09	Female	2100	0	KAARYAH	Black	Cotton Satin Lycra	t	t	Sharp trousers for the woman who has one thing to say to the world – I wear the pants around here. And the nicest ones that too!		2014-01-30 23:11:25.069905+05:30	2014-01-30 23:11:25.086638+05:30	5	Trousers & Leggings		
+211	6	Felecia	TRW04-Red09	Female	2100	0	KAARYAH	Red	Cotton Satin Lycra	t	t	Sharp trousers for the woman who has one thing to say to the world – I wear the pants around here. And the nicest ones that too!		2014-01-30 23:11:25.438165+05:30	2014-01-30 23:11:25.45555+05:30	5	Trousers & Leggings		
+212	7	Green jacket style lehenga	KA01	Female	28500	0	Kim Anand	Green	Net	t	t			2014-01-30 23:11:25.910928+05:30	2014-01-30 23:11:25.912654+05:30	2	Ethnic: Lehengas		
+213	7	Red Anarkali suit	KA02	Female	45500	0	Kim Anand	Red	Net	t	t			2014-01-30 23:11:34.161006+05:30	2014-01-30 23:11:34.190131+05:30	2	Ethnic: Suit sets		
+214	7	Peach Indo western gown	KA03	Female	28500	0	Kim Anand	Peach	Georgette	t	t			2014-01-30 23:11:40.437894+05:30	2014-01-30 23:11:40.440308+05:30	2	Dresses		
+215	7	Yellow angrakha anarkali suit	KA04	Female	18500	0	Kim Anand	Yellow	Georgette	t	t			2014-01-30 23:11:48.17359+05:30	2014-01-30 23:11:48.176805+05:30	2	Ethnic: Suit sets		
+216	7	Orange jacket style suit	KA05	Female	22500	0	Kim Anand	Orange	Georgette	t	t			2014-01-30 23:11:56.193748+05:30	2014-01-30 23:11:56.196199+05:30	1	Ethnic: Suit sets		
+217	7	Pink silk Lehenga	KA06	Female	38500	0	Kim Anand	Pink	Georgette	t	t			2014-01-30 23:11:58.750958+05:30	2014-01-30 23:11:58.753892+05:30	2	Ethnic: Lehengas		
+218	7	Green sharara	KA07	Female	18500	0	Kim Anand	Green	Chanteily	t	t			2014-01-30 23:12:06.85196+05:30	2014-01-30 23:12:06.854782+05:30	1	Ethnic: Lehengas		
+219	7	Peach jacket style lehenga	KA08	Female	26500	0	Kim Anand	Peach	Georgette	t	t			2014-01-30 23:12:10.652765+05:30	2014-01-30 23:12:10.655032+05:30	2	Ethnic: Lehengas		
+220	7	Green anarkali suit	KA09	Female	22500	0	Kim Anand	Green	Net	t	t			2014-01-30 23:12:17.925622+05:30	2014-01-30 23:12:17.928507+05:30	2	Ethnic: Suit sets		
+221	7	Maroon lehenga	KA10	Female	26500	0	Kim Anand	Maroon	Raw Silk	t	t			2014-01-30 23:12:25.145619+05:30	2014-01-30 23:12:25.148035+05:30	2	Ethnic: Lehengas		
+222	7	Pink silk gown	KA11	Female	28500	0	Kim Anand	Pink	Silk	t	t			2014-01-30 23:12:31.797776+05:30	2014-01-30 23:12:31.801133+05:30	3	Dresses		
+223	7	Raw silk yellow lehenga	KA12	Female	45000	0	Kim Anand	Yellow	Raw Silk	t	t			2014-01-30 23:12:42.225783+05:30	2014-01-30 23:12:42.22862+05:30	3	Ethnic: Lehengas		
+224	7	Mauve anarkali suit	KA13	Female	16500	0	Kim Anand	Mauve	Net	t	t			2014-01-30 23:12:52.360463+05:30	2014-01-30 23:12:52.363429+05:30	2	Ethnic: Suit sets		
+225	7	Blue crochet top with harem pants	KA14	Female	14500	0	Kim Anand	Blue	Crochet	t	t			2014-01-30 23:12:58.000185+05:30	2014-01-30 23:12:58.002277+05:30	2	Ethnic: Suit sets		
+226	7	Peach net anarkali suit	KA15	Female	18500	0	Kim Anand	Peach	Net	t	t			2014-01-30 23:13:06.148512+05:30	2014-01-30 23:13:06.150256+05:30	2	Ethnic: Suit sets		
+227	7	Red anarkali suit	KA16	Female	16500	0	Kim Anand	Red	Georgette	t	t			2014-01-30 23:13:12.663668+05:30	2014-01-30 23:13:12.666498+05:30	2	Ethnic: Suit sets		
+228	7	Gold anarkali suit	KA17	Female	32500	0	Kim Anand	Gold	Net	t	t			2014-01-30 23:13:17.877108+05:30	2014-01-30 23:13:17.878953+05:30	2	Ethnic: Suit sets		
+229	7	Black anarkali with trail	KA18	Female	18500	0	Kim Anand	Black	Chanteily	t	t			2014-01-30 23:13:43.637097+05:30	2014-01-30 23:13:43.640568+05:30	2	Ethnic: Suit sets		
+230	7	Purple anarkali suit	KA19	Female	18500	0	Kim Anand	Purple	Net	t	t			2014-01-30 23:13:50.292785+05:30	2014-01-30 23:13:50.296053+05:30	2	Ethnic: Suit sets		
+231	8	Yellow net lehenga	244	Female	35000	0	Niharika Pandey	Yellow	Net	t	t			2014-01-30 23:13:56.315178+05:30	2014-01-30 23:13:56.317551+05:30	2	Lehenga		
+232	8	Maroon net lehenga	212	Female	110000	0	Niharika Pandey	Maroon	Net	t	t			2014-01-30 23:14:02.328639+05:30	2014-01-30 23:14:02.331341+05:30	2	Lehenga		
+233	8	Grey net lehenga	217	Female	85000	0	Niharika Pandey	Grey	Net	t	t			2014-01-30 23:14:09.045608+05:30	2014-01-30 23:14:09.047257+05:30	2	Lehenga		
+234	8	Red net lehenga	213	Female	120000	0	Niharika Pandey	Red	Net	t	t			2014-01-30 23:14:15.191993+05:30	2014-01-30 23:14:15.194659+05:30	2	Lehenga		
+235	8	Orange net lehenga	240	Female	38000	0	Niharika Pandey	Orange	Net	t	t			2014-01-30 23:14:21.54662+05:30	2014-01-30 23:14:21.549404+05:30	3	Lehenga		
+236	8	Purple net lehenga	241	Female	75000	0	Niharika Pandey	Purple	Net	t	t			2014-01-30 23:14:30.635002+05:30	2014-01-30 23:14:30.637932+05:30	2	Lehenga		
+237	8	Green net suit	38	Female	22000	0	Niharika Pandey	Green	Net	t	t			2014-01-30 23:14:36.798699+05:30	2014-01-30 23:14:36.800897+05:30	2	Suit		
+238	8	Blue net suit	366	Female	20000	0	Niharika Pandey	Blue	Net	t	t			2014-01-30 23:14:41.791376+05:30	2014-01-30 23:14:41.79362+05:30	2	Suit		
+239	8	Blue net suit	76	Female	18000	0	Niharika Pandey	Blue	Net	t	t			2014-01-30 23:14:46.718968+05:30	2014-01-30 23:14:46.928481+05:30	2	Suit		
+240	8	Green net suit	157	Female	20000	0	Niharika Pandey	Green	Net	t	t			2014-01-30 23:14:53.075335+05:30	2014-01-30 23:14:53.07716+05:30	2	Suit		
+241	8	Maroon chiffon suit	201	Female	18000	0	Niharika Pandey	Maroon	Chiffon	t	t			2014-01-30 23:14:58.547237+05:30	2014-01-30 23:14:58.549573+05:30	3	Suit		
+242	8	Yellow net suit	55	Female	20000	0	Niharika Pandey	Yellow	Net	t	t			2014-01-30 23:15:06.689025+05:30	2014-01-30 23:15:06.69063+05:30	2	Suit		
+243	8	Multicolor net dress	56	Female	25000	0	Niharika Pandey	MULTICOLOR	Net	t	t			2014-01-30 23:15:11.379691+05:30	2014-01-30 23:15:11.38202+05:30	2	Dress		
+244	8	Pink net dress	57	Female	18000	0	Niharika Pandey	Pink	Net	t	t			2014-01-30 23:15:14.770092+05:30	2014-01-30 23:15:14.77372+05:30	1	Dress		
+245	8	Black net dress	446	Female	25000	0	Niharika Pandey	Black	Net	t	t			2014-01-30 23:15:16.313207+05:30	2014-01-30 23:15:16.316052+05:30	2	Dress		
+246	8	Yellow raw silk dress	43	Female	20000	0	Niharika Pandey	Yellow	Raw Silk	t	t			2014-01-30 23:15:20.156756+05:30	2014-01-30 23:15:20.159011+05:30	2	Dress		
+247	8	Black wool dress	60	Female	20000	0	Niharika Pandey	Black	Wool	t	t			2014-01-30 23:15:23.392263+05:30	2014-01-30 23:15:23.402858+05:30	2	Dress		
+248	8	Red net & georgette saree	760	Female	28000	0	Niharika Pandey	Red	Net, Georgette	t	t			2014-01-30 23:15:26.479977+05:30	2014-01-30 23:15:26.488949+05:30	3	Saree		
+249	8	Net & georgette saree	77	Female	35000	0	Niharika Pandey	MULTICOLOR	Net, Georgette	t	t			2014-01-30 23:15:37.988757+05:30	2014-01-30 23:15:38.002341+05:30	2	Saree		
+250	8	Green net saree	1	Female	55000	0	Niharika Pandey	Green	Net	t	t			2014-01-30 23:15:45.232208+05:30	2014-01-30 23:15:45.233888+05:30	2	Saree		
+251	8	Net & Chiffon multicolor saree	3	Female	27000	0	Niharika Pandey	MULTICOLOR	Net, Chiffon	t	t			2014-01-30 23:15:52.053177+05:30	2014-01-30 23:15:52.05602+05:30	2	Saree		
+252	8	Pink net & georgette saree	5	Female	26000	0	Niharika Pandey	Pink	Net, Georgette	t	t			2014-01-30 23:15:59.920574+05:30	2014-01-30 23:15:59.9721+05:30	2	Saree		
+253	8	Pink net saree	6	Female	28000	0	Niharika Pandey	Pink	Net	t	t			2014-01-30 23:16:09.968595+05:30	2014-01-30 23:16:09.989014+05:30	2	Saree		
+254	9	Jacket Anarkali	NGD-FDNO	Female	19500	0	Nitin Gera	Maroon	Net and Velvet	t	t			2014-01-30 23:16:18.396662+05:30	2014-01-30 23:16:18.435857+05:30	2	Ethnic: Suit sets		
+325	11	Black Chiffon suit	SM07	Female	13500	0	Shiba Mir	Black	Chiffon	t	t			2014-01-30 23:30:09.591015+05:30	2014-01-30 23:30:09.592807+05:30	2	Ethnic: Suit sets		
+255	9	Antique Lehanga Choli	NGD-NDUX	Female	19500	0	Nitin Gera	Gold	Brocade	t	t	Vintage Fashion! Velvet Choli with zari embroidery and brocade lehanga with antique and black borders		2014-01-30 23:16:32.26448+05:30	2014-01-30 23:16:32.268655+05:30	1	Ethnic: Lehengas		
+256	9	Maroon Velvet Embroidery Yoke Anarkali	NGD-GSDN	Female	12000	0	Nitin Gera	Maroon	Net and Velvet	t	t			2014-01-30 23:16:36.469862+05:30	2014-01-30 23:16:36.4744+05:30	2	Ethnic: Suit sets		
+257	9	Purple Zari Gown	NGD-NFUX	Female	14000	0	Nitin Gera	Purple	Georgette / Net	t	t	Antique zari embroidered jacket with flaired net gown.		2014-01-30 23:16:44.697442+05:30	2014-01-30 23:16:44.72985+05:30	2	Dresses		
+258	9	Sequence Black Gold Gown	NGD-IRUX	Female	12500	0	Nitin Gera	Black	Georgette Sequence	t	t	Antique sequence embroidery gown, a blend of Ethnic and Western Wear.		2014-01-30 23:16:53.39341+05:30	2014-01-30 23:16:53.401789+05:30	2	Dresses		
+259	9	Peach Drape Off Shoulder Gown	NGD-SIOG	Female	8500	0	Nitin Gera	Peach	Georgette / Net	t	t			2014-01-30 23:17:01.760209+05:30	2014-01-30 23:17:01.772984+05:30	2	Dresses		
+260	9	Saree Gown	NGD-GSIU	Female	12500	0	Nitin Gera	Pink	Satin Lycra	t	t			2014-01-30 23:17:09.383454+05:30	2014-01-30 23:17:09.388859+05:30	2	Dresses		
+261	9	Saree Gown	NGD-GSIU2	Female	12000	0	Nitin Gera	Purple	Satin Lycra	t	t			2014-01-30 23:17:17.156467+05:30	2014-01-30 23:17:17.161955+05:30	2	Dresses		
+262	9	Embroidered Achkan	NGD-GDNI	Female	12000	0	Nitin Gera	Beige	Georgette	t	t			2014-01-30 23:17:24.707511+05:30	2014-01-30 23:17:24.713054+05:30	2	Ethnic: Suit sets		
+263	9	Purple Green Suit	NGD-SGUX	Female	7500	0	Nitin Gera	Purple	Georgette	t	t			2014-01-30 23:17:33.230457+05:30	2014-01-30 23:17:33.236578+05:30	2	Ethnic: Suit sets		
+264	9	Orange Embroidery Yoke+ Mukesh Drape	NGD-NGEG	Female	14000	0	Nitin Gera	Orange	Georgette	t	t			2014-01-30 23:17:42.664551+05:30	2014-01-30 23:17:42.670089+05:30	3	Dresses		
+265	9	Turquoise Pleate Dress	NGD-ENSI	Female	5500	0	Nitin Gera	Turquoise	Georgette	t	t			2014-01-30 23:17:54.227862+05:30	2014-01-30 23:17:54.233453+05:30	1	Dresses		
+266	9	Orange Drape Embroidery	NGD-SGIU	Female	8000	0	Nitin Gera	Orange	Georgette	t	t			2014-01-30 23:17:58.317856+05:30	2014-01-30 23:17:58.323164+05:30	2	Dresses		
+267	9	Neon Gown	NGD-SEUX	Female	8000	0	Nitin Gera	Orange	Georgette	t	t			2014-01-30 23:18:18.933981+05:30	2014-01-30 23:18:18.938933+05:30	2	Dresses		
+268	9	Purple Sequence Off Shoulder Gown	NGD-ENID	Female	6500	0	Nitin Gera	Purple	Sequence and Net	t	t			2014-01-30 23:18:26.339994+05:30	2014-01-30 23:18:26.345562+05:30	2	Dresses		
+269	9	Green Blue Lacha	NGD-NFEG	Female	16500	0	Nitin Gera	Green	Chanderi	t	t			2014-01-30 23:18:34.005229+05:30	2014-01-30 23:18:34.010178+05:30	2	Ethnic: Lehengas		
+270	9	Black White Neon Lehenga	NGD-NOEI	Female	18500	0	Nitin Gera	White	Phulkari	t	t			2014-01-30 23:18:41.842175+05:30	2014-01-30 23:18:41.847955+05:30	2	Ethnic: Lehengas		
+271	9	Antique Lehenga	NGD-NGOI	Female	17000	0	Nitin Gera	Gold	Shimmer	t	t			2014-01-30 23:18:49.412941+05:30	2014-01-30 23:18:49.443534+05:30	2	Ethnic: Lehengas		
+272	9	Orange Yellow Anarkali	NGD-FDEU	Female	12500	0	Nitin Gera	Orange	Georgette	t	t			2014-01-30 23:18:57.239313+05:30	2014-01-30 23:18:57.244688+05:30	2	Ethnic: Suit sets		
+273	9	Pink And Black Lacha	NGD-NFOD	Female	14000	0	Nitin Gera	Black	Georgette	t	t			2014-01-30 23:19:23.31535+05:30	2014-01-30 23:19:23.319852+05:30	2	Ethnic: Lehengas		
+274	9	Black Net Jacket Lehenga	NGD-FEGN	Female	14000	0	Nitin Gera	Black	Net and Georgette	t	t			2014-01-30 23:19:31.047322+05:30	2014-01-30 23:19:31.052794+05:30	2	Ethnic: Lehengas		
+275	9	Gotta Patti Anarkali	NGD-FGUX	Female	14000	0	Nitin Gera	Gold	Gotta	t	t			2014-01-30 23:19:38.908704+05:30	2014-01-30 23:19:38.913675+05:30	2	Ethnic: Suit sets		
+276	9	Black Plaeats Embroidered Dress	NGD-NIGU	Female	7000	0	Nitin Gera	Black	Georgette	t	t			2014-01-30 23:19:47.528748+05:30	2014-01-30 23:19:47.534488+05:30	1	Dresses		
+277	9	Neon Orange Achkani	NGD-ERGU	Female	7000	0	Nitin Gera	Orange	Chanderi	t	t			2014-01-30 23:19:51.440942+05:30	2014-01-30 23:19:51.446609+05:30	1	Ethnic: Suit sets		
+278	10	Ombre dyed cotton casual  jumpsuit	RA01	Female	8500	0	Richa Aggarwal	MULTICOLOR	Pure Cotton	f	t	Tri color ombre hand dyed jumpsuit inspired by Indian saree drape.		2014-01-30 23:27:44.591984+05:30	2014-01-30 23:27:44.59856+05:30	3	Jumpsuit		
+279	10	Single jersey printed tunic	RA02	Female	9000	0	Richa Aggarwal	Blue	Pure Cotton	f	t	Printed jersey tunic with ombre hand over dyed and  gathers detail.		2014-01-30 23:27:46.090977+05:30	2014-01-30 23:27:46.096372+05:30	4	Tunics		
+280	10	Ombre dyed drape shrug	RA03	Female	7500	0	Richa Aggarwal	Orange	Wool blend	f	t	Tri color ombre hand dyed shrug with hood detail.		2014-01-30 23:27:47.983157+05:30	2014-01-30 23:27:47.988848+05:30	3	Shrugs		
+281	10	Silk ombre shirt dress	RA04	Female	11000	0	Richa Aggarwal	Turquoise	Pure Silk	f	t	Ombre dyed color blocked  shirt dress with metal and glass trims.		2014-01-30 23:27:49.272004+05:30	2014-01-30 23:27:49.276971+05:30	2	Shirts		
+282	10	Ombre dyed & embroidered top	RA05	Female	5000	0	Richa Aggarwal	Pink	Pure Cotton	f	t	Ombre dyed and applique embroidered racer back top.		2014-01-30 23:27:50.353056+05:30	2014-01-30 23:27:50.357989+05:30	2	Tops		
+283	10	Ombre dyed silk tunic with hand embroidery	RA06	Female	11000	0	Richa Aggarwal	Yellow	Pure Silk	f	t	Ombre dyed pure silk tunic with hand work detail on neck.		2014-01-30 23:27:51.709014+05:30	2014-01-30 23:27:51.713997+05:30	2	Tunics		
+284	10	Ombre dyed & embroidered shirt	RA07	Female	4500	0	Richa Aggarwal	Yellow	Pure Cotton	f	t	Ombre dyed and floral applique shirt with glass and metal trims.		2014-01-30 23:27:53.604645+05:30	2014-01-30 23:27:53.664295+05:30	2	Shirts		
+285	10	Ombre dyed silk tunic	RA08	Female	14000	0	Richa Aggarwal	Blue	Pure Silk	f	t	Floral printed and ombre dyed silk tunic inspired by the streets of India.		2014-01-30 23:27:55.926433+05:30	2014-01-30 23:27:55.93137+05:30	2	Tunics		
+286	10	Single jersey hand  embroidered tee	RA09	Female	4500	0	Richa Aggarwal	Black	Pure Cotton	f	t	Single jersey tee with hand embroidered block printed panel detail.		2014-01-30 23:27:57.527222+05:30	2014-01-30 23:27:57.532732+05:30	2	T-Shirts		
+287	10	Ombre dyed & embroidered tunic	RA10	Female	5800	0	Richa Aggarwal	Pink	Pure Crepe	f	t	Ombre dyed and applique embroidered tunic with kaftan neck and tassel trim.		2014-01-30 23:27:57.866586+05:30	2014-01-30 23:27:57.871573+05:30	2	Tunics		
+288	10	Single jersey printed tunic	RA11	Female	5800	0	Richa Aggarwal	Turquoise	Pure Cotton	f	t	Printed single jersey tunic with twisted back detail inspired by Indian saree drape.		2014-01-30 23:27:58.291715+05:30	2014-01-30 23:27:58.32256+05:30	2	Tunics		
+289	10	Silk peplum top	RA12	Female	6500	0	Richa Aggarwal	Gold	Pure Silk	f	t	Hand embroidered silk peplum top with cotton gathers and back opening detail.		2014-01-30 23:27:58.775664+05:30	2014-01-30 23:27:58.780167+05:30	2	Tops		
+290	10	Cotton dobby hand embroidered top	RA13	Female	4500	0	Richa Aggarwal	White	Pure Cotton	f	t	Cotton dobby round neck top with vertical hand embroidery detail in front and back.		2014-01-30 23:27:59.154409+05:30	2014-01-30 23:27:59.158785+05:30	2	Tops		
+291	10	Silk blend skirt	RA14	Female	5800	0	Richa Aggarwal	Turquoise	Silk blend	f	t	Silk skirt with hand embroidered hem done with rice sack and silk threads.		2014-01-30 23:27:59.483631+05:30	2014-01-30 23:27:59.487837+05:30	1	Skirts		
+292	10	Cotton double fabric shrug	RA15	Female	5800	0	Richa Aggarwal	Orange	Pure Cotton	f	t	Floral hand embroidered cotton shrug with block printed double fabric detail.		2014-01-30 23:27:59.607917+05:30	2014-01-30 23:27:59.61224+05:30	1	Shrugs		
+326	11	Yellow Net Suit	SM08	Female	14500	0	Shiba Mir	Yellow	Net	t	t			2014-01-30 23:30:14.684877+05:30	2014-01-30 23:30:14.687425+05:30	1	Ethnic: Suit sets		
+293	10	Cotton plaid hand embroidered top	RA16	Female	6500	0	Richa Aggarwal	Green	Pure Cotton	f	t	Cotton plaid top with hand embroidered yoke detail in sequins and chain.		2014-01-30 23:27:59.720756+05:30	2014-01-30 23:27:59.725171+05:30	2	Tops		
+294	10	Silk peplum top	RA17	Female	4800	0	Richa Aggarwal	Purple	Silk blend	f	t	Silk plaid peplum with hand embroidery detail and block printed lining.		2014-01-30 23:28:00.065049+05:30	2014-01-30 23:28:00.069767+05:30	1	Tops		
+295	10	Single jersey semi formal tunic	RA18	Female	6500	0	Richa Aggarwal	Lime	Pure Cotton	f	t	Single jersey tunic with hand embroidery and hand block printed detail with plaid lining.		2014-01-30 23:28:00.189815+05:30	2014-01-30 23:28:00.19477+05:30	2	Tunics		
+296	10	Silk jersey comfy tunic	RA19	Female	9500	0	Richa Aggarwal	Lime	Silk Jersey	f	t	Silk jersey kaftan dress with hand emboidred bib detail on hand block printed fabric.		2014-01-30 23:28:00.642622+05:30	2014-01-30 23:28:00.647003+05:30	2	Tunics		
+297	10	Cotton plaid day dress	RA20	Female	9800	0	Richa Aggarwal	Lime	Pure Cotton	f	t	Cotton plaid day dress in hand embroidred hem and placket detail with full round volume and parrot belt.		2014-01-30 23:28:01.145101+05:30	2014-01-30 23:28:01.1514+05:30	2	Tunics		
+298	10	Cotton plaid assymetric hem day dress	RA21	Female	11500	0	Richa Aggarwal	Lime	Pure Cotton	f	t	Cotton plaid dress with assymetric hem made in hand embroidered border with plastic sack, beads and silk thread work.		2014-01-30 23:28:01.749441+05:30	2014-01-30 23:28:01.755043+05:30	2	Tunics		
+299	10	Cotton plaid jumpsuit	RA22	Female	11500	0	Richa Aggarwal	Lime	Pure Cotton	f	t	Single jersey cotton plaid jumpsuit with hand work done in sequins and beads. Hand block printed detail panel with back opening.		2014-01-30 23:28:02.089949+05:30	2014-01-30 23:28:02.094832+05:30	2	Jumpsuit		
+300	10	Cotton bomber jacket	RA23	Female	10500	0	Richa Aggarwal	Grey	Pure Cotton	f	t	Single jersey cotton hand block printed bomber jacket with hand emboidersy done in beads, wire and sequins.		2014-01-30 23:28:02.409745+05:30	2014-01-30 23:28:02.414673+05:30	1	Jackets & Blazers		
+301	10	Cotton silk embroidered tunic	RA24	Female	7500	0	Richa Aggarwal	Purple	Pure Cotton	f	t	Cotton and silk tunic with hand embroidery detail at the waist, tie up shoulder detail and pearl buttons.		2014-01-30 23:28:02.578378+05:30	2014-01-30 23:28:02.583564+05:30	2	Tunics		
+302	10	Silk velvet leggings	RA25	Female	5000	0	Richa Aggarwal	Purple	Pure Silk	f	t	Silk velvet legging with ombre hand emboidery effect done in floral sequins.		2014-01-30 23:28:04.674919+05:30	2014-01-30 23:28:04.682208+05:30	1	Trousers & Leggings		
+303	10	Cotton hand block printed cropped day top	RA26	Female	5500	0	Richa Aggarwal	Green	Pure Cotton	f	t	Pure cotton hand emboidered and authentic sanganeri hand block printed crop top.		2014-01-30 23:28:05.082043+05:30	2014-01-30 23:28:05.089484+05:30	2	Tops		
+304	10	Reversable Cotton bomber jacket	RA27	Female	7500	0	Richa Aggarwal	Grey	Pure Cotton	f	t	Pure cotton reversable bomber jacket with hand emboidery detail at the rib and sitara hand emboidered logo at the back.		2014-01-30 23:28:05.638299+05:30	2014-01-30 23:28:05.642574+05:30	1	Jackets & Blazers		
+305	10	Single jersey printed blazer	RA28	Female	11000	0	Richa Aggarwal	Lime	Pure Cotton	f	t	Single jersey blazer in hand block printed cotton and hand emboidery detail lined with block printed plaid fabric.		2014-01-30 23:28:05.879529+05:30	2014-01-30 23:28:05.883744+05:30	2	Jackets & Blazers		
+306	10	Silk jersey party tunic	RA29	Female	9500	0	Richa Aggarwal	Purple	Silk Jersey	f	t	Silk jersey tunic with ombre dyed skirt and hand emboidered torso, lined with hand block printed plaid lining.		2014-01-30 23:28:10.660992+05:30	2014-01-30 23:28:10.6686+05:30	2	Tunics		
+307	10	Silk jersey volume jumpsuit	RA30	Female	14500	0	Richa Aggarwal	Lime	Silk Jersey	f	t	Silk jersey jumpsuit in hand block printed fabric and sequins embroidered hem.		2014-01-30 23:28:15.556061+05:30	2014-01-30 23:28:15.608211+05:30	2	Tunics		
+308	10	Chanderi embroidred shirt	RA31	Female	7000	0	Richa Aggarwal	Purple	Chanderi silk	f	t	Hand embroidred cuff and collar detail in chanderi shirt. Intricate silk knots and crystal surface adorn the simple yet classic silhouette.		2014-01-30 23:28:21.971045+05:30	2014-01-30 23:28:21.976604+05:30	1	Shirts		
+309	10	Tissue embroidred shirt	RA32	Female	4800	0	Richa Aggarwal	Purple	Silk Tissue	f	t	Hand embroidred cuff and detail in silk tissue with wodden hand carved cuff links.		2014-01-30 23:28:22.603808+05:30	2014-01-30 23:28:22.615559+05:30	1	Shirts		
+310	10	Georgette part shirt	RA33	Female	4800	0	Richa Aggarwal	Lime	Pure georgette	f	t	Pure georgette hand sequined sheer party shirt.		2014-01-30 23:28:22.843307+05:30	2014-01-30 23:28:22.848207+05:30	2	Shirts		
+311	10	Georgette part shirt	RA34	Female	4800	0	Richa Aggarwal	Pink	Pure georgette	f	t	Pure georgette hand sequined sheer party shirt with emboidered cuff detail.		2014-01-30 23:28:23.583498+05:30	2014-01-30 23:28:23.598151+05:30	1	Shirts		
+312	10	Cotton hand block printed cropped day top	RA35	Female	5500	0	Richa Aggarwal	Purple	Pure Cotton	f	t	Pure cotton hand emboidered and authentic sanganeri hand block printed crop top.		2014-01-30 23:28:23.864297+05:30	2014-01-30 23:28:23.868838+05:30	1	Tops		
+313	10	Cotton hand block printed jacket	RA36	Female	7000	0	Richa Aggarwal	Purple	Pure Cotton	f	t	Cotton hand block printed and embroidred jacket with tie up shoulder detail and mettalic zipper in front.		2014-01-30 23:28:24.240894+05:30	2014-01-30 23:28:24.297493+05:30	1	Jackets & Blazers		
+314	10	Washed out embroidered  denim	RA37	Female	6500	0	Richa Aggarwal	Blue	Twill	f	t	Cotton washed down denim with embroidered knee detail in mettalic flowers, beads and sequins. Reverse printed.		2014-01-30 23:28:24.812717+05:30	2014-01-30 23:28:24.830481+05:30	1	Jeans		
+315	10	Parrot leather neckpiece	RA38	Female	2400	0	Richa Aggarwal	Yellow	Leather & wood	f	t	Intricately hand painted parrot neckpiece in leather with adjustable string.		2014-01-30 23:28:25.34173+05:30	2014-01-30 23:28:25.347834+05:30	2	OTHER		
+316	10	Cotton block printed leggings	RA39	Female	5000	0	Richa Aggarwal	Grey	Pure Cotton	f	t	Pure cotton hand block printed and sequins embroidered leggigns.		2014-01-30 23:28:26.321638+05:30	2014-01-30 23:28:26.326753+05:30	1	Trousers & Leggings		
+317	10	Cotton plaid parrot stole	RA40	Female	2500	0	Richa Aggarwal	MULTICOLOR	Handloom cotton	f	t	Handloom made plaid reversable fabric scarve with parrots and beads edging detail.		2014-01-30 23:28:26.701323+05:30	2014-01-30 23:28:26.706263+05:30	1	Scarves & Stoles		
+318	10	Cotton and silk hand embroidered neck casual tunic	RA41	Female	5800	0	Richa Aggarwal	Lime	Cotton & Silk	f	t	Cotton and silk tunic with hand emboidered neck detail in beads, mettalic wire and paper quilling.		2014-01-30 23:28:27.18946+05:30	2014-01-30 23:28:27.206385+05:30	1	Tunics		
+319	11	Pink Flow length suit	SM01	Female	17000	0	Shiba Mir	Pink	Net	t	t			2014-01-30 23:28:34.707626+05:30	2014-01-30 23:28:34.709819+05:30	2	Ethnic: Suit sets		
+320	11	Black Flow length suit	SM02	Female	19000	0	Shiba Mir	Black	Net	t	t			2014-01-30 23:29:41.406514+05:30	2014-01-30 23:29:41.408287+05:30	2	Ethnic: Suit sets		
+321	11	Peach Flow length suit	SM03	Female	18000	0	Shiba Mir	Peach	Net	t	t			2014-01-30 23:29:47.313288+05:30	2014-01-30 23:29:47.314929+05:30	2	Ethnic: Suit sets		
+322	11	Pink Flow length suit	SM04	Female	20000	0	Shiba Mir	Pink	Chiffon	t	t			2014-01-30 23:29:52.854419+05:30	2014-01-30 23:29:52.856087+05:30	2	Ethnic: Suit sets		
+323	11	Red lehenga	SM05	Female	27000	0	Shiba Mir	Red	Net	t	t			2014-01-30 23:29:57.990808+05:30	2014-01-30 23:29:57.99244+05:30	2	Ethnic: Lehengas		
+324	11	Black georgette suit	SM06	Female	20000	0	Shiba Mir	Black	Georgette	t	t			2014-01-30 23:30:05.113202+05:30	2014-01-30 23:30:05.114947+05:30	2	Ethnic: Suit sets		
+327	11	Black Georgette saree	SM09	Female	19000	0	Shiba Mir	Black	Georgette	t	t			2014-01-30 23:30:17.281461+05:30	2014-01-30 23:30:17.283137+05:30	1	Ethnic: Sarees		
+328	11	Red Net Suit	SM10	Female	18000	0	Shiba Mir	Red	Net	t	t			2014-01-30 23:30:20.826718+05:30	2014-01-30 23:30:20.828297+05:30	2	Ethnic: Suit sets		
+329	11	Green georgette suit	SM11	Female	18000	0	Shiba Mir	Green	Georgette	t	t			2014-01-30 23:30:26.12833+05:30	2014-01-30 23:30:26.131156+05:30	2	Ethnic: Suit sets		
+330	11	Beige Chiffon suit	SM12	Female	17000	0	Shiba Mir	Beige	Chiffon	t	t			2014-01-30 23:30:31.696453+05:30	2014-01-30 23:30:31.699241+05:30	1	Ethnic: Suit sets		
+331	11	Yellow Chiffon Suit	SM13	Female	17000	0	Shiba Mir	Yellow	Chiffon	t	t			2014-01-30 23:30:34.159096+05:30	2014-01-30 23:30:34.160786+05:30	2	Ethnic: Suit sets		
+332	11	Red Georgette Suit	SM14	Female	18000	0	Shiba Mir	Red	Georgette	t	t			2014-01-30 23:30:40.030451+05:30	2014-01-30 23:30:40.033173+05:30	2	Ethnic: Suit sets		
+333	11	Gown	SM15	Female	17000	0	Shiba Mir	Black	Net	t	t			2014-01-30 23:30:44.466589+05:30	2014-01-30 23:30:44.469429+05:30	2	Dresses		
+334	12	Blue suede chinese collar jacket	SJ2056	Male	12500	0	Sulakshna Jasra	Blue	Suede	t	t			2014-01-30 23:30:56.50792+05:30	2014-01-30 23:30:56.514258+05:30	1	Jackets		
+335	12	Grey jacket	SJ2001	Male	10500	0	Sulakshna Jasra	Grey		t	t			2014-01-30 23:31:00.04868+05:30	2014-01-30 23:31:00.054252+05:30	2	Jackets		
+336	12	Cut-sleeves orange ethnic jacket	SJ2002	Male	7950	0	Sulakshna Jasra	Orange		t	t			2014-01-30 23:31:07.205465+05:30	2014-01-30 23:31:07.209893+05:30	1	Ethnic: Jackets		
+337	12	Blue-gold silk Indo western jacket	SJ2047	Male	18900	0	Sulakshna Jasra	Blue	Silk	t	t			2014-01-30 23:31:10.97194+05:30	2014-01-30 23:31:10.977211+05:30	1	Ethnic: Jackets		
+338	12	Velvet wine coloured bandhgala	SJ2055	Male	11500	0	Sulakshna Jasra	Wine	Velvet	t	t	Wine, velvet bandhgala with Chinese buttons		2014-01-30 23:31:18.177748+05:30	2014-01-30 23:31:18.182997+05:30	1	Ethnic: Jackets		
+339	12	Long cut-sleeves beige jacket	SJ2057	Male	12500	0	Sulakshna Jasra	Beige	Silk	t	t	Surface embroidery		2014-01-30 23:31:21.652971+05:30	2014-01-30 23:31:21.658374+05:30	1	Ethnic: Jackets		
+340	12	Purple chanderi kurta	SJ2058	Male	7000	0	Sulakshna Jasra	Purple	Chanderi	t	t			2014-01-30 23:31:25.302898+05:30	2014-01-30 23:31:25.308608+05:30	1	Ethnic: Kurtas		
+341	12	Maroon Indo-western jacket	SJ2003	Male	14900	0	Sulakshna Jasra	Maroon	Velvet	t	t	Maroon Indo-western jacket in velvet with cowl neck; Zari work at the bottom		2014-01-30 23:31:28.640882+05:30	2014-01-30 23:31:28.645993+05:30	1	Jackets		
+342	12	Blue dupion silk bandhgala	SJ2004	Male	15000	0	Sulakshna Jasra	Blue	Dupion silk	t	t	Blue dupion silk bandhgala with emblem; with breaches		2014-01-30 23:31:31.55821+05:30	2014-01-30 23:31:31.563425+05:30	1	Ethnic: Jackets		
+343	12	Beige silk brocade sherwani	SJ2005	Male	35000	0	Sulakshna Jasra	Beige	Silk brocade	t	t	Beige sherwani with hot-pink piping and plated stole		2014-01-30 23:31:34.548358+05:30	2014-01-30 23:31:34.552577+05:30	1	Ethnic: Sherwani		
+344	12	Gold Indo western jacket	SJ2028	Male	24900	0	Sulakshna Jasra	Gold	Matka silk	t	t	Hand-printed gold Indo western jacket made of matka silk; patch work on sleeves and collar		2014-01-30 23:31:46.127352+05:30	2014-01-30 23:31:46.13211+05:30	1	Jackets		
+345	12	Maroon patch work sherwani	SJ2006	Male	40000	0	Sulakshna Jasra	Maroon	Brocade, Chiffon	t	t	Maroon sherwani with patch work & hand embroidery		2014-01-30 23:31:48.735954+05:30	2014-01-30 23:31:48.74073+05:30	1	Ethnic: Sherwani		
+346	12	Printed Matka silk Indo western jacket	SJ2007	Male	20900	0	Sulakshna Jasra	Black	Matka silk	t	t	Detailing on bottom, collar and cuffs		2014-01-30 23:31:52.40932+05:30	2014-01-30 23:31:52.414521+05:30	1	Jackets		
+347	12	Blue kurta	SJ2008	Male	8950	0	Sulakshna Jasra	Blue		t	t			2014-01-30 23:31:55.952039+05:30	2014-01-30 23:31:55.956219+05:30	1	Ethnic: Kurtas		
+348	13	Bodycon dress with cut-out/zipper back detail	8027	Female	4500	0	Tastes like Couture	Pink	Polyester/Lycra	f	t	Cut-out exposed zipper back bodycon party dress with contrast stripes, fun and sexy.		2014-01-30 23:31:59.358246+05:30	2014-01-30 23:31:59.367356+05:30	3	Dresses		
+349	13	White contemporary shift dress with black panels	1308	Female	4500	0	Tastes like Couture	White	Cotton/Polyester/Lycra	f	t	Classy white contemporary shift dress with black panels and a zipper back, great from day to evening and to wear to work too.		2014-01-30 23:32:00.161947+05:30	2014-01-30 23:32:00.170948+05:30	2	Dresses		
+350	13	Black sheer panel peplum party dress	1306	Female	4300	0	Tastes like Couture	Black	Polyester/Lycra	f	t	This sheer panel peplum dress has an exposed zipper back and makes for a great party dress. Sexy and chic all in one.		2014-01-30 23:32:00.72492+05:30	2014-01-30 23:32:00.734028+05:30	2	Dresses		
+351	13	Aztec Knit Woolen Crop Sweater	1307	Female	3300	0	Tastes like Couture	Neon Pink	Wool/Acrylic	f	t	Be in line with the latest trends with this vibrant cropped aztec knit sweater in bright neon pink.		2014-01-30 23:32:01.1284+05:30	2014-01-30 23:32:01.133468+05:30	2	Sweaters		
+352	13	Feather yarn open knit sweater	1315	Female	4000	0	Tastes like Couture	Lavender	Acrylic	f	t	This gorgeous feather yarn open knit sweater with lurex detailing on the neck and sleeve is perfect to add some sparkle to a dull winter day.		2014-01-30 23:32:01.758514+05:30	2014-01-30 23:32:01.764148+05:30	3	Sweaters		
+353	13	Full sleeve top with polka dot bow detail	100033	Female	2800	0	Tastes like Couture	Pink	Cotton/Polyester	f	t	Adorable pink top with a plain front and contrast polka dot bow detail knots at the back.		2014-01-30 23:32:03.093326+05:30	2014-01-30 23:32:03.101434+05:30	3	Tops		
+354	13	Blue top with polka dot pattern.	1107	Female	2400	0	Tastes like Couture	Blue	Polyester	f	t	Lovely vintage feel top with polka dots and a pleat detail on the neckline. Bow ties on the sleeve for added style.		2014-01-30 23:32:03.826515+05:30	2014-01-30 23:32:03.834417+05:30	2	Tops		
+355	13	Leopard print silk dress with hearts	10012	Female	4800	0	Tastes like Couture	Red	Silk/Polyester	f	t	This chic leopard print silk shift dress with hearts is sure to become your favourite for the season. Zipper detail on shoulder. Black satin belt included.		2014-01-30 23:32:04.504258+05:30	2014-01-30 23:32:04.512561+05:30	3	Dresses		
+356	13	Contemporary shift dress with gorgeous placement print	1321	Female	4900	0	Tastes like Couture	Yellow	Silk	f	t	This classy silk dress with placement print is ideal from day to night and works in all seasons. Pleat detail on the sleeve. Satin belt included.		2014-01-30 23:32:05.503317+05:30	2014-01-30 23:32:05.508175+05:30	3	Dresses		
+357	13	Pink full sleeve dress with knot detail on the shoulder	10038	Female	3500	0	Tastes like Couture	Pink	Polyester	f	t	Pink full sleeve winter dress with knot detail at shoulder. Simple and chic.		2014-01-30 23:32:06.396288+05:30	2014-01-30 23:32:06.404242+05:30	3	Dresses		
+358	13	Blue tweed tube dress with assymetric ruffle detail	1322	Female	6000	0	Tastes like Couture	Blue	Acrylic	f	t	Blue tweed tube dress with assymetric ruffle detail is ideal for a winter occasion paired with a jacket.		2014-01-30 23:32:07.271558+05:30	2014-01-30 23:32:07.277112+05:30	4	Dresses		
+359	13	Black sequin crop jacket	1314	Female	5500	0	Tastes like Couture	Black	Polyester	f	t	This black sequin crop jacket is a very versatile piece to dress up and add bling to any winter outfit.		2014-01-30 23:32:08.635548+05:30	2014-01-30 23:32:08.642405+05:30	2	Jackets & Blazers		
+360	13	Pink bandage tassle-back dress	1134	Female	4200	0	Tastes like Couture	Pink	Cotton/Polyester/Lycra	f	t	Gorgeous bodycon bandage dress in a coral pink with tassle-back detail to add some serious sexy to your party wardrobe!		2014-01-30 23:32:09.355635+05:30	2014-01-30 23:32:09.362436+05:30	3	Dresses		
+361	13	Black jacket with contrast white trim	1305	Female	4500	0	Tastes like Couture	Black	Polyester	f	t	Smart blazer jacket in black with white contrast trim. Great for work or to dress up any outfit from day to night		2014-01-30 23:32:10.410681+05:30	2014-01-30 23:32:10.417691+05:30	1	Jackets & Blazers		
+362	13	Black high-low maxi with pleated bottom and lace back	1318	Female	5200	0	Tastes like Couture	Black	Polyester	f	t	This lovely high-low maxi is the perfect feminine statement to make. Pleated bottom with beautiful lace back and elasticated waistline.		2014-01-30 23:32:10.73031+05:30	2014-01-30 23:32:10.738026+05:30	2	Dresses		
+363	13	Printed tube maxi with placement print, side slits and chain belt	1309	Female	5400	0	Tastes like Couture	Orange	Polyester	f	t	Gorgeous tube placement print maxi with a chain tassle belt and side slits makes for a great holiday piece.		2014-01-30 23:32:11.250655+05:30	2014-01-30 23:32:11.284491+05:30	2	Dresses		
+364	13	Gorgeous printed maxi	1103	Female	6500	0	Tastes like Couture	Sand	Silk/Polyester	f	t	Beautiful silk maxi with a multi-color renaissance print and a pleated neck detail. Perfect to pair with a belt to cinch at the waist.		2014-01-30 23:32:12.096293+05:30	2014-01-30 23:32:12.103978+05:30	4	Dresses		
+365	13	White assymetrical dress with contrast neon pink ruffle detail	1320	Female	6500	0	Tastes like Couture	White	Polyester	f	t	This designer piece will stand out everywhere you go. Gorgeous white assymetrical hemline dress with a vibrant neon pink cascade ruffle on the side.		2014-01-30 23:32:13.137516+05:30	2014-01-30 23:32:13.146385+05:30	4	Dresses		
+366	13	Pink lace maxi with half inner lining and zipper back detail	1113	Female	3500	0	Tastes like Couture	Pink	Polyester	f	t	Pink lace half lined maxi with exposed zipper. Its fun feminine and flirty all at once.		2014-01-30 23:32:14.122269+05:30	2014-01-30 23:32:14.129655+05:30	3	Dresses		
+367	13	Black vintage dress with bow and vertical stripe detail and lace sleeves	100026	Female	4500	0	Tastes like Couture	Black	Polyester/Cotton	f	t	Adorable black vintage dress with contrast bow on the neck and vertical stripe detail along with lace sleeves.		2014-01-30 23:32:16.357425+05:30	2014-01-30 23:32:16.365242+05:30	4	Dresses		
+\.
+
+
+--
+-- Name: shop_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_product_id_seq', 367, true);
+
+
+--
+-- Data for Name: shop_product_sizes; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_product_sizes (id, product_id, size_id) FROM stdin;
+1	1	1
+2	1	2
+3	2	1
+4	2	2
+5	3	1
+6	3	2
+7	4	1
+8	4	2
+9	5	1
+10	5	2
+11	6	1
+12	6	2
+13	16	1
+14	16	2
+15	18	1
+16	18	2
+17	19	1
+18	19	2
+19	21	1
+20	21	2
+21	29	1
+22	30	1
+23	31	1
+24	32	1
+25	33	1
+26	34	1
+27	35	1
+28	36	1
+29	37	1
+30	38	1
+31	39	1
+32	40	1
+33	41	1
+34	42	1
+35	43	1
+36	146	3
+37	146	4
+38	146	5
+39	146	1
+40	146	2
+41	146	6
+42	147	3
+43	147	4
+44	147	5
+45	147	1
+46	147	2
+47	147	6
+48	148	3
+49	148	4
+50	148	5
+51	148	1
+52	148	2
+53	148	6
+54	149	3
+55	149	4
+56	149	5
+57	149	1
+58	149	2
+59	149	6
+60	150	3
+61	150	4
+62	150	5
+63	150	1
+64	150	2
+65	150	6
+66	151	3
+67	151	4
+68	151	5
+69	151	1
+70	151	2
+71	151	6
+72	152	3
+73	152	4
+74	152	5
+75	152	1
+76	152	2
+77	152	6
+78	153	3
+79	153	4
+80	153	5
+81	153	1
+82	153	2
+83	153	6
+84	154	3
+85	154	4
+86	154	5
+87	154	1
+88	154	2
+89	154	6
+90	155	3
+91	155	4
+92	155	5
+93	155	1
+94	155	2
+95	155	6
+96	156	3
+97	156	4
+98	156	5
+99	156	1
+100	156	2
+101	156	6
+102	157	3
+103	157	4
+104	157	5
+105	157	1
+106	157	2
+107	157	6
+108	158	3
+109	158	4
+110	158	5
+111	158	1
+112	158	2
+113	158	6
+114	159	3
+115	159	4
+116	159	5
+117	159	1
+118	159	2
+119	159	6
+120	160	3
+121	160	4
+122	160	5
+123	160	1
+124	160	2
+125	160	6
+126	161	3
+127	161	4
+128	161	5
+129	161	1
+130	161	2
+131	161	6
+132	162	3
+133	162	4
+134	162	5
+135	162	1
+136	162	2
+137	162	6
+138	163	3
+139	163	4
+140	163	5
+141	163	1
+142	163	2
+143	163	6
+144	164	3
+145	164	4
+146	164	5
+147	164	1
+148	164	2
+149	164	6
+150	165	3
+151	165	4
+152	165	5
+153	165	1
+154	165	2
+155	165	6
+156	166	3
+157	166	4
+158	166	5
+159	166	1
+160	166	2
+161	166	6
+162	167	3
+163	167	4
+164	167	5
+165	167	1
+166	167	2
+167	167	6
+168	168	3
+169	168	4
+170	168	5
+171	168	1
+172	168	2
+173	168	6
+174	169	3
+175	169	4
+176	169	5
+177	169	1
+178	169	2
+179	169	6
+180	170	3
+181	170	4
+182	170	5
+183	170	1
+184	170	2
+185	170	6
+186	171	3
+187	171	4
+188	171	5
+189	171	1
+190	171	2
+191	171	6
+192	172	3
+193	172	4
+194	172	5
+195	172	1
+196	172	2
+197	172	6
+198	173	3
+199	173	4
+200	173	5
+201	173	1
+202	173	2
+203	173	6
+204	174	3
+205	174	4
+206	174	5
+207	174	1
+208	174	2
+209	174	6
+210	175	3
+211	175	4
+212	175	5
+213	175	1
+214	175	2
+215	175	6
+216	176	3
+217	176	4
+218	176	5
+219	176	1
+220	176	2
+221	176	6
+222	177	3
+223	177	4
+224	177	5
+225	177	1
+226	177	2
+227	177	6
+228	178	3
+229	178	4
+230	178	5
+231	178	1
+232	178	2
+233	178	6
+234	179	3
+235	179	4
+236	179	5
+237	179	1
+238	179	2
+239	179	6
+240	180	3
+241	180	4
+242	180	5
+243	180	1
+244	180	2
+245	180	6
+246	181	3
+247	181	4
+248	181	5
+249	181	1
+250	181	2
+251	181	6
+252	182	3
+253	182	4
+254	182	5
+255	182	1
+256	182	2
+257	182	6
+258	183	3
+259	183	4
+260	183	5
+261	183	1
+262	183	2
+263	183	6
+264	184	3
+265	184	4
+266	184	5
+267	184	1
+268	184	2
+269	184	6
+270	185	3
+271	185	4
+272	185	5
+273	185	1
+274	185	2
+275	185	6
+276	186	3
+277	186	4
+278	186	5
+279	186	1
+280	186	2
+281	186	6
+282	187	3
+283	187	4
+284	187	5
+285	187	1
+286	187	2
+287	187	6
+288	188	3
+289	188	4
+290	188	5
+291	188	1
+292	188	2
+293	188	6
+294	189	3
+295	189	4
+296	189	5
+297	189	1
+298	189	2
+299	189	6
+300	190	3
+301	190	4
+302	190	5
+303	190	1
+304	190	2
+305	190	6
+306	191	3
+307	191	4
+308	191	5
+309	191	1
+310	191	2
+311	191	6
+312	192	3
+313	192	4
+314	192	5
+315	192	1
+316	192	2
+317	192	6
+318	193	3
+319	193	4
+320	193	5
+321	193	1
+322	193	2
+323	193	6
+324	194	3
+325	194	4
+326	194	5
+327	194	1
+328	194	2
+329	194	6
+330	195	3
+331	195	4
+332	195	5
+333	195	1
+334	195	2
+335	195	6
+336	196	3
+337	196	4
+338	196	5
+339	196	1
+340	196	2
+341	196	6
+342	197	3
+343	197	4
+344	197	5
+345	197	1
+346	197	2
+347	197	6
+348	198	3
+349	198	4
+350	198	5
+351	198	1
+352	198	2
+353	198	6
+354	199	3
+355	199	4
+356	199	5
+357	199	1
+358	199	2
+359	199	6
+360	200	3
+361	200	4
+362	200	5
+363	200	1
+364	200	2
+365	200	6
+366	201	3
+367	201	4
+368	201	5
+369	201	1
+370	201	2
+371	201	6
+372	202	3
+373	202	4
+374	202	5
+375	202	1
+376	202	2
+377	202	6
+378	203	3
+379	203	4
+380	203	5
+381	203	1
+382	203	2
+383	203	6
+384	204	3
+385	204	4
+386	204	5
+387	204	1
+388	204	2
+389	204	6
+390	205	3
+391	205	4
+392	205	5
+393	205	1
+394	205	2
+395	205	6
+396	206	3
+397	206	4
+398	206	5
+399	206	1
+400	206	2
+401	206	6
+402	207	3
+403	207	4
+404	207	5
+405	207	1
+406	207	2
+407	207	6
+408	208	3
+409	208	4
+410	208	5
+411	208	1
+412	208	2
+413	208	6
+414	209	3
+415	209	4
+416	209	5
+417	209	1
+418	209	2
+419	209	6
+420	210	3
+421	210	4
+422	210	5
+423	210	1
+424	210	2
+425	210	6
+426	211	3
+427	211	4
+428	211	5
+429	211	1
+430	211	2
+431	211	6
+432	254	1
+433	255	1
+434	256	1
+435	257	1
+436	258	1
+437	259	1
+438	260	1
+439	261	1
+440	262	1
+441	263	1
+442	264	1
+443	265	1
+444	266	1
+445	267	1
+446	268	1
+447	269	1
+448	270	1
+449	271	1
+450	272	1
+451	273	1
+452	274	1
+453	275	1
+454	276	1
+455	277	1
+456	278	5
+457	279	5
+458	280	1
+459	281	1
+460	282	1
+461	283	1
+462	284	1
+463	285	5
+464	286	1
+465	287	1
+466	288	1
+467	289	1
+468	290	5
+469	291	1
+470	292	1
+471	293	5
+472	294	1
+473	295	2
+474	296	5
+475	297	5
+476	298	1
+477	299	1
+478	300	1
+479	301	5
+480	302	5
+481	303	1
+482	304	1
+483	305	1
+484	306	1
+485	307	5
+486	308	1
+487	309	1
+488	310	1
+489	311	1
+490	312	1
+491	313	5
+492	314	2
+493	315	7
+494	316	1
+495	317	7
+496	318	1
+497	334	1
+498	335	1
+499	336	1
+500	337	1
+501	338	1
+502	339	1
+503	340	1
+504	341	1
+505	342	1
+506	343	1
+507	344	1
+508	345	1
+509	346	1
+510	347	1
+511	348	1
+512	348	2
+513	349	5
+514	349	1
+515	350	1
+516	350	2
+517	351	7
+518	352	7
+519	353	1
+520	353	2
+521	354	1
+522	354	2
+523	355	1
+524	355	2
+525	356	5
+526	357	1
+527	357	2
+528	358	1
+529	359	1
+530	359	2
+531	360	1
+532	360	2
+533	361	1
+534	361	2
+535	362	1
+536	362	2
+537	363	5
+538	363	1
+539	364	1
+540	364	2
+541	365	1
+542	365	2
+543	366	1
+544	366	2
+545	367	1
+546	367	2
+\.
+
+
+--
+-- Name: shop_product_sizes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_product_sizes_id_seq', 546, true);
+
+
+--
+-- Data for Name: shop_productimage; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_productimage (id, "productID_id", url, alt, flag_home) FROM stdin;
+\.
+
+
+--
+-- Name: shop_productimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_productimage_id_seq', 1, false);
+
+
+--
+-- Data for Name: shop_review; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_review (id, "reviewerID_id", store_id, product_id, description, created_on) FROM stdin;
+\.
+
+
+--
+-- Name: shop_review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_review_id_seq', 1, false);
+
+
+--
+-- Data for Name: shop_reviewer; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_reviewer (id, name, sex, popularity, date_joined, num_reviews, upvotes, downvotes) FROM stdin;
+\.
+
+
+--
+-- Name: shop_reviewer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_reviewer_id_seq', 1, false);
+
+
+--
+-- Data for Name: shop_size; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_size (id, name) FROM stdin;
+1	M
+2	S
+3	XXL
+4	XL
+5	L
+6	XS
+7	Free Size
+\.
+
+
+--
+-- Name: shop_size_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_size_id_seq', 7, true);
+
+
+--
+-- Data for Name: shop_store; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_store (id, name, description, address, phone1, phone2, website, fb_link, tw_link, day_closed, time_open, time_close, designer_name, designer_bio, latest_news, created_on, updated_on, popularity, active, region, locality, city, pincode, map_url) FROM stdin;
+1	1600 A.D	Our label 1600 A.D reflects the ideology of infusing "Rock Glam" with"Baroque art" to create contemporary Indian wear.	421, Ground Floor, near Jungi House, Sahpur Jat, New Delhi - 110049	9654729888	911132313845		https://www.facebook.com/1600ADByNezNaisha		Sunday	11:00 AM	8:00 PM	Nez & Naisha			2014-01-30 20:45:11.231236+05:30	2014-01-30 20:45:11.231273+05:30		t	south delhi	shahpur jat	new delhi	110049	
+2	Abjeni	Abjeni is an Indian word that means 'Lotus pond', the designs of our collection are inspired from traditional Indian art. We look into details and all designs can be modified and variations in colors are possible according to personal preferences.	5F/1, Shahpur jat, New Delhi - 110049	8800235367	911126495565		https://www.facebook.com/Abjeni.apparel		Sunday	10:00 AM	8:00 PM	Soumya Pahwa			2014-01-30 20:50:38.462186+05:30	2014-01-30 20:50:38.462218+05:30		t	south delhi	shahpur jat	new delhi	110049	
+3	Ashfaque Ahmad Design Studio		303,Ground Floor, Shahpur Jat, New Delhi 49	9910934781						12:00 PM	7:00 PM	Ashfaque Ahmad			2014-01-30 20:56:21.434683+05:30	2014-01-30 20:56:21.434715+05:30		t	south delhi	shahpur jat	new delhi		
+4	Aum by Ashima & Asit	Contemporary styles, embroideries and embellishments, molded neatly into modern fashion brocade! This is what AUM by Ashima and Asit is all about. The duo has made it to the fashion circuit with their sheer talent and inventive potentials of a designer. To bring in a resurgence of traditional work of art, the duo has traveled to the remotest area, grasped the art and beautifully executed it in their finest of collections.\nFrom simplicity to royalty, AUM has it all. The designs has been an active contributor in giving the people a look to die for. The ingenious couple has brought bygone traditions back to the centre stage, with works of inspired embroideries like phulkari in the global upfront. During the time they were toying with an idea of entering the fashion industry, the likes of chikan, zardozi, phulkari, kamdani, tukdi and hand embroideries had become quite acceptable in the global market. This encourages the brand to move ahead with their idea.\nEssentially a classicist, AUM believe in bringing the thrill of experimentalism into their design. Using fine detailing with heritage fabrics, the use of embroidery for textural enhancement and the crafty use of silhouettes that are functional yet feminine, AUM strive to create fashion with a strong flavor in all clothes.	5G, Jungi House, Shahpur Jat, New Delhi - 110049	9811111459	911126490264	www.aumdelhi.com			Sunday	11:00 AM	8:00 PM	Ashima & Asit	Among the new generation of fashion designers, Ashima and Asit has effectively carved a place in this fast paced fashion industry. Their brand label “AUM” was launched in 2007. Comfortable in creating ethnic designs, AUM has registered their place in some of the most premium stores throughout India, in a short span of time. Their clothes have modest look with the variation of texture and embroideries. Their versatility and creative flair has made them popular designer among the biggies.\nAUM strives to reach out to the masses with a classy ethnic line, which combined fine viable receptivity and a sense of style. Detailing to fabric and embroidery, well-defined cuts and style has enabled them to acquire a name in Indian fashion. They play with subtle colors, bring out the contemporary style which has a high demand from the modern Indian youth.\nTo bring out the aesthetic outcome in their clothes and connect with general public, they opened their solo store in New Delhi. AUM has a share of clients who have liked them and developed a sense of conventionality in ethnic styles.		2014-01-30 21:23:02.650731+05:30	2014-01-30 21:23:02.650768+05:30		t	south delhi	shahpur jat	new delhi	110049	
+5	D'Closet	The label offers 3lines ( Pret, Diffusion &Couture), offering a wide range of women's wear including dresses, tunics, corsets, wedding gowns, sarees, salwar suits, bridal wear etc. The products are created with finest fabrics, involving detailed Indian embroidery enhanced with western cuts, drapes and silhouettes. Special emphasis is given to fit and finish. \nIn Jul 2011, the label showcased its A/W collection at the Bangalore Fashion Week. Where the Collection was very well received and appreciated. In Feb 2012, the label made an international foray by participating in the Asiana Wedding show, an Asian Bridal Exhibition in Birmingham, UK. \nThe Label has showcased its Latest Winter Festive ’12 collection at Bangalore Fashion Week and plans many more fashion week ahead.	H 6/1A, Ground floor, Near Jungi house, Shahpur Jat, Delhi	9871692676	9873062583	www.dcloset.in			Sunday	11:00 AM	7:00 PM	Shruti Dudani	With a formal degree in Fashion Designing from the elite Pearl Academy of Fashion, Delhi, Shruti launched her label, D Closet in May 2010 and showcased her first collection at the Ashoka hotel, Delhi in Aug 2010.		2014-01-30 22:53:08.508665+05:30	2014-01-30 22:53:08.508695+05:30		t	south delhi	shahpur jat	new delhi	110049	
+6	KAARYAH	Western formal wear for women@work. We understand that 1 size doesn’t fit all that’s why we have 18, delivered to your doorstep!	Call us @ your homes and offices!	911204296090		www.kaaryah.com	https://www.facebook.com/Kaaryah								2014-01-30 23:07:42.189419+05:30	2014-01-30 23:07:42.18945+05:30		t	south delhi		new delhi	201305	
+7	KimAnand	Located in Shahpur Jat. Deals in Luxury Ethnic Designer Wear for Women. We cater to Bespoke bridal outfits, specailizing in embroideries and silhouttes.	5N Aashirwaad, Shahpur jat, New Delhi-110049	911132318970	7838550080	www.kimanand.com				11:00 AM	8:00 PM	Kim Anand	Kim has graduated in fashion designing from NIFT hyderabad. Won several awards for collections nationally. Kim has also designed for south indian movies.		2014-01-30 23:11:25.823684+05:30	2014-01-30 23:11:25.823713+05:30		t	south delhi	shahpur jat	new delhi	110049	
+8	Niharika Sharma		86-B, Shahpur Jat, New Delhi - 110049	9810627298	911141752337	www.niharikapandey.com			Sunday	11:00 AM	7:00 PM	Niharika Pandey			2014-01-30 23:13:56.086755+05:30	2014-01-30 23:13:56.086785+05:30		t	south delhi	shahpur jat	new delhi	110049	
+9	Nitin Gera Designs	Located in South Delhi's premium location at the outskirts of central market in Lajpat Nagar.	J-42, Lajpat Nagar-2, New Delhi-110024	9717597297	911129831102	www.nitingeradesigns.com	www.facebook.com/nitingeradesigns		Monday	12:00 PM	08:00 PM	Nitin Gera	At an early age Nitin knew what he wanted to do and the years passing by only made his dream clearer. Scoring a prestigious degree from Pearl Academy of Fashion, Delhi, he was not to be stopped. He worked with Zara, a leading fashion retailer, for a year to understand the demands of the Indian market. A new name was not far. Nitin decided to unveil his creative potential by launching his own label – Nitin Gera.	Vintage Collection in stores now.	2014-01-30 23:16:18.275303+05:30	2014-01-30 23:16:18.275335+05:30		t	south delhi	lajpat nagar	new delhi	110024	
+10	Richa Aggarwal			9819812256		www.richaaggarwal.com	https://www.facebook.com/labelrichaaggarwal?ref=hl					Richa Aggarwal	Richa Aggarwal graduated from the 'National Institute of Fashion Technology, India' with the best design collection award in 2007. She was awarded J.N.Tata scholarship in 2010 to pursue her masters in fashion design from London. Richa’s graduation collection earned her the outstanding scholar award. Soon after in 2011, she launched her own label in London. In 2012, Richa showcased her debut collection in Lakme Fashion week which earned her rave reviews in both local and international media. Vogue India recognised her as the ‘next upcoming designer to watch out for’. Harper’s Bazaar reckoned her as the ‘new designer who set the fashion fraternity abuzz’.	Richa Aggarwal is working in collaboration with Westside, for their inhouse brand Bombay Paisley. Her second exclusively designed collection for the store will be on stands for this Summer!!	2014-01-30 23:27:44.509728+05:30	2014-01-30 23:27:44.509759+05:30		t					
+11	Shiba Mir		5 1/B, Jungi House, Shahpur Jat, New Delhi - 110049	9810511605			www.facebook.com/shibamir		Sunday	11:00 AM	7:00 PM	Shiba Mir			2014-01-30 23:28:33.901318+05:30	2014-01-30 23:28:33.901352+05:30		t	south delhi	shahpur jat	new delhi	110049	
+12	Sulakshna Jasra	Fusing indian art with contemporary style, the line is built as a salute to that spirit which is yours and mine	421, Shahpur Jat, New Delhi - 110049	9654498991			https://www.facebook.com/beingsulakshna		Sunday	11:00 AM	8:00 PM	Sulakshna Jasra			2014-01-30 23:30:56.412857+05:30	2014-01-30 23:30:56.412888+05:30		t	south delhi	shahpur jat	new delhi	110049	
+13	TASTES LIKE COUTURE	A fun, charming boutique for stylish women, Tastes Like Couture offers a little something for everyone—from versatile daytime wear to pieces fit for the most daring of night vixens. It has rapidly become a favorite go-to destination for free thinking girls to get their fashion fix without breaking the bank!                           Girly and fresh are the feelings you get when you walk into this delightful boutique, filled with unique finds. It is a one-stop-shop for the modern urban woman. She works hard, plays hard, and her clothes should too. Specializing in dresses that flawlessly fit your lifestyle and take you from day to night.	39, Shahpur Jat, Shop no. 6 (Near Asiad Village), New Delhi	9810222604	911146011496		www.facebook.com/tlcgirl		Sunday	11:00 AM	7:00 PM	SHILPA AGGARWAL	Shilpa Aggarwal has extensively trained in fashion over the past 10 years. After having acquired her Bachelor's degree in Fashion Design and Merchandising from Fashion Institute of technology (F.I.T), New York, she has worked at the Gucci Group North America Headquarters as well as at Bill Blass, New York.        After having gained substantial experience in the fashion industry's top international brands, she launched her own Design label in the Indian market under the name of "Tastes Like Couture."  TLC is targeted towards the upwardly mobile woman between the ages of 15 up to 40. It stands true to it's name by offering couture like merchandise at highly affordable prices, in order to allow a woman to update her wardrobe as often as she would like. The label follows international trends seen on catwalks across the globe, and aims to bring high fashion to the masses.		2014-01-30 23:31:59.182595+05:30	2014-01-30 23:31:59.182623+05:30		t	south delhi	shahpur jat	new delhi	110049	
+\.
+
+
+--
+-- Name: shop_store_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_store_id_seq', 13, true);
+
+
+--
+-- Data for Name: shop_storeimage; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY shop_storeimage (id, "storeID_id", url, alt, flag_home) FROM stdin;
+\.
+
+
+--
+-- Name: shop_storeimage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('shop_storeimage_id_seq', 1, false);
+
+
+--
+-- Data for Name: south_migrationhistory; Type: TABLE DATA; Schema: public; Owner: user123
+--
+
+COPY south_migrationhistory (id, app_name, migration, applied) FROM stdin;
+1	shop	0001_initial	2014-01-30 21:14:09.832603+05:30
+2	shop	0002_auto__chg_field_store_latest_news__chg_field_store_designer_bio__chg_f	2014-01-30 21:21:11.798178+05:30
+3	shop	0003_auto__chg_field_product_description	2014-01-30 21:24:36.728791+05:30
+4	shop	0004_auto__chg_field_product_sku	2014-01-30 21:25:27.912928+05:30
+\.
+
+
+--
+-- Name: south_migrationhistory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user123
+--
+
+SELECT pg_catalog.setval('south_migrationhistory_id_seq', 4, true);
+
+
+--
+-- Name: auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions_group_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_key UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission_content_type_id_codename_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_key UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_user_id_group_id_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_group_id_key UNIQUE (user_id, group_id);
+
+
+--
+-- Name: auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_key UNIQUE (user_id, permission_id);
+
+
+--
+-- Name: auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- Name: django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type_app_label_model_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_app_label_model_key UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: django_site_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY django_site
+    ADD CONSTRAINT django_site_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_product_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_product
+    ADD CONSTRAINT shop_product_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_product_sizes_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_product_sizes
+    ADD CONSTRAINT shop_product_sizes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_product_sizes_product_id_size_id_key; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_product_sizes
+    ADD CONSTRAINT shop_product_sizes_product_id_size_id_key UNIQUE (product_id, size_id);
+
+
+--
+-- Name: shop_productimage_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_productimage
+    ADD CONSTRAINT shop_productimage_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_review_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_review
+    ADD CONSTRAINT shop_review_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_reviewer_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_reviewer
+    ADD CONSTRAINT shop_reviewer_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_size_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_size
+    ADD CONSTRAINT shop_size_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_store_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_store
+    ADD CONSTRAINT shop_store_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: shop_storeimage_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY shop_storeimage
+    ADD CONSTRAINT shop_storeimage_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: south_migrationhistory_pkey; Type: CONSTRAINT; Schema: public; Owner: user123; Tablespace: 
+--
+
+ALTER TABLE ONLY south_migrationhistory
+    ADD CONSTRAINT south_migrationhistory_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_name_like; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_group_name_like ON auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_group_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_group_id ON auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_permission_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_permission_id ON auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_content_type_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_permission_content_type_id ON auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_user_groups_group_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_group_id ON auth_user_groups USING btree (group_id);
+
+
+--
+-- Name: auth_user_groups_user_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_user_id ON auth_user_groups USING btree (user_id);
+
+
+--
+-- Name: auth_user_user_permissions_permission_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_permission_id ON auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_user_id ON auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: auth_user_username_like; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX auth_user_username_like ON auth_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: django_admin_log_content_type_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_content_type_id ON django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_user_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_user_id ON django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_expire_date; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX django_session_expire_date ON django_session USING btree (expire_date);
+
+
+--
+-- Name: django_session_session_key_like; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX django_session_session_key_like ON django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- Name: shop_product_sizes_product_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX shop_product_sizes_product_id ON shop_product_sizes USING btree (product_id);
+
+
+--
+-- Name: shop_product_sizes_size_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX shop_product_sizes_size_id ON shop_product_sizes USING btree (size_id);
+
+
+--
+-- Name: shop_product_store_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX shop_product_store_id ON shop_product USING btree (store_id);
+
+
+--
+-- Name: shop_productimage_productID_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX "shop_productimage_productID_id" ON shop_productimage USING btree ("productID_id");
+
+
+--
+-- Name: shop_review_product_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX shop_review_product_id ON shop_review USING btree (product_id);
+
+
+--
+-- Name: shop_review_reviewerID_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX "shop_review_reviewerID_id" ON shop_review USING btree ("reviewerID_id");
+
+
+--
+-- Name: shop_review_store_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX shop_review_store_id ON shop_review USING btree (store_id);
+
+
+--
+-- Name: shop_storeimage_storeID_id; Type: INDEX; Schema: public; Owner: user123; Tablespace: 
+--
+
+CREATE INDEX "shop_storeimage_storeID_id" ON shop_storeimage USING btree ("storeID_id");
+
+
+--
+-- Name: auth_group_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_fkey FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: content_type_id_refs_id_d043b34a; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT content_type_id_refs_id_d043b34a FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log_content_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_fkey FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: group_id_refs_id_f4b32aac; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT group_id_refs_id_f4b32aac FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: product_id_refs_id_5ddd51af; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_product_sizes
+    ADD CONSTRAINT product_id_refs_id_5ddd51af FOREIGN KEY (product_id) REFERENCES shop_product(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_product_sizes_size_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_product_sizes
+    ADD CONSTRAINT shop_product_sizes_size_id_fkey FOREIGN KEY (size_id) REFERENCES shop_size(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_product_store_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_product
+    ADD CONSTRAINT shop_product_store_id_fkey FOREIGN KEY (store_id) REFERENCES shop_store(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_productimage_productID_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_productimage
+    ADD CONSTRAINT "shop_productimage_productID_id_fkey" FOREIGN KEY ("productID_id") REFERENCES shop_product(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_review_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_review
+    ADD CONSTRAINT shop_review_product_id_fkey FOREIGN KEY (product_id) REFERENCES shop_product(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_review_reviewerID_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_review
+    ADD CONSTRAINT "shop_review_reviewerID_id_fkey" FOREIGN KEY ("reviewerID_id") REFERENCES shop_reviewer(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_review_store_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_review
+    ADD CONSTRAINT shop_review_store_id_fkey FOREIGN KEY (store_id) REFERENCES shop_store(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: shop_storeimage_storeID_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY shop_storeimage
+    ADD CONSTRAINT "shop_storeimage_storeID_id_fkey" FOREIGN KEY ("storeID_id") REFERENCES shop_store(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_id_refs_id_40c41112; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT user_id_refs_id_40c41112 FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_id_refs_id_4dc23c39; Type: FK CONSTRAINT; Schema: public; Owner: user123
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT user_id_refs_id_4dc23c39 FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

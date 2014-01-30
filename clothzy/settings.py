@@ -17,7 +17,7 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': 'user123',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'en-us'
 ALLOWED_HOSTS = []
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static_root") 
+STATIC_ROOT = "/opt/myenv/static/"
 TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
 MEDIA_URL = '/media/' 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
