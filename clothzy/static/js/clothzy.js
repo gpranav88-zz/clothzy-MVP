@@ -143,15 +143,22 @@ app.controller('DemoController', ['$scope', function DemoController($scope) {
 }]);
 
 app.controller('userController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-}            
+}
 ]);
 
 
 app.controller('storeController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+	$scope.productRow1 = _.range(0, 4);
+	
+	var store_number =commonFactory.fetchID($routeParams);
+
 	$scope.storeData=commonFactory.storeCRUD($resource).get({
+		'id':store_number
+	});
+	$scope.storeProducts=commonFactory.storeProducts($resource).get({
 		'id':commonFactory.fetchID($routeParams)
 	});
-}            
+} 
 ]);
 
 
@@ -263,6 +270,14 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 		storeCRUD:function($resource){
 
 			return $resource('/api/stores/:id',{
+				id:'@id'
+			});
+
+		},
+
+		storeProducts:function($resource){
+
+			return $resource('/api/stores/:id/products',{
 				id:'@id'
 			});
 
