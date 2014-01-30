@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.conf import settings
 admin.autodiscover()
 
-
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'api/stores', views.StoreViewSet)
 router.register(r'api/products', views.ProductViewSet)
@@ -29,5 +28,5 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': settings.MEDIA_ROOT}),
     #index
-    
+    url('^store|product|search|review|contact|privacy-policy|designers-brands|about|user\/.*', 'clothzy.views.home', name="home")
 )

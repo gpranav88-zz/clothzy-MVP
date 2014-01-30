@@ -82,7 +82,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-WHOOSH_INDEX = os.path.join(PROJECT_ROOT,'whoosh/')
+# WHOOSH_INDEX = os.path.join(PROJECT_ROOT,'whoosh/')
 
 HAYSTACK_CONNECTIONS = {
     'default': {
@@ -115,7 +115,7 @@ INSTALLED_APPS = (
     'django_filters',
     'rest_framework',
     'haystack',
-    'whoosh',
+    'south',
     'shop'
 )
 
