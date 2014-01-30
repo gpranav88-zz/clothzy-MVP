@@ -120,7 +120,7 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 	}
 
 	function setImageUrl() {
-		var prefix = "/static/Store_" + $scope.storeData.id + "/Product_" + $scope.productData.id +"/";
+		var prefix = "/static/Store_" + $scope.storeData.id + "/P_" + $scope.productData.id +"/";
 
 		$scope.imageURLs[0] = prefix + "1-1.jpg";
 		$scope.imageURLs[1] = prefix + "2-1.jpg";
