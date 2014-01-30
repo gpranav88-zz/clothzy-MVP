@@ -4,7 +4,7 @@
  */
 
 angular.module('checklist-model', [])
-.directive('checklistModel', ['$parse', '$compile', function($parse, $compile) {
+.directive('checklistModel', ['$parse', '$compile', '$location', '$resource', function($parse, $compile, $location, $resource) {
   // contains
   function contains(arr, item) {
     if (angular.isArray(arr)) {
@@ -26,6 +26,7 @@ angular.module('checklist-model', [])
       }
     }    
     arr.push(item);
+    console.log("Array = " + arr);
   }  
 
   // remove
@@ -66,13 +67,19 @@ angular.module('checklist-model', [])
 
       // watch UI checked change
       scope.$watch('checked', function(newValue, oldValue) {
-        if (newValue === oldValue) { 
+        if (newValue === oldValue) {
           return;
         } if (newValue === true) {
           add(model, value);
+          console.log(model);
+          for (var i = model.length - 1; i >= 0; i--) {
+            console.log(model[i]);
+            $location.path(model[i]);
+          }
         } else if (newValue === false) {
           remove(model, value);
-        }
+          console.log(model)
+;        }
       });
 
       // watch model change

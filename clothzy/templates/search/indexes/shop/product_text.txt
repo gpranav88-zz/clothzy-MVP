@@ -1,8 +1,0 @@
-{{ object.name }}
-{{ object.category }}
-{{ object.description }}
-{{ object.store.name }}
-{{ object.store.region }}
-{{ object.store.locality }}
-{{ object.store.city }}
-{{ object.store.locality }}

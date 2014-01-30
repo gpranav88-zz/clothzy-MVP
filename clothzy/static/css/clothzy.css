@@ -1,6 +1,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 
-
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 
 body {
@@ -25,14 +25,23 @@ a.logo{
 	
 	background-image: url('../img/cover.jpg');
 	background-size:cover;
-	height:450px;
+	height:350px;
 	background-repeat:no-repeat;
 	box-shadow: 0px 4px 12px #aaaaaa;
 }
+.bg-headerabout{
+	
+	background-image: url('../img/aboutcover.jpg');
+	background-size:cover;
+	height:350px;
+	background-repeat:no-repeat;
+	box-shadow: 0px 4px 12px #aaaaaa;
+}
+
 .search-text{
 	font-family:'Open Sans';
 	margin-top:0px;
-	font-weight:300;
+	font-weight:400;
 	
 }
 
@@ -50,29 +59,6 @@ a.logo{
 	font-weight:300;
 }
 
-#main {
-  overflow:auto;
-  padding-bottom:80px; /* this needs to be bigger than footer height*/
-}
-
-#wrap {
-  min-height: 100%;
-}
-
-
-.footer {
-  position: relative;
-  margin-top: -50px; /* negative value of footer height */
-  height: 50px;
-  clear:both;
-  padding-top:15px;
-  padding-right:15px;
-	text-align:right;
-	background-color: #eeeeee;
-	background-image:url('../img/footer-bg.jpg');
-	box-shadow: 0px 4px 12px #aaaaaa;
-	border-top: 1px solid #dddddd;
-}
 
 .reviewer-pic{
 max-height:60px;
@@ -133,6 +119,7 @@ max-height:60px;
 
 .sidebar-text{
 	padding-left:10px;
+	padding-right:10px;
 	
 }
 
@@ -442,13 +429,14 @@ input[type=checkbox]:checked + .checklabel:before {
 }
 
 .price{
-font-family:'FuturaLT-Heavy';
+font-family:'Open Sans';
+font-weight:700;
 color:#666;
 }
 
 em{
 font-family:'Open Sans';
-	font-weight:300;
+	font-weight:400;
 
 }
 
@@ -483,6 +471,103 @@ bottom: 150px;
 right: 63px;
 display: none;
 z-index: 9;
+}
+.homecontainer{
+margin-left:auto;
+margin-right:auto;
+
+}
+.searchexample{
+
+font-size:12px;
+font-weight:400;
+}
+
+.home-subhead{
+margin-top:5px;
+font-weight:400;
+font-size:16px;
+font-family: 'Open Sans', sans-serif;
+color:#333;
+}
+
+.jumbo-hr{
+border-top: 1px solid #aaa;
+
+}
+
+.searchtoggle{
+  font-size:14px;
+  font-weight:400;
+  min-height:45px;
+  width:120px;
+
+}
+
+.searchdropdown{
+font-size:14px;
+text-align:left;
+
+}
+
+.help{
+
+	text-align:right;
+
+}
+
+.help > a {
 
 
+}
+
+.help > a:hover,  
+.help > a:focus 
+{
+  color: #c8006d;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.help-img{
+display:none;
+
+}
+
+.home-in{
+	width: 2%;
+}
+.helpbtn{
+	font-size:16px;
+  font-weight:400;
+}
+
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+
+
+
+#main {
+  overflow:auto;
+  padding-bottom:80px; /* this needs to be bigger than footer height*/
+}
+
+
+.footer {
+  position: relative;
+  margin-top: -50px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding-top:15px;
+  padding-right:15px;
+	text-align:right;
+	background-color: #eeeeee;
+	box-shadow: 0px 4px 12px #aaaaaa;
+	border-top: 1px solid #dddddd;
 }

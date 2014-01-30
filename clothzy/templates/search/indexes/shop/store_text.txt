@@ -1,5 +1,0 @@
-{{ object.name }}
-{{ object.region }}
-{{ object.locality }}
-{{ object.city }}
-{{ object.locality }}
