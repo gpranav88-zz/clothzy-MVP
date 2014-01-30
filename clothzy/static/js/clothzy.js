@@ -24,20 +24,20 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		templateUrl:'review.html',
 		controller:'reviewController'
 	})
-		// .when ('/search/product/:location/:product',{
-		// 	templateUrl:'product-search.html',
-		// 	controller:'searchController'
-		// })
+	// .when ('/search/product/:location/:product',{
+	// 	templateUrl:'product-search.html',
+	// 	controller:'searchController'
+	// })
 
-.when ('/search/products',{
+.when ('/search/products/', {
 	templateUrl:'static/partials/product-search.html',
 	controller:'populateSearchController'
 })
 
-.when ('/search/store/:location/:product',{
-	templateUrl:'storesearch.html',
-	controller:'searchController'
-})
+// .when ('/search/store/:location/:product',{
+// 		templateUrl:'storesearch.html',
+// 	controller:'searchController'
+// })
 .when ('/about', {
 	templateUrl: 'static/partials/about.html'
 })
@@ -162,7 +162,7 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 ]);
 
 
-app.controller('searchController',['$scope','$http','$resource','$routeParams','commonFactory', function($scope,$http,$resource,$routeParams,commonFactory){
+app.controller('searchController',['$scope','$location','$http','$resource','$routeParams','commonFactory', function($scope,$location,$http,$resource,$routeParams,commonFactory){
 
 	console.log("searchController");
 
@@ -188,15 +188,18 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 					$scope.searchPhrase.location = null;
 				}
 
+				$location.path('/search/products/').search($scope.searchPhrase);
+
 				var searchParams = $scope.searchPhrase; //can get rid of
 
 				$scope.searchResult = function($resource) {
 					return $resource('/api/search/products');
 					console.log("searchResults call");
 				};
-				// commonFactory.searchR($resource).get({
+
+				// $scope.searchResult = commonFactory.searchR($resource).get({
 				// 	'category': $scope.selectedOption.name,
-				// 	'location': //searchParams.location,
+				// 	'location': searchParams.location,
 				// 	'product': searchParams.product,
 
 				// });
@@ -205,11 +208,11 @@ app.controller('searchController',['$scope','$http','$resource','$routeParams','
 }]);
 
 
-app.controller('populateSearchController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-	$scope.searchResults= fetchDummyResults($resource).get();
+app.controller('populateSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
+	$scope.searchResults = fetchRealResults().get();
 	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 28;
-	$scope.numberOfPages = calculatePages($resource, totalItems);
+	$scope.numberOfPages = calculatePages(totalItems);
 
 	
 	// #TODO: Dirty code, clean. Change to a dict or another loop or something
@@ -227,15 +230,18 @@ app.controller('populateSearchController',['$scope','$http','$resource','$routeP
 	// 		max: $scope.searchResults.Filters.Price.max
 	// 	},
 	// 	minPrice: 0,
-	// 	maxPrice: 20000
+	// 	maxPrice: 20000	
 	// }
-	
+	// console.log($location.search("product"))
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
 	}
+	function fetchRealResults () {
+		return $resource('/api/search/products', $location.search()); // .length()
+	}
 
-	function calculatePages ($resource, totalItems) {
+	function calculatePages (totalItems) {
 		return Math.floor(totalItems / itemsPerPage);
 	}
 
