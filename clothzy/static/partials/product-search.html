@@ -260,10 +260,49 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 
+
+
 				<div class="row">
 					<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
 
 					<div class="col-lg-3" ng-repeat='val in productRow1'>
+						<div ng-controller="ModalDemoCtrl">
+							<script type="text/ng-template" id="myModalContent.html">
+								<div class="modal-header">
+								<h4>{{searchResults.Products[val].name}} </h4>
+									<div class="subtext">Rating: 
+										<span class="gold">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star-half-o"></i>
+											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star-o"></i>
+										</span> 2 Ratings | 
+										<a href="#">1 Review</a>
+									</div>	
+								</div>
+								<div class="modal-body">
+									{{searchResults.Products[val].name}}
+									<div class="thumbnail thumb">
+							<p> {{ searchResults.Products[val].store }} </p>
+							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<div class="caption">
+								<p class="product-name"> {{searchResults.Products[val].name}} </p>
+								<p class="store-name">{{searchResults.Products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+
+							</div>
+						</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-primary" ng-click="ok()">OK</button>
+									<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+								</div>
+							</script>
+
+							<button class="btn btn-default" ng-click="open()">Quick View</button>
+						</div>
 						<div class="thumbnail thumb">
 							<p> {{ searchResults.Products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
@@ -277,6 +316,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 				<br>
 

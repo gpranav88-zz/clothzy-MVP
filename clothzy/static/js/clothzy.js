@@ -170,14 +170,14 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 	$scope.storeProducts=commonFactory.storeProducts($resource).get({
 		'id':commonFactory.fetchID($routeParams)
 	});
-} 	
+}
 ]);
 
 
 
 app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 	$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
-}            
+}      
 ]);
 
 
@@ -268,6 +268,54 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 
 }
 ]);
+
+var ModalDemoCtrl = function ($scope, $modal, $log) {
+
+  // $scope.items = ['item1', 'item2', 'item3'];
+  $scope.open = function () {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'myModalContent.html',
+      controller: ModalInstanceCtrl,
+      resolve: {
+        searchResults: function () {
+          return $scope.searchResults;
+        },
+        val: function() {
+        	console.log($scope.val);
+        	return $scope.val;
+        }
+      }
+    });
+
+    // modalInstance.result.then(
+    // //	function () {
+    // //   // $scope.selected = selectedItem;
+    // // }, 
+    // function () {
+    //   $log.info('Modal dismissed at: ' + new Date());
+    // });
+  };
+};
+
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, searchResults, val) {
+	console.log("ModalInstanceCtrl");
+	console.log(searchResults);
+  $scope.searchResults = searchResults;
+  $scope.val = val;
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};
 
 app.factory('commonFactory',function(){ //can pass $resource over here as an argument to the factory function
 
