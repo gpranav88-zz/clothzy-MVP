@@ -244,9 +244,10 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.productRow7 = _.range(24, 28);
 
 	$scope.filters = {
-		location: []
+		locations: []
 	};
 
+	$location.search($scope.filters.locations);
 	// $scope.$watch(
 	// 	function() {
 	// 		console.log("enter 1")
@@ -288,6 +289,17 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 
 }
 ]);
+
+function LocationController($scope, $location) {
+  $scope.$watch('locationPath', function(path) {
+    $location.path(path);
+  });
+  $scope.$watch(function() {
+    return $location.path();
+  }, function(path) {
+    $scope.locationPath = path;
+  });
+}
 
 var ModalDemoCtrl = function ($scope, $modal, $log) {
 
