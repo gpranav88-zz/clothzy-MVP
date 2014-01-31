@@ -1,0 +1,138 @@
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+
+<div class="jumbotron bg-header container-fluid">
+  <div class="container homecontainer">
+   <div class="row">
+    <div class="help">
+      <a class="btn btn-default btn-lg helpbtn" onmouseover="javascript:toggleDiv('help-img');" onmouseout="javascript:removeDiv('help-img');">
+        Need help?
+      </a>
+    </div>
+  </div>
+
+  <BR>
+
+    <div class="row" ng-controller="searchController">
+
+      <div class="col-lg-2 text-center" style="height:100px">
+        <p class="text-center">Are you looking for:</p>
+        <div class="text-center">
+          <select class="form-control input-lg btn btn-default btn-lg dropdown-toggle searchtoggle" ng-model="selectedOption" ng-options="value.display for value in myOptions"></select>
+        </div>
+
+        <p class="text-center"><em class="searchexample">&nbsp;</em></p>
+        
+        <div class="help-img">
+          <img src="../static/img/showresultshelp.png" style="height:120px" class="helpimg">
+        </div>
+      </div>
+
+      <div class="col-lg-3 text-center">
+        <p class="text-center">Product</p>
+        <input type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product" >
+        <p class="text-center"><em class="searchexample">E.g. Sarees, Dresses</em></p>
+        <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>
+      </div>
+
+      <div class="col-lg-1 text-center" style="height:100px; display: table;">
+        <div style="display: table-cell; vertical-align: middle;" class="text-center">
+          in
+        </div>
+      </div>
+
+      <div class="col-lg-3 text-center" style="height:100px">
+        <p class="text-center">Location/Store</p>
+        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location" >
+        <p class="text-center">
+          <em class="searchexample">E.g. South Delhi, Store XYZ, Shahpur Jat</em>
+        </p>
+        <div class="help-img"><img src="../static/img/locationhelp.png" style="height:120px" class="helpimg"></div>
+      </div>
+
+      <div class="col-lg-2 text-center" style="height:100px">
+        <p class="text-center">&nbsp;</p>
+        <button type="button" style="font-size:16px" class="btn btn-lg btn-danger" ng-click="search()">
+          <i class="fa fa-search"></i> 
+          Search
+        </button>
+        <p class="text-center"><em class="searchexample">&nbsp;</em></p>
+        <div class="help-img"><img src="../static/img/searchhelp.png" style="height:120px" class="helpimg"  ></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="main">
+
+  <div class="row">
+   <div class="col-lg-4 text-center">
+    <img src="../static/img/product-icon.png" style="height:60px">
+    <p class="text-center home-subhead">Search for products</p>
+  </div>
+
+  <div class="col-lg-4 text-center">
+    <img src="../static/img/store-icon.png" style="height:60px">
+    <p class="text-center home-subhead">Discover stores/designers</p>
+
+  </div>
+
+  <div class="col-lg-4 text-center">
+    <img src="../static/img/location-icon.png" style="height:60px">
+    <p class="text-center home-subhead">Explore markets around you</p>
+  </div>
+</div>
+<hr>
+<!-- Example row of columns -->
+<div class="body-head">Latest Designs</div>
+<div class="row">
+  <div ng-repeat="product in homePageData.Products">
+    <div class="col-lg-4">
+      <a ng-href="product/{{product.id}}">
+        <h4>{{product.name}}</h4>
+      </a>
+      <p>{{product.description}}</p>
+      <p>
+        <a class="btn btn-default" href="/product/{{product.id}}">
+          View details &raquo;
+        </a>
+      </p>
+    </div>
+    <div class="col-lg-2">
+      <a ng-href="product/{{product.id}}">
+        <img ng-src="../static/img/featured-product-{{product.id}}.jpg" class="img-responsive img-thumbnail 	">
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+
+
+<h3 class="body-head">Featured Stores</h3>
+<div class="row" >
+  <div class="col-lg-4" ng-repeat="store in homePageData.Stores">
+    <div class="thumbnail">
+      <a ng-href="store/{{store.id}}">
+        <img ng-src="../static/img/featured-store-{{store.id}}.jpg" alt="...">
+      </a>
+      <div class="caption">
+        <a ng-href="store/{{store.id}}">
+          <h4>{{store.name}}</h4>
+        </a>
+        <p>{{store.description}}</p>
+        <p>
+          <a ng-href="store/{{store.id}}" class="btn btn-primary">
+            Visit Store &raquo;
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div> <!-- /container -->
+
