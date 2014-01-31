@@ -92,12 +92,14 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 	var productParams = { id: commonFactory.fetchID($routeParams) };
 	$scope.productData = commonFactory.productCRUD($resource).get(productParams, getStore);
 
-	$scope.discount = getDiscount();
+	$scope.imageURLs = [];
 
-	if ($scope.productData.price == 'null' || $scope.productData.price === 0) {
+	$scope.discount = getDiscount();
+	// fix null all over
+	if ($scope.productData.price === null || $scope.productData.price === 0) {
 		$scope.productData.price = 'Price on Request';
 	}
-	if ($scope.productData.price_discounted == 'null' || $scope.productData.price === 0) {
+	if ($scope.productData.price_discounted === null || $scope.productData.price === 0) {
 		$scope.productData.price_discounted = 'Price on Request';
 	}
 
@@ -114,9 +116,19 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 
 	function getStore() {
 		var storeParams = { id: $scope.productData.store };
-		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams);
+		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams, setImageUrl);
 	}
-}            
+
+	function setImageUrl() {
+		var prefix = "/static/Store_" + $scope.storeData.id + "/Product_" + $scope.productData.id +"/";
+
+		$scope.imageURLs[0] = prefix + "1-1.jpg";
+		$scope.imageURLs[1] = prefix + "2-1.jpg";
+		$scope.imageURLs[2] = prefix + "3-1.jpg";
+		$scope.imageURLs[3] = prefix + "4-1.jpg";
+
+	}
+}    
 ]);
 
 app.controller('dropdownController', ['$scope', function($scope) {
@@ -158,7 +170,7 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 	$scope.storeProducts=commonFactory.storeProducts($resource).get({
 		'id':commonFactory.fetchID($routeParams)
 	});
-} 
+} 	
 ]);
 
 
@@ -287,7 +299,7 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 			return $resource('/api/products/:id',{
 				id:'@id'
-			}); 
+			});
 
 		},
 
