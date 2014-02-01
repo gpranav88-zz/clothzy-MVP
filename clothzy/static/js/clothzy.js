@@ -1,4 +1,4 @@
-var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap', 'ui-rangeSlider', 'checklist-model']);
+var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap', 'ui-rangeSlider']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
@@ -233,6 +233,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
 	$scope.displayQuery = $location.search();
+
 	
 	// #TODO: Dirty code, clean. Change to a dict or another loop or something
 	$scope.productRow1 = _.range(0, 4);
@@ -242,24 +243,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.productRow5 = _.range(16, 20);
 	$scope.productRow6 = _.range(20, 24);
 	$scope.productRow7 = _.range(24, 28);
-
-	$scope.filters = {
-		locations: []
-	};
-
-	$location.search($scope.filters.locations);
-	// $scope.$watch(
-	// 	function() {
-	// 		console.log("enter 1")
-	// 		return $scope.filters;
-	// 	},
-	// 	function (newValue, oldValue) {
-	// 	console.log("enter 2");
-	// 	console.log("Change detected" + newValue);
-	// } );
-// 	function getFilters () {
-		
-// }
 
 	// $scope.demo2 = {
 	// 	range: {
@@ -278,10 +261,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		return $resource('/api/search/products', $location.search()); // .length()
 	}
 
-	function fetchAfterFilter () {
-		return $resource('/api/search/products', $location.search($scope.filters));
-	}
-
 	function calculatePages (totalItems) {
 		return Math.floor(totalItems / itemsPerPage);
 	}
@@ -289,17 +268,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 
 }
 ]);
-
-function LocationController($scope, $location) {
-  $scope.$watch('locationPath', function(path) {
-    $location.path(path);
-  });
-  $scope.$watch(function() {
-    return $location.path();
-  }, function(path) {
-    $scope.locationPath = path;
-  });
-}
 
 var ModalDemoCtrl = function ($scope, $modal, $log) {
 
@@ -413,12 +381,4 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 		}
 	};
 
-});
-
-$('.thumb').mouseover(function(){
-	$(this).find(".quickView").show();
-});
-
-$('.thumb').mouseout(function(){
-	$(this).find(".quickView").hide();
 });
