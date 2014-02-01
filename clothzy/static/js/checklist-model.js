@@ -74,7 +74,7 @@ angular.module('checklist-model', [])
           console.log(model);
           for (var i = model.length - 1; i >= 0; i--) {
             console.log(model[i]);
-            $location.path(model[i]);
+            //$location.path(model[i]);
           }
         } else if (newValue === false) {
           remove(model, value);
