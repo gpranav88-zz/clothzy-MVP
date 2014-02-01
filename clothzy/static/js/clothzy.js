@@ -382,3 +382,11 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 	};
 
 });
+
+$('.thumb').mouseover(function(){
+	$(this).find(".quickView").show();
+});
+
+$('.thumb').mouseout(function(){
+	$(this).find(".quickView").hide();
+});
