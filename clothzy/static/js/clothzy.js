@@ -1,4 +1,4 @@
-var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap', 'ui-rangeSlider']);
+var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap', 'ui-rangeSlider', 'checklist-model']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
 	$routeProvider
@@ -233,7 +233,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
 	$scope.displayQuery = $location.search();
-
 	
 	// #TODO: Dirty code, clean. Change to a dict or another loop or something
 	$scope.productRow1 = _.range(0, 4);
@@ -243,6 +242,23 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.productRow5 = _.range(16, 20);
 	$scope.productRow6 = _.range(20, 24);
 	$scope.productRow7 = _.range(24, 28);
+
+	$scope.filters = {
+		location: []
+	};
+
+	// $scope.$watch(
+	// 	function() {
+	// 		console.log("enter 1")
+	// 		return $scope.filters;
+	// 	},
+	// 	function (newValue, oldValue) {
+	// 	console.log("enter 2");
+	// 	console.log("Change detected" + newValue);
+	// } );
+// 	function getFilters () {
+		
+// }
 
 	// $scope.demo2 = {
 	// 	range: {
@@ -259,6 +275,10 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	}
 	function fetchRealResults () {
 		return $resource('/api/search/products', $location.search()); // .length()
+	}
+
+	function fetchAfterFilter () {
+		return $resource('/api/search/products', $location.search($scope.filters));
 	}
 
 	function calculatePages (totalItems) {
