@@ -149,6 +149,12 @@ app.controller('dropdownController', ['$scope', function($scope) {
 }
 ]);
 
+app.controller('CarouselDemoCtrl', ['$scope', function($scope) {
+
+} 
+]);
+
+
 app.controller('tabController', ['$scope', function($scope) {
 	$scope.navType = 'pills';
 }
@@ -340,6 +346,8 @@ var ModalDemoCtrl = function ($scope, $modal, $log) {
     // });
   };
 };
+
+
 
 
 // Please note that $modalInstance represents a modal window (instance) dependency.

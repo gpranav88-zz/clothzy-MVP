@@ -230,7 +230,7 @@ top:-750px;
 
 .storebg-header{
 	
-	background-image: url('../img/store-cover.jpg');
+
 	height:250px;
 	box-shadow: 0px 0px 12px #aaaaaa;
 }
@@ -263,6 +263,10 @@ top:-750px;
 
 .right-border{
 	border-right: 1px solid #cccccc;
+}
+
+.left-border{
+	border-left: 1px solid #cccccc;
 }
 
 .small-icon{
