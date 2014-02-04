@@ -87,7 +87,7 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 }            
 ]);
 
-app.controller('pstoreController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
+app.controller('pstoreController',['$scope','$location','$http','$resource','$routeParams','commonFactory',function($scope,$location,$http,$resource,$routeParams,commonFactory){
 
 	var productParams = { id: commonFactory.fetchID($routeParams) };
 	$scope.productData = commonFactory.productCRUD($resource).get(productParams, getStore);
@@ -101,6 +101,17 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 	}
 	if ($scope.productData.price_discounted === null || $scope.productData.price === 0) {
 		$scope.productData.price_discounted = 'Price on Request';
+	}
+
+	
+ 
+	// clickForStore is a function which has to be referenced in the button HTML tag. For reference, one can check how the 
+	// search() function from searchController on the home page is being called on the search button. A dummy example is provided below.
+	 
+	$scope.clickForStore = function(){
+		var path = "/store/" + $scope.storeData.id;
+		// console.log(path);
+		$location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
 	}
 
 	function getDiscount() {

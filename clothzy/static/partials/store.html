@@ -42,9 +42,9 @@
 
 									<div class="col-lg-3" ng-repeat='val in productRow1'>
 										<div class="thumbnail thumb">
-											<p> {{ storeProducts.Products[val].store }} </p>
+											<!-- <p> {{ storeProducts.Products[val].store }} </p> -->
 											<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-											<a href="ProductHome-test.html"><img ng-src="/static/Store_{{storeProducts.Products[val].store}}/Product_{{storeProducts.Products[val].id}}/1-1.jpeg" alt="..."></a>
+											<a href="ProductHome-test.html"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..."></a>
 											<div class="caption">
 												<p class="product-name"> {{storeProducts.Products[val].name}} </p>
 												<p class="store-name">{{storeProducts.Products[val].store}}</p>
@@ -55,11 +55,11 @@
 									</div>
 								</div>							</tab>
 								<tab heading="Map">
-									<iframe width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src={{storeData.map}}></iframe>
+									<iframe width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src={{storeData.map_url}}></iframe>
 								</tab>
 								<tab heading="Photos">
 									<div ng-repeat="photos in [1,2,3,4]">
-										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}.jpg">
+										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg">
 									</div>
 								</tab>
 							</tabset>

@@ -61,7 +61,7 @@ class HomeView(APIView):
         serializer1 = StoreSerializer(stores)
         dict1["Stores"] = serializer1.data
 
-        products =  Product.objects.all().order_by("-created_on")[:3]
+        products =  Product.objects.all().order_by("-created_on")[:2]
         serializer2 = ProductSerializer(products)
         dict1["Products"] = serializer2.data
 

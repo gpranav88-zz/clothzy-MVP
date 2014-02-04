@@ -115,7 +115,7 @@
 								<span class="WebRupee">
 									Rs.
 								</span>
-									{{productData.price_discounted}} (0% Discount)
+									{{productData.price_discounted}} (Discounted Price)
 							</p>
 
 						</div>
@@ -212,7 +212,7 @@
 						</div>
 						<div class="text-center">
 							
-							<button class="btn btn-default" onClick="window.location.href='StoreHome-test.html'">Visit Store</button><br><br>
+							<button class="btn btn-default" ng-click="clickForStore()">Visit Store</button><br><br>
 						</div>
 
 					</div>
@@ -222,7 +222,7 @@
 					<div class="col-lg-12">
 						<div class="product-header">About the store</div>
 						<p>
-							{{productData.description}}
+							{{storeData.description}}
 
 						</p>
 
