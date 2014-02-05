@@ -585,3 +585,33 @@ width:30%;
 height:auto;
 display:inline;
 }
+
+.featured-store-pic{
+
+	width:100%;
+	height:auto;
+
+}
+
+h1,h2,h3,h4,h5,h6{
+	text-transform:capitalize;
+}
+
+
+
+
+ .featured-store-description{
+
+  display: block; /* Fallback for non-webkit */
+  
+  display: -webkit-box;
+  max-width: 400px;
+
+  margin: 0 auto;
+
+  line-height: 1.4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

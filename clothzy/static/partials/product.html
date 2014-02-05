@@ -56,11 +56,11 @@
 									<i class="fa fa-star-o"></i>
 									<i class="fa fa-star-o"></i>
 								</span>
-								0 Ratings | <a href="#">0 Reviews</a>
+								0 Ratings | <a href="">0 Reviews</a>
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="product-header price"><i class="fa fa-rupee"></i>{{productData.price}}</div>
+							<div class="product-header price" style="text-align:right;"><i class="fa fa-rupee"></i>{{productData.price}}</div>
 							
 						</div>
 					</div>
@@ -126,7 +126,7 @@
 						<div class="col-lg-8 sidecontent">
 							
 								<span ng-repeat="size in productData.sizes">
-									{{size}}  
+									{{size}}  <span> | </span>
 								</span>
 							
 
@@ -150,14 +150,14 @@
 				
 				<!--RHS-->
 				
-				<div class="col-lg-3 left-border">
+				<div class="col-lg-4 left-border">
 					<div class="row"><div class="col-lg-12">
 						<div class="product-header">Get this product at: </div>
 					</div>
 					<div class="col-lg-12">
 						<div class="row">
 							<div class="col-lg-12">
-								<h3>{{storeData.name}}</h3>
+								<h4><a  ng-click="clickForStore()">{{storeData.name}}</a></h4>
 							</div>
 							<div class="col-lg-2">
 								<!--									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>-->
@@ -187,7 +187,11 @@
 								<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
 							</div>
 						</div>
-						<div class="text-center">
+						<div>
+
+
+
+
 							
 							<button class="btn btn-default" ng-click="clickForStore()">Visit Store</button><br><br>
 						</div>
