@@ -29,9 +29,8 @@
 						
 					</div>
 					<div class="row text-center" style="border: 1px solid #ddd">
-							<p>{{productData.num_images}}</p>
-							<span ng-repeat="num in range(5,10)" >
-								{{num}}
+							<span ng-repeat="num in range(productData.num_images)" style="cursor:pointer">
+								<img ng-src='/static/img/Store_{{storeData.id}}/P_{{productData.id}}/{{num}}-1.jpg' class="img-responsive thumb-product-image" alt="{{productData.name}}_{{num}}" ng-click="togglePhoto($index)">
 							</span>
 							<!-- <img ng-src="{{imageURLs[0]}}" class="img-responsive thumb-product-image" alt="...">
 

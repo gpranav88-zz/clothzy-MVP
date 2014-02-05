@@ -103,7 +103,12 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 		$scope.productData.price_discounted = 'Price on Request';
 	}
 
-	
+	$scope.range = function(num_img){
+		var input = [];
+	    for (var i=1; i<=num_img; i++) input.push(i);
+	    return input;
+		// $location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
+	}
  
 	// clickForStore is a function which has to be referenced in the button HTML tag. For reference, one can check how the 
 	// search() function from searchController on the home page is being called on the search button. A dummy example is provided below.
@@ -112,6 +117,11 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 		var path = "/store/" + $scope.storeData.id;
 		// console.log(path);
 		$location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
+	}
+
+	$scope.togglePhoto = function(index){
+		var prefix = "/static/img/Store_" + $scope.storeData.id + "/P_" + $scope.productData.id +"/";
+		$scope.imageURLs[0] = prefix + (index+1)+"-2.jpg";
 	}
 
 	function getDiscount() {
@@ -133,7 +143,7 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 	function setImageUrl() {
 		var prefix = "/static/img/Store_" + $scope.storeData.id + "/P_" + $scope.productData.id +"/";
 
-		$scope.imageURLs[0] = prefix + "1-1.jpg";
+		$scope.imageURLs[0] = prefix + "1-2.jpg";
 		$scope.imageURLs[1] = prefix + "2-1.jpg";
 		$scope.imageURLs[2] = prefix + "3-1.jpg";
 		$scope.imageURLs[3] = prefix + "4-1.jpg";
