@@ -230,18 +230,13 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 app.controller('populateSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
 	$scope.searchResults = fetchRealResults().get();
 	var totalItems = $scope.searchResults.count;
+	// console.log("count = " + totalItems);
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
 	$scope.displayQuery = $location.search();
 	
-	// #TODO: Dirty code, clean. Change to a dict or another loop or something
-	$scope.productRow1 = _.range(0, 4);
-	$scope.productRow2 = _.range(4, 8);
-	$scope.productRow3 = _.range(8, 12);
-	$scope.productRow4 = _.range(12, 16);
-	$scope.productRow5 = _.range(16, 20);
-	$scope.productRow6 = _.range(20, 24);
-	$scope.productRow7 = _.range(24, 28);
+	// console.log($scope.searchResults);
+	// console.log("populateSearchController");
 
 	$scope.filters = {
 		location: []
@@ -259,16 +254,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 // 	function getFilters () {
 		
 // }
-
-	// $scope.demo2 = {
-	// 	range: {
-	// 		min: $scope.searchResults.Filters.Price.min,
-	// 		max: $scope.searchResults.Filters.Price.max
-	// 	},
-	// 	minPrice: 0,
-	// 	maxPrice: 20000	
-	// }
-	// console.log($location.search("product"))
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
