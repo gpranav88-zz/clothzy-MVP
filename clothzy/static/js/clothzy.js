@@ -261,14 +261,6 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.numberOfPages = calculatePages(totalItems);
 	$scope.displayQuery = $location.search();
 	
-	// #TODO: Dirty code, clean. Change to a dict or another loop or something
-	$scope.productRow1 = _.range(0, 4);
-	$scope.productRow2 = _.range(4, 8);
-	$scope.productRow3 = _.range(8, 12);
-	$scope.productRow4 = _.range(12, 16);
-	$scope.productRow5 = _.range(16, 20);
-	$scope.productRow6 = _.range(20, 24);
-	$scope.productRow7 = _.range(24, 28);
 
 	$scope.filters = {
 		location: []

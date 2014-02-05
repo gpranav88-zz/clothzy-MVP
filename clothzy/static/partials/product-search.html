@@ -262,168 +262,21 @@
 
 
 
-				<div class="row">
-					<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
-
-					<div class="col-lg-3" ng-repeat='val in productRow1'>
-						<div ng-controller="ModalDemoCtrl">
-							<script type="text/ng-template" id="myModalContent.html">
-								<div class="modal-header">
-								<h4>{{searchResults.products[val].name}} </h4>
-									<div class="subtext">Rating: 
-										<span class="gold">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-											<i class="fa fa-star-o"></i>
-										</span> 2 Ratings | 
-										<a href="#">1 Review</a>
-									</div>	
-								</div>
-								<div class="modal-body">
-									{{searchResults.products[val].name}}
-									<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="static/img/Store_{{searchResults.products[val].store}}/P_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-								</div>
-								<div class="modal-footer">
-									<button class="btn btn-primary" ng-click="ok()">OK</button>
-									<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-								</div>
-							</script>
-
-							<button class="btn btn-default" ng-click="open()">Quick View</button>
-						</div>
+				<div class="row list">
+					<div class="col-lg-3" ng-repeat='products in searchResults.Products'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
+							<p> {{ products.store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="static/img/Store_{{searchResults.products[val].store}}/P_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{products.store}}/Product_{{products.id}}/1-1.jpeg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-				<br>
-
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow2'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
-				</div>				
-				<br>
-
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow3'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
+								<p class="product-name"> {{products.name}} </p>
+								<p class="store-name">{{products.store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
 							</div>
 						</div>
 					</div>
 					
-				</div>			
-				<br>
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow4'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
 				</div>
-
-				<br>
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow5'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow6'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-				<div class="row">
-					<div class="col-lg-3" ng-repeat='val in productRow7'>
-						<div class="thumbnail thumb">
-							<p> {{ searchResults.products[val].store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
-							<div class="caption">
-								<p class="product-name"> {{searchResults.products[val].name}} </p>
-								<p class="store-name">{{searchResults.products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<br>
-				
-			</div>
 
 
 			<ul class="pagination pull-right pagination-sm">
