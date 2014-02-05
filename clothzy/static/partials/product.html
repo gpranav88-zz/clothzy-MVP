@@ -13,14 +13,7 @@
 						<li><a href="#">Supernet Cotton Saree</a></li>						
 					</ol>
 				</div>
-				<div class="col-lg-6">
-					<ul class="nav nav-pills navbar-right">
-
-						<li class="active"><a href="#">Product View</a></li>
-
-						<li><a href="StoreHome-test.html">Store View</a></li>
-					</ul>
-				</div>
+				
 			</div>
 
 			<!--CONTENT AREA-->
@@ -51,26 +44,26 @@
 				</div>
 				
 				<!--CENTER-->
-				<div class="col-lg-5 right-border">
+				<div class="col-lg-5">
 
 					<div class="row">
 						<div class="col-lg-8">
 
 							<div class="product-header">{{productData.name}}</div>
 
-							<div class="subtext">Rating: 
+							<div class="subtext"  tooltip-placement="bottom" tooltip="Coming Soon!">Rating: 
 								<span class="gold">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>							
-									<i class="fa fa-star-half-o"></i>
+									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i>							
+									<i class="fa fa-star-o"></i>
 									<i class="fa fa-star-o"></i>
 									<i class="fa fa-star-o"></i>
 								</span>
-								2 Ratings | <a href="#">1 Review</a>
+								0 Ratings | <a href="">0 Reviews</a>
 							</div>
 						</div>
 						<div class="col-lg-4">
-							<div class="product-header"><i class="fa fa-rupee"></i>{{productData.price}}</div>
+							<div class="product-header price" style="text-align:right;"><i class="fa fa-rupee"></i>{{productData.price}}</div>
 							
 						</div>
 					</div>
@@ -78,13 +71,13 @@
 					<hr>
 					<div class="row">
 						<div class="col-lg-6">
-							<button type="button" class="btn btn-primary btn-sm">
+							<button type="button" class="btn btn-primary btn-sm" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">
 								<span class="glyphicon glyphicon-heart"></span> Add to Favourites
 							</button> 
 
 						</div>
-						<div class="col-lg-6">
-							<span style="margin-top:0; margin-bottom:0">Share: </span><a href="#"><i class="fa fa-facebook-square fa-2x fb-icon"></i> </a><a href="#"><i class="fa fa-twitter-square fa-2x tw-icon"></i></a><a href="#"> <i class="fa fa-pinterest-square fa-2x pi-icon"></i></a>
+						<div class="col-lg-6" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">
+							<span style="margin-top:0; margin-bottom:0">Share: </span><a href=""><i class="fa fa-facebook-square fa-2x fb-icon"></i> </a><a href=""><i class="fa fa-twitter-square fa-2x tw-icon"></i></a><a href=""> <i class="fa fa-pinterest-square fa-2x pi-icon"></i></a>
 						</div>
 					</div>
 					<hr>
@@ -121,7 +114,7 @@
 
 						</div>
 						<div class="col-lg-8 sidecontent">
-							<p>		<i class="fa fa-square purple-colour"></i> {{productData.color}}</p>
+							<p>		<i class="fa fa-circle purple-colour" style="color:{{productData.color}};"></i> {{productData.color}}</p>
 
 
 
@@ -136,7 +129,7 @@
 						<div class="col-lg-8 sidecontent">
 							
 								<span ng-repeat="size in productData.sizes">
-									{{size}}  
+									{{size}}  <span> | </span>
 								</span>
 							
 
@@ -160,14 +153,14 @@
 				
 				<!--RHS-->
 				
-				<div class="col-lg-3">
+				<div class="col-lg-4 left-border">
 					<div class="row"><div class="col-lg-12">
 						<div class="product-header">Get this product at: </div>
 					</div>
 					<div class="col-lg-12">
 						<div class="row">
 							<div class="col-lg-12">
-								<h3>{{storeData.name}}</h3>
+								<h4><a  ng-click="clickForStore()">{{storeData.name}}</a></h4>
 							</div>
 							<div class="col-lg-2">
 								<!--									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>-->
@@ -197,7 +190,11 @@
 								<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
 							</div>
 						</div>
-						<div class="text-center">
+						<div>
+
+
+
+
 							
 							<button class="btn btn-default" ng-click="clickForStore()">Visit Store</button><br><br>
 						</div>

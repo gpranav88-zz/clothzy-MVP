@@ -14,18 +14,12 @@
 					</ol>
 				</div>
 
-				<div class="col-lg-6">
-					<ul class="nav nav-pills navbar-right">				
-						<li><a href="#">Product View</a></li>
-						<li class="active"><a href="#">Store View</a></li>
-					</ul>
-				</div>
 
 			</div>
 
 			<div class="row">	
 				<div class="col-lg-8">
-					<div class="row storebg-header">
+					<div class="row storebg-header" style="background-image: url('../static/img/Store_{{storeData.id}}/cover.jpg');">
 						<div class="store-header">{{storeData.name}}
 						</div>
 					</div>
@@ -33,11 +27,13 @@
 					<div class="row">
 						<tabset>
 							<tab heading="Info">
+								<br>
 								{{storeData.description}}
 							</tab>
 
 							<tab heading="Collection">
 								<div class="row">
+									<br>
 									<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
 
 									<div class="col-lg-3" ng-repeat='val in productRow1'>
@@ -58,9 +54,21 @@
 									<iframe width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src={{storeData.map_url}}></iframe>
 								</tab>
 								<tab heading="Photos">
+									<!--
 									<div ng-repeat="photos in [1,2,3,4]">
 										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg">
-									</div>
+									</div>-->
+
+										<div ng-controller="CarouselDemoCtrl" style="min-height: 305px">
+										  <div style="height: 305px">
+										    <carousel interval="myInterval">
+										      <slide ng-repeat="photos in [1,2,3,4]" active="slide.active">
+										        <img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg" style="margin:auto;">
+										      </slide>
+										    </carousel>
+										  </div>
+										 </div>
+
 								</tab>
 							</tabset>
 						</div>
@@ -69,7 +77,6 @@
 					<div class="col-lg-4">
 						<div class="row">
 							<div class="col-lg-6 right-border">
-
 								<div class="row">
 									<div class="col-lg-2">
 										<i class="fa fa-phone small-icon"></i>
@@ -97,11 +104,30 @@
 									</div>
 								</div>
 
+								<div class="row">
+									<div class="col-lg-2">
+
+										<i class="fa fa-link fa-lg small-icon"></i>											
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p><a href="{{storeData.website}}">{{storeData.website}}</a>&nbsp;</p>
+									</div>
+								</div>				
+
+								<div class="row">
+									<div class="col-lg-2">
+
+										<i class="fa fa-facebook-square fa-lg small-icon"></i>											
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p><a href="{{storeData.fb_link}}">Visit Facebook Page</a>&nbsp;</p>
+									</div>
+								</div>
 							</div>
 
 							<div class="col-lg-6">
 
-								<div class="row">
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
 									<div class="col-lg-2">
 										<i class="fa fa-heart small-icon"></i>
 									</div>
@@ -110,7 +136,7 @@
 									</div>
 								</div>
 
-								<div class="row">
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
 									<div class="col-lg-2">
 										<i class="fa fa-pencil-square-o small-icon"></i>
 									</div>
@@ -119,22 +145,21 @@
 									</div>
 								</div>
 
-								<div class="row">
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
 									<div class="col-lg-12">
 										<p>Share: 
-											<a href="#">
+											<a href="">
 												<i class="fa fa-facebook-square fa-2x fb-icon"></i>
 											</a>
-											<a href="#">
+											<a href="">
 												<i class="fa fa-twitter-square fa-2x tw-icon"></i>
 											</a>
-											<a href="#">
+											<a href="">
 												<i class="fa fa-pinterest-square fa-2x pi-icon"></i>
 											</a>
 										</p>
 									</div>
 								</div>
-
 							</div>
 						</div>
 

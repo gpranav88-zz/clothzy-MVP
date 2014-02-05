@@ -328,6 +328,7 @@ textarea {
 a {
   color: #c8006d;
   text-decoration: none;
+  cursor:pointer;
 }
 
 a:hover,

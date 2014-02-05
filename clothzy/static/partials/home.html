@@ -115,13 +115,13 @@
   <div class="col-lg-4" ng-repeat="store in homePageData.Stores">
     <div class="thumbnail">
       <a ng-href="store/{{store.id}}">
-        <img ng-src="../static/img/Store_{{store.id}}/1-1.jpg" alt="{{store.name}}">
+        <img ng-src="../static/img/Store_{{store.id}}/1-2.jpg" alt="{{store.name}}" class="featured-store-pic">
       </a>
       <div class="caption">
         <a ng-href="store/{{store.id}}">
           <h4>{{store.name}}</h4>
         </a>
-        <p>{{store.description}}</p>
+        <p class="featured-store-description">{{store.description}}</p>
         <p>
           <a ng-href="store/{{store.id}}" class="btn btn-primary">
             Visit Store &raquo;
