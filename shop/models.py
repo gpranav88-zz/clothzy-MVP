@@ -29,6 +29,7 @@ class Store(models.Model):
     city = models.CharField(max_length=50,blank=True)
     pincode = models.CharField(max_length=20,blank=True)
     map_url = models.URLField(max_length=200,blank=True)
+    # num_images = models.IntegerField(null=True)
 
     def __unicode__(self):              # __unicode__ on Python 2
         return str(self.id)+":"+self.name

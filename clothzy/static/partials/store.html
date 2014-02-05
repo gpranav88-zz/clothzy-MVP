@@ -44,10 +44,10 @@
 										<div class="thumbnail thumb">
 											<!-- <p> {{ storeProducts.Products[val].store }} </p> -->
 											<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-											<a href="ProductHome-test.html"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..."></a>
+											<a ng-href="product/{{storeProducts.Products[val].id}}"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..."></a>
 											<div class="caption">
 												<p class="product-name"> {{storeProducts.Products[val].name}} </p>
-												<p class="store-name">{{storeProducts.Products[val].store}}</p>
+												<!-- <p class="store-name">{{storeProducts.Products[val].store}}</p> -->
 												<p class="price"><i class="fa fa-rupee"></i> {{storeProducts.Products[val].price}}</p>
 
 											</div>

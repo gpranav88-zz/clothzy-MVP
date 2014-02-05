@@ -255,10 +255,10 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.productRow7 = _.range(24, 28);
 
 	$scope.filters = {
-		locations: []
+		location: []
 	};
 
-	$location.search($scope.filters.locations);
+	// $location.search($scope.filters.locations);
 	// $scope.$watch(
 	// 	function() {
 	// 		console.log("enter 1")

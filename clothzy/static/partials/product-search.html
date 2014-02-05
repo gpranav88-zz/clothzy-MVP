@@ -6,10 +6,10 @@
 		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 			<ul class="nav nav-stacked sidebar-text">
 
-				<li class="active"><a>Location</a>
+				<li class="active"><a>location</a>
 
 					<ul class="nav">
-						<li ng-repeat="filterout in searchResults.Filters.Location">
+						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
 								<label for="{{filterout}}" class="checklabel">
@@ -30,7 +30,7 @@
 				<li class="active"><a> Color </a>
 
 					<ul class="nav">
-						<li ng-repeat="filterout in searchResults.Filters.Color">
+						<li ng-repeat="filterout in searchResults.filters.color">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 								<label for="{{filterout}}" class="checklabel">
@@ -43,7 +43,7 @@
 					<li class="active"><a> Size </a>
 						
 						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.Filters.Size">
+							<li ng-repeat="filterout in searchResults.filters.size">
 								<div class="checkbox">
 									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 									<label for="{{filterout}}" class="checklabel">
@@ -56,7 +56,7 @@
 						<li class="active"><a>Discount</a>
 
 							<ul class="nav">
-								<li ng-repeat="filterout in searchResults.Filters.Discount">
+								<li ng-repeat="filterout in searchResults.filters.discount">
 									<div class="checkbox" ng-model="{{filterout}}">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 										<label for="{{filterout}}" class="checklabel">
@@ -71,7 +71,7 @@
 						<li class="active"><a> Occasion </a>
 
 							<ul class="nav">
-								<li ng-repeat="filterout in searchResults.Filters.Occassion">
+								<li ng-repeat="filterout in searchResults.filters.category">
 									<div class="checkbox">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 										<label for="{{filterout}}" class="checklabel">
@@ -110,7 +110,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-8">
-						<p ><em>Displaying 500 {{totalItems}} results for "{{displayQuery.product}} in {{displayQuery.location}}"</em></p>
+						<p ><em>Displaying {{searchResults.count}} results for "{{displayQuery.product}} in {{displayQuery.location}}"</em></p>
 					</div>
 					<div class="col-lg-4">
 						<div class="row">
@@ -269,7 +269,7 @@
 						<div ng-controller="ModalDemoCtrl">
 							<script type="text/ng-template" id="myModalContent.html">
 								<div class="modal-header">
-								<h4>{{searchResults.Products[val].name}} </h4>
+								<h4>{{searchResults.products[val].name}} </h4>
 									<div class="subtext">Rating: 
 										<span class="gold">
 											<i class="fa fa-star"></i>
@@ -282,15 +282,15 @@
 									</div>	
 								</div>
 								<div class="modal-body">
-									{{searchResults.Products[val].name}}
+									{{searchResults.products[val].name}}
 									<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="static/img/Store_{{searchResults.products[val].store}}/P_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -304,13 +304,13 @@
 							<button class="btn btn-default" ng-click="open()">Quick View</button>
 						</div>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="static/img/Store_{{searchResults.products[val].store}}/P_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -323,13 +323,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow2'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -340,13 +340,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow3'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -357,13 +357,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow4'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -374,13 +374,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow5'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -391,13 +391,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow6'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>
@@ -408,13 +408,13 @@
 				<div class="row">
 					<div class="col-lg-3" ng-repeat='val in productRow7'>
 						<div class="thumbnail thumb">
-							<p> {{ searchResults.Products[val].store }} </p>
+							<p> {{ searchResults.products[val].store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.Products[val].store}}/Product_{{searchResults.Products[val].id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{searchResults.products[val].store}}/Product_{{searchResults.products[val].id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
-								<p class="product-name"> {{searchResults.Products[val].name}} </p>
-								<p class="store-name">{{searchResults.Products[val].store}}</p>
-								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.Products[val].price}}</p>
+								<p class="product-name"> {{searchResults.products[val].name}} </p>
+								<p class="store-name">{{searchResults.products[val].store}}</p>
+								<p class="price"><i class="fa fa-rupee"></i> {{searchResults.products[val].price}}</p>
 
 							</div>
 						</div>

@@ -36,12 +36,15 @@
 						
 					</div>
 					<div class="row text-center" style="border: 1px solid #ddd">
-
-							<img ng-src="{{imageURLs[0]}}" class="img-responsive thumb-product-image" alt="...">
+							<p>{{productData.num_images}}</p>
+							<span ng-repeat="num in range(5,10)" >
+								{{num}}
+							</span>
+							<!-- <img ng-src="{{imageURLs[0]}}" class="img-responsive thumb-product-image" alt="...">
 
 							<img ng-src="{{imageURLs[1]}}" class="img-responsive thumb-product-image" alt="...">
 
-							<img ng-src="{{imageURLs[2]}}" class="img-responsive thumb-product-image" alt="...">
+							<img ng-src="{{imageURLs[2]}}" class="img-responsive thumb-product-image" alt="..."> -->
 
 					</div>
 
