@@ -4999,7 +4999,16 @@ a.list-group-item.active > .badge,
 .thumbnail > a > img {
   display: block;
   height: auto;
-  max-width: 100%;
+  width: 100%;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.thumbnail > div > a > img {
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 a.thumbnail:hover,

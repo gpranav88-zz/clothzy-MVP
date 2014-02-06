@@ -597,9 +597,6 @@ h1,h2,h3,h4,h5,h6{
 	text-transform:capitalize;
 }
 
-
-
-
  .featured-store-description{
 
   display: block; /* Fallback for non-webkit */
@@ -619,4 +616,29 @@ h1,h2,h3,h4,h5,h6{
 .list > div {
 	padding: 5px;
     display: inline-block;
+    height:390px;
+}
+
+.thumb{
+	height:380px;
+}
+
+.sentence-case{
+	text-transform:capitalize;
+}
+
+.storename{
+	color:#666;
+	font-weight:400;
+}
+
+.productname{
+	height:37px;
+  -webkit-line-clamp: 2;
+
+}
+
+.imgholder{
+
+	height:291px;
 }

@@ -265,12 +265,10 @@
 				<div class="row list">
 					<div class="col-lg-3" ng-repeat='products in searchResults.products'>
 						<div class="thumbnail thumb">
-							<p> {{ products.store }} </p>
-							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a>
+							<div class="imgholder"><a href=""><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
 							<div class="caption">
-								<p class="product-name"> {{products.name}} </p>
-								<p class="store-name">{{products.store}}</p>
+								<p class="productname sentence-case"><a href="" class=""> {{products.name}} </a></p>
+								<p class="sentence-case"><a href="" class="storename">{{products.store_name}}</a></p>
 								<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
 							</div>
 						</div>
@@ -287,7 +285,7 @@
 				<li><a href="#">5</a></li>
 				<li><a href="#">&raquo;</a></li>
 			</ul>			
-			
+			<br>
 		</div> <!-- /span -->
 	</div> <!-- /row -->
 </div> <!-- /container -->
