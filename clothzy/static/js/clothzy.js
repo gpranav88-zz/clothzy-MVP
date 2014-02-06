@@ -29,35 +29,36 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 	// 	controller:'searchController'
 	// })
 
-.when ('/search/products/', {
-	templateUrl:'static/partials/product-search.html',
-	controller:'populateSearchController'
-})
+	.when ('/search/products/', {
+		templateUrl:'static/partials/product-search.html',
+		controller:'populateSearchController'
+	})
 
-// .when ('/search/store/:location/:product',{
-// 		templateUrl:'storesearch.html',
-// 	controller:'searchController'
-// })
-.when ('/about', {
-	templateUrl: 'static/partials/about.html'
-})
-.when ('/privacy-policy', {
-	templateUrl: 'static/partials/privacy-policy.html'
-})
-.when ('/product-search', {
-	templateUrl: 'static/partials/product-search.html'
-})
-.when ('/contact', {
-	templateUrl: 'static/partials/contact.html'
-})
-.when ('/designers-brands', {
-	templateUrl: 'static/partials/designers-brands.html'
-});
+	.when ('/search/store/',{
+		templateUrl:'static/partials/store-search.html',
+		controller:'searchStoreController'
+	})
+
+	.when ('/about', {
+		templateUrl: 'static/partials/about.html'
+	})
+	.when ('/privacy-policy', {
+		templateUrl: 'static/partials/privacy-policy.html'
+	})
+	.when ('/product-search', {
+		templateUrl: 'static/partials/product-search.html'
+	})
+	.when ('/contact', {
+		templateUrl: 'static/partials/contact.html'
+	})
+	.when ('/designers-brands', {
+		templateUrl: 'static/partials/designers-brands.html'
+	});
 
 
-$locationProvider
-.html5Mode(true)
-.hashPrefix('!');
+	$locationProvider
+	.html5Mode(true)
+	.hashPrefix('!');
 }]);
 
 
@@ -92,7 +93,8 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 	var productParams = { id: commonFactory.fetchID($routeParams) };
 	$scope.productData = commonFactory.productCRUD($resource).get(productParams, getStore);
 
-	$scope.imageURLs = [];
+	$scope.thumbURLs = [];
+	$scope.mainURLs = "";
 
 	$scope.discount = getDiscount();
 	// fix null all over
@@ -121,7 +123,7 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 
 	$scope.togglePhoto = function(index){
 		var prefix = "/static/img/Store_" + $scope.storeData.id + "/P_" + $scope.productData.id +"/";
-		$scope.imageURLs[0] = prefix + (index+1)+"-2.jpg";
+		$scope.mainURLs = prefix + (index+1)+"-2.jpg";
 	}
 
 	function getDiscount() {
@@ -134,7 +136,6 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 		}
 	}
 
-
 	function getStore() {
 		var storeParams = { id: $scope.productData.store };
 		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams, setImageUrl);
@@ -142,11 +143,14 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 
 	function setImageUrl() {
 		var prefix = "/static/img/Store_" + $scope.storeData.id + "/P_" + $scope.productData.id +"/";
-
-		$scope.imageURLs[0] = prefix + "1-2.jpg";
-		$scope.imageURLs[1] = prefix + "2-1.jpg";
-		$scope.imageURLs[2] = prefix + "3-1.jpg";
-		$scope.imageURLs[3] = prefix + "4-1.jpg";
+		$scope.mainURLs = prefix +"1-2.jpg";
+		for (var i=1; i<=$scope.productData.num_images; i++){
+			$scope.thumbURLs.push(prefix+i+"-1.jpg");
+		} 
+		// $scope.imageURLs[0] = prefix + "1-2.jpg";
+		// $scope.imageURLs[1] = prefix + "2-1.jpg";
+		// $scope.imageURLs[2] = prefix + "3-1.jpg";
+		// $scope.imageURLs[3] = prefix + "4-1.jpg";
 
 	}
 }    
@@ -224,33 +228,34 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 
 			// location: $scope.searchPhrase.location || null - good parts
 
-			$scope.search = function() {
-				if (!$scope.searchPhrase.product) {
-					// console.log("No product");
-					$scope.searchPhrase.product = null;
-				}
-				if (!$scope.searchPhrase.location) {
-					// console.log("No location");
-					$scope.searchPhrase.location = null;
-				}
+	$scope.search = function() {
+		if (!$scope.searchPhrase.product) {
+			// console.log("No product");
+			$scope.searchPhrase.product = null;
+		}
+		if (!$scope.searchPhrase.location) {
+			// console.log("No location");
+			$scope.searchPhrase.location = null;
+		}
 
-				$location.path('/search/products/').search($scope.searchPhrase);
+		// $location.path('/search/products/').search($scope.searchPhrase);
 
-				var searchParams = $scope.searchPhrase; //can get rid of
+		var searchParams = $scope.searchPhrase; //can get rid of
 
-				$scope.searchResult = function($resource) {
-					return $resource('/api/search/products');
-					console.log("searchResults call");
-				};
+		// $scope.searchResult = function($resource) {
+		// 	console.log("searchResults call");
+		// 	return $resource('/api/search/products');
+			
+		// };
 
-				// $scope.searchResult = commonFactory.searchR($resource).get({
-				// 	'category': $scope.selectedOption.name,
-				// 	'location': searchParams.location,
-				// 	'product': searchParams.product,
+		// $scope.searchResult = commonFactory.searchR($resource).get({
+		// 	'category': $scope.selectedOption.name,
+		// 	'location': searchParams.location,
+		// 	'product': searchParams.product,
 
-				// });
+		// });
 
-};
+	};
 }]);
 
 
