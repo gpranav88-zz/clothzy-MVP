@@ -263,11 +263,11 @@
 
 
 				<div class="row list">
-					<div class="col-lg-3" ng-repeat='products in searchResults.Products'>
+					<div class="col-lg-3" ng-repeat='products in searchResults.products'>
 						<div class="thumbnail thumb">
 							<p> {{ products.store }} </p>
 							<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-							<a href="ProductHome-test.html"><img ng-src="/static/Store_{{products.store}}/Product_{{products.id}}/1-1.jpeg" alt="..."></a>
+							<a href="ProductHome-test.html"><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a>
 							<div class="caption">
 								<p class="product-name"> {{products.name}} </p>
 								<p class="store-name">{{products.store}}</p>
@@ -275,7 +275,6 @@
 							</div>
 						</div>
 					</div>
-					
 				</div>
 
 

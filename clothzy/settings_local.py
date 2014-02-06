@@ -17,7 +17,7 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': 'user123',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'en-us'
 ALLOWED_HOSTS = []
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static_root") 
+STATIC_ROOT = ""
 TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
 MEDIA_URL = '/media/' 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
@@ -41,6 +41,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, "static"),
+    "/opt/myenv/static/"
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -82,6 +83,20 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+# WHOOSH_INDEX = os.path.join(PROJECT_ROOT,'whoosh/')
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+    # 'store_index': {
+    #     'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+    #     'PATH': WHOOSH_INDEX,
+    #     'EXCLUDED_INDEXES': ['shop.search_indexes.StoreIndex'],
+    # }
+}
 ROOT_URLCONF = 'clothzy.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -95,13 +110,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'django_filters',
     'rest_framework',
-    # 'haystack',
+    'haystack',
+    'south',
     'shop'
 )
 

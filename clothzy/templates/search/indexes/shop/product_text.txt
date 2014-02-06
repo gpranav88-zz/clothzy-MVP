@@ -1,4 +1,5 @@
 {{ object.name }}
+{{ object.sku }}
 {{ object.category }}
 {{ object.description }}
 {{ object.store.name }}

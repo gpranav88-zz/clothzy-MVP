@@ -57,7 +57,7 @@ class Product(models.Model):
     status = models.CharField(max_length=20,blank=True) #instock or not
 
     def __unicode__(self):              # __unicode__ on Python 2
-        return str(self.id)+":"+self.store.name+":"+self.name
+        return str(self.id)+":"+self.store.name+":"+self.sku
 
 class Reviewer(models.Model):
     name = models.CharField(max_length=200)

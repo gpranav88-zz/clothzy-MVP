@@ -25,13 +25,13 @@
 					<div class="row pad-20 text-center" style="padding-bottom:5px;">	
 
 
-						<img ng-src="{{imageURLs[0]}}" class="img-responsive text-center main-product-image" style="width:100%; display: inline-block;" alt="...">
+						<img ng-src="/static/img/Store_{{storeData.id}}/P_{{productData.id}}/1-2.jpg" class="img-responsive text-center main-product-image" style="width:100%; display: inline-block;" alt="...">
 						
 					</div>
 					<div class="row text-center" style="border: 1px solid #ddd">
-							<span ng-repeat="num in range(productData.num_images)" style="cursor:pointer">
-								<img ng-src='/static/img/Store_{{storeData.id}}/P_{{productData.id}}/{{num}}-1.jpg' class="img-responsive thumb-product-image" alt="{{productData.name}}_{{num}}" ng-click="togglePhoto($index)">
-							</span>
+							<img ng-repeat="num in range(productData.num_images)" style="cursor:pointer"
+								ng-src="/static/img/Store_{{storeData.id}}/P_{{productData.id}}/{{num}}-1.jpg" class="img-responsive thumb-product-image" 
+								alt="{{productData.name}}_{{num}}" ng-click="togglePhoto($index)">
 							<!-- <img ng-src="{{imageURLs[0]}}" class="img-responsive thumb-product-image" alt="...">
 
 							<img ng-src="{{imageURLs[1]}}" class="img-responsive thumb-product-image" alt="...">
