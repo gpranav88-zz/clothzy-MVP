@@ -1,6 +1,6 @@
 var app = angular.module('main',['ngResource','ngRoute', 'ui.bootstrap', 'ui-rangeSlider', 'checklist-model']);
 
-app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider){
+app.config(['$routeProvider','$locationProvider','$sceDelegateProvider', function($routeProvider,$locationProvider,$sceDelegateProvider){
 	$routeProvider
 	.when ('/',{
 		templateUrl:'static/partials/home.html',
@@ -59,6 +59,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 	$locationProvider
 	.html5Mode(true)
 	.hashPrefix('!');
+
+	$sceDelegateProvider
+	.resourceUrlWhitelist(['self','https://www.google.com/**']);
 }]);
 
 
@@ -100,7 +103,7 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 		$scope.productData.price = 'Price on Request';
 	}
 	if ($scope.productData.price_discounted === null || $scope.productData.price === 0) {
-		$scope.productData.price_discounted = 'Price on Request';
+		$scope.productData.price_discounted = $scope.productData.price;
 	}
 
 	$scope.range = function(num_img){
@@ -125,7 +128,7 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 	}
 
 	function getDiscount() {
-		if (($scope.productData.price == 'null' || $scope.productData.price === 0) && $scope.productData.price_discounted == 'null' || $scope.productData.price === 0) {
+		if (($scope.productData.price != 'null' && $scope.productData.price != 0) && ($scope.productData.price_discounted != 'null' && $scope.productData.price != 0)) {
 
 			return ((($scope.productData.price - $scope.productData.price_discounted) / $scope.productData.price)*100);
 		}

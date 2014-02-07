@@ -68,7 +68,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8">
-				<p><em>Displaying 500 stores for "Sarees in South Delhi"</em></p>
+				<p><em>Displaying {{searchResults.count}} stores matching your search</em></p>
 				</div>
 				<div class="col-lg-4">
 					<div class="row">
@@ -102,15 +102,13 @@
 				      </div>
 				    </div>
 	        	</div> -->
-	
-
 				<div class="row list">
-					<div class="col-lg-4">
+					<div class="col-lg-4" ng-repeat='store in searchResults.stores'>
 						<div class="thumbnail thumb">
-							<div class=""><a href=""><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
+							<div class=""><a ng-href="store/{{store.store}}"><img ng-src="/static/img/Store_{{store.store}}/1-1.jpg" alt="..."></a></div>
 							<div class="caption">
-								<h4><a href="">Name of Store</a></h4>
-								<p class="featured-store-description">Description...Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortoDonec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortoDonec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, torto</p>
+								<h4><a href="">{{store.name}}</a></h4>
+								<p class="featured-store-description">{{store.description}}</p>
 							</div>
 						</div>
 					</div>

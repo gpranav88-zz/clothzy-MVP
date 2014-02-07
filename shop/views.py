@@ -21,8 +21,8 @@ class StoreViewSet(viewsets.ReadOnlyModelViewSet):
 
     @link()
     def products(self, request, pk=None):
-        products =  Product.objects.filter(store = self.get_object())
-        serializer = ProductSerializer(products)
+        products =  Product.objects.filter(store = self.get_object()).filter(num_images__gt=0)
+        serializer = ProductSerializer(products, many=True)
         # dict1 = {}
         # dict1['Products'] = serializer.data
         return Response({"Products":serializer.data})
@@ -30,7 +30,7 @@ class StoreViewSet(viewsets.ReadOnlyModelViewSet):
     @link()
     def reviews(self, request, pk=None):
         reviews =  Review.objects.filter(store = self.get_object())
-        serializer = ReviewSerializer(reviews)
+        serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
@@ -47,7 +47,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     @link()
     def reviews(self, request, pk=None):
         reviews =  Review.objects.filter(product = self.get_object())
-        serializer = ReviewSerializer(reviews)
+        serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
 
 class HomeView(APIView):
@@ -58,15 +58,15 @@ class HomeView(APIView):
         """
         dict1 = {}
         stores =  Store.objects.filter(pk__in=[4,1,5])
-        serializer1 = StoreSerializer(stores)
+        serializer1 = StoreSerializer(stores, many=True)
         dict1["Stores"] = serializer1.data
 
         products =  Product.objects.filter(pk__in=[278,167])
-        serializer2 = ProductSerializer(products)
+        serializer2 = ProductSerializer(products, many=True)
         dict1["Products"] = serializer2.data
 
         reviews =  Review.objects.all().order_by("-created_on")[:3]
-        serializer3 = ReviewSerializer(reviews)
+        serializer3 = ReviewSerializer(reviews, many=True)
         dict1["Reviews"] = serializer3.data
 
         return Response(dict1)
@@ -81,6 +81,10 @@ class ProductSearchView(APIView):
         query_l = request.GET.get('location','')
         page = request.GET.get('page','')
 
+        if(query_p == 'null'):
+            query_p = ''
+        if(query_l == 'null'):
+            query_l = ''
         query = query_p+" "+query_l
         q = None
         or_query = None
@@ -105,7 +109,7 @@ class ProductSearchView(APIView):
             sqs = sqs.filter(or_query)
 
         dict1 = {}
-        total_count = len(sqs)
+        total_count = sqs.count()
         filters = {}
         filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
@@ -142,7 +146,10 @@ class StoreSearchView(APIView):
         query_p = request.GET.get('product','')
         query_l = request.GET.get('location','')
         page = request.GET.get('page','')
-        
+        if(query_p == 'null'):
+            query_p = ''
+        if(query_l == 'null'):
+            query_l = ''
         query = query_p+" "+query_l
         q = None
         or_query = None
@@ -191,6 +198,7 @@ class StoreSearchView(APIView):
                 store["store"] = result.storeid
                 store["name"] = result.store_name
                 store["location"] = result.location
+                store["description"] = result.store_desc
                 dict1['stores'].append(store)
         dict1['count'] = count
         return Response(dict1)

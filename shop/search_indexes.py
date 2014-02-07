@@ -19,6 +19,7 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
     id = indexes.IntegerField(model_attr='id')
     storeid = indexes.IntegerField(model_attr='store__id')
+    store_desc = indexes.CharField(model_attr='store__description')
     name = indexes.CharField(model_attr='name')
     store_name = indexes.CharField(model_attr='store__name')
     created_on = indexes.DateTimeField(model_attr='created_on')

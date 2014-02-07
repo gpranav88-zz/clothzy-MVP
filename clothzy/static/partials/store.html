@@ -9,8 +9,8 @@
 					<ol class="breadcrumb">
 						<li><a href="#">Delhi/NCR</a></li>
 						<li><a href="#">South Delhi</a></li>
-						<li><a href="#">Lajpat Nagar</a></li>
-						<li><a href="#">Store ABC</a></li>
+						<!-- <li><a href="#">Lajpat Nagar</a></li>
+						<li><a href="#">Store ABC</a></li> -->
 					</ol>
 				</div>
 
@@ -42,7 +42,6 @@
 												<p class="product-name sentence-case"> {{storeProducts.Products[val].name}} </p>
 												<!-- <p class="store-name">{{storeProducts.Products[val].store}}</p> -->
 												<p class="price"><i class="fa fa-rupee"></i> {{storeProducts.Products[val].price}}</p>
-
 											</div>
 										</div>
 									</div><br>
@@ -51,7 +50,8 @@
 								<br><a ng-href="search/products?storeid={{storeData.id}}">See more products from {{storeData.name}} &raquo;</a>
 								</tab>
 								<tab heading="Map">
-									<iframe width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{storeData.map_url}}"></iframe>
+									<iframe ng-src="{{storeData.map_url}}" width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+									</iframe>
 								</tab>
 								<tab heading="Photos">
 									<!--

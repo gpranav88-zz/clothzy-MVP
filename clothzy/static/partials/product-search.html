@@ -6,14 +6,14 @@
 		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 			<ul class="nav nav-stacked sidebar-text">
 
-				<li class="active"><a>location</a>
+				<li class="active"><a>Location</a>
 
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
 								<label for="{{filterout}}" class="checklabel">
-									{{filterout}}
+									{{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
 						</li>  
@@ -34,7 +34,7 @@
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 								<label for="{{filterout}}" class="checklabel">
-									{{filterout}}
+									{{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
 						</li>  
@@ -47,7 +47,7 @@
 								<div class="checkbox">
 									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 									<label for="{{filterout}}" class="checklabel">
-										{{filterout}}
+										{{filterout[0]}} ({{filterout[1]}})
 									</label>
 								</div>
 							</li>  
@@ -60,7 +60,7 @@
 									<div class="checkbox" ng-model="{{filterout}}">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 										<label for="{{filterout}}" class="checklabel">
-											{{filterout}}
+											{{filterout[0]}} ({{filterout[1]}})
 										</label>
 									</div>
 								</li>  
@@ -68,14 +68,14 @@
 
 						</li>
 						<hr class="sidebar-divider">					
-						<li class="active"><a> Occasion </a>
+						<li class="active"><a> Category </a>
 
 							<ul class="nav">
 								<li ng-repeat="filterout in searchResults.filters.category">
 									<div class="checkbox">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 										<label for="{{filterout}}" class="checklabel">
-											{{filterout}}
+											{{filterout[0]}} ({{filterout[1]}})
 										</label>
 									</div>
 								</li>  
@@ -95,8 +95,8 @@
 						<ol class="breadcrumb">
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Women</a></li>
-							<li><a href="#">Ethnic Wear</a></li>
-							<li><a href="#">Sarees</a></li>
+							<!-- <li><a href="#">Ethnic Wear</a></li>
+							<li><a href="#">Sarees</a></li> -->
 						</ol>
 					</div>
 					<div class="col-lg-6">
@@ -110,7 +110,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-8">
-						<p ><em>Displaying {{searchResults.count}} results for "{{displayQuery.product}} in {{displayQuery.location}}"</em></p>
+						<p ><em>Displaying {{searchResults.count}} results matching your search</em></p>
 					</div>
 					<div class="col-lg-4">
 						<div class="row">
@@ -246,7 +246,7 @@
 											<div class="col-lg-10">
 												<p>10AM - 10PM</p>
 											</div></div><br>
-											<button class="btn btn-default" onClick="window.location.href='ProductHome-test.html'">See More Details &raquo;</button>
+											<button class="btn btn-default" ng-href="products/{{products.id}}">See More Details &raquo;</button>
 											<button class="btn btn-default" onClick="window.location.href='StoreHome-test.html'">Visit Store &raquo;</button>
 											<br>
 
@@ -265,10 +265,10 @@
 				<div class="row list">
 					<div class="col-lg-3" ng-repeat='products in searchResults.products'>
 						<div class="thumbnail thumb">
-							<div class="imgholder"><a href=""><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
+							<div class="imgholder"><a ng-href="product/{{products.id}}"><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
 							<div class="caption">
-								<p class="productname sentence-case"><a href="" class=""> {{products.name}} </a></p>
-								<p class="sentence-case"><a href="" class="storename">{{products.store_name}}</a></p>
+								<p class="productname sentence-case"><a ng-href="product/{{products.id}}" class=""> {{products.name}} </a></p>
+								<p class="sentence-case"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}}</a></p>
 								<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
 							</div>
 						</div>
