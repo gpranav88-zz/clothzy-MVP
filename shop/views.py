@@ -7,7 +7,6 @@ from rest_framework.decorators import link
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from haystack.query import SearchQuerySet,SQ
-from sets import Set
 
 class StoreViewSet(viewsets.ReadOnlyModelViewSet):
     """
