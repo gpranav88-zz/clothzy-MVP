@@ -550,9 +550,6 @@ html, body {
   height: 100%;
 }
 
-#wrap {
-  min-height: 100%;
-}
 
 #main {
   overflow:auto;
@@ -561,10 +558,13 @@ html, body {
 
 
 .footer {
-  position: relative;
-  margin-top: -50px; /* negative value of footer height */
-  height: 50px;
-  clear:both;
+
+    height: 50px; 
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0; 
+
   padding-top:15px;
   padding-right:15px;
 	text-align:right;
@@ -572,6 +572,17 @@ html, body {
 	box-shadow: 0px 4px 12px #aaaaaa;
 	border-top: 1px solid #dddddd;
 }
+
+#holder{
+    min-height: 100%;
+    position:relative;
+}
+
+#body{
+    padding-bottom: 50px;    /* height of footer */
+}
+
+
 
 .main-product-image{
 
@@ -641,4 +652,34 @@ h1,h2,h3,h4,h5,h6{
 .imgholder{
 
 	height:291px;
+}
+
+.price-product-page{
+font-weight:700;
+font-size:24px;
+}
+
+.strike-price-product-page{
+	text-decoration:line-through;
+	color:#aaa;
+
+}
+
+.storename-productpage{
+	text-transform:uppercase;
+	font-size:18px;
+	font-weight:700;
+}
+
+.tabrow{
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.thumb-storepage{
+	height:auto;
+}
+
+.featured-store-thumbnail{
+	height:378px;
 }

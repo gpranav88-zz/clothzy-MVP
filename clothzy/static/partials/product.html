@@ -48,9 +48,9 @@
 				<div class="col-lg-5">
 
 					<div class="row">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 
-							<div class="product-header">{{productData.name}}</div>
+							<div class="product-header sentence-case">{{productData.name}}</div>
 
 							<div class="subtext"  tooltip-placement="bottom" tooltip="Coming Soon!">Rating: 
 								<span class="gold">
@@ -63,10 +63,10 @@
 								0 Ratings | <a href="">0 Reviews</a>
 							</div>
 						</div>
-						<div class="col-lg-4">
-							<div class="product-header price" style="text-align:right;"><i class="fa fa-rupee"></i>{{productData.price}}</div>
+						
 							
-						</div>
+							
+						
 					</div>
 
 					<hr>
@@ -96,15 +96,31 @@
 
 
 						<div class="col-lg-3">
-							<p>Price: </p>
+							<p style="vertical-align:bottom;">Price: </p>
 
 						</div>
 						<div class="col-lg-8 sidecontent">
 							<p>
-								<i class="fa fa-rupee"></i>
-									{{productData.price_discounted}} (0% Discount)
+								<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price}} </span>
+								<span class="strike-price-product-page"><i class="fa fa-rupee"></i>{{productData.price}}</span>
+								 (X% Discount)
 							</p>
+						
+						</div>
+					</div>
 
+					<div class="row">
+
+
+						<div class="col-lg-3">
+							<p style="vertical-align:bottom;">Product Code: </p>
+
+						</div>
+						<div class="col-lg-8 sidecontent">
+							<p>
+								{{productData.sku}}
+							</p>
+						
 						</div>
 					</div>
 
@@ -139,7 +155,7 @@
 
 					<div class="row">
 						<div class="col-lg-3">
-							Material
+							Material: 
 
 						</div>
 						<div class="col-lg-8 sidecontent">
@@ -161,33 +177,33 @@
 					<div class="col-lg-12">
 						<div class="row">
 							<div class="col-lg-12">
-								<h4><a  ng-click="clickForStore()">{{storeData.name}}</a></h4>
+								<h4><a  ng-click="clickForStore()" class="storename-productpage">{{storeData.name}}</a></h4>
 							</div>
-							<div class="col-lg-2">
+							<div class="col-lg-1">
 								<!--									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>-->
 								<i class="fa fa-phone fa-lg small-icon"></i>
 
 							</div>
-							<div class="col-lg-10 sidecontent">
+							<div class="col-lg-11 sidecontent">
 								<p>{{storeData.phone1}}</p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-lg-2">
+							<div class="col-lg-1">
 
 								<i class="fa fa-location-arrow fa-lg small-icon"></i>									
 							</div>
-							<div class="col-lg-10 sidecontent">
+							<div class="col-lg-11 sidecontent">
 								<p>{{storeData.address}}</p>
 							</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-2">
+							<div class="col-lg-1">
 
 								<i class="fa fa-clock-o fa-lg small-icon"></i>											
 							</div>
-							<div class="col-lg-10 sidecontent">
+							<div class="col-lg-11 sidecontent">
 								<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
 							</div>
 						</div>
