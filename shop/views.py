@@ -185,7 +185,7 @@ class StoreSearchView(APIView):
         dict1['stores'] = []
         dict1['products'] = []
         count = 0
-        stores_seen = Set()
+        stores_seen = set()
         for result in sqs: #give only first 28 products for now
             if(count>=28):
                 break
