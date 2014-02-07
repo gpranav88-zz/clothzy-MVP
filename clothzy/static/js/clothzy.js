@@ -97,15 +97,6 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 	$scope.thumbURLs = [];
 	$scope.mainURLs = "";
 
-	$scope.discount = getDiscount();
-	// fix null all over
-	if ($scope.productData.price === null || $scope.productData.price === 0) {
-		$scope.productData.price = 'Price on Request';
-	}
-	if ($scope.productData.price_discounted === null || $scope.productData.price === 0) {
-		$scope.productData.price_discounted = $scope.productData.price;
-	}
-
 	$scope.range = function(num_img){
 		var input = [];
 	    for (var i=1; i<=num_img; i++) input.push(i);
@@ -127,16 +118,12 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 		$scope.mainURLs = prefix + (index+1)+"-2.jpg";
 	}
 
-	function getDiscount() {
-		if (($scope.productData.price != 'null' && $scope.productData.price != 0) && ($scope.productData.price_discounted != 'null' && $scope.productData.price != 0)) {
-
-			return ((($scope.productData.price - $scope.productData.price_discounted) / $scope.productData.price)*100);
-		}
-		else {
-			return "0";
-		}
+	$scope.getDiscount = function(){
+		if($scope.productData.price_discounted==0 || $scope.productData.price=="Price on request")
+			return 0;
+		else
+			return parseInt((($scope.productData.price-$scope.productData.price_discounted)/$scope.productData.price)*100);
 	}
-
 	function getStore() {
 		var storeParams = { id: $scope.productData.store };
 		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams, setImageUrl);

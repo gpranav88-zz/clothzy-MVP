@@ -269,7 +269,12 @@
 							<div class="caption">
 								<p class="productname sentence-case"><a ng-href="product/{{products.id}}" class=""> {{products.name}} </a></p>
 								<p class="sentence-case"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}}</a></p>
-								<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
+								<span ng-if="products.price!=0">
+									<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
+								</span>
+								<span ng-if="products.price==0">
+									<p class="price">Price on request</p>
+								</span>
 							</div>
 						</div>
 					</div>

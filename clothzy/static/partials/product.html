@@ -8,9 +8,8 @@
 					<ol class="breadcrumb">
 						<li><a href="#">Home</a></li>
 						<li><a href="#">Women</a></li>
-						<li><a href="#">Ethnic Wear</a></li>
-						<li><a href="#">Sarees</a></li>
-						<li><a href="#">Supernet Cotton Saree</a></li>						
+						<li><a href="#">{{productData.category}}</a></li>
+						<li><a href="#">{{productData.name}}</a></li>					
 					</ol>
 				</div>
 				
@@ -101,9 +100,17 @@
 						</div>
 						<div class="col-lg-8 sidecontent">
 							<p>
-								<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price_discounted}} </span>
-								<span class="strike-price-product-page"><i class="fa fa-rupee"></i>{{productData.price}}</span>
-								 ({{discount}}% Discount)
+								<span ng-if="productData.price==0">
+									<span class="price-product-page">Price on Request</span>
+								</span>
+								<span ng-if="getDiscount()!=0 && productData.price!=0">
+									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price_discounted}} </span>
+									<span class="strike-price-product-page"><i class="fa fa-rupee"></i>{{productData.price}}</span>
+									 ({{getDiscount()}}% Discount)
+								</span>
+								<span ng-if="getDiscount() == 0 && productData.price!=0">
+									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price}} </span>
+								</span>
 							</p>
 						
 						</div>
@@ -148,6 +155,7 @@
 								<span ng-repeat="size in productData.sizes">
 									{{size}}  <span> | </span>
 								</span>
+								<span ng-if="productData.made_to_order == true"> Made to order </span>
 							
 
 						</div>
