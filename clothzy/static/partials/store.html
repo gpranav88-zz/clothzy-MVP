@@ -29,18 +29,16 @@
 			
 
 							<tab heading="Collection">
-								<div class="row tabrow">
+								<div class="row tabrow list-store">
 									<br>
 									<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
 
 									<div class="col-lg-3" ng-repeat='val in productRow1'>
-										<div class="thumbnail thumb-storepage">
-											<!-- <p> {{ storeProducts.Products[val].store }} </p> -->
-											<a class="quickView btn btn-default" data-toggle="modal" href="#myModal">Quick Look</a>
-											<a ng-href="product/{{storeProducts.Products[val].id}}"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..."></a>
+										<div class="thumbnail thumb-storepage">																					
+											<div class="imgholder-store"><a ng-href="product/{{storeProducts.Products[val].id}}"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..." class="productthumbnail-storepage"></a></div>
 											<div class="caption">
-												<p class="product-name sentence-case"> {{storeProducts.Products[val].name}} </p>
-												<!-- <p class="store-name">{{storeProducts.Products[val].store}}</p> -->
+												<p class="productname-store sentence-case"> {{storeProducts.Products[val].name}} </p>
+												
 												<p class="price"><i class="fa fa-rupee"></i> {{storeProducts.Products[val].price}}</p>
 
 											</div>
@@ -48,7 +46,7 @@
 									</div><br>
 									
 								</div>
-								<br><a ng-href="search/products?storeid={{storeData.id}}">See more products from {{storeData.name}} &raquo;</a>
+								<a ng-href="search/products?storeid={{storeData.id}}">See more products from {{storeData.name}} &raquo;</a>
 								</tab>
 								<tab heading="Map">
 									<iframe width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{storeData.map_url}}"></iframe>
