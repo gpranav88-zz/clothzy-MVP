@@ -28,6 +28,7 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     category = indexes.CharField(model_attr='category', faceted=True)
     color = indexes.CharField(model_attr='color', faceted=True)
     location = indexes.CharField(model_attr='store__locality',faceted=True)
+    num_images = indexes.IntegerField(model_attr='num_images')
 
     def prepare_sizes(self, obj):
         return [(size.name) for size in obj.sizes.all()]
@@ -44,4 +45,5 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(created_on__lte=datetime.datetime.now())
+        #return self.get_model().objects.filter(pub_date__lte=datetime.datetime.now())
+        return self.get_model().objects.filter(num_images__gte=1)

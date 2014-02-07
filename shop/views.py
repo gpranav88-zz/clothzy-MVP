@@ -159,6 +159,7 @@ class StoreSearchView(APIView):
             # Add filtering logic here.
             if key!='product' and key!='location' and key!='page':
                 valuelist = request.GET.get(key,'')
+                print "%s : %s" %key,valuelist
                 sqs = sqs.filter(**{'%s' %key:valuelist})
 
         #order by other request parameters if present
@@ -175,8 +176,6 @@ class StoreSearchView(APIView):
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
         dict1['filters'] = filters
-
-        dict1['count'] = total_count
         dict1['stores'] = []
         dict1['products'] = []
         count = 0
@@ -193,7 +192,7 @@ class StoreSearchView(APIView):
                 store["name"] = result.store_name
                 store["location"] = result.location
                 dict1['stores'].append(store)
-
+        dict1['count'] = count
         return Response(dict1)
 
 # class ProductLatestView(generics.ListAPIView):

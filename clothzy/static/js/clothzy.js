@@ -34,9 +34,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 		controller:'populateSearchController'
 	})
 
-	.when ('/search/store/',{
+	.when ('/search/stores/',{
 		templateUrl:'static/partials/store-search.html',
-		controller:'searchStoreController'
+		controller:'storeSearchController'
 	})
 
 	.when ('/about', {
@@ -78,8 +78,6 @@ app.controller('homePageController',['$scope','$http','$resource','commonFactory
 	$scope.homePageData=commonFactory.homeCRUD($resource).get();
 }            
 ]);
-
-
 
 app.controller('productController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 	$scope.productData=commonFactory.productCRUD($resource).get({
@@ -191,7 +189,7 @@ app.controller('userController',['$scope','$http','$resource','$routeParams','co
 
 
 app.controller('storeController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
-	$scope.productRow1 = _.range(0, 4);
+	$scope.productRow1 = _.range(0, 8);
 	
 	var store_number =commonFactory.fetchID($routeParams);
 
@@ -237,10 +235,12 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 			// console.log("No location");
 			$scope.searchPhrase.location = null;
 		}
-
-		// $location.path('/search/products/').search($scope.searchPhrase);
-
-		var searchParams = $scope.searchPhrase; //can get rid of
+		if($scope.selectedOption.id==1)
+			$location.path('/search/products/').search($scope.searchPhrase);
+		else
+			$location.path('/search/stores/').search($scope.searchPhrase);
+		
+		// var searchParams = $scope.searchPhrase; //can get rid of
 
 		// $scope.searchResult = function($resource) {
 		// 	console.log("searchResults call");
@@ -260,6 +260,32 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 
 
 app.controller('populateSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
+	$scope.searchResults = fetchRealResults().get();
+	var totalItems = $scope.searchResults.count;
+	var itemsPerPage = 28;
+	$scope.numberOfPages = calculatePages(totalItems);
+	$scope.displayQuery = $location.search();
+	$scope.filters = {
+		location: []
+	};
+	function fetchDummyResults ($resource) {
+		return $resource('/api/search/products');
+	}
+	function fetchRealResults () {
+		return $resource('/api/search/products', $location.search()); // .length()
+	}
+
+	function fetchAfterFilter () {
+		return $resource('/api/search/products', $location.search($scope.filters));
+	}
+
+	function calculatePages (totalItems) {
+		return Math.floor(totalItems / itemsPerPage);
+	}
+}
+]);
+
+app.controller('storeSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
 	$scope.searchResults = fetchRealResults().get();
 	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 28;
@@ -299,7 +325,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		return $resource('/api/search/products');
 	}
 	function fetchRealResults () {
-		return $resource('/api/search/products', $location.search()); // .length()
+		return $resource('/api/search/stores', $location.search()); // .length()
 	}
 
 	function fetchAfterFilter () {
