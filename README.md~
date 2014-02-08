@@ -13,7 +13,7 @@ Usage:
 1) Go into the clothzy directory:
 	cd clothzy
 
-2) Run the app using this command (after installing node):
+2) Run the app using this command (after installing node and express):
 	$ node server.js
 
 3) Open the site in the browser at:
