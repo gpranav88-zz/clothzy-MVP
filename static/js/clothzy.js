@@ -234,7 +234,7 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 
 		// $scope.searchResult = function($resource) {
 		// 	console.log("searchResults call");
-		// 	return $resource('/api/search/products');
+		// 	return $resource('http://162.243.235.72:8000/api/search/products');
 			
 		// };
 
@@ -259,14 +259,14 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		location: []
 	};
 	function fetchDummyResults ($resource) {
-		return $resource('/api/search/products');
+		return $resource('http://162.243.235.72:8000/api/search/products');
 	}
 	function fetchRealResults () {
-		return $resource('/api/search/products', $location.search()); // .length()
+		return $resource('http://162.243.235.72:8000/api/search/products', $location.search()); // .length()
 	}
 
 	function fetchAfterFilter () {
-		return $resource('/api/search/products', $location.search($scope.filters));
+		return $resource('http://162.243.235.72:8000/api/search/products', $location.search($scope.filters));
 	}
 
 	function calculatePages (totalItems) {
@@ -312,14 +312,14 @@ app.controller('storeSearchController',['$location','$scope','$http','$resource'
 	// console.log($location.search("product"))
 
 	function fetchDummyResults ($resource) {
-		return $resource('/api/search/products');
+		return $resource('http://162.243.235.72:8000/api/search/products');
 	}
 	function fetchRealResults () {
-		return $resource('/api/search/stores', $location.search()); // .length()
+		return $resource('http://162.243.235.72:8000/api/search/stores', $location.search()); // .length()
 	}
 
 	function fetchAfterFilter () {
-		return $resource('/api/search/products', $location.search($scope.filters));
+		return $resource('http://162.243.235.72:8000/api/search/products', $location.search($scope.filters));
 	}
 
 	function calculatePages (totalItems) {
@@ -403,7 +403,7 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 		storeCRUD:function($resource){
 
-			return $resource('/api/stores/:id',{
+			return $resource('http://162.243.235.72:8000/api/stores/:id',{
 				id:'@id'
 			});
 
@@ -411,7 +411,7 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 		storeProducts:function($resource){
 
-			return $resource('/api/stores/:id/products',{
+			return $resource('http://162.243.235.72:8000/api/stores/:id/products',{
 				id:'@id'
 			});
 
@@ -419,7 +419,7 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 		productCRUD:function($resource){
 
-			return $resource('/api/products/:id',{
+			return $resource('http://162.243.235.72:8000/api/products/:id',{
 				id:'@id'
 			});
 
@@ -427,19 +427,19 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 		userCRUD:function($resource,$routeParams){
 
-			return $resource('/api/user/'+$routeParams.slug.split('-').pop());
+			return $resource('http://162.243.235.72:8000/api/user/'+$routeParams.slug.split('-').pop());
 
 		},
 
 		reviewCRUD:function($resource,$routeParams){
 
-			return $resource('/api/review/'+$routeParams.slug.split('-').pop());
+			return $resource('http://162.243.235.72:8000/api/review/'+$routeParams.slug.split('-').pop());
 
 		},
 
 		searchR:function($resource){
 
-			return $resource('/api/search/:category/:location/:product', {
+			return $resource('http://162.243.235.72:8000/api/search/:category/:location/:product', {
 
 				category: '@category',
 				location: '@location',
