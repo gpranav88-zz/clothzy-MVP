@@ -19,7 +19,7 @@ server.configure(function(){
 		res.json(store);
 	});
 
-	server.get('/store|product|review|user\/.*', function(req, res) {
+	server.get('/about|store|product|review|user.*', function(req, res) {
 		res.sendfile(__dirname + '/index.html');
 	});
 
