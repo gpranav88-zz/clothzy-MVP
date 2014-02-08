@@ -30,7 +30,7 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider',
         //  controller:'searchController'
         // })
 
-        .when('/search/products/', {
+        .when('/search/products', {
             templateUrl: 'static/partials/product-search.html',
             controller: 'populateSearchController'
         })
@@ -289,6 +289,7 @@ app.controller('searchController', ['$scope', '$location', '$http', '$resource',
 
 app.controller('populateSearchController', ['$location', '$scope', '$http', '$resource', '$routeParams', 'commonFactory',
     function ($location, $scope, $http, $resource, $routeParams, commonFactory) {
+        // console.log("Hello"+$routeParams.color)
         $scope.searchResults = fetchRealResults().get();
         var totalItems = $scope.searchResults.count;
         var itemsPerPage = 28;
@@ -297,11 +298,34 @@ app.controller('populateSearchController', ['$location', '$scope', '$http', '$re
         $scope.filters = {
             location: []
         };
+        $scope.Loc = []
+
+        // console.log(fetchRealResults().get())
+        $scope.checkdisp = function(index){
+            
+
+            var loc_string, loc = $scope.Loc
+            for(var i = 0;i<$scope.Loc.length;i++){
+                if($scope.Loc[i] == true){
+                    if(loc_string == undefined)
+                        loc_string = $scope.searchResults.filters.location[index][0]
+                    else
+                        loc_string = loc_string + "&&" + $scope.searchResults.filters.location[index][0]
+                }
+                if(i == $scope.Loc.length - 1){
+                    $http({method:'GET',url:'http://162.243.235.72:8000/api/search/products?product=all&location='+loc_string})
+                        .success(function(d){
+                            console.log(d)
+                            $scope.SearchResults = d
+                        })
+
+                }
+            }
+        }
 
         function fetchDummyResults($resource) {
             return $resource('http://162.243.235.72:8000/api/search/products');
         }
-
         function fetchRealResults() {
             return $resource('http://162.243.235.72:8000/api/search/products', $location.search()); // .length()
         }
@@ -314,6 +338,7 @@ app.controller('populateSearchController', ['$location', '$scope', '$http', '$re
             return Math.floor(totalItems / itemsPerPage);
         }
     }
+
 ]);
 
 app.controller('storeSearchController', ['$location', '$scope', '$http', '$resource', '$routeParams', 'commonFactory',

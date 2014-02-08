@@ -11,7 +11,7 @@
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout[0]}}" checklist-value="filterout" ng-model="Loc[$index]" ng-change="checkdisp($index)">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
