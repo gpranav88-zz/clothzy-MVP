@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'en-us'
 ALLOWED_HOSTS = []
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = "/opt/myenv/static"
+STATIC_ROOT = ""
 TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
 MEDIA_URL = '/media/' 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
@@ -41,7 +41,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, "static"),
-    # "/opt/myenv/static/"
+    "/opt/myenv/static/"
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -79,6 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -117,8 +118,11 @@ INSTALLED_APPS = (
     'rest_framework',
     'haystack',
     'south',
+    'corsheaders',
     'shop'
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 

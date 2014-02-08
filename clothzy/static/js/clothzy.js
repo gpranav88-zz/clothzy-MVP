@@ -61,7 +61,7 @@ app.config(['$routeProvider','$locationProvider','$sceDelegateProvider', functio
 	.hashPrefix('!');
 
 	$sceDelegateProvider
-	.resourceUrlWhitelist(['self','https://www.google.com/**','https://maps.google.com/**']);
+	.resourceUrlWhitelist(['self','https://www.google.com/**','https://maps.google.com/**','http://162.243.235.72:8000/**']);
 }]);
 
 
@@ -397,7 +397,7 @@ app.factory('commonFactory',function(){ //can pass $resource over here as an arg
 
 		homeCRUD:function($resource){
 
-			return $resource('/api/home'); 
+			return $resource('http://162.243.235.72:8000/api/home'); 
 
 		},
 

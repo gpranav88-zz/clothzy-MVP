@@ -461,25 +461,26 @@ $(document).ready(function () {
         name_placeholder: "Your Name",
         email_placeholder: "Your Email",
         message_placeholder: "Go ahead, type your feedback here...",
-    radio_button_list_labels : ["1", "2", "3", "4", "5"],
-    radio5_button_list_labels : ["Yes", "No"],    
+        radio_button_list_labels : ["1", "2", "3", "4", "5"],
+        radio5_button_list_labels : ["Yes", "No"],    
         phone_label: "Phone",
         phone_placeholder: "Your Phone Number",
  
         name_required: false,
         message_required: false,
-     title_label : "We would love to get your feedback!",
-    trigger_label : "Feedback",
-    message_label : "Any other feedback?",    
+        title_label : "We would love to get your feedback!",
+        trigger_label : "Feedback",
+        message_label : "Any other feedback?",    
         show_asterisk_for_required: true,
  
-        feedback_url: "send_feedback_clean",
+        feedback_url: "/api/feedback",
  
-        custom_params: {
-            csrf: "my_secret_token",
-            user_id: "john_doe",
-            feedback_type: "clean_complex"
-        }
+        // custom_params: {
+        //     csrf: "my_secret_token",
+        //     user_id: "john_doe",
+        //     feedback_type: "clean_complex"
+        // }
+        // custom_params: false
     };
  
     //init feedback_me plugin
