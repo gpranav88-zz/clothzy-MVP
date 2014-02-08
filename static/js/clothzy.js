@@ -61,7 +61,7 @@ app.config(['$routeProvider','$locationProvider','$sceDelegateProvider', functio
 	.hashPrefix('!');
 
 	$sceDelegateProvider
-	.resourceUrlWhitelist(['self','https://www.google.com/**','https://maps.google.com/**','http://162.243.235.72:8000/**']);
+	.resourceUrlWhitelist(['self','https://mapsengine.google.com/**','https://maps.google.com/**','http://162.243.235.72:8000/**']);
 }]);
 
 
