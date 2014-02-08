@@ -123,11 +123,23 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 	}
 
 	$scope.getDiscount = function(){
+
 		if($scope.productData.price_discounted==0 || $scope.productData.price=="Price on request")
 			return 0;
 		else
 			return parseInt((($scope.productData.price-$scope.productData.price_discounted)/$scope.productData.price)*100);
 	}
+
+	// $scope.getDiscount_SearchPage = function(){
+
+	// 	alert(parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100));
+
+	// 	if($scope.products.price_discounted==0 || $scope.products.price=="Price on request")
+	// 		return 0;
+	// 	else
+	// 		return parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100);
+	// }
+
 	function getStore() {
 		var storeParams = { id: $scope.productData.store };
 		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams, setImageUrl);

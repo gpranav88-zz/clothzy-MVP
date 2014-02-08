@@ -137,10 +137,10 @@
 									</button>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#">Relevance</a></li>
-										<li><a href="#">Price (High to Low)</a></li>
-										<li><a href="#">Price (Low to High)</a></li>
-										<li><a href="#">Name (A-Z)</a></li>
-										<li><a href="#">Name (Z-A)</a></li>
+										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (High to Low)</a></li>
+										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (Low to High)</a></li>
+										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (A-Z)</a></li>
+										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (Z-A)</a></li>
 									</ul>
 								</div>
 							</div>
@@ -282,13 +282,27 @@
 						<div class="thumbnail thumb">
 							<div class="imgholder"><a ng-href="product/{{products.id}}"><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
 							<div class="caption">
-								<p class="productname sentence-case"><a ng-href="product/{{products.id}}" class=""> {{products.name}} </a></p>
-								<p class="sentence-case"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}}</a></p>
+								<div class="productname_holder"><p class="productname sentence-case"><a ng-href="product/{{products.id}}" class="productname"> {{products.name}} </a></p></div>
+								<p class="sentence-case storename"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}} </a></p>
+								<p class="sentence-case marketname"><a ng-href="store/{{products.store}}" class="marketname">{{products.location}} </a></p>
 								<span ng-if="products.price!=0">
-									<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p>
+						<!-- 			<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p> -->
+
+							<p class="price">
+
+								<span ng-if="products.price_discounted!=null && products.price!=0">
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}}</span>
+									 ({{getDiscount_SearchPage()}}% Discount)
+								</span>
+								<span ng-if="products.price_discounted == null && products.price!=0">
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}} </span>
+								</span>
+							</p>
+
 								</span>
 								<span ng-if="products.price==0">
-									<p class="price">Price on request</p>
+									<p class="price-productsearch-page">Price on request</p>
 								</span>
 							</div>
 						</div>

@@ -633,7 +633,7 @@ h1,h2,h3,h4,h5,h6{
 .list > div {
 	padding: 5px;
     display: inline-block;
-    height:390px;
+    
 }
 
 .list-store > div {
@@ -643,7 +643,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .thumb{
-	height:380px;
+	height:400px;
 }
 
 .thumb-storepage{
@@ -655,14 +655,26 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .storename{
-	color:#666;
-	font-weight:400;
+	color:#c8006d;
+	text-transform:uppercase;
+	font-weight:700;
+	font-size:12px;
+	margin:1px;
+
+}
+
+.marketname{
+text-transform: uppercase;
+font-size: 10px;
+font-weight: 700;
+color: #666;
 }
 
 .productname{
 
-
-  display: block; /* Fallback for non-webkit */
+font-size:12px;
+margin:1px;
+/*  display: block; 
   
   display: -webkit-box;
 
@@ -673,7 +685,11 @@ h1,h2,h3,h4,h5,h6{
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+*/
+}
 
+.productname_holder{
+	height:34px;
 }
 
 .productname-store{
@@ -708,6 +724,11 @@ font-weight:700;
 font-size:24px;
 }
 
+.price-productsearch-page{
+font-weight:700;
+font-size:16px;
+}
+
 .price-home-page{
 font-weight:700;
 font-size:18px;
@@ -717,6 +738,13 @@ margin-bottom:5px;
 .strike-price-product-page{
 	text-decoration:line-through;
 	color:#aaa;
+
+}
+
+.strike-price-productsearch-page{
+	text-decoration:line-through;
+	color:#aaa;
+	font-size:13px;
 
 }
 
