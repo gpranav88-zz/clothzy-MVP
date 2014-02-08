@@ -6,6 +6,21 @@
 		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 			<ul class="nav nav-stacked sidebar-text">
 
+				<li class="active"><a>Gender</a>
+
+					<ul class="nav">
+						<li ng-repeat="filterout in searchResults.filters.sex">
+							<div class="checkbox">
+								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
+								<label for="{{filterout}}" class="checklabel">
+									{{filterout[0]}} ({{filterout[1]}})
+								</label>
+							</div>
+						</li>  
+					</ul>
+
+				</li>
+				<hr class="sidebar-divider">
 				<li class="active"><a>Location</a>
 
 					<ul class="nav">
@@ -43,7 +58,7 @@
 					<li class="active"><a> Size </a>
 						
 						<ul class="nav">
-							<li ng-repeat="filterout in searchResults.filters.size">
+							<li ng-repeat="filterout in searchResults.filters.sizes">
 								<div class="checkbox">
 									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
 									<label for="{{filterout}}" class="checklabel">

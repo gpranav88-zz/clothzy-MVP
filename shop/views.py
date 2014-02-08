@@ -78,8 +78,8 @@ class ProductSearchView(APIView):
         """
         query_p = request.GET.get('product','')
         query_l = request.GET.get('location','')
-        page = request.GET.get('page','')
-
+        page = request.GET.get('page',1)
+        # print page
         if(query_p == 'null'):
             query_p = ''
         if(query_l == 'null'):
@@ -114,6 +114,7 @@ class ProductSearchView(APIView):
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
+        filters['color'] = sqs.facet('color').facet_counts()['fields']['color']
         # print sqs.facet_counts()
         # sqs = SearchQuerySet().facet('category')
         # print sqs.facet_counts()

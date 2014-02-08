@@ -25,6 +25,7 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     created_on = indexes.DateTimeField(model_attr='created_on')
     sex = indexes.CharField(model_attr='sex', faceted=True)
     price = indexes.CharField(model_attr='price', faceted=True)
+    price_discounted = indexes.CharField(model_attr='price_discounted', faceted=True)
     sizes = indexes.MultiValueField(faceted=True)
     category = indexes.CharField(model_attr='category', faceted=True)
     color = indexes.CharField(model_attr='color', faceted=True)
