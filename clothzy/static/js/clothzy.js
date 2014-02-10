@@ -52,7 +52,7 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 })
 .when ('/designers-brands', {
 	templateUrl: 'static/partials/designers-brands.html'
-});
+})
 
 
 $locationProvider
@@ -84,7 +84,7 @@ app.controller('productController',['$scope','$http','$resource','$routeParams',
 	$scope.productData=commonFactory.productCRUD($resource).get({
 		'id':commonFactory.fetchID($routeParams),
 	});
-}            
+}
 ]);
 
 app.controller('pstoreController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
@@ -128,13 +128,13 @@ app.controller('pstoreController',['$scope','$http','$resource','$routeParams','
 		$scope.imageURLs[3] = prefix + "4-1.jpg";
 
 	}
-}    
+}
 ]);
 
 app.controller('dropdownController', ['$scope', function($scope) {
 	$scope.myOptions = [{ display: "Products", id: 1 , name:'product'}, { display: "Stores", id: 2, name:'store' }];
 	$scope.selectedOption = $scope.myOptions[0];
-	$scope.$root.selectedOption = $scope.selectedOption
+	$scope.$root.selectedOption = $scope.selectedOption;
 }
 ]);
 
@@ -177,7 +177,7 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 
 app.controller('reviewController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 	$scope.reviewData=commonFactory.reviewCRUD($resource,$routeParams).get();
-}      
+} 
 ]);
 
 
@@ -213,7 +213,6 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 
 				$scope.searchResult = function($resource) {
 					return $resource('/api/search/products');
-					console.log("searchResults call");
 				};
 
 				// $scope.searchResult = commonFactory.searchR($resource).get({
@@ -233,65 +232,69 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	// console.log("count = " + totalItems);
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
-	$scope.displayQuery = $location.search();
+
 	
-	// console.log($scope.searchResults);
-	// console.log("populateSearchController");
+	$scope.getCheckBoxes = function () {
+			// console.log("print getCheckBoxes");
+			var counter = 0;
+			$scope.storeCheckBoxes = {};
+			console.log("On declaration type = " + typeof($scope.storeCheckBoxes));
 
-	$scope.filters = {
-		location: []
+			$('input[type=checkbox]').each(function (counter) {
+				console.log("inside jQuery type = " + typeof($scope.storeCheckBoxes));
+
+				// console.log("This = " + $(this));
+
+				if($(this).is(":checked")) {
+					console.log("inside if type = " + typeof($scope.storeCheckBoxes));
+					counter++;
+					console.log("Filter = " + $(this).attr('id'));
+					var filterParam = "p" + counter;
+					$scope.storeCheckBoxes[filterParam] = $(this).attr('id');
+				}
+			}
+			);
+			var searchDict = $location.search();
+		// console.log(searchDict);
+		var newSearchDict = angular.extend(searchDict, $scope.storeCheckBoxes);
+		console.log(newSearchDict);
+		$location.path('search/products').search(newSearchDict);	
 	};
+	
 
-	// $scope.$watch(
-	// 	function() {
-	// 		console.log("enter 1")
-	// 		return $scope.filters;
-	// 	},
-	// 	function (newValue, oldValue) {
-	// 	console.log("enter 2");
-	// 	console.log("Change detected" + newValue);
-	// } );
-// 	function getFilters () {
-		
-// }
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
 	}
 	function fetchRealResults () {
 		return $resource('/api/search/products', $location.search()); // .length()
-	}
 
-	function fetchAfterFilter () {
-		return $resource('/api/search/products', $location.search($scope.filters));
 	}
 
 	function calculatePages (totalItems) {
 		return Math.floor(totalItems / itemsPerPage);
 	}
 
-
-}
-]);
+}]);
 
 var ModalDemoCtrl = function ($scope, $modal, $log) {
 
   // $scope.items = ['item1', 'item2', 'item3'];
   $scope.open = function () {
 
-    var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
-      controller: ModalInstanceCtrl,
-      resolve: {
-        searchResults: function () {
-          return $scope.searchResults;
-        },
-        val: function() {
-        	console.log($scope.val);
-        	return $scope.val;
-        }
-      }
-    });
+  	var modalInstance = $modal.open({
+  		templateUrl: 'myModalContent.html',
+  		controller: ModalInstanceCtrl,
+  		resolve: {
+  			searchResults: function () {
+  				return $scope.searchResults;
+  			},
+  			val: function() {
+  				console.log($scope.val);
+  				return $scope.val;
+  			}
+  		}
+  	});
 
     // modalInstance.result.then(
     // //	function () {
@@ -300,7 +303,7 @@ var ModalDemoCtrl = function ($scope, $modal, $log) {
     // function () {
     //   $log.info('Modal dismissed at: ' + new Date());
     // });
-  };
+};
 };
 
 
@@ -310,16 +313,16 @@ var ModalDemoCtrl = function ($scope, $modal, $log) {
 var ModalInstanceCtrl = function ($scope, $modalInstance, searchResults, val) {
 	console.log("ModalInstanceCtrl");
 	console.log(searchResults);
-  $scope.searchResults = searchResults;
-  $scope.val = val;
+	$scope.searchResults = searchResults;
+	$scope.val = val;
 
-  $scope.ok = function () {
-    $modalInstance.close();
-  };
+	$scope.ok = function () {
+		$modalInstance.close();
+	};
 
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
+	$scope.cancel = function () {
+		$modalInstance.dismiss('cancel');
+	};
 };
 
 app.factory('commonFactory',function(){ //can pass $resource over here as an argument to the factory function
