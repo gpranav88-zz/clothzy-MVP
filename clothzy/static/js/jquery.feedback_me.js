@@ -526,17 +526,22 @@ var fm = (function () {
 	function sendFeedback(event) {
 		var checkValid = checkRequiredFieldsOk(),
 			dataArray;
-		if (checkValid === false) {
-			stopPropagation(event);
-			return;
-		}
-		dataArray = {
-			name: $("#feedback_name").val(),
-			message: $("#feedback_message").val(),
-			email: $("#feedback_email").val(),
-			radio_list_value: $("#feedback_me_form input[name=feedback_radio]:checked").val()
-		};
+		// if (checkValid === false) {
+		// 	stopPropagation(event);
+		// 	return;
+		// }
 
+		dataArray = {			
+			email: $("#feedback_email").val(),
+			web_design: $("#feedback_me_form input[name=feedback_radio1]:checked").val(),
+			ease_of_use: $("#feedback_me_form input[name=feedback_radio2]:checked").val(),
+			quality: $("#feedback_me_form input[name=feedback_radio3]:checked").val(),
+			range: $("#feedback_me_form input[name=feedback_radio4]:checked").val(),					
+			use_again: $("#feedback_me_form input[name=feedback_radio5]:checked").val(),						
+			message: $("#feedback_message").val()			
+
+		};
+		console.log(dataArray)
 		dataArray = $.extend(fm.getFmOptions().custom_params, dataArray);
 
 		$.ajax({

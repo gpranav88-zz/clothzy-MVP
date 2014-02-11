@@ -79,6 +79,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -117,11 +118,12 @@ INSTALLED_APPS = (
     'rest_framework',
     'haystack',
     'south',
+    'corsheaders',
     'shop'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
-
+CORS_ORIGIN_ALLOW_ALL = True
 # HAYSTACK_CONNECTIONS = {
 #     'default': {
 #         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
