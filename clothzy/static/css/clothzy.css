@@ -764,3 +764,30 @@ margin-bottom:5px;
 .productthumbnail-storepage{
 	max-height:250px;
 }
+
+/*.seemore {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}*/
+
+.seemore {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+  margin-left:0px;
+}
+
+
+.seemore:hover,
+.seemore:focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #c8006d;
+}
