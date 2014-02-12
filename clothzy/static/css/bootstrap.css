@@ -5009,6 +5009,7 @@ a.list-group-item.active > .badge,
   display: block;
   height: auto;
   width: 100%;
+  max-height:291px;
 }
 
 a.thumbnail:hover,
