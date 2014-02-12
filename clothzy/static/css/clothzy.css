@@ -692,6 +692,12 @@ margin:1px;
 	height:34px;
 }
 
+.storename_holder{
+white-space:nowrap; 
+overflow:ellipsis; 
+
+}
+
 .productname-store{
 
   display: block; /* Fallback for non-webkit */

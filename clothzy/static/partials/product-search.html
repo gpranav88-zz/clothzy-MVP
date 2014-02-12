@@ -268,7 +268,7 @@
 							<div class="imgholder"><a ng-href="product/{{products.id}}"><img ng-src="/static/img/Store_{{products.store}}/P_{{products.id}}/1-1.jpg" alt="..."></a></div>
 							<div class="caption">
 								<div class="productname_holder"><p class="productname sentence-case"><a ng-href="product/{{products.id}}" class="productname"> {{products.name}} </a></p></div>
-								<p class="sentence-case storename"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}} </a></p>
+								<div class="storename_holder"><p class="sentence-case storename"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}} </a></p></div>
 								<p class="sentence-case marketname"><a ng-href="store/{{products.store}}" class="marketname">{{products.location}} </a></p>
 								<span ng-if="products.price!=0">
 						<!-- 			<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p> -->
