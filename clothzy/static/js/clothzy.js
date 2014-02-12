@@ -64,7 +64,11 @@ app.config(['$routeProvider','$locationProvider','$sceDelegateProvider', functio
 	.resourceUrlWhitelist(['self','https://www.google.com/**','https://maps.google.com/**']);
 }]);
 
-
+app.controller('MainCtrl', ['$scope', 'commonFactory','$location', function($scope, commonFactory, $location) {
+    $scope.baseSearch = function() {
+        commonFactory.baseSearch($location,$scope.searchQuery);
+    }
+}]);
 // app.filter("myFilter", function(){
 //     return function(input, test){
 //         var newArray = [];
@@ -406,6 +410,11 @@ var ModalInstanceCtrl = function ($scope, $modalInstance, searchResults, val) {
 app.factory('commonFactory',function(){ //can pass $resource over here as an argument to the factory function
 
 	return {
+
+        baseSearch: function($location,query) {
+        	$location.path('/search/products/').search({product:query});
+            // alert("I'm search!");
+        },
 
 		homeCRUD:function($resource){
 
