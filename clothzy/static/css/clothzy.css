@@ -747,9 +747,25 @@ margin-bottom:5px;
 
 }
 
+.discount-productsearch-page{
+	font-weight:400;
+
+}
+
+.resultstext{
+
+	font-family: 'Open Sans', serif;
+	font-style:italic;
+	color:#666;
+	font-size:14px;
+	margin-bottom:5px;
+
+}
+
 .strike-price-productsearch-page{
 	text-decoration:line-through;
 	color:#aaa;
+	font-weight:400;
 	font-size:13px;
 
 }
@@ -777,16 +793,16 @@ margin-bottom:5px;
 .featured-product-description{
 	font-family: 'PT Serif', serif;
 	font-style:italic;
-	color:#aaa;
+	color:#666;
 	font-size:16px;
 	margin-bottom:5px;
 }
 
 .featured-product-storename{
 	text-transform:uppercase;
-	margin-top:4px;
+	margin-top:6px;
 	font-size:14px;
-	color:#999;
+	color:#666;
 	font-weight:700;
 }
 
