@@ -1,5 +1,5 @@
 
-###IMPORT DATA AS WELL AS CREATE RESIZED IMAGES###
+###IMPORT DATA AND IMAGES DIRECTLY###
 
 import os
 import sys
@@ -45,12 +45,17 @@ for direc in os.listdir(FOLDER_DIR):
     print "Reading file " + curr_file
     product_file_path = os.path.join(BASE_DIR, curr_file)
 
-    images_folder_path = os.path.join(BASE_DIR, BASE_FOLDER + "_Products")
-    images_list = os.listdir(images_folder_path)
-    images_list = [x for x in images_list if not x.startswith('.')]
-    # print images_list
+    images_folder_path1 = os.path.join(BASE_DIR, BASE_FOLDER + "_products_thumb")
+    images_list1 = os.listdir(images_folder_path1)
+    images_list1 = [x for x in images_list1 if not x.startswith('.')]
+
+    images_folder_path2 = os.path.join(BASE_DIR, BASE_FOLDER + "_products_main")
+    images_list2 = os.listdir(images_folder_path2)
+    images_list2= [x for x in images_list2 if not x.startswith('.')]
+
+    # print images_list1
     #create images in static folder at staticpath
-    STATIC_PATH = "/home/pranav/clothzy-data/static"
+    STATIC_PATH = "/home/pranav/clothzy-data/static2"
     store_dir = os.path.join(STATIC_PATH, "Store_"+str(current_store.id))
     if not os.path.exists(store_dir):
         os.makedirs(store_dir)
@@ -80,6 +85,11 @@ for direc in os.listdir(FOLDER_DIR):
                 outfile2 = os.path.join(store_dir,str(num)+"-2.jpg")
                 convertimage(infile,outfile1,size1)
                 convertimage(infile,outfile2,size2)
+        # print '%s ------------'%current_store
+        # print num
+        current_store.num_images = num
+        current_store.save()
+        # print current_store.num_images
 
     with open(product_file_path) as f:
             reader = csv.reader(f)
@@ -126,6 +136,7 @@ for direc in os.listdir(FOLDER_DIR):
                     if(row[13]!=''):
                         s, c = Size.objects.get_or_create(name='Free Size')
                         curr_prod.sizes.add(s)
+                    print curr_prod
 
                     if PROCESS_IMAGE == 1:
                         #process related images
@@ -135,17 +146,18 @@ for direc in os.listdir(FOLDER_DIR):
                             sku=row[0]
                             clean_sku = re.sub('[^A-Za-z0-9-& ]+', '-', sku)
                             regex=re.compile("^"+clean_sku+"-([0-9]*).(jpg|JPG)")
-                            images_found = [m.group(0) for l in images_list for m in [regex.search(l)] if m]
+                            images_found = [m.group(0) for l in images_list1 for m in [regex.search(l)] if m]
                             curr_prod.num_images = len(images_found)
                             curr_prod.save()
                             for img in images_found:
                                 print img
-                                num = img.rsplit('-',1)[1]
+                                num = img.rsplit('-',1)[1]  #abc-1.jpg
                                 num = num.rsplit('.',1)[0]
-                                infile = os.path.join(images_folder_path,img)
+                                infile1 = os.path.join(images_folder_path1,img)
+                                infile2 = os.path.join(images_folder_path2,img)
                                 outfile1 = os.path.join(prod_dir,num+"-1.jpg")
                                 outfile2 = os.path.join(prod_dir,num+"-2.jpg")
-                                convertimage(infile,outfile1,size1)
-                                convertimage(infile,outfile2,size2)
+                                copyfile(infile1, outfile1)
+                                copyfile(infile2, outfile2)
 
     print "Created Image folder at "+store_dir

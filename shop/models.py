@@ -29,7 +29,7 @@ class Store(models.Model):
     city = models.CharField(max_length=50,blank=True)
     pincode = models.CharField(max_length=20,blank=True)
     map_url = models.URLField(max_length=1000,blank=True)
-    # num_images = models.IntegerField(null=True)
+    num_images = models.IntegerField(null=True)
 
     def __unicode__(self):              # __unicode__ on Python 2
         return str(self.id)+":"+self.name
@@ -39,8 +39,8 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=100,blank=True)
     sex = models.CharField(max_length=20,blank=True)
-    price = models.FloatField(null=True)
-    price_discounted = models.FloatField(null=True)
+    price = models.IntegerField(null=True)
+    price_discounted = models.IntegerField(null=True)
     brand = models.CharField(max_length=50,blank=True)
     color = models.CharField(max_length=50,blank=True)
     material = models.CharField(max_length=100,blank=True)
