@@ -56,11 +56,11 @@ class HomeView(APIView):
         Return a list of all users.
         """
         dict1 = {}
-        stores =  Store.objects.filter(pk__in=[4,1,5])
+        stores =  Store.objects.filter(pk__in=[4,1,6])
         serializer1 = StoreSerializer(stores, many=True)
         dict1["Stores"] = serializer1.data
 
-        products =  Product.objects.filter(pk__in=[278,167])
+        products =  Product.objects.filter(pk__in=[303,480])
         serializer2 = ProductSerializer(products, many=True)
         dict1["Products"] = serializer2.data
 
