@@ -121,7 +121,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-8">
-						<p ><em>Displaying {{searchResults.count}} results matching your search</em></p>
+						<p ><em><span class="resultstext">Displaying {{searchResults.count}} results matching your search</span></em></p>
 					</div>
 					<div class="col-lg-4">
 						<div class="row">
@@ -289,7 +289,11 @@
 								<span ng-if="products.price_discounted!=0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted}}</span>
 									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}}</span>
+<<<<<<< HEAD
 									 ({{getDiscount_SearchPage($index)}}% Discount)
+=======
+									 <span class="discount-productsearch-page">({{getDiscount_SearchPage()}}% Off)</span>
+>>>>>>> 59941d3b6e31f906489dd4dc1cbe585efe08cb1a
 								</span>
 								<span ng-if="products.price_discounted == 0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}} </span>
