@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'en-us'
 ALLOWED_HOSTS = []
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__).decode('utf-8')).replace('\\', '/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
-STATIC_ROOT = "/opt/myenv/static/"
+STATIC_ROOT = ""
 TEMPLATE_ROOT = os.path.join(PROJECT_ROOT, "templates")
 MEDIA_URL = '/media/' 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
@@ -41,7 +41,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, "static"),
-    # "/opt/myenv/static/"
+    "/opt/myenv/static/"
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

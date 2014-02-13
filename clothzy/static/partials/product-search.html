@@ -7,7 +7,6 @@
 			<ul class="nav nav-stacked sidebar-text">
 
 				<li class="active"><a>Gender</a>
-
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.sex">
 							<div class="checkbox">
@@ -18,22 +17,19 @@
 							</div>
 						</li>  
 					</ul>
-
 				</li>
 				<hr class="sidebar-divider">
 				<li class="active"><a>Location</a>
-
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout[0]}}" checklist-value="filterout">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
 						</li>  
 					</ul>
-
 				</li>
 				<hr class="sidebar-divider">
 				<li class="active sideheader" ng-controller="DemoController"><a>Price</a>
@@ -47,7 +43,7 @@
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.color">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['color'][$index]" ng-change="checkdisp($index)">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
@@ -290,12 +286,12 @@
 
 							<p class="price">
 
-								<span ng-if="products.price_discounted!=null && products.price!=0">
+								<span ng-if="products.price_discounted!=0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted}}</span>
 									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}}</span>
-									 ({{getDiscount_SearchPage()}}% Discount)
+									 ({{getDiscount_SearchPage($index)}}% Discount)
 								</span>
-								<span ng-if="products.price_discounted == null && products.price!=0">
+								<span ng-if="products.price_discounted == 0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}} </span>
 								</span>
 							</p>

@@ -96,25 +96,27 @@ class ProductSearchView(APIView):
                     or_query = or_query | q
         #filter by other request parameters if present
         sqs = SearchQuerySet()
-        for key in request.GET.iterkeys():
-            # Add filtering logic here.
-            if key!='product' and key!='location' and key!='page':
-                valuelist = request.GET.get(key,'')
-                sqs = sqs.filter(**{'%s' %key:valuelist})
-
-        #order by other request parameters if present
-
         if or_query is not None:
             sqs = sqs.filter(or_query)
 
-        dict1 = {}
-        total_count = sqs.count()
         filters = {}
         filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
         filters['color'] = sqs.facet('color').facet_counts()['fields']['color']
+
+        for key in request.GET.iterkeys():
+            # Add filtering logic here.
+            if key!='product' and key!='location' and key!='page':
+                valuelist = request.GET.get(key,'').split(',')
+                # print valuelist
+                sqs = sqs.filter(**{'%s__in' %key:valuelist})
+                # sqs = sqs.filter(color=valuelist)
+
+        #order by other request parameters if present
+        dict1 = {}
+        total_count = sqs.count()
         # print sqs.facet_counts()
         # sqs = SearchQuerySet().facet('category')
         # print sqs.facet_counts()

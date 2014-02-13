@@ -130,16 +130,6 @@ app.controller('pstoreController',['$scope','$location','$http','$resource','$ro
 			return parseInt((($scope.productData.price-$scope.productData.price_discounted)/$scope.productData.price)*100);
 	}
 
-	// $scope.getDiscount_SearchPage = function(){
-
-	// 	alert(parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100));
-
-	// 	if($scope.products.price_discounted==0 || $scope.products.price=="Price on request")
-	// 		return 0;
-	// 	else
-	// 		return parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100);
-	// }
-
 	function getStore() {
 		var storeParams = { id: $scope.productData.store };
 		$scope.storeData = commonFactory.storeCRUD($resource).get(storeParams, setImageUrl);
@@ -270,10 +260,58 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 28;
 	$scope.numberOfPages = calculatePages(totalItems);
-	$scope.displayQuery = $location.search();
+	$scope.val1 = true;
+	var displayQuery = $location.search();
 	$scope.filters = {
 		location: []
 	};
+	$scope.searchFilters = new Array();
+	$scope.searchFilters['color'] = []
+	// $scope.Loc = [];
+	// console.log(displayQuery['color']);
+	
+	$scope.$watch('searchResults', function(newValue, oldValue) {
+	    if (newValue === oldValue) { return; }
+	    
+	    if(!angular.isUndefined(displayQuery['color'])){
+		    for(var i = 0;i<$scope.searchResults.filters.color.length;i++){
+		    	var curr_color = $scope.searchResults.filters.color[i][0].toLowerCase();
+		    	var color_array = displayQuery['color'].toLowerCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['color'][i] = true;
+	        }
+	    }},true);
+
+    $scope.checkdisp = function(index){
+        //filters.location[index][0] = locationName filters.location[index][1] = number_of_results
+        $scope.searchResults.filters.color.length
+        var loc_string, loc = $scope.searchFilters['color'];
+        flag = false;
+        for(var i = 0;i<$scope.searchFilters['color'].length;i++){
+            if($scope.searchFilters['color'][i] == true){
+            	flag = true;
+                if(loc_string == undefined)
+                    loc_string = $scope.searchResults.filters.color[i][0];
+                else
+                    loc_string = loc_string + "," + $scope.searchResults.filters.color[i][0];
+            }
+        }
+        if(flag){
+        	displayQuery['color']=loc_string
+        	$location.path('/search/products/').search(displayQuery);
+        }
+        else
+        	$location.path('/search/products/').search(displayQuery);
+    }
+
+    $scope.getDiscount_SearchPage = function(index){
+		// alert(parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100));
+		if($scope.searchResults.products[index].price_discounted==0 || $scope.searchResults.products[index].price=="Price on request")
+			return 0;
+		else
+			return parseInt((($scope.searchResults.products[index].price-$scope.searchResults.products[index].price_discounted)/$scope.searchResults.products[index].price)*100);
+	}
+
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
 	}
