@@ -296,12 +296,11 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
                     loc_string = loc_string + "," + $scope.searchResults.filters.color[i][0];
             }
         }
-        if(flag){
+        if(flag)
         	displayQuery['color']=loc_string
-        	$location.path('/search/products/').search(displayQuery);
-        }
         else
-        	$location.path('/search/products/').search(displayQuery);
+        	delete displayQuery["color"];
+        $location.path('/search/products/').search(displayQuery);
     }
 
     $scope.getDiscount_SearchPage = function(index){
