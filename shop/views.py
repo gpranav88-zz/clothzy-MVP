@@ -110,7 +110,8 @@ class ProductSearchView(APIView):
             # Add filtering logic here.
             if key!='product' and key!='location' and key!='page':
                 valuelist = request.GET.get(key,'').split(',')
-                # print valuelist
+                if key=='location_f':
+                    key = 'location'
                 sqs = sqs.filter(**{'%s__in' %key:valuelist})
                 # sqs = sqs.filter(color=valuelist)
 

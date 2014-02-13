@@ -266,13 +266,24 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		location: []
 	};
 	$scope.searchFilters = new Array();
-	$scope.searchFilters['color'] = []
+	$scope.searchFilters['color'] = [];
+	$scope.searchFilters['sex'] = [];
+	$scope.searchFilters['location_f'] = [];
 	// $scope.Loc = [];
 	// console.log(displayQuery['color']);
 	
 	$scope.$watch('searchResults', function(newValue, oldValue) {
 	    if (newValue === oldValue) { return; }
 	    
+	    if(!angular.isUndefined(displayQuery['sex'])){
+		    for(var i = 0;i<$scope.searchResults.filters.sex.length;i++){
+		    	var curr_val = $scope.searchResults.filters.sex[i][0].toLowerCase();
+		    	var val_array = displayQuery['sex'].toLowerCase().split(',');
+		    	if($.inArray(curr_val, val_array) > -1){
+	        		$scope.searchFilters['sex'][i] = true;
+	        	}
+	        }
+	    }
 	    if(!angular.isUndefined(displayQuery['color'])){
 		    for(var i = 0;i<$scope.searchResults.filters.color.length;i++){
 		    	var curr_color = $scope.searchResults.filters.color[i][0].toLowerCase();
@@ -280,26 +291,41 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		    	if($.inArray(curr_color, color_array) > -1)
 	        		$scope.searchFilters['color'][i] = true;
 	        }
-	    }},true);
+	    }
+	    if(!angular.isUndefined(displayQuery['location_f'])){
+		    for(var i = 0;i<$scope.searchResults.filters.location.length;i++){
+		    	var curr_color = $scope.searchResults.filters.location[i][0].toLowerCase();
+		    	var color_array = displayQuery['location_f'].toLowerCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['location_f'][i] = true;
+	        }
+	    }
+	},true);
 
-    $scope.checkdisp = function(index){
+    $scope.checkdisp = function(index,filter_selected){
         //filters.location[index][0] = locationName filters.location[index][1] = number_of_results
-        $scope.searchResults.filters.color.length
-        var loc_string, loc = $scope.searchFilters['color'];
+        // $scope.searchResults.filters.color.length
+        var loc_string, loc = $scope.searchFilters[filter_selected];
         flag = false;
-        for(var i = 0;i<$scope.searchFilters['color'].length;i++){
-            if($scope.searchFilters['color'][i] == true){
+        for(var i = 0;i<$scope.searchFilters[filter_selected].length;i++){
+            if($scope.searchFilters[filter_selected][i] == true){
             	flag = true;
+            	if(filter_selected=='color')
+            		filter_q = $scope.searchResults.filters.color[i][0];
+            	if(filter_selected=='sex')
+            		filter_q = $scope.searchResults.filters.sex[i][0];
+            	if(filter_selected=='location_f')
+            		filter_q = $scope.searchResults.filters.location[i][0];
                 if(loc_string == undefined)
-                    loc_string = $scope.searchResults.filters.color[i][0];
+                    loc_string = filter_q;
                 else
-                    loc_string = loc_string + "," + $scope.searchResults.filters.color[i][0];
+                    loc_string = loc_string + "," + filter_q;
             }
         }
         if(flag)
-        	displayQuery['color']=loc_string
+        	displayQuery[filter_selected]=loc_string
         else
-        	delete displayQuery["color"];
+        	delete displayQuery[filter_selected];
         $location.path('/search/products/').search(displayQuery);
     }
 

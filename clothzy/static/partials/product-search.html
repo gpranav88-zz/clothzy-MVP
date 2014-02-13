@@ -10,7 +10,7 @@
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.sex">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" checklist-model="filters.location" checklist-value="filterout">
+								<input id="{{filterout}}" type="checkbox" name="check" value="filterout" checklist-value="filterout" ng-model="searchFilters['sex'][$index]" ng-change="checkdisp($index,'sex')">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
@@ -23,7 +23,7 @@
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout[0]}}" checklist-value="filterout">
+								<input id="{{filterout}}" type="checkbox" name="check" value="filterout" checklist-value="filterout" ng-model="searchFilters['location_f'][$index]" ng-change="checkdisp($index,'location_f')">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
@@ -43,7 +43,7 @@
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.color">
 							<div class="checkbox">
-								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['color'][$index]" ng-change="checkdisp($index)">
+								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['color'][$index]" ng-change="checkdisp($index,'color')">
 								<label for="{{filterout}}" class="checklabel">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
