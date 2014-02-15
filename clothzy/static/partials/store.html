@@ -55,7 +55,7 @@
 									<iframe ng-src="{{storeData.map_url}}" width="750" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
 									</iframe>
 								</tab>
-								<tab heading="Photos">
+								<tab heading="Photos"><br>
 									<!--
 									<div ng-repeat="photos in [1,2,3,4]">
 										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg">
@@ -91,6 +91,7 @@
 									</div>
 									<div class="col-lg-10 sidecontent">
 										<p>{{storeData.phone1}}</p>
+										<p>{{storeData.phone2}}</p>
 									</div>
 								</div>
 
@@ -109,26 +110,27 @@
 									</div>
 									<div class="col-lg-10 sidecontent">
 										<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
+										<p>Closed on {{storeData.day_closed}}</p>
 									</div>
 								</div>
 
-								<div class="row">
+								<div class="row" ng-if="storeData.website!=''">
 									<div class="col-lg-2">
 
 										<i class="fa fa-globe fa-lg small-icon"></i>											
 									</div>
 									<div class="col-lg-10 sidecontent">
-										<p><a href="{{storeData.website}}">{{storeData.website}}</a>&nbsp;</p>
+										<p class="one-line-overflow"><a href="http://{{storeData.website}}" target="_blank">{{storeData.website}}</a>&nbsp;</p>
 									</div>
 								</div>				
 
-								<div class="row">
+								<div class="row" ng-if="storeData.fb_link!=''">
 									<div class="col-lg-2">
 
 										<i class="fa fa-facebook-square fa-lg small-icon"></i>											
 									</div>
 									<div class="col-lg-10 sidecontent">
-										<p><a href="{{storeData.fb_link}}">Visit Facebook Page</a>&nbsp;</p>
+										<p><a href="{{storeData.fb_link}}" target="_blank">Visit Facebook Page</a>&nbsp;</p>
 									</div>
 								</div>
 							</div>
@@ -181,7 +183,7 @@
 								</p>
 
 							</div>
-							<hr>
+							
 
 						</div>
 					</div>				
