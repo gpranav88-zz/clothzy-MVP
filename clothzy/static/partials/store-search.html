@@ -105,12 +105,12 @@
 				<div class="row list">
 					<div class="col-lg-4" ng-repeat='store in searchResults.stores'>
 						<div class="thumbnail thumb-store">
-							<div class=""><a ng-href="store/{{store.store}}"><img ng-src="/static/img/Store_{{store.store}}/1-1.jpg" alt="..."></a></div>
+							<div class="storesearch-imgholder"><a ng-href="store/{{store.store}}"><img ng-src="/static/img/Store_{{store.store}}/1-1.jpg" alt="..."></a></div>
 								
 								<div class="caption">
 								<p class="storename-storesearch"><a href="">{{store.name}}</a></h4>
-								<p class="marketname"><a class="marketname" href="">{{store.location}}</a></h4>
-								<p class="featured-store-description">{{store.description}}</p>
+								<p class="marketname-storesearch"><a class="marketname-storesearch" href="">{{store.location}}</a></h4>
+								<p class="storesearch-description">{{store.description}}</p>
 							</div>
 						</div>
 					</div>
@@ -120,11 +120,11 @@
 					</div>	
 						<ul class="pagination pull-right pagination-sm">
 						  <li><a href="#">&laquo;</a></li>
-						  <li class="active"><a>1</a></li>
-						  <!-- <li><a href="#">2</a></li>
+						  <li class="active"><a href="#">1</a></li>
+						  <li><a href="#">2</a></li>
 						  <li><a href="#">3</a></li>
 						  <li><a href="#">4</a></li>
-						  <li><a href="#">5</a></li> -->
+						  <li><a href="#">5</a></li>
 						  <li><a href="#">&raquo;</a></li>
 						</ul>			
 			

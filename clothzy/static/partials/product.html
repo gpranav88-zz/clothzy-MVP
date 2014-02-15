@@ -6,10 +6,11 @@
 
 				<div class="col-lg-6">
 					<ol class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Women</a></li>
-						<li><a href="#">{{productData.category}}</a></li>
-						<li><a href="#">{{productData.name}}</a></li>					
+						<li><a href="">Home</a></li>
+						<li ng-if="productData.sex=='female'"><a href="">Women</a></li>
+						<li ng-if="productData.sex=='male'"><a href="">Men</a></li>
+						<li><a href="">{{productData.category}}</a></li>
+						<li><a href="">{{productData.name}}</a></li>					
 					</ol>
 				</div>
 				

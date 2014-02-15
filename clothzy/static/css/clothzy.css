@@ -647,7 +647,7 @@ h1,h2,h3,h4,h5,h6{
   
   display: -webkit-box;
   max-width: 400px;
-
+  height:54px;
   margin-bottom:5px;
 
   line-height: 1.4;
@@ -674,7 +674,8 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .thumb-store{
-	height:340px;
+	height:290px;
+
 }
 
 .thumb-storepage{
@@ -708,6 +709,13 @@ h1,h2,h3,h4,h5,h6{
 .marketname{
 text-transform: uppercase;
 font-size: 10px;
+font-weight: 700;
+color: #666;
+}
+
+.marketname-storesearch{
+text-transform: uppercase;
+font-size: 11px;
 font-weight: 700;
 color: #666;
 }
@@ -761,6 +769,19 @@ overflow:ellipsis;
 .imgholder{
 
 	height:291px;
+	text-overflow:hidden;
+	overflow:hidden;
+	white-space:nowrap;	
+
+}
+
+.storesearch-imgholder{
+
+	height:176px;
+
+	text-overflow:hidden;
+	overflow:hidden;
+	white-space:nowrap;	
 }
 
 .imgholder-store{
@@ -897,3 +918,26 @@ overflow-x:hidden;
 	white-space:nowrap;
 }
 
+.storesearch-description{
+
+  display: block; /* Fallback for non-webkit */
+  
+  display: -webkit-box;
+  max-width: 400px;
+  height:45px;
+  margin-bottom:5px;
+  font-size:11px;
+  line-height: 1.4;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+
+}
+
+.refreshbutton{
+	border-radius:60px;
+
+
+}
