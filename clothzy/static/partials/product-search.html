@@ -56,7 +56,7 @@
 						<ul class="nav">
 							<li ng-repeat="filterout in searchResults.filters.sizes">
 								<div class="checkbox">
-									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['sizes'][$index]" ng-change="checkdisp($index,'sizes')">
 									<label for="{{filterout}}" class="checklabel">
 										{{filterout[0]}} ({{filterout[1]}})
 									</label>
@@ -258,7 +258,7 @@
 												<p>10AM - 10PM</p>
 											</div></div><br>
 											<button class="btn btn-default" ng-href="products/{{products.id}}">See More Details &raquo;</button>
-											<button class="btn btn-default" onClick="window.location.href='StoreHome-test.html'">Visit Store &raquo;</button>
+											<button class="btn btn-default" onClick="window.location.href='#'">Visit Store &raquo;</button>
 											<br>
 
 										</div>
@@ -308,11 +308,7 @@
 
 			<ul class="pagination pull-right pagination-sm">
 				<li><a href="#">&laquo;</a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<li ng-repeat="page in displayPageNum(numberOfPages)" ng-click="goToPage(page)"><a>{{page}}</a></li>
 				<li><a href="#">&raquo;</a></li>
 			</ul>			
 			<br>

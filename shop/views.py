@@ -78,7 +78,7 @@ class ProductSearchView(APIView):
         """
         query_p = request.GET.get('product','')
         query_l = request.GET.get('location','')
-        page = request.GET.get('page',1)
+        page = int(request.GET.get('page',1))
         # print page
         if(query_p == 'null'):
             query_p = ''
@@ -125,12 +125,15 @@ class ProductSearchView(APIView):
         dict1['count'] = total_count
         dict1['stores'] = []
         dict1['products'] = []
-        count = 0
-        for result in sqs: #give only first 28 products for now
-            if(count>=28):
-                break
-            count+=1
+        count = 1
+        results_per_page = 28
+        result_start = (page-1)*(results_per_page)
+        result_end = page*results_per_page
+        # print result_start,result_end
+        for result in sqs[result_start:result_end]: #paginate
             product = {}
+            product["count"] = count
+            count+=1
             product["id"] = result.id
             product["store"] = result.storeid
             product["name"] = result.name
@@ -190,8 +193,10 @@ class StoreSearchView(APIView):
         dict1['products'] = []
         count = 0
         stores_seen = set()
-        for result in sqs: #give only first 28 products for now
-            if(count>=28):
+        results_per_page = 21
+        result_start = (page-1)*(results_per_page)
+        for result in sqs[result_start:]:
+            if(count>=21):
                 break
             if result.storeid not in stores_seen:
                 stores_seen.add(result.storeid)
