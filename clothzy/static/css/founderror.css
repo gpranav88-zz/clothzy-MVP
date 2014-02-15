@@ -83,7 +83,7 @@
 .founderror_trigger_text { 
 	white-space: nowrap;
 	position: absolute;
-	top: 40px;
+	top: 64px;
 	letter-spacing: 2px;
 	font-size: 17px;
 }
@@ -91,7 +91,7 @@
 .left-top .founderror_trigger_text , .left-bottom .founderror_trigger_text , .right-top .founderror_trigger_text , .right-bottom .founderror_trigger_text { 
 	white-space: nowrap;
 	position: absolute;
-	top: 40px;
+	top: 64px;
 	letter-spacing: 2px;
 	font-size: 14px;
 	font-weight:400;
@@ -128,7 +128,7 @@
 }
 
 .fm_clean .founderror_trigger_text { 
-	left: -20px;
+	left: -39px;
 }
 
 .fm_clean .feedback_title {
