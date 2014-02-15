@@ -1,8 +1,8 @@
 
 	<div class="container pad-50">
 		
-		<div class="col-lg-3">
-			<div class=" navbar navbar-default sidebar-nav-fixed">
+		<div class="col-lg-3"><br>
+			<div class=" navbar navbar-default sidebar-nav-fixed" data-spy="affix"  data-offset-top="750">
 				<ul class="nav nav-stacked sidebar-text">
 			  	
 					<!-- <li class="active"><a>Category</a>
@@ -18,7 +18,7 @@
 					</li>	
 		
 				<hr class="sidebar-divider"> -->
-			  		<li class="active"><a>Location</a>
+			  		<!-- <li class="active"><a>Location</a>
 						<ul class="nav">
 							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> South Delhi</a></label></div></li>
 							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> West Delhi</a></label></div></li>
@@ -26,8 +26,19 @@
 							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> Central Delhi</a></label></div></li>
 							<li><div class="checkbox"><input type="checkbox"><label><a class="sidebar-link"> North Delhi</a></label></div></li>
 						</ul>
+					</li> -->
+					<li class="active"><a>Location</a>
+					<ul class="nav">
+						<li ng-repeat="(key,val) in searchResults.filters.location">
+							<div class="checkbox">
+								<input id="{{key}}" type="checkbox" name="check" value="key" checklist-value="key" ng-model="searchFilters['location_f'][key]" ng-change="checkdisp($index,'location_f')">
+								<label for="{{key}}" class="checklabel sentence-case">
+									{{key}} ({{val}})
+								</label>
+							</div>
+						</li>  
+					</ul>
 					</li>
-			
 				<!-- <hr class="sidebar-divider">					
 					<li class="active"><a>Discount</a>
 						
@@ -121,10 +132,10 @@
 						<ul class="pagination pull-right pagination-sm">
 						  <li><a href="#">&laquo;</a></li>
 						  <li class="active"><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
+						  <!-- <li><a href="#">2</a></li>
 						  <li><a href="#">3</a></li>
 						  <li><a href="#">4</a></li>
-						  <li><a href="#">5</a></li>
+						  <li><a href="#">5</a></li> -->
 						  <li><a href="#">&raquo;</a></li>
 						</ul>			
 			

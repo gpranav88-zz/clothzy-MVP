@@ -412,10 +412,43 @@ app.controller('storeSearchController',['$location','$scope','$http','$resource'
 	$scope.numberOfPages = calculatePages(totalItems);
 	var displayQuery = $location.search();
 	
+	$scope.searchFilters = new Array();
+	$scope.searchFilters['location_f'] = [];
 
-	$scope.filters = {
-		location: []
-	};
+	$scope.$watch('searchResults', function(newValue, oldValue) {
+	    if (newValue === oldValue) { return; }
+	    if(!angular.isUndefined(displayQuery['location_f'])){
+		    for(var key in $scope.searchResults.filters.location){
+		    	var curr_color = key.toLowerCase();
+		    	var color_array = displayQuery['location_f'].toLowerCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['location_f'][key] = true;
+	        }
+	    }
+	},true);
+
+	$scope.checkdisp = function(index,filter_selected){
+        //filters.location[index][0] = locationName filters.location[index][1] = number_of_results
+        // $scope.searchResults.filters.color.length
+        var loc_string, loc = $scope.searchFilters[filter_selected];
+        flag = false;
+        for(var key in $scope.searchResults.filters.location){
+            if($scope.searchFilters[filter_selected][key] == true){
+            	flag = true;
+            	if(filter_selected=='location_f')
+            		filter_q = key;
+                if(loc_string == undefined)
+                    loc_string = filter_q;
+                else
+                    loc_string = loc_string + "," + filter_q;
+            }
+        }
+        if(flag)
+        	displayQuery[filter_selected]=loc_string
+        else
+        	delete displayQuery[filter_selected];
+        $location.path('/search/stores/').search(displayQuery);
+    }
 
 	$scope.activateProductView = function(){
 		$location.path('/search/products/').search(displayQuery);

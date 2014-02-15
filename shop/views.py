@@ -179,10 +179,10 @@ class StoreSearchView(APIView):
             sqs = sqs.filter(or_query)
 
         filters = {}
-        filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
-        filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
-        filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
-        filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
+        # filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
+        # filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
+        # filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
+        # filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
 
         for key in request.GET.iterkeys():
             # Add filtering logic here.
@@ -194,11 +194,11 @@ class StoreSearchView(APIView):
 
         total_count = len(sqs)
         dict1 = {}
-        dict1['filters'] = filters
         dict1['stores'] = []
         dict1['products'] = []
         count = 0
         stores_seen = set()
+        locations = {}
         page = int(page);
         results_per_page = 28
         result_start = (page-1)*(results_per_page)
@@ -209,6 +209,7 @@ class StoreSearchView(APIView):
                 stores_seen.add(result.storeid)
                 count+=1
                 store = {}
+                locations[result.location] = locations.get(result.location,0)+1
                 # store["product_id"] = result.id
                 store["store"] = result.storeid
                 store["name"] = result.store_name
@@ -216,6 +217,8 @@ class StoreSearchView(APIView):
                 store["description"] = result.store_desc
                 dict1['stores'].append(store)
         dict1['count'] = count
+        filters['location'] = locations
+        dict1['filters'] = filters
         return Response(dict1)
 
 # class ProductLatestView(generics.ListAPIView):
