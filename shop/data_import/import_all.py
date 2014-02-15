@@ -55,7 +55,7 @@ for direc in os.listdir(FOLDER_DIR):
 
     # print images_list1
     #create images in static folder at staticpath
-    STATIC_PATH = "/home/pranav/clothzy-data/static2"
+    STATIC_PATH = "/home/pranav/clothzy-data/static4"
     store_dir = os.path.join(STATIC_PATH, "Store_"+str(current_store.id))
     if not os.path.exists(store_dir):
         os.makedirs(store_dir)

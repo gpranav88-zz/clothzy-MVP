@@ -50,7 +50,7 @@ for direc in os.listdir(FOLDER_DIR):
     images_list = [x for x in images_list if not x.startswith('.')]
     # print images_list
     #create images in static folder at staticpath
-    STATIC_PATH = "/home/pranav/clothzy-data/static"
+    STATIC_PATH = "/home/pranav/clothzy-data/static3"
     store_dir = os.path.join(STATIC_PATH, "Store_"+str(current_store.id))
     if not os.path.exists(store_dir):
         os.makedirs(store_dir)
@@ -80,7 +80,9 @@ for direc in os.listdir(FOLDER_DIR):
                 outfile2 = os.path.join(store_dir,str(num)+"-2.jpg")
                 convertimage(infile,outfile1,size1)
                 convertimage(infile,outfile2,size2)
-
+        current_store.num_images = num
+        current_store.save()
+        
     with open(product_file_path) as f:
             reader = csv.reader(f)
             count = 0
@@ -127,7 +129,7 @@ for direc in os.listdir(FOLDER_DIR):
                         s, c = Size.objects.get_or_create(name='Free Size')
                         curr_prod.sizes.add(s)
 
-                    if PROCESS_IMAGE == 1:
+                    if PROCESS_IMAGE == 0:
                         #process related images
                         prod_dir = os.path.join(store_dir, "P_"+str(curr_prod.id))
                         if not os.path.exists(prod_dir):

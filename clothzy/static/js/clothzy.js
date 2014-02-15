@@ -168,16 +168,16 @@ app.controller('tabController', ['$scope', function($scope) {
 }
 ]);
 
-app.controller('DemoController', ['$scope', function DemoController($scope) {
-	$scope.demo2 = {
-		range: {
-			min: 0,
-			max: 20000
-		},
-		minPrice: 0,
-		maxPrice: 20000
-	};
-}]);
+// app.controller('DemoController', ['$scope', function DemoController($scope) {
+// 	$scope.demo2 = {
+// 		range: {
+// 			min: 0,
+// 			max: 20000
+// 		},
+// 		minPrice: 0,
+// 		maxPrice: 20000
+// 	};
+// }]);
 
 app.controller('userController',['$scope','$http','$resource','$routeParams','commonFactory',function($scope,$http,$resource,$routeParams,commonFactory){
 }
@@ -282,12 +282,15 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	    return input;
 		// $location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
 	}
-
+	$scope.activateStoreView = function(){
+		$location.path('/search/stores/').search(displayQuery);
+	}
 	$scope.$watch('searchResults', function(newValue, oldValue) {
 	    if (newValue === oldValue) { return; }
 	    
 	    $scope.numberOfPages = calculatePages($scope.searchResults.count);
-
+	    $scope.minPrice = $scope.searchResults.filters.price[0][0];
+		$scope.maxPrice = $scope.searchResults.filters.price[1][0];
 	    if(!angular.isUndefined(displayQuery['sex'])){
 		    for(var i = 0;i<$scope.searchResults.filters.sex.length;i++){
 		    	var curr_val = $scope.searchResults.filters.sex[i][0].toLowerCase();
@@ -362,10 +365,10 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
         $location.path('/search/products/').search(displayQuery);
     }
     $scope.goToPage = function(page){
-    	console.log("yo");
     	displayQuery['page'] = page;
     	$location.path('/search/products/').search(displayQuery);
     }
+
     $scope.getDiscount_SearchPage = function(index){
 		// alert(parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100));
 		if($scope.searchResults.products[index].price_discounted==0 || $scope.searchResults.products[index].price=="Price on request")
@@ -396,12 +399,16 @@ app.controller('storeSearchController',['$location','$scope','$http','$resource'
 	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 21;
 	$scope.numberOfPages = calculatePages(totalItems);
-	$scope.displayQuery = $location.search();
+	var displayQuery = $location.search();
 	
 
 	$scope.filters = {
 		location: []
 	};
+
+	$scope.activateProductView = function(){
+		$location.path('/search/products/').search(displayQuery);
+	}
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
