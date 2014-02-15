@@ -208,7 +208,7 @@ app.controller('reviewController',['$scope','$http','$resource','$routeParams','
 
 app.controller('searchController',['$scope','$location','$http','$resource','$routeParams','commonFactory', function($scope,$location,$http,$resource,$routeParams,commonFactory){
 
-	console.log("searchController");
+	// console.log("searchController");
 
 
 	$scope.myOptions = [{ display: "Products", id: 1 , name:'product'}, { display: "Stores", id: 2, name:'store' }];
@@ -257,9 +257,11 @@ app.controller('searchController',['$scope','$location','$http','$resource','$ro
 
 app.controller('populateSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
 	$scope.searchResults = fetchRealResults().get();
-	var totalItems = $scope.searchResults.count;
 	var itemsPerPage = 28;
-	$scope.numberOfPages = calculatePages(totalItems);
+	$scope.numberOfPages = 0;
+	// $scope.$watch('totalItems', function() {
+	//     $scope.updated++;
+	// });
 	$scope.val1 = true;
 	var displayQuery = $location.search();
 	$scope.filters = {
@@ -269,12 +271,23 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.searchFilters['color'] = [];
 	$scope.searchFilters['sex'] = [];
 	$scope.searchFilters['location_f'] = [];
+	$scope.searchFilters['sizes'] = [];
+	$scope.searchFilters['category'] = [];
 	// $scope.Loc = [];
 	// console.log(displayQuery['color']);
-	
+	$scope.displayPageNum = function(num){
+		var input = [];
+	    for (var i=1; i<=num; i++) input.push(i);
+	    // page = $scope.page;
+	    return input;
+		// $location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
+	}
+
 	$scope.$watch('searchResults', function(newValue, oldValue) {
 	    if (newValue === oldValue) { return; }
 	    
+	    $scope.numberOfPages = calculatePages($scope.searchResults.count);
+
 	    if(!angular.isUndefined(displayQuery['sex'])){
 		    for(var i = 0;i<$scope.searchResults.filters.sex.length;i++){
 		    	var curr_val = $scope.searchResults.filters.sex[i][0].toLowerCase();
@@ -300,6 +313,22 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	        		$scope.searchFilters['location_f'][i] = true;
 	        }
 	    }
+	    if(!angular.isUndefined(displayQuery['sizes'])){
+		    for(var i = 0;i<$scope.searchResults.filters.sizes.length;i++){
+		    	var curr_color = $scope.searchResults.filters.sizes[i][0].toUpperCase();
+		    	var color_array = displayQuery['sizes'].toUpperCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['sizes'][i] = true;
+	        }
+	    }
+	    if(!angular.isUndefined(displayQuery['category'])){
+		    for(var i = 0;i<$scope.searchResults.filters.category.length;i++){
+		    	var curr_color = $scope.searchResults.filters.category[i][0].toLowerCase();
+		    	var color_array = displayQuery['category'].toLowerCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['category'][i] = true;
+	        }
+	    }
 	},true);
 
     $scope.checkdisp = function(index,filter_selected){
@@ -316,6 +345,10 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
             		filter_q = $scope.searchResults.filters.sex[i][0];
             	if(filter_selected=='location_f')
             		filter_q = $scope.searchResults.filters.location[i][0];
+            	if(filter_selected=='sizes')
+            		filter_q = $scope.searchResults.filters.sizes[i][0];
+            	if(filter_selected=='category')
+            		filter_q = $scope.searchResults.filters.category[i][0];
                 if(loc_string == undefined)
                     loc_string = filter_q;
                 else
@@ -328,7 +361,11 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
         	delete displayQuery[filter_selected];
         $location.path('/search/products/').search(displayQuery);
     }
-
+    $scope.goToPage = function(page){
+    	console.log("yo");
+    	displayQuery['page'] = page;
+    	$location.path('/search/products/').search(displayQuery);
+    }
     $scope.getDiscount_SearchPage = function(index){
 		// alert(parseInt((($scope.products.price-$scope.products.price_discounted)/$scope.products.price)*100));
 		if($scope.searchResults.products[index].price_discounted==0 || $scope.searchResults.products[index].price=="Price on request")
@@ -349,7 +386,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	}
 
 	function calculatePages (totalItems) {
-		return Math.floor(totalItems / itemsPerPage);
+		return Math.floor(totalItems / itemsPerPage)+1;
 	}
 }
 ]);
@@ -357,7 +394,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 app.controller('storeSearchController',['$location','$scope','$http','$resource','$routeParams','commonFactory',function($location,$scope,$http,$resource,$routeParams,commonFactory){
 	$scope.searchResults = fetchRealResults().get();
 	var totalItems = $scope.searchResults.count;
-	var itemsPerPage = 28;
+	var itemsPerPage = 21;
 	$scope.numberOfPages = calculatePages(totalItems);
 	$scope.displayQuery = $location.search();
 	
@@ -365,30 +402,6 @@ app.controller('storeSearchController',['$location','$scope','$http','$resource'
 	$scope.filters = {
 		location: []
 	};
-
-	// $location.search($scope.filters.locations);
-	// $scope.$watch(
-	// 	function() {
-	// 		console.log("enter 1")
-	// 		return $scope.filters;
-	// 	},
-	// 	function (newValue, oldValue) {
-	// 	console.log("enter 2");
-	// 	console.log("Change detected" + newValue);
-	// } );
-// 	function getFilters () {
-		
-// }
-
-	// $scope.demo2 = {
-	// 	range: {
-	// 		min: $scope.searchResults.Filters.Price.min,
-	// 		max: $scope.searchResults.Filters.Price.max
-	// 	},
-	// 	minPrice: 0,
-	// 	maxPrice: 20000	
-	// }
-	// console.log($location.search("product"))
 
 	function fetchDummyResults ($resource) {
 		return $resource('/api/search/products');
@@ -402,7 +415,7 @@ app.controller('storeSearchController',['$location','$scope','$http','$resource'
 	}
 
 	function calculatePages (totalItems) {
-		return Math.floor(totalItems / itemsPerPage);
+		return Math.floor(totalItems / itemsPerPage)+1;
 	}
 
 
