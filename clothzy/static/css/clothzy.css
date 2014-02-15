@@ -570,8 +570,9 @@ display:none;
 	width: 2%;
 }
 .helpbtn{
-	font-size:16px;
-  font-weight:400;
+	color:#eee;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;	
 }
 
 html, body {
@@ -890,7 +891,7 @@ margin-bottom:5px;
 
 .seemore {
   display: block;
-  padding: 3px 20px;
+  padding: 3px 10px;
   clear: both;
   line-height: 1.428571429;
   color: #333333;
@@ -940,4 +941,15 @@ overflow-x:hidden;
 	border-radius:60px;
 
 
+}
+
+.oneliner{
+	color:#eee;
+	margin-left:16px;
+	font-size:20px;
+	font-weight:300;
+}
+
+.boldoneliner{
+	font-weight:400;
 }

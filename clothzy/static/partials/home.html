@@ -3,12 +3,9 @@
 
 <div class="jumbotron bg-header container-fluid">
   <div class="container homecontainer">
-   <div class="row">
-    <div class="help">
-      <a class="btn btn-default btn-lg helpbtn" onmouseover="javascript:toggleDiv('help-img');" onmouseout="javascript:removeDiv('help-img');">
-        Need help?
-      </a>
-    </div>
+<div class="oneliner">Explore <span class="boldoneliner">Delhi's markets, boutiques & clothing stores</span> like never before!</div>   
+   <div class="row">    
+   
   </div>
 
   <BR>
@@ -50,12 +47,17 @@
         <div class="help-img"><img src="../static/img/locationhelp.png" style="height:120px" class="helpimg"></div>
       </div>
 
-      <div class="col-lg-2 text-center" style="height:100px">
+      <div class="col-lg-2 text-center" style="height:100px; width:250px;">
         <p class="text-center">&nbsp;</p>
         <button type="button" style="font-size:16px" class="btn btn-lg btn-danger" ng-click="search()">
           <i class="fa fa-search"></i> 
           Search
         </button>
+        &nbsp; 
+      <a class="helpbtn" onmouseover="javascript:toggleDiv('help-img');" onmouseout="javascript:removeDiv('help-img');">
+        <i class="fa fa-question-circle fa-2x"></i>
+      </a>
+    
         <p class="text-center"><em class="searchexample">&nbsp;</em></p>
         <div class="help-img"><img src="../static/img/searchhelp.png" style="height:120px" class="helpimg"  ></div>
       </div>
