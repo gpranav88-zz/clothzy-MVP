@@ -32,9 +32,9 @@
 					</ul>
 				</li>
 				<hr class="sidebar-divider">
-				<li class="active sideheader" ng-controller="DemoController"><a>Price</a>
+				<li class="active sideheader"><a>Price</a>
 					<ul class="nav"><div class="col-lg-10" style="padding: 0 15px">
-						<div range-slider min="demo2.range.min" max="demo2.range.max" model-min="demo2.minPrice" model-max="demo2.maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div><div class="col-lg-2" style="padding-left:2px;"><a class="btn btn-default btn-sm refreshbutton"><i class="fa fa-refresh fa-sm"></i></a></div>
+						<div range-slider min="searchResults.filters.price[0][0]" max="searchResults.filters.price[1][0]" model-min="minPrice" model-max="maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div><div class="col-lg-2" style="padding-left:2px;"><a class="btn btn-default btn-sm refreshbutton"><i class="fa fa-refresh fa-sm"></i></a></div>
 					</ul>
 				</li>
 				<hr class="sidebar-divider">					
@@ -105,7 +105,7 @@
 					<div class="col-lg-6">
 						<ol class="breadcrumb">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Women</a></li>
+							<li><a href="#">Search</a></li>
 							<!-- <li><a href="#">Ethnic Wear</a></li>
 							<li><a href="#">Sarees</a></li> -->
 						</ol>
@@ -115,7 +115,7 @@
 
 							<li class="active"><a href="#">Product View</a></li>
 
-							<li><a href="StoreSearch-test.html">Store View</a></li>
+							<li><a ng-click="activateStoreView()">Store View</a></li>
 						</ul>
 					</div>
 				</div>

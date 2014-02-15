@@ -98,14 +98,16 @@ class ProductSearchView(APIView):
         sqs = SearchQuerySet()
         if or_query is not None:
             sqs = sqs.filter(or_query)
-
+        
+        price_list = [int(x.price) for x in sqs if int(x.price)>0]
         filters = {}
         filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
         filters['color'] = sqs.facet('color').facet_counts()['fields']['color']
-
+        filters['price'] = [[min(price_list)],[max(price_list)]]
+        
         for key in request.GET.iterkeys():
             # Add filtering logic here.
             if key!='product' and key!='location' and key!='page':
@@ -168,23 +170,22 @@ class StoreSearchView(APIView):
                     or_query = or_query | q
         #filter by other request parameters if present
         sqs = SearchQuerySet()
+        if or_query is not None:
+            sqs = sqs.filter(or_query)
+
         filters = {}
         filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
-        
+
         for key in request.GET.iterkeys():
             # Add filtering logic here.
             if key!='product' and key!='location' and key!='page':
-                valuelist = request.GET.get(key,'')
-                print "%s : %s" %key,valuelist
-                sqs = sqs.filter(**{'%s' %key:valuelist})
-
-        #order by other request parameters if present
-
-        if or_query is not None:
-            sqs = sqs.filter(or_query)
+                valuelist = request.GET.get(key,'').split(',')
+                if key=='location_f':
+                    key = 'location'
+                sqs = sqs.filter(**{'%s__in' %key:valuelist})
 
         total_count = len(sqs)
         dict1 = {}
