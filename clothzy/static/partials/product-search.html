@@ -2,7 +2,7 @@
 
 <div class="container pad-50">
 
-	<div class="col-lg-3">
+	<div class="col-lg-3"><br>
 		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 			<ul class="nav nav-stacked sidebar-text">
 
@@ -11,7 +11,7 @@
 						<li ng-repeat="filterout in searchResults.filters.sex">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" value="filterout" checklist-value="filterout" ng-model="searchFilters['sex'][$index]" ng-change="checkdisp($index,'sex')">
-								<label for="{{filterout}}" class="checklabel">
+								<label for="{{filterout}}" class="checklabel sentence-case">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
@@ -24,7 +24,7 @@
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" value="filterout" checklist-value="filterout" ng-model="searchFilters['location_f'][$index]" ng-change="checkdisp($index,'location_f')">
-								<label for="{{filterout}}" class="checklabel">
+								<label for="{{filterout}}" class="checklabel sentence-case">
 									{{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
@@ -38,26 +38,26 @@
 					</ul>
 				</li>
 				<hr class="sidebar-divider">					
-				<li class="active"><a> Color </a>
+				<li class="active"><a>Colour</a>
 
-					<ul class="nav">
+					<ul class="nav filter-box">
 						<li ng-repeat="filterout in searchResults.filters.color">
 							<div class="checkbox">
 								<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['color'][$index]" ng-change="checkdisp($index,'color')">
-								<label for="{{filterout}}" class="checklabel">
-									{{filterout[0]}} ({{filterout[1]}})
+								<label for="{{filterout}}" class="checklabel sentence-case">
+									<i class="fa fa-circle {{filterout[0]}}-colour"></i> {{filterout[0]}} ({{filterout[1]}})
 								</label>
 							</div>
 						</li>  
 					</ul>			
 					<hr class="sidebar-divider">					
-					<li class="active"><a> Size </a>
+					<li class="active"><a>Size</a>
 						
 						<ul class="nav">
 							<li ng-repeat="filterout in searchResults.filters.sizes">
 								<div class="checkbox">
-									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}" checklist-value="filterout" ng-model="searchFilters['sizes'][$index]" ng-change="checkdisp($index,'sizes')">
-									<label for="{{filterout}}" class="checklabel">
+									<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
+									<label for="{{filterout}}" class="checklabel sentence-case">
 										{{filterout[0]}} ({{filterout[1]}})
 									</label>
 								</div>
@@ -70,7 +70,7 @@
 								<li ng-repeat="filterout in searchResults.filters.discount">
 									<div class="checkbox" ng-model="{{filterout}}">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
-										<label for="{{filterout}}" class="checklabel">
+										<label for="{{filterout}}" class="checklabel sentence-case">
 											{{filterout[0]}} ({{filterout[1]}})
 										</label>
 									</div>
@@ -79,13 +79,13 @@
 
 						</li>
 						<hr class="sidebar-divider">					
-						<li class="active"><a> Category </a>
+						<li class="active"><a>Category</a>
 
-							<ul class="nav">
+							<ul class="nav filter-box">
 								<li ng-repeat="filterout in searchResults.filters.category">
 									<div class="checkbox">
 										<input id="{{filterout}}" type="checkbox" name="check" value="{{filterout}}">
-										<label for="{{filterout}}" class="checklabel">
+										<label for="{{filterout}}" class="checklabel sentence-case">
 											{{filterout[0]}} ({{filterout[1]}})
 										</label>
 									</div>
