@@ -178,43 +178,70 @@ top:-750px;
 
 /*BADGES*/
 
-.blue-colour{
-	color:#75AFFF;	
 
-	-webkit-text-stroke-color: #ccc;
+.multicolor-colour{ color:#fff;	
+
 }
-.red-colour{
-	color:#cc0000;	
-
+.aqua-colour{ color:aqua;	}
+.beige-colour{ color:beige;	
 	-webkit-text-stroke-color: #ccc;	
-}
-.green-colour{
-	color:#88E876;	
-
-	-webkit-text-stroke-color: #ccc;	
-}
-.yellow-colour{
-	color:#ffff00;	
 	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: #ccc;	
 }
-.black-colour{
-	color:#111211;	
-
+.black-colour{ color:black;	}
+.blue-colour{ color:blue;	}
+.brown-colour{ color:brown;	}
+.cherry-colour{ color:#C40000;	}
+.coffee-colour{ color:#5A352D;	}
+.copper-colour{ color:#7A5830;}
+.cream-colour{ color:#F2EEDB;
 	-webkit-text-stroke-color: #ccc;	
-}
-
-.purple-colour{
-	color:#593E99;	
-
-	-webkit-text-stroke-color: #ccc;	
-}
-
-.multi-colour{
-	color:#636862;	
 	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: #ccc;	
 }
+.fuchsia-colour{ color:fuchsia;}
+.gold-colour{ color:gold;}
+.green-colour{ color:green;}
+.grey-colour{ color:grey;}
+.ivory-colour{ color:ivory;
+	-webkit-text-stroke-color: #ccc;	
+	-webkit-text-stroke-width: 1px;
+}
+.lemon-colour{ color:#FFFF78;
+	-webkit-text-stroke-color: #ccc;	
+	-webkit-text-stroke-width: 1px;
+}
+.lilac-colour{ color:#BE80FF;}
+.lime-colour{ color:lime;}
+.magenta-colour{ color:magenta;}
+.maroon-colour{ color:maroon;}
+.mauve-colour{ color:#E0B0FF;}
+.mustard-colour{ color:#FFDB58;}
+.nude-colour{ color:#FFEDD5;
+	-webkit-text-stroke-color: #ccc;	
+	-webkit-text-stroke-width: 1px;
+
+}
+.olive-colour{ color:olive;}
+.orange-colour{ color:orange;}
+.peach-colour{ color:#FFBCA5;}
+.pink-colour{ color:pink;}
+.purple-colour{ color:purple;}
+.red-colour{ color:red;}
+.rust-colour{ color:#B7410E;}
+.silver-colour{ color:silver;}
+.turquoise-colour{ color:turquoise;}
+.violet-colour{ color:violet;}
+.white-colour{ color:white;
+	-webkit-text-stroke-color: #ccc;	
+	-webkit-text-stroke-width: 1px;
+}
+.wine-colour{ color:#722F37; }
+.yellow-colour{ color:yellow;
+	-webkit-text-stroke-color: #ccc;	
+	-webkit-text-stroke-width: 1px;
+}
+
+
+
 
 /*SLIDERS*/
 
@@ -660,6 +687,7 @@ h1,h2,h3,h4,h5,h6{
 	font-weight:700;
 	font-size:12px;
 	margin:1px;
+	text-overflow:ellipsis;
 
 }
 
@@ -690,6 +718,7 @@ margin:1px;
 
 .productname_holder{
 	height:34px;
+	overflow:hidden;
 }
 
 .storename_holder{
@@ -840,4 +869,10 @@ margin-bottom:5px;
   color: #ffffff;
   text-decoration: none;
   background-color: #c8006d;
+}
+
+.filter-box{
+max-height:200px;
+overflow-y:scroll;
+overflow-x:hidden;
 }
