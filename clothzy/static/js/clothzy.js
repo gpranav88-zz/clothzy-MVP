@@ -272,6 +272,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	$scope.searchFilters['sex'] = [];
 	$scope.searchFilters['location_f'] = [];
 	$scope.searchFilters['sizes'] = [];
+	$scope.searchFilters['category'] = [];
 	// $scope.Loc = [];
 	// console.log(displayQuery['color']);
 	$scope.displayPageNum = function(num){
@@ -320,6 +321,14 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	        		$scope.searchFilters['sizes'][i] = true;
 	        }
 	    }
+	    if(!angular.isUndefined(displayQuery['category'])){
+		    for(var i = 0;i<$scope.searchResults.filters.category.length;i++){
+		    	var curr_color = $scope.searchResults.filters.category[i][0].toLowerCase();
+		    	var color_array = displayQuery['category'].toLowerCase().split(',');
+		    	if($.inArray(curr_color, color_array) > -1)
+	        		$scope.searchFilters['category'][i] = true;
+	        }
+	    }
 	},true);
 
     $scope.checkdisp = function(index,filter_selected){
@@ -338,6 +347,8 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
             		filter_q = $scope.searchResults.filters.location[i][0];
             	if(filter_selected=='sizes')
             		filter_q = $scope.searchResults.filters.sizes[i][0];
+            	if(filter_selected=='category')
+            		filter_q = $scope.searchResults.filters.category[i][0];
                 if(loc_string == undefined)
                     loc_string = filter_q;
                 else

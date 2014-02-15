@@ -151,7 +151,7 @@ class StoreSearchView(APIView):
         """
         query_p = request.GET.get('product','')
         query_l = request.GET.get('location','')
-        page = request.GET.get('page','')
+        page = request.GET.get('page',1)
         if(query_p == 'null'):
             query_p = ''
         if(query_l == 'null'):
@@ -168,6 +168,12 @@ class StoreSearchView(APIView):
                     or_query = or_query | q
         #filter by other request parameters if present
         sqs = SearchQuerySet()
+        filters = {}
+        filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
+        filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
+        filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
+        filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
+        
         for key in request.GET.iterkeys():
             # Add filtering logic here.
             if key!='product' and key!='location' and key!='page':
@@ -182,21 +188,16 @@ class StoreSearchView(APIView):
 
         total_count = len(sqs)
         dict1 = {}
-
-        filters = {}
-        filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
-        filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
-        filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
-        filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
         dict1['filters'] = filters
         dict1['stores'] = []
         dict1['products'] = []
         count = 0
         stores_seen = set()
-        results_per_page = 21
+        page = int(page);
+        results_per_page = 28
         result_start = (page-1)*(results_per_page)
-        for result in sqs[result_start:]:
-            if(count>=21):
+        for result in sqs:
+            if(count>=28):
                 break
             if result.storeid not in stores_seen:
                 stores_seen.add(result.storeid)
