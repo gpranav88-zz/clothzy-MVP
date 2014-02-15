@@ -79,6 +79,8 @@ class ProductSearchView(APIView):
         query_p = request.GET.get('product','')
         query_l = request.GET.get('location','')
         page = int(request.GET.get('page',1))
+        minPrice = int(request.GET.get('minPrice',-1))
+        maxPrice = int(request.GET.get('maxPrice',-1))
         # print page
         if(query_p == 'null'):
             query_p = ''
@@ -110,13 +112,16 @@ class ProductSearchView(APIView):
         
         for key in request.GET.iterkeys():
             # Add filtering logic here.
-            if key!='product' and key!='location' and key!='page':
+            if key!='product' and key!='location' and key!='page' and key!='minPrice' and key!='maxPrice':
                 valuelist = request.GET.get(key,'').split(',')
                 if key=='location_f':
                     key = 'location'
                 sqs = sqs.filter(**{'%s__in' %key:valuelist})
                 # sqs = sqs.filter(color=valuelist)
-
+        if(minPrice!=-1):
+            # print minPrice,maxPrice
+            sqs = sqs.filter(price__gte=minPrice)
+            sqs = sqs.filter(price__lte=maxPrice)
         #order by other request parameters if present
         dict1 = {}
         total_count = sqs.count()

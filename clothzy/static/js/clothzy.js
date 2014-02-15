@@ -332,7 +332,18 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 	        		$scope.searchFilters['category'][i] = true;
 	        }
 	    }
+	    if(!angular.isUndefined(displayQuery['minPrice'])){
+	    	// console.log(displayQuery);
+	    	$scope.minPrice = parseInt(displayQuery['minPrice']);
+	    	$scope.maxPrice = parseInt(displayQuery['maxPrice']);
+	    }
 	},true);
+	
+	$scope.updatePrice = function(){
+		displayQuery["minPrice"] = $scope.minPrice;
+		displayQuery["maxPrice"] = $scope.maxPrice;
+		$location.path('/search/products/').search(displayQuery);
+	}
 
     $scope.checkdisp = function(index,filter_selected){
         //filters.location[index][0] = locationName filters.location[index][1] = number_of_results
