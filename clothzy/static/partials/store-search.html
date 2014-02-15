@@ -104,10 +104,12 @@
 	        	</div> -->
 				<div class="row list">
 					<div class="col-lg-4" ng-repeat='store in searchResults.stores'>
-						<div class="thumbnail thumb">
+						<div class="thumbnail thumb-store">
 							<div class=""><a ng-href="store/{{store.store}}"><img ng-src="/static/img/Store_{{store.store}}/1-1.jpg" alt="..."></a></div>
-							<div class="caption">
-								<h4><a href="">{{store.name}}</a></h4>
+								
+								<div class="caption">
+								<p class="storename-storesearch"><a href="">{{store.name}}</a></h4>
+								<p class="marketname"><a class="marketname" href="">{{store.location}}</a></h4>
 								<p class="featured-store-description">{{store.description}}</p>
 							</div>
 						</div>

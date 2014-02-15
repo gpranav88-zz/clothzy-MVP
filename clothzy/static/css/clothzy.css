@@ -673,6 +673,10 @@ h1,h2,h3,h4,h5,h6{
 	height:400px;
 }
 
+.thumb-store{
+	height:340px;
+}
+
 .thumb-storepage{
 	height:380px;
 }
@@ -686,6 +690,16 @@ h1,h2,h3,h4,h5,h6{
 	text-transform:uppercase;
 	font-weight:700;
 	font-size:12px;
+	margin:1px;
+	text-overflow:ellipsis;
+
+}
+
+.storename-storesearch{
+	color:#c8006d;
+	text-transform:uppercase;
+	font-weight:700;
+	font-size:14px;
 	margin:1px;
 	text-overflow:ellipsis;
 
@@ -876,3 +890,10 @@ max-height:200px;
 overflow-y:scroll;
 overflow-x:hidden;
 }
+
+.one-line-overflow{
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
