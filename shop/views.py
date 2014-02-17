@@ -93,11 +93,12 @@ class ProductSearchView(APIView):
         or_query = None
         if(query.strip()!=''):
             for word in query.strip().split(" "):
-                q = SQ(content='%s' % word)
-                if or_query is None:
-                    or_query = q
-                else:
-                    or_query = or_query | q
+                if word != '' and word != ' ':
+                    q = SQ(content='%s' % word)
+                    if or_query is None:
+                        or_query = q
+                    else:
+                        or_query = or_query | q
         #filter by other request parameters if present
         sqs = SearchQuerySet()
         if or_query is not None:
