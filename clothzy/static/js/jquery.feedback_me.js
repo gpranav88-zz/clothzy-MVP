@@ -454,7 +454,7 @@ var fm = (function () {
 		}
 
 		if (fm_options.show_email === true) {
-			email_html = '<li>	<label for="feedback_email">' + fm_options.email_label + '</label> ' + email_asterisk + ' <input type="email" id="feedback_email" ' + email_required + ' placeholder="' + fm_options.email_placeholder + '"></input> </li>';
+			email_html = '<li>	<label for="feedback_email">' + fm_options.email_label + '</label> ' + email_asterisk + ' <input type="email" id="feedback_email" class="form-control" ' + email_required + ' placeholder="' + fm_options.email_placeholder + '"></input> </li>';
 			phone_html = '<li>	<label for="feedback_phone">' + fm_options.phone_label + '</label> ' + email_asterisk + ' <input type="text" id="feedback_phone" ' + ' placeholder="' + fm_options.phone_placeholder + '"></input> </li>';
 			email_feedback_content_class = " email_present";
 		}

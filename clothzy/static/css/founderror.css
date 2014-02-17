@@ -68,7 +68,8 @@
 
 #feedback_email {
 	display: block;
-	width: 340px;
+	width: 100%;
+
 }
 
 #feedback_message {
@@ -129,6 +130,7 @@
 
 .fm_clean .founderror_trigger_text { 
 	left: -39px;
+	font-weight:700;
 }
 
 .fm_clean .feedback_title {
