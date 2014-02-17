@@ -104,14 +104,15 @@ class ProductSearchView(APIView):
         if or_query is not None:
             sqs = sqs.filter(or_query)
         
-        price_list = [int(x.price) for x in sqs if int(x.price)>0]
+        price_list = [int(x.price) for x in sqs if x is not None and int(x.price)>0]
         filters = {}
         filters['sex'] = sqs.facet('sex').facet_counts()['fields']['sex']
         filters['category'] = sqs.facet('category').facet_counts()['fields']['category']
         filters['location'] = sqs.facet('location').facet_counts()['fields']['location']
         filters['sizes'] = sqs.facet('sizes').facet_counts()['fields']['sizes']
         filters['color'] = sqs.facet('color').facet_counts()['fields']['color']
-        filters['price'] = [[min(price_list)],[max(price_list)]]
+        if price_list:
+            filters['price'] = [[min(price_list)],[max(price_list)]]
         
         for key in request.GET.iterkeys():
             # Add filtering logic here.
@@ -203,10 +204,10 @@ class StoreSearchView(APIView):
         stores_seen = set()
         locations = {}
         page = int(page);
-        results_per_page = 28
+        results_per_page = 33
         result_start = (page-1)*(results_per_page)
         for result in sqs:
-            if(count>=28):
+            if(count>=33):
                 break
             if result.storeid not in stores_seen:
                 stores_seen.add(result.storeid)
