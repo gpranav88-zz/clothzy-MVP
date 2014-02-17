@@ -2,6 +2,8 @@
 {{ object.sku }}
 {{ object.category }}
 {{ object.description }}
+{{ object.color }}
+{{ object.material }}
 {{ object.store.name }}
 {{ object.store.region }}
 {{ object.store.locality }}
