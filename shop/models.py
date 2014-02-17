@@ -59,6 +59,12 @@ class Product(models.Model):
     def __unicode__(self):              # __unicode__ on Python 2
         return str(self.id)+":"+self.store.name+":"+self.sku
 
+class Feedback(models.Model):
+    response = models.CharField(max_length=2000)
+
+class ErrorFeedback(models.Model):
+    response = models.CharField(max_length=2000)
+
 class Reviewer(models.Model):
     name = models.CharField(max_length=200)
     sex = models.CharField(max_length=20)

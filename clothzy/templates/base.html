@@ -469,41 +469,38 @@ $(document).ready(function () {
         name_placeholder: "Your Name",
         email_placeholder: "Your Email",
         message_placeholder: "Go ahead, type your feedback here...",
-    radio_button_list_labels : ["1", "2", "3", "4", "5"],
-    radio5_button_list_labels : ["Yes", "No"],    
+        radio_button_list_labels : ["1", "2", "3", "4", "5"],
+        radio5_button_list_labels : ["Yes", "No"],    
         phone_label: "Phone",
         phone_placeholder: "Your Phone Number",
  
         name_required: false,
         message_required: false,
-     title_label : "We would love to get your feedback!",
-    trigger_label : "Feedback",
-    message_label : "Any other feedback?",    
+        title_label : "We would love to get your feedback!",
+        trigger_label : "Feedback",
+        message_label : "Any other feedback?",    
         show_asterisk_for_required: true,
  
-        feedback_url: "send_feedback_clean",
+        feedback_url: "/api/feedback",
  
-        custom_params: {
-            csrf: "my_secret_token",
-            user_id: "john_doe",
-            feedback_type: "clean_complex"
-        }
+        // custom_params: {
+        //     csrf: "my_secret_token",
+        //     user_id: "john_doe",
+        //     feedback_type: "clean_complex"
+        // }
     };
- 
     //init feedback_me plugin
     fm.init(fm_options);
 
-      $("p").click(function(){
+  $("p").click(function(){
     $(this).hide();
   });
 
 $(".helpimg").hide();
-
     //set up some minimal options for spot error plugin
     fe_options = {
         show_email: true,
         email_required: false,
- 
         show_radio_button_list: true,
         radio_button_list_required: true,
         radio1_button_list_title: "Website Design/Attractiveness",
@@ -514,35 +511,27 @@ $(".helpimg").hide();
         name_placeholder: "Your Name",
         email_placeholder: "Your Email",
         message_placeholder: "Go ahead - give us details of the error here.",
-    radio_button_list_labels : ["1", "2", "3", "4", "5"],
-    radio5_button_list_labels : ["Yes", "No"],    
+        radio_button_list_labels : ["1", "2", "3", "4", "5"],
+        radio5_button_list_labels : ["Yes", "No"],    
         phone_label: "Phone",
         phone_placeholder: "Your Phone Number",
- 
         name_required: false,
         message_required: false,
-     title_label : "As we're in our beta phase, we may have a few bugs - do help us fix them!",
-    trigger_label : "See an error?",
-    message_label : "",    
+        title_label : "As we're in our beta phase, we may have a few bugs - do help us fix them!",
+        trigger_label : "See an error?",
+        message_label : "",    
         show_asterisk_for_required: true,
- 
-        feedback_url: "send_feedback_clean",
- 
-        custom_params: {
-            csrf: "my_secret_token",
-            user_id: "john_doe",
-            feedback_type: "clean_complex"
-        }
+        feedback_url: "/api/errorFeedback",
+        // custom_params: {
+        //     csrf: "my_secret_token",
+        //     user_id: "john_doe",
+        //     feedback_type: "clean_complex"
+        // }
     };
  
     //init feedback_me plugin
     fe.init(fe_options);
-
-
-
-
 });
-
 
 var default_options = {
     feedback_url : "",

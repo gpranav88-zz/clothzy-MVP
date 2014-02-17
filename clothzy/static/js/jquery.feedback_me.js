@@ -570,6 +570,7 @@ var fm = (function () {
 			},
 			success: function (data) {
 				fm.clearInputs();
+				alert("Thank you!");
             },
 			error: function (ob, errStr) {
 				alert("Failed to send feedback (please double check your feedback_url parameter)");
