@@ -11,7 +11,7 @@
   <BR>
 
     <div class="row" ng-controller="searchController">
-
+      <ng-form id="search-form" ng-submit="search()">
       <div class="col-lg-2 text-center" style="height:100px">
         <p class="text-center">Are you looking for:</p>
         <div class="text-center">
@@ -27,12 +27,13 @@
 
       <div class="col-lg-3 text-center">
         <p class="text-center">Product</p>
-        <input type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product" >
+
+        <input id="search-product" type="text" placeholder="Any product" class="form-control search-form input-lg" ng-model="searchPhrase.product" >
         <p class="text-center"><em class="searchexample">E.g. Sarees, Dresses</em></p>
         <div class="help-img"><img src="../static/img/producthelp.png" style="height:120px" class="helpimg"></div>
       </div>
 
-      <div class="col-lg-1 text-center" style="height:100px; display: table;">
+      <div class="col-lg-1 text-center" style="height:100px; display: table; width:2%">
         <div style="display: table-cell; vertical-align: middle;" class="text-center">
           in
         </div>
@@ -40,7 +41,28 @@
 
       <div class="col-lg-3 text-center" style="height:100px">
         <p class="text-center">Location/Store</p>
-        <input type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location" >
+        <input id="search-location" type="text" placeholder="Anywhere" class="form-control search-form input-lg" ng-model="searchPhrase.location" >
+        <script>
+
+          $('#search-location').keydown(function(e){  
+            if (e.keyCode == 13) {
+                $('#search-form').submit();
+            
+              } 
+
+            });
+
+          $('#search-product').keydown(function(e){  
+            if (e.keyCode == 13) {
+                $('#search-form').submit();
+            
+              } 
+
+            });
+
+        </script>
+
+
         <p class="text-center">
           <em class="searchexample">E.g. South Delhi, Store XYZ, Shahpur Jat</em>
         </p>
@@ -49,7 +71,7 @@
 
       <div class="col-lg-2 text-center" style="height:100px; width:250px;">
         <p class="text-center">&nbsp;</p>
-        <button type="button" style="font-size:16px" class="btn btn-lg btn-danger" ng-click="search()">
+        <button style="font-size:16px" class="btn btn-lg btn-danger" type="submit" ng-click="search()">
           <i class="fa fa-search"></i> 
           Search
         </button>
@@ -61,6 +83,7 @@
         <p class="text-center"><em class="searchexample">&nbsp;</em></p>
         <div class="help-img"><img src="../static/img/searchhelp.png" style="height:120px" class="helpimg"  ></div>
       </div>
+    </ng-form>
     </div>
   </div>
 </div>
