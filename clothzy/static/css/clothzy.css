@@ -1,6 +1,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+/*.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }*/
 
 
 body {
@@ -39,7 +39,7 @@ a.logo{
 }
 
 .search-text{
-	font-family:'Open Sans';
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	margin-top:0px;
 	font-weight:400;
 	
@@ -52,11 +52,11 @@ a.logo{
 
 .body-head{
 	
-	font-family:'Open Sans', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	font-size:18px;
 	color:#333;
 	text-transform:uppercase;
-	font-weight:300;
+	font-weight:400;
 	margin-bottom:5px;
 }
 
@@ -264,23 +264,23 @@ top:-750px;
 }
 .store-header{
 	
-	font-family:'Open Sans', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
 	color:#ffffff;	
-		font-weight:300;
+		font-weight:400;
 	
 }
 
 .reviewer-header{
 	
-	font-family:'Open Sans', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	padding-top:200px;
 	padding-left:20px;
 	font-size:24px;
 	color:#ffffff;	
-		font-weight:300;
+		font-weight:400;
 	
 }
 .reviewer-main-pic{
@@ -322,11 +322,11 @@ margin-left:15px;
 /*PRODUCT PAGE*/
 .product-header{
 	
-	font-family:'Open Sans', Helvetica, Arial, sans-serif;
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 
 	font-size:24px;
 	color:#666;	
-		font-weight:300;
+		font-weight:400;
 }
 
 
@@ -461,13 +461,13 @@ input[type=checkbox]:checked + .checklabel:before {
 }
 
 .price{
-font-family:'Open Sans';
+font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 font-weight:700;
 color:#666;
 }
 
 em{
-font-family:'Open Sans';
+font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	font-weight:400;
 
 }
@@ -519,7 +519,7 @@ font-weight:400;
 margin-top:5px;
 font-weight:400;
 font-size:16px;
-font-family: 'Open Sans', sans-serif;
+font-family: 'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 color:#333;
 }
 
@@ -754,17 +754,13 @@ overflow:ellipsis;
 
   display: block; /* Fallback for non-webkit */
   
-  display: -webkit-box;
+  font-size:12px;
 
 
   margin-bottom:5px;
-
-  line-height: 1.4;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  white-space:nowrap;	
 }
 
 .imgholder{
@@ -819,7 +815,7 @@ margin-bottom:5px;
 
 .resultstext{
 
-	font-family: 'Open Sans', serif;
+	font-family: 'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
 	font-style:italic;
 	color:#666;
 	font-size:14px;
@@ -872,8 +868,9 @@ margin-bottom:5px;
 }
 
 .product-name-home{
-	margin-top:0px;
+	margin-top:3px;
 	margin-bottom:4px;
+	font-size:15px;
 }
 
 .productthumbnail-storepage{
@@ -915,7 +912,7 @@ overflow-x:hidden;
 
 .one-line-overflow{
 	text-overflow:ellipsis;
-	overflow:hidden;
+	overflow:hidden; 	
 	white-space:nowrap;
 }
 
@@ -952,4 +949,38 @@ overflow-x:hidden;
 
 .boldoneliner{
 	font-weight:400;
+}
+
+.designerlist:hover, 
+.designerlist:focus{
+	background:#eee;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;		
+}
+.designerlist{
+	background:#fff;
+  -webkit-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;			
+}
+
+.heirarchy-separator{
+padding-left:4px;
+padding-right:4px;
+color:#ccc;
+
+}
+
+.seemorebutton{
+	border:none;
+	padding-top:5px;
+	font-size:13px;
+	color:#fff;
+	background:#c8006d;
+	width:100%;
+  -webkit-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;			
+}
+.seemorebutton{
+	  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;		
 }

@@ -59,21 +59,21 @@
 
 #feedback_name {
 	display: block;
-	width: 340px;
+	width: 100%;
 }
 #feedback_phone {
 	display: block;
-	width: 340px;
+	width: 100%;
 }
 
 #feedback_email {
 	display: block;
-	width: 340px;
+	width: 100%;
 }
 
 #feedback_message {
 	display: block;
-	width: 340px;
+	width: 100%;
 }
 
 #feedback_submit {
@@ -129,6 +129,7 @@
 
 .fm_clean .feedback_trigger_text { 
 	left: -20px;
+	font-weight:700;
 }
 
 .fm_clean .feedback_title {
@@ -261,6 +262,7 @@
 
 #feedback_content.email_present.radio_button_list_present {
 	height: 640px;
+	padding-left:20px;
 }
 
 .radio_button_wrapper{

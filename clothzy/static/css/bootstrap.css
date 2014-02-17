@@ -301,7 +301,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
   font-weight:400;
   font-size: 13px;
   line-height: 1.428571429;
@@ -465,8 +465,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-family: "Open Sans", 'SegoeUI', Helvetica, Arial, sans-serif;
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -4939,7 +4939,7 @@ a.list-group-item.active > .badge,
   padding: 30px;
   margin-bottom: 30px;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 2.1428571435;
   color: #dddddd;
   background-color: #eeeeee;
@@ -4987,7 +4987,8 @@ a.list-group-item.active > .badge,
 }
 
 .thumbnail:hover{
-  background-color:#eee;
+  background-color:#fafafa;
+  border: 1px solid #c8006d;
 }
 
 .thumbnail > img {
@@ -5323,7 +5324,7 @@ a.list-group-item .list-group-item-heading {
 a.list-group-item:hover,
 a.list-group-item:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+/*  background-color: #f5f5f5;*/
 }
 
 .list-group-item.active,
