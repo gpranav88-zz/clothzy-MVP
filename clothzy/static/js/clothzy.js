@@ -283,6 +283,8 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
 		// $location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
 	}
 	$scope.activateStoreView = function(){
+		delete displayQuery['minPrice'];
+		delete displayQuery['maxPrice'];
 		$location.path('/search/stores/').search(displayQuery);
 	}
 	$scope.$watch('searchResults', function(newValue, oldValue) {

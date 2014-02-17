@@ -31,13 +31,15 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     color = indexes.CharField(model_attr='color', faceted=True)
     location = indexes.CharField(model_attr='store__locality',faceted=True)
     num_images = indexes.IntegerField(model_attr='num_images')
-
+    region = indexes.CharField(model_attr='store__region')
+    city = indexes.CharField(model_attr='store__city')
+    
     def prepare_sizes(self, obj):
         return [(size.name) for size in obj.sizes.all()]
     
     # def prepare(self, object):
     #     self.prepared_data = super(ProductIndex, self).prepare(object)
-    #     # self.prepared_data['location'] = object.store.locality
+    #     # self.prepared_data['location'] = object.store.localitylocalitylocality
     #     self.prepared_data['store_name'] = object.store.name
 
     #     return self.prepared_data

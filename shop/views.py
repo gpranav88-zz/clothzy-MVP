@@ -5,7 +5,9 @@ from rest_framework import filters
 from rest_framework import generics
 from rest_framework.decorators import link
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from django.views.decorators.csrf import csrf_exempt
 from haystack.query import SearchQuerySet,SQ
 
 class StoreViewSet(viewsets.ReadOnlyModelViewSet):
@@ -214,6 +216,8 @@ class StoreSearchView(APIView):
                 store["store"] = result.storeid
                 store["name"] = result.store_name
                 store["location"] = result.location
+                store["region"] = result.region
+                store["city"] = result.city
                 store["description"] = result.store_desc
                 dict1['stores'].append(store)
         dict1['count'] = count
@@ -227,3 +231,18 @@ class StoreSearchView(APIView):
 
 #     def get_queryset(self):
 #         return Product.objects.all().order_by('created_on').reverse()[:1]
+
+
+@api_view(('POST',))
+def feedback(request):
+    if request.method == 'POST':
+        # print 'Raw Data: "%s"' % request.POST
+        currFeed = Feedback.objects.create(response = request.DATA)
+    return Response("OK")
+
+@api_view(('POST',))
+def errorFeedback(request):
+    if request.method == 'POST':
+        # print 'Raw Data: "%s"' % request.POST
+        currFeed = ErrorFeedback.objects.create(response = request.DATA)
+    return Response("OK")
