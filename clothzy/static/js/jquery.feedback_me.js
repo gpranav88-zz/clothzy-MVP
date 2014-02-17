@@ -465,11 +465,12 @@ var fm = (function () {
 				
 				+ email_html
 				+ 		'<li>	<label>' + 'How would you rate Clothzy on: ' + '</label> '
+				+ 		'<br>' + '<label style="font-size:12px; font-style:italic;">(1 - Very Poor, 5 - Outstanding ) ' + '</label> '
 				+		 radio1_button_list_html
 				+		 radio2_button_list_html
 				+		 radio3_button_list_html
 				+		 radio4_button_list_html				
-				+		'<li>	<label for="feedback_message">' + fm_options.message_label + '</label> ' + message_asterisk + ' <textarea rows="5" id="feedback_message" ' + message_required + ' placeholder="' + fm_options.message_placeholder + '"></textarea> </li>'
+				+		'<li>	<label for="feedback_message">' + fm_options.message_label + '</label> ' + message_asterisk + ' <textarea class="form-control" rows="5" id="feedback_message" ' + message_required + ' placeholder="' + fm_options.message_placeholder + '"></textarea> </li>'
 				+		 radio5_button_list_html		
 				+		'<li>	<button id="feedback_submit" type="submit" onclick="fm.sendFeedback(event);" class="' + bootstrap_btn + '">' + fm_options.submit_label + '</button> </li>'
 				+	'</ul>'
