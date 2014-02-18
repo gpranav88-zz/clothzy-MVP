@@ -60,6 +60,17 @@ a.logo{
 	margin-bottom:5px;
 }
 
+.filter-head{
+	
+	font-family:'Open Sans', 'SegoeUI', Helvetica, Arial, sans-serif;
+	font-size:14px;
+	color:#333;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+
 
 .reviewer-pic{
 max-height:60px;
@@ -258,7 +269,7 @@ top:-750px;
 
 .storebg-header{
 	
-
+	background:#ccc;
 	height:250px;
 	box-shadow: 0px 0px 12px #aaaaaa;
 }

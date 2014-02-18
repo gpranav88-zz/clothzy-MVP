@@ -119,8 +119,8 @@
 							<div class="storesearch-imgholder"><a ng-href="store/{{store.store}}"><img ng-src="/static/img/Store_{{store.store}}/1-1.jpg" alt="..."></a></div>
 								
 								<div class="caption">
-								<p class="storename-storesearch"><a href="">{{store.name}}</a></h4>
-								<p class="marketname-storesearch"><a class="marketname-storesearch" href="">{{store.location}}</a></h4>
+								<p class="storename-storesearch"><a ng-href="store/{{store.store}}">{{store.name}}</a></h4>
+								<p class="marketname-storesearch"><a class="marketname-storesearch" ng-href="/search/stores/?location={{store.location}}">{{store.location}}</a></h4>
 								<p class="storesearch-description">{{store.description}}</p>
 							</div>
 						</div>

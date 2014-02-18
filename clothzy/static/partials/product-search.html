@@ -6,7 +6,7 @@
 		<div class=" navbar navbar-default sidebar-nav-fixed"  data-spy="affix"  data-offset-top="750">
 			<ul class="nav nav-stacked sidebar-text">
 
-				<li class="active"><a>Gender</a>
+				<li class="active"><div class="filter-head">Gender</div>
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.sex">
 							<div class="checkbox">
@@ -19,7 +19,7 @@
 					</ul>
 				</li>
 				<hr class="sidebar-divider">
-				<li class="active"><a>Location</a>
+				<li class="active"><div class="filter-head">Location</div>
 					<ul class="nav">
 						<li ng-repeat="filterout in searchResults.filters.location">
 							<div class="checkbox">
@@ -32,13 +32,13 @@
 					</ul>
 				</li>
 				<hr class="sidebar-divider">
-				<li class="active sideheader"><a>Price</a>
+				<li class="active sideheader"><div class="filter-head">Price</div>
 					<ul class="nav"><div class="col-lg-10" style="padding: 0 15px">
 						<div range-slider min="searchResults.filters.price[0][0]" max="searchResults.filters.price[1][0]" model-min="minPrice" model-max="maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div><div class="col-lg-2" style="padding-left:2px;"><a class="btn btn-default btn-sm refreshbutton" ng-click="updatePrice()"><i class="fa fa-refresh fa-sm"></i></a></div>
 					</ul>
 				</li>
 				<hr class="sidebar-divider">					
-				<li class="active"><a>Colour</a>
+				<li class="active"><div class="filter-head">Colour</div>
 
 					<ul class="nav filter-box">
 						<li ng-repeat="filterout in searchResults.filters.color">
@@ -51,7 +51,7 @@
 						</li>  
 					</ul>			
 					<hr class="sidebar-divider">					
-					<li class="active"><a>Size</a>
+					<li class="active"><div class="filter-head">Size</div>
 						
 						<ul class="nav">
 							<li ng-repeat="filterout in searchResults.filters.sizes">
@@ -79,7 +79,7 @@
 
 						</li>
 						<hr class="sidebar-divider">	 -->				
-						<li class="active"><a>Category</a>
+						<li class="active"><div class="filter-head">Category</div>
 
 							<ul class="nav filter-box">
 								<li ng-repeat="filterout in searchResults.filters.category">
@@ -104,8 +104,8 @@
 				<div class="row"><br>
 					<div class="col-lg-6">
 						<ol class="breadcrumb">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Search</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="">Search</a></li>
 							<!-- <li><a href="#">Ethnic Wear</a></li>
 							<li><a href="#">Sarees</a></li> -->
 						</ol>
@@ -113,7 +113,7 @@
 					<div class="col-lg-6">
 						<ul class="nav nav-pills navbar-right">
 
-							<li class="active"><a href="#">Product View</a></li>
+							<li class="active"><a href="">Product View</a></li>
 
 							<li><a ng-click="activateStoreView()">Store View</a></li>
 						</ul>
@@ -132,11 +132,11 @@
 										Relevance  &nbsp;<span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Relevance</a></li>
-										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (High to Low)</a></li>
-										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (Low to High)</a></li>
-										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (A-Z)</a></li>
-										<li><a href="#" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (Z-A)</a></li>
+										<li><a href="">Relevance</a></li>
+										<li><a href="" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (High to Low)</a></li>
+										<li><a href="" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Price (Low to High)</a></li>
+										<li><a href="" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (A-Z)</a></li>
+										<li><a href="" tooltip-placement="bottom" tooltip="Coming Soon!" class="disabled">Name (Z-A)</a></li>
 									</ul>
 								</div>
 							</div>
@@ -280,7 +280,7 @@
 							<div class="caption">
 								<div class="productname_holder"><p class="productname sentence-case"><a ng-href="product/{{products.id}}" class="productname"> {{products.name}} </a></p></div>
 								<div class="storename_holder"><p class="sentence-case storename"><a ng-href="store/{{products.store}}" class="storename">{{products.store_name}} </a></p></div>
-								<p class="sentence-case marketname"><a ng-href="store/{{products.store}}" class="marketname">{{products.location}} </a></p>
+								<p class="sentence-case marketname"><a ng-href="/search/stores/?location={{products.location}}" class="marketname">{{products.location}} </a></p>
 								<span ng-if="products.price!=0">
 						<!-- 			<p class="price"><i class="fa fa-rupee"></i> {{products.price}}</p> -->
 
@@ -289,7 +289,7 @@
 								<span ng-if="products.price_discounted!=0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted}}</span>
 									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}}</span>
-									 <span class="discount-productsearch-page">({{getDiscount($index)}}% Off)</span>
+									 <span class="discount-productsearch-page">({{getDiscount_SearchPage($index)}}% Off)</span>
 								</span>
 								<span ng-if="products.price_discounted == 0 && products.price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}} </span>
@@ -307,9 +307,9 @@
 
 
 			<ul class="pagination pull-right pagination-sm">
-				<li><a href="#">&laquo;</a></li>
+				<li><a href="">&laquo;</a></li>
 				<li ng-repeat="page in displayPageNum(numberOfPages)" ng-click="goToPage(page)"><a>{{page}}</a></li>
-				<li><a href="#">&raquo;</a></li>
+				<li><a href="">&raquo;</a></li>
 			</ul>			
 			<br>
 		</div> <!-- /span -->
