@@ -195,6 +195,16 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 	$scope.storeProducts=commonFactory.storeProducts($resource).get({
 		'id':commonFactory.fetchID($routeParams)
 	});
+
+	$scope.getDiscount = function(val){
+		if(!angular.isUndefined($scope.storeProducts)){
+			if($scope.storeProducts.Products[val].price_discounted==0 || $scope.storeProducts.Products[val].price=="Price on request")
+				return 0;
+			else
+				return parseInt((($scope.storeProducts.Products[val].price-$scope.storeProducts.Products[val].price_discounted)/$scope.storeProducts.Products[val].price)*100);
+		}
+		return;
+	}
 }
 ]);
 
