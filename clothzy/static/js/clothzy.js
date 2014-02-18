@@ -207,6 +207,12 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 		}
 		return 0;
 	}
+	$scope.range = function(num_img){
+		var input = [];
+	    for (var i=1; i<=num_img; i++) input.push(i);
+	    return input;
+		// $location.path(path); // $location is a wrapper around JS window.location and handles the routing if a path is passed to it
+	}
 }
 ]);
 
@@ -388,6 +394,12 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
         else
         	delete displayQuery[filter_selected];
         $location.path('/search/products/').search(displayQuery);
+    }
+    $scope.getCurrentPage = function(){
+    	if(displayQuery['page'])
+    		return displayQuery['page'];
+    	else
+    		return 1;
     }
     $scope.goToPage = function(page){
     	displayQuery['page'] = page;

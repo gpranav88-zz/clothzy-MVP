@@ -89,7 +89,7 @@
 										<div ng-controller="CarouselDemoCtrl">
 										  
 										    <carousel interval="myInterval">
-										      <slide ng-repeat="photos in [1,2,3,4]" active="slide.active">
+										      <slide ng-repeat="photos in range(storeData.num_images)" active="slide.active">
 										        <img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg" style="margin:auto;">
 										      </slide>
 										    </carousel>

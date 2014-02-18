@@ -34,7 +34,7 @@
 				<hr class="sidebar-divider">
 				<li class="active sideheader"><div class="filter-head">Price</div>
 					<ul class="nav"><div class="col-lg-10" style="padding: 0 15px">
-						<div range-slider min=0 max="searchResults.filters.price[1][0]" model-min="minPrice" model-max="maxPrice" step="500"></div></div><div class="col-lg-2" style="padding-left:2px;"><a class="btn btn-default btn-sm refreshbutton" ng-click="updatePrice()"><i class="fa fa-refresh fa-sm"></i></a></div>
+						<div range-slider min="searchResults.filters.price[0][0]" max="searchResults.filters.price[1][0]" model-min="minPrice" model-max="maxPrice" filter="currency" filter-options="Rs. " step="100"></div></div><div class="col-lg-2" style="padding-left:2px;"><a class="btn btn-default btn-sm refreshbutton" ng-click="updatePrice()"><i class="fa fa-refresh fa-sm"></i></a></div>
 					</ul>
 				</li>
 				<hr class="sidebar-divider">					
@@ -287,12 +287,12 @@
 							<p class="price">
 
 								<span ng-if="products.price_discounted!=0 && products.price!=0">
-									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted | number:0}}</span>
-									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price | number:0}}</span>
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price_discounted}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}}</span>
 									 <span class="discount-productsearch-page">({{getDiscount_SearchPage($index)}}% Off)</span>
 								</span>
 								<span ng-if="products.price_discounted == 0 && products.price!=0">
-									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price | number:0}} </span>
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{products.price}} </span>
 								</span>
 							</p>
 
