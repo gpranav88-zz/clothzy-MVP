@@ -403,7 +403,7 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
     $scope.goToPageAfter = function(){
     	var page = 2
     	if(displayQuery['page'])
-    		page = displayQuery['page'] +1;
+    		page = parseInt(displayQuery['page']) +1;
     	displayQuery['page'] = page;
     	$location.path('/search/products/').search(displayQuery);
     }
