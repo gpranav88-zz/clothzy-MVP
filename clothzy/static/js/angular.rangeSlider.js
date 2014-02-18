@@ -69,8 +69,8 @@
                            '<div class="handle handle-max"><i></i></div>',
                            '<div class="join"></div>',
                          '</div>',
-                         '<div class="value value-min" ng-show="showValues">{{filteredModelMin}}</div>',
-                         '<div class="value value-max" ng-show="showValues">{{filteredModelMax}}</div>',
+                         '<div class="value value-min" ng-show="showValues"> {{filteredModelMin}}</div>',
+                         '<div class="value value-max" ng-show="showValues"> {{filteredModelMax}}</div>',
                        '</div>'].join(''),
             scope: {
                 disabled: '=?',
@@ -384,11 +384,11 @@
                                     if (index === 0) {
 
                                         // update model as we slide
-                                        scope.modelMin = parseFloat((((proposal * range) / 100) + scope.min)).toFixed(scope.decimalPlaces);
+                                        scope.modelMin = parseInt((((proposal * range) / 100) + scope.min)).toFixed(scope.decimalPlaces);
 
                                     } else if (index === 1) {
 
-                                        scope.modelMax = parseFloat((((proposal * range) / 100) + scope.min)).toFixed(scope.decimalPlaces);
+                                        scope.modelMax = parseInt((((proposal * range) / 100) + scope.min)).toFixed(scope.decimalPlaces);
                                     }
 
                                     // update angular
