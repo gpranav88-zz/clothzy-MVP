@@ -1,0 +1,225 @@
+
+<div class="container pad-50" id="main" ng-model="storeData"><br>
+
+	<div class="row">
+
+		<div class="col-lg-12">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row heirarchy">
+						<a href="/" class="sentence-case">Home</a><span class="heirarchy-separator"> &gt; </span>  
+						<a href="/search/stores/" class="sentence-case">{{storeData.city}}</a><span class="heirarchy-separator"> &gt; </span>  
+						<a href="/search/stores/" class="sentence-case">{{storeData.region}}</a><span class="heirarchy-separator"> &gt; </span>
+						<a href="/search/stores/?location_f={{storeData.locality}}" class="sentence-case">{{storeData.locality}}</a><span class="heirarchy-separator"> &gt; </span>				
+						<a href="" class="sentence-case">{{storeData.name}}</a>												
+
+					</div><br>
+				</div>
+
+
+			</div>
+
+			<div class="row">	
+				<div class="col-lg-8">
+					<div class="row storebg-header" style="background-image: url('../static/img/Store_{{storeData.id}}/cover.jpg');">
+						<div class="store-header">{{storeData.name}}
+						</div>
+					</div>
+					
+					<br>
+					<div class="row">
+						<tabset>
+			
+
+							<tab heading="Collection">
+								<div class="row tabrow list-store">
+									<br>
+									<!-- REALLY Dirty code, ideally do a nested ng-repeat on a group of items -->
+
+									<div class="col-lg-3" ng-repeat='val in productRow1'>
+										<div class="thumbnail thumb-storepage">																					
+											<div class="imgholder-store"><a ng-href="product/{{storeProducts.Products[val].id}}"><img ng-src="/static/img/Store_{{storeProducts.Products[val].store}}/P_{{storeProducts.Products[val].id}}/1-1.jpg" alt="..." class="productthumbnail-storepage"></a></div>
+											<div class="caption">
+												<!-- <p class="productname-store sentence-case"> {{storeProducts.Products[val].name}} </p> -->
+												<p class="productname-store sentence-case"><a ng-href="product/{{storeProducts.Products[val].id}}" class="productname-store"> {{storeProducts.Products[val].name}} </a></p>
+<!-- 
+												<span ng-if="storeProducts.Products[val].price!=0">
+													<p class="price"><i class="fa fa-rupee"></i> {{storeProducts.Products[val].price}}</p>
+												</span>
+												<span ng-if="storeProducts.Products[val].price==0">
+													<p class="price">Price on request</p>
+												</span> -->
+
+
+							<p class="price">
+
+								<span ng-if="storeProducts.Products[val].price_discounted!=0 && storeProducts.Products[val].price!=0">
+<<<<<<< HEAD
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted | number:0}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}}</span>
+									 <span class="discount-productsearch-page">({{getDiscount($index)}}% Off)</span>
+=======
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price}}</span>
+									 <span class="discount-productsearch-page">({{getDiscount_store($index)}}% Off)</span>
+>>>>>>> 66a61802425c7d60ad1db2ad5d8b283b908afcb6
+								</span>
+								<span ng-if="storeProducts.Products[val].price_discounted == 0 && storeProducts.Products[val].price!=0">
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}} </span>
+								</span>
+							</p>
+
+								
+								<span ng-if="storeProducts.Products[val].price==0">
+									<p class="price-productsearch-page price">Price on request</p>
+								</span>
+
+
+											</div>
+										</div>
+									</div><br>
+									
+								</div>
+								<a ng-href="search/products?storeid={{storeData.id}}">See more products from {{storeData.name}} &raquo;</a>
+								</tab>
+								<tab heading="Map"><br>
+									<iframe ng-src="{{storeData.map_url}}" width="640" height="480" frameborder="0">
+									</iframe>
+								</tab>
+								<tab heading="Photos"><br>
+									<!--
+									<div ng-repeat="photos in [1,2,3,4]">
+										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg">
+									</div>-->
+
+										<div ng-controller="CarouselDemoCtrl">
+										  
+										    <carousel interval="myInterval">
+										      <slide ng-repeat="photos in [1,2,3,4]" active="slide.active">
+										        <img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg" style="margin:auto;">
+										      </slide>
+										    </carousel>
+										  
+										 </div>
+
+								</tab>
+								<tab heading="Designer Bio">
+								<br>
+								{{storeData.designer_bio}}
+								</tab>
+
+
+							</tabset>
+						</div>
+					</div>	 
+
+					<div class="col-lg-4">
+						<div class="row">
+							<div class="col-lg-6 right-border">
+								<div class="row">
+									<div class="col-lg-2">
+										<i class="fa fa-phone small-icon"></i>
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<button popover-append-to-body=true popover-placement="bottom" Popover-animation="true" popover-title="{{storeData.name}}: {{storeData.phone1}} {{storeData.phone2}}" popover="Don't forget to mention you got their number from Clothzy!" class="btn btn-default btn-sm">Contact store &raquo;</button>
+	
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-lg-2">
+										<i class="fa fa-location-arrow small-icon"></i>
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p>{{storeData.address}}</p>
+									</div>
+								</div>
+
+								<div class="row" ng-if="storeData.time_open!=''">
+									<div class="col-lg-2">
+										<i class="fa fa-clock-o small-icon"></i>
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p>{{storeData.time_open}} - {{storeData.time_close}}</p>
+										<p ng-if="storeData.day_closed==''">Open 7 days a week</p>										
+										<p ng-if="storeData.day_closed!=''">Closed on {{storeData.day_closed}}</p>
+									</div>
+								</div>
+
+								<div class="row" ng-if="storeData.website!=''">
+									<div class="col-lg-2">
+
+										<i class="fa fa-globe fa-lg small-icon"></i>											
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p class="one-line-overflow"><a href="http://{{storeData.website}}" target="_blank">{{storeData.website}}</a>&nbsp;</p>
+									</div>
+								</div>				
+
+								<div class="row" ng-if="storeData.fb_link!=''">
+									<div class="col-lg-2">
+
+										<i class="fa fa-facebook-square fa-lg small-icon"></i>											
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p><a href="{{storeData.fb_link}}" target="_blank">Visit Facebook Page</a>&nbsp;</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
+									<div class="col-lg-2">
+										<i class="fa fa-heart small-icon"></i>
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p>Add to Favourites</p>
+									</div>
+								</div>
+
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
+									<div class="col-lg-2">
+										<i class="fa fa-pencil-square-o small-icon"></i>
+									</div>
+									<div class="col-lg-10 sidecontent">
+										<p>Write a Review</p>
+									</div>
+								</div>
+
+								<div class="row"   tooltip-placement="bottom" tooltip="Coming Soon!">
+									<div class="col-lg-12">
+										<p>Share: 
+											<a href="">
+												<i class="fa fa-facebook-square fa-2x fb-icon"></i>
+											</a>
+											<a href="">
+												<i class="fa fa-twitter-square fa-2x tw-icon"></i>
+											</a>
+											<a href="">
+												<i class="fa fa-pinterest-square fa-2x pi-icon"></i>
+											</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<hr>
+						<div class="row">
+							<div class="col-lg-12">
+								<h3 class="body-head">About the store</h3>
+								<p>
+									{{storeData.description}}
+								</p>
+
+							</div>
+							
+
+						</div>
+					</div>				
+				</div>	
+			</div>
+		</div>
+	</div>

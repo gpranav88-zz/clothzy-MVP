@@ -4850,7 +4850,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .label-primary {
-  background-color: #428bca;
+  background-color: #ccc;
 }
 
 .label-primary[href]:hover,
