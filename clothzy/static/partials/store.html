@@ -54,12 +54,12 @@
 							<p class="price">
 
 								<span ng-if="storeProducts.Products[val].price_discounted!=0 && storeProducts.Products[val].price!=0">
-									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted}}</span>
-									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price}}</span>
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted | number:0}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}}</span>
 									 <span class="discount-productsearch-page">({{getDiscount($index)}}% Off)</span>
 								</span>
 								<span ng-if="storeProducts.Products[val].price_discounted == 0 && storeProducts.Products[val].price!=0">
-									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price}} </span>
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}} </span>
 								</span>
 							</p>
 
@@ -86,14 +86,14 @@
 										<img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg">
 									</div>-->
 
-										<div ng-controller="CarouselDemoCtrl" style="min-height: 305px">
-										  <div style="height: 305px">
+										<div ng-controller="CarouselDemoCtrl">
+										  
 										    <carousel interval="myInterval">
 										      <slide ng-repeat="photos in [1,2,3,4]" active="slide.active">
 										        <img ng-src="../static/img/Store_{{storeData.id}}/{{photos}}-2.jpg" style="margin:auto;">
 										      </slide>
 										    </carousel>
-										  </div>
+										  
 										 </div>
 
 								</tab>
@@ -115,8 +115,8 @@
 										<i class="fa fa-phone small-icon"></i>
 									</div>
 									<div class="col-lg-10 sidecontent">
-										<p>{{storeData.phone1}}</p>
-										<p>{{storeData.phone2}}</p>
+										<button popover-append-to-body=true popover-placement="bottom" Popover-animation="true" popover-title="{{storeData.name}}: {{storeData.phone1}} {{storeData.phone2}}" popover="Don't forget to mention you got their number from Clothzy!" class="btn btn-default btn-sm">Contact store &raquo;</button>
+	
 									</div>
 								</div>
 

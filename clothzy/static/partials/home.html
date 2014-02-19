@@ -114,13 +114,13 @@
   <div ng-repeat="product in homePageData.Products">
     <div class="col-lg-4">
       <a ng-href="product/{{product.id}}">
-        <h4 class="product-name-home">{{product.name}}</h4>
-        <h4 class="featured-product-storename"><a style="color:#666;">{{product.brand}}</a></h4>
-      </a>
+        <h4 class="product-name-home">{{product.name}}</h4></a>
+        <h4 class="featured-product-storename"><a ng-href="store/{{product.store}}" style="color:#666;">{{product.brand}}</a></h4>
+      
       <p class="featured-product-description">{{product.description}}</p>
       
               <p>
-                <span class="price-home-page"><i class="fa fa-rupee"></i>{{product.price}} </span>                
+                <span class="price-home-page"><i class="fa fa-rupee"></i>{{product.price | number:0}} </span>                
               </p>     
         <a class="btn btn-default" href="/product/{{product.id}}">
           View details &raquo;

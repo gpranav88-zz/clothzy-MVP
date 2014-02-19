@@ -60,7 +60,7 @@
 }
 /* line 46, scss/angular.rangeSlider.scss */
 .range-slider, .range-slider * {
-  display: block;
+  
   cursor: default;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -139,6 +139,7 @@
 /* line 154, scss/angular.rangeSlider.scss */
 .range-slider .value {
   position: absolute;
+
   top: 100%;
   left: 0;
   padding: 5px 0 0 0;

@@ -107,12 +107,12 @@
 									<span class="price-product-page">Price on Request</span>
 								</span>
 								<span ng-if="getDiscount()!=0 && productData.price!=0">
-									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price_discounted}} </span>
-									<span class="strike-price-product-page"><i class="fa fa-rupee"></i>{{productData.price}}</span>
+									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price_discounted | number:0}} </span>
+									<span class="strike-price-product-page"><i class="fa fa-rupee"></i>{{productData.price | number:0}}</span>
 									 ({{getDiscount()}}% Discount)
 								</span>
 								<span ng-if="getDiscount() == 0 && productData.price!=0">
-									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price}} </span>
+									<span class="price-product-page"><i class="fa fa-rupee"></i>{{productData.price | number:0}} </span>
 								</span>
 							</p>
 						
@@ -188,7 +188,7 @@
 					<div class="col-lg-12">
 						<div class="row">
 							<div class="col-lg-12">
-								<h4><a  ng-click="clickForStore()" class="storename-productpage">{{storeData.name}}</a></h4>
+								<h4><a  ng-click="clickForStore()" class="storename-productpage">{{storeData.name}} &raquo;</a></h4>
 							</div>
 							<div class="col-lg-1">
 								<!--									<p class="small-icon"><span class="glyphicon glyphicon-earphone"></span></p>-->
@@ -196,7 +196,7 @@
 
 							</div>
 							<div class="col-lg-11 sidecontent">
-								<p>{{storeData.phone1}}</p>
+								<p><button popover-placement="bottom" Popover-animation="true" popover-title="{{storeData.name}}: {{storeData.phone1}} {{storeData.phone2}}" popover="Don't forget to mention you got their number from Clothzy!" class="btn btn-default btn-sm">Contact store &raquo;</button></p>
 							</div>
 						</div>
 						<div class="row">

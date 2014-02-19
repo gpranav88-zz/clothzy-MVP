@@ -69,8 +69,8 @@
                            '<div class="handle handle-max"><i></i></div>',
                            '<div class="join"></div>',
                          '</div>',
-                         '<div class="value value-min" ng-show="showValues"> {{filteredModelMin}}</div>',
-                         '<div class="value value-max" ng-show="showValues"> {{filteredModelMax}}</div>',
+                         '<div class="value value-min" ng-show="showValues"><i class="fa fa-rupee"></i> {{filteredModelMin | number:0}}</div>',
+                         '<div class="value value-max" ng-show="showValues"><i class="fa fa-rupee"></i> {{filteredModelMax | number:0}}</div>',
                        '</div>'].join(''),
             scope: {
                 disabled: '=?',
