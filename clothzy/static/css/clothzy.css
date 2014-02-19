@@ -996,3 +996,7 @@ color:#ccc;
 	  -webkit-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;		
 }
+
+.storesearch-tags{
+	font-size:11px;
+}
