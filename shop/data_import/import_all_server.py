@@ -45,17 +45,17 @@ for direc in os.listdir(FOLDER_DIR):
     print "Reading file " + curr_file
     product_file_path = os.path.join(BASE_DIR, curr_file)
 
-    images_folder_path1 = os.path.join(BASE_DIR, BASE_FOLDER + "_products_thumb")
+    images_folder_path1 = os.path.join(BASE_DIR, BASE_FOLDER + "_Products_thumb")
     images_list1 = os.listdir(images_folder_path1)
     images_list1 = [x for x in images_list1 if not x.startswith('.')]
 
-    images_folder_path2 = os.path.join(BASE_DIR, BASE_FOLDER + "_products_main")
+    images_folder_path2 = os.path.join(BASE_DIR, BASE_FOLDER + "_Products_main")
     images_list2 = os.listdir(images_folder_path2)
     images_list2= [x for x in images_list2 if not x.startswith('.')]
 
     # print images_list1
     #create images in static folder at staticpath
-    STATIC_PATH = "/opt/myenv/static/img"
+    STATIC_PATH = "/opt/myenv/static/new"
     store_dir = os.path.join(STATIC_PATH, "Store_"+str(current_store.id))
     if not os.path.exists(store_dir):
         os.makedirs(store_dir)
