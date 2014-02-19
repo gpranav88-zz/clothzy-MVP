@@ -307,9 +307,9 @@
 
 
 			<ul class="pagination pull-right pagination-sm">
-				<li><a href="">&laquo;</a></li>
+				<li><a ng-click="goToPageBefore()">&laquo;</a></li>
 				<li ng-repeat="page in displayPageNum(numberOfPages)" ng-click="goToPage(page)"><a>{{page}}</a></li>
-				<li><a href="">&raquo;</a></li>
+				<li><a ng-click="goToPageAfter()">&raquo;</a></li>
 			</ul>			
 			<br>
 		</div> <!-- /span -->

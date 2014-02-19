@@ -195,6 +195,18 @@ app.controller('storeController',['$scope','$http','$resource','$routeParams','c
 	$scope.storeProducts=commonFactory.storeProducts($resource).get({
 		'id':commonFactory.fetchID($routeParams)
 	});
+
+	$scope.getDiscount_store = function(val){
+		if(!angular.isUndefined($scope.storeProducts.Products)){
+			var price = $scope.storeProducts.Products[val].price;
+			var price_discounted = $scope.storeProducts.Products[val].price_discounted;
+			if(price==0 || price_discounted=="Price on request")
+				return 0;
+			else
+				return parseInt(((price-price_discounted)/price)*100);
+		}
+		return 0;
+	}
 }
 ]);
 
@@ -378,6 +390,20 @@ app.controller('populateSearchController',['$location','$scope','$http','$resour
         $location.path('/search/products/').search(displayQuery);
     }
     $scope.goToPage = function(page){
+    	displayQuery['page'] = page;
+    	$location.path('/search/products/').search(displayQuery);
+    }
+    $scope.goToPageBefore = function(){
+    	var page = 1
+    	if(displayQuery['page'] > 1)
+    		page = displayQuery['page'] - 1;
+    	displayQuery['page'] = page;
+    	$location.path('/search/products/').search(displayQuery);
+    }
+    $scope.goToPageAfter = function(){
+    	var page = 2
+    	if(displayQuery['page'])
+    		page = displayQuery['page'] +1;
     	displayQuery['page'] = page;
     	$location.path('/search/products/').search(displayQuery);
     }

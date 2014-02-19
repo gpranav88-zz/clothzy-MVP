@@ -54,9 +54,9 @@
 							<p class="price">
 
 								<span ng-if="storeProducts.Products[val].price_discounted!=0 && storeProducts.Products[val].price!=0">
-									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted | number:0}}</span>
-									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}}</span>
-									 <span class="discount-productsearch-page">({{getDiscount($index)}}% Off)</span>
+									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price_discounted}}</span>
+									<span class="strike-price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price}}</span>
+									 <span class="discount-productsearch-page">({{getDiscount_store($index)}}% Off)</span>
 								</span>
 								<span ng-if="storeProducts.Products[val].price_discounted == 0 && storeProducts.Products[val].price!=0">
 									<span class="price-productsearch-page"><i class="fa fa-rupee"></i>{{storeProducts.Products[val].price | number:0}} </span>
