@@ -30,5 +30,5 @@ urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve',
          {'document_root': settings.MEDIA_ROOT}),
     #index
-    url('^store|product|search|review|contact|privacy-policy|designers-brands|about|user\/.*', 'clothzy.views.home', name="home")
+    url('^store|product|search|review|contact|privacy-policy|designers-brands|about|user|product-test\/.*', 'clothzy.views.home', name="home")
 )
