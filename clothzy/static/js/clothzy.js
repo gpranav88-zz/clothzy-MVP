@@ -54,7 +54,7 @@ app.config(['$routeProvider','$locationProvider','$sceDelegateProvider', functio
 	.when ('/designers-brands', {
 		templateUrl: 'static/partials/designers-brands.html'
 	})
-	.when ('/products-test', {
+	.when ('/product-test', {
 		templateUrl: 'static/partials/product-test.html'
 	});
 
