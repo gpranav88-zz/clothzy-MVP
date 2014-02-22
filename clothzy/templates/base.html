@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="main">
   <head>
+<script type="text/javascript">
 
+
+<!--
+if (screen.width <= 767) {
+    window.location = "http://162.243.235.72:8000/static/partials/mobile.html";
+}
+//-->
+</script>
 	<base href="/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -433,7 +441,7 @@
 
   <!-- jQuery & bootstrap -->
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
+<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>    
     <!--<script src="../static/js/bootstrap.min.js"></script>-->
 <script src="../static/js/jquery.feedback_me.js"></script>
 <!-- <script src="../static/js/founderror.js"></script> -->
@@ -446,7 +454,7 @@
         <script src="../static/js/checklist-model.js"></script>
   <script src="../static/js/angular.rangeSlider.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-
+  <script src="../static/js/angular-google-maps.js"></script>
 	<script src="../static/js/clothzy.js"></script>
 
 
